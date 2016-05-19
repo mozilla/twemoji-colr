@@ -1,0 +1,3 @@
+[submodule "grunt-webfont"]
+	path = grunt-webfont
+	url = https://github.com/sapegin/grunt-webfont
