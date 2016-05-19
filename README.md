@@ -14,7 +14,7 @@ if they try to use this font.
 ## Getting started
 
 This project makes use of [grunt-webfont](https://github.com/sapegin/grunt-webfont)
-and an addition [node.js](https://nodejs.org/en/) script.
+and an additional [node.js](https://nodejs.org/en/) script.
 Therefore, installation of Node.js (and its package manager [npm](https://www.npmjs.com/))
 is a prerequisite, as is the [Grunt](http://gruntjs.com/) task runner.
 
