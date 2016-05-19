@@ -29,6 +29,13 @@ The necessary tools can be installed via npm:
     # additional modules needed by the layerize.js script
     npm install rmdir unzip xmlbuilder
 
+After initially cloning the repository, you will also need to run:
+
+    git submodule init
+    git submodule update
+
+to set up and clone the grunt-webfont submodule.
+
 The build process also requires [fontforge](https://fontforge.github.io/)
 and the TTX script from the [font-tools](https://github.com/behdad/fonttools/) package
 to be installed.
