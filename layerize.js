@@ -5,12 +5,13 @@ var fs         = require('fs'),
     xml2js     = require('xml2js');
 
 var sourceZip = process.argv[2];
-var targetDir = process.argv[3];
-var fontName = process.argv[4];
+var extrasDir = process.argv[3];
+var targetDir = process.argv[4];
+var fontName = process.argv[5];
 
 if (fontName == undefined) {
     console.error("### Missing font name.");
-    console.error("### Usage: node " + process.argv[1] + " source-SVGs.zip build-dir font-name");
+    console.error("### Usage: node " + process.argv[1] + " source-SVGs.zip extras-dir build-dir font-name");
     return;
 }
 
@@ -321,7 +322,14 @@ rmdir(targetDir, function() {
     fs.mkdirSync(targetDir);
     fs.mkdirSync(targetDir + "/glyphs");
 
-    // Finally, we're ready to process the images from the source archive:
+    // Read glyphs from the "extras" directory
+    var extras = fs.readdirSync(extrasDir);
+    extras.forEach(function(f) {
+        var data = fs.readFileSync(extrasDir + "/" + f);
+        processFile(f, data);
+    });
+
+    // Finally, we're ready to process the images from the main source archive:
     zipReader.pipe(unzip.Parse()).on('entry', function (e) {
         var data = "";
         var fileName = e.path;
