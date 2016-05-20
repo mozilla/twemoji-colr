@@ -18,9 +18,15 @@ limitations under the License.
 
 ## License for the Visual Design
 
-The Emoji art used here comes from [Emoji One](http://emojione.com),
-and is used and redistributed under the [license terms](http://emojione.com/licensing/)
-offered by the Emoji One project:
+The Emoji art in the e1-svg.zip archive comes from [Emoji One](http://emojione.com),
+and is used and redistributed under the CC-BY-4.0 [license terms](http://emojione.com/licensing/)
+offered by the Emoji One project.
+
+Additional glyphs in the `extras/` directory are derived from the
+[Emoji One Color SVGinOT Font](https://github.com/eosrei/emojione-color-font) project,
+which in turn based them on glyphs from
+[Twitter Emoji (Twemoji)](https://github.com/twitter/twemoji),
+also released under the CC-BY-4.0 license.
 
 ###Creative Commons Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/legalcode
