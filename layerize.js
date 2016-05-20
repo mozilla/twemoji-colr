@@ -225,9 +225,8 @@ function processFile(fileName, data) {
     });
 }
 
-var zipReader = fs.createReadStream(sourceZip);
 
-zipReader.on('end', function () {
+function generateTTX() {
     // After we've processed all the source SVGs, we'll generate the auxiliary
     // files needed for OpenType font creation.
 
@@ -315,7 +314,7 @@ zipReader.on('end', function () {
 
     // Write out the codepoints file to control character code assignments by grunt-webfont
     fs.writeFileSync(targetDir + "/codepoints.js", "{\n" + codepoints.join(",\n") + "\n}\n");
-});
+}
 
 // Delete and re-create target directory, to remove any pre-existing junk
 rmdir(targetDir, function() {
@@ -330,7 +329,7 @@ rmdir(targetDir, function() {
     });
 
     // Finally, we're ready to process the images from the main source archive:
-    zipReader.pipe(unzip.Parse()).on('entry', function (e) {
+    fs.createReadStream(sourceZip).pipe(unzip.Parse()).on('entry', function (e) {
         var data = "";
         var fileName = e.path;
         if (e.type == 'File') {
@@ -343,5 +342,5 @@ rmdir(targetDir, function() {
         } else {
             e.autodrain();
         }
-    });
+    }).on('close', generateTTX);
 });
