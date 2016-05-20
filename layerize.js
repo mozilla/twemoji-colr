@@ -15,6 +15,9 @@ if (fontName == undefined) {
     return;
 }
 
+// Extra ligature rules to support ZWJ sequences that already exist as individual characters
+var extraLigatures = JSON.parse(fs.readFileSync(extrasDir + "/ligatures.json"));
+
 var components = {};
 // maps svg-data -> glyphName
 
@@ -288,20 +291,26 @@ function generateTTX() {
     var ligatureSubst = lookup.ele("LigatureSubst", {index: 0, Format: 1});
     var ligatureSets = {};
     var ligatureSetKeys = [];
-    ligatures.forEach(function(lig) {
+    var addLigToSet = function(lig) {
         var startGlyph = "u" + lig.unicodes[0];
         var components = "u" + lig.unicodes.slice(1).join(",u");
-        var glyphName = "u" + lig.unicodes.join("_");
+        var glyphName = lig.glyphName || "u" + lig.unicodes.join("_");
         if (ligatureSets[startGlyph] == undefined) {
             ligatureSetKeys.push(startGlyph);
             ligatureSets[startGlyph] = [];
         }
         ligatureSets[startGlyph].push({components: components, glyph: glyphName});
-    });
+    }
+    ligatures.forEach(addLigToSet);
+    extraLigatures.forEach(addLigToSet);
     ligatureSetKeys.sort();
     ligatureSetKeys.forEach(function(glyph) {
         var ligatureSet = ligatureSubst.ele("LigatureSet", {glyph: glyph});
         var set = ligatureSets[glyph];
+        // sort ligatures with more components first
+        set.sort(function(a, b) {
+            return b.components.length - a.components.length;
+        });
         set.forEach(function(lig) {
             ligatureSet.ele("Ligature", {components: lig.components, glyph: lig.glyph});
         });
@@ -324,8 +333,10 @@ rmdir(targetDir, function() {
     // Read glyphs from the "extras" directory
     var extras = fs.readdirSync(extrasDir);
     extras.forEach(function(f) {
-        var data = fs.readFileSync(extrasDir + "/" + f);
-        processFile(f, data);
+        if (f.endsWith(".svg")) {
+            var data = fs.readFileSync(extrasDir + "/" + f);
+            processFile(f, data);
+        }
     });
 
     // Finally, we're ready to process the images from the main source archive:
