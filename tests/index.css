@@ -23,6 +23,10 @@ span.title {
   display: block;
 }
 
+span.clickable {
+  cursor: pointer;
+}
+
 p.pass {
   background-color: #ccffcc;
 }
@@ -31,12 +35,8 @@ p.error {
   background-color: #ffcccc;
 }
 
-p:hover > canvas, p:hover > .dom-ref, p:hover > .svg-ref {
-  display: inline-block;
-}
-
 canvas, .dom-ref, .svg-ref {
-  display: none;
+  display: inline-block;
   font-family: "EmojiOne";
   font-size: 180px;
   line-height: 180px;

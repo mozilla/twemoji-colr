@@ -96,10 +96,11 @@ ComparisonTest.prototype = {
 };
 
 var TestLoader = function() {
+  this.clickableTitleElToResult = new WeakMap();
 }
 
 TestLoader.prototype = {
-  REPORT_LIMIT: 30,
+  AUTOEXPEND_REPORTS_LIMIT: 30,
 
   loadCodePointsData: function() {
     return new Promise(function(resolve) {
@@ -131,7 +132,7 @@ TestLoader.prototype = {
   },
 
   run: function(arr) {
-    this.reported = 0;
+    this.expendedReports = 0;
 
     var codePointsArrPromise;
     if (!arr) {
@@ -155,55 +156,78 @@ TestLoader.prototype = {
         return p;
       }.bind(this))
       .then(function() {
-        if (this.reported > this.REPORT_LIMIT) {
-          alert('Error report was over ' +
-            this.REPORT_LIMIT + '; truncated in order to prevent ' +
+        if (this.expendedReports > this.AUTOEXPEND_REPORTS_LIMIT) {
+          alert('Some report was not expended, in order to prevent ' +
             'content process from freezing!');
         }
       }.bind(this));
   },
 
+  handleEvent: function(evt) {
+    evt.target.removeEventListener('click', this);
+    evt.target.classList.remove('clickable');
+    var result = this.clickableTitleElToResult.get(evt.target);
+
+    this.appendReportDOM(evt.target.parentNode, result);
+  },
+
   reportData: function(result) {
     var reportEl = document.createElement('p');
-    var span = document.createElement('span');
-    span.className = 'title';
+    var reportTitleEl = document.createElement('span');
+    reportTitleEl.className = 'title';
 
-    span.textContent =
+    reportTitleEl.textContent =
       result.codePoints.map(function(cp) {
-        return 'U+' + cp.toString(16);
-      }) + ', ' + result.string +
+        var str = cp.toString(16);
+        while (str.length < 4) {
+          str = '0' + str;
+        }
+        return 'U+' + str;
+      }).join(' ') + ', ' + result.string +
       ', equal: ' + result.equal +
       ', empty: ' + result.emojiRenderingEmpty;
-    reportEl.appendChild(span);
+    reportEl.appendChild(reportTitleEl);
     if (!result.equal && !result.emojiRenderingEmpty) {
       reportEl.classList.add('pass');
     } else {
       reportEl.classList.add('error');
-
-      if (this.reported < this.REPORT_LIMIT) {
-        reportEl.appendChild(result.systemRenderingCanvas);
-        reportEl.appendChild(result.emojiRenderingCanvas);
-        var ref = document.createElement('span');
-        ref.className = 'dom-ref';
-        ref.textContent = result.string;
-        reportEl.appendChild(ref);
-
-        var svgRef = new Image();
-        svgRef.src = '../build/colorGlyphs/u' +
-          result.codePoints.map(function(cp) {
-            var str = cp.toString(16);
-            while (str.length < 4) {
-              str += '0' + str;
-            }
-            return str;
-          }).join('-') + '.svg';
-        svgRef.className = 'svg-ref';
-        reportEl.appendChild(svgRef);
-      }
     }
 
-    this.reported++;
+    if (this.expendedReports <= this.AUTOEXPEND_REPORTS_LIMIT) {
+      this.appendReportDOM(reportEl, result);
+      this.expendedReports++;
+    } else {
+      reportTitleEl.addEventListener('click', this);
+      reportTitleEl.classList.add('clickable');
+      this.clickableTitleElToResult.set(reportTitleEl, result);
+    }
+
     document.body.appendChild(reportEl);
+  },
+
+  appendReportDOM: function(reportEl, result) {
+    reportEl.appendChild(result.systemRenderingCanvas);
+    reportEl.appendChild(result.emojiRenderingCanvas);
+    var ref = document.createElement('span');
+    ref.className = 'dom-ref';
+    ref.textContent = result.string;
+    reportEl.appendChild(ref);
+
+    var svgRef = new Image();
+    svgRef.src = '../build/colorGlyphs/u' +
+      result.codePoints.filter(function(cp) {
+        // Remove zero width joiner.
+        return cp !== 0x200d;
+      })
+      .map(function(cp) {
+        var str = cp.toString(16);
+        while (str.length < 4) {
+          str = '0' + str;
+        }
+        return str;
+      }).join('-') + '.svg';
+    svgRef.className = 'svg-ref';
+    reportEl.appendChild(svgRef);
   }
 };
 
