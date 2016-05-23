@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "EmojiOne";
+  src: url('../build/EmojiOne.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: "EmojiOne", sans-serif;
+}
+
+button {
+  font-size: 1em;
+  font-family: "EmojiOne", sans-serif;
+}
+
+span.title {
+  font-family: "EmojiOne", monospace;
+  display: block;
+}
+
+p.pass {
+  background-color: #ccffcc;
+}
+
+p.error {
+  background-color: #ffcccc;
+}
+
+p:hover > canvas, p:hover > .dom-ref, p:hover > .svg-ref {
+  display: inline-block;
+}
+
+canvas, .dom-ref, .svg-ref {
+  display: none;
+  font-family: "EmojiOne";
+  font-size: 180px;
+  line-height: 180px;
+  vertical-align: middle;
+  text-align: center;
+  margin: 10px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid black;
+  background: linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255);
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px;
+}
