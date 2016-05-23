@@ -231,6 +231,14 @@ TestLoader.prototype = {
         return str;
       }).join('-') + '.svg';
     svgRef.className = 'svg-ref';
+    svgRef.onload = function() {
+      var c = document.createElement('canvas');
+      c.width = c.height = result.emojiRenderingCanvas.width;
+      var ctx = c.getContext('2d');
+      ctx.drawImage(svgRef, 0, 0);
+      c.title = 'SVG rendered on canvas.';
+      svgRef.parentNode.appendChild(c);
+    };
     reportEl.appendChild(svgRef);
   }
 };
