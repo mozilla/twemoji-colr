@@ -47,6 +47,6 @@ canvas, .dom-ref, .svg-ref {
   height: 180px;
   border: 1px solid black;
   background: linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255);
-  background-position: 0 0, 20px 20px;
-  background-size: 40px 40px;
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
 }
