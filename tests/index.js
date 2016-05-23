@@ -8,27 +8,34 @@ var ComparisonTest = function(codePoints) {
 ComparisonTest.prototype = {
   FONT_NAME: 'EmojiOne',
   CANVAS_SIZE: 180,
+  SVG_SIZE: 64,
   // Depend on font -- this is a guess since EmojiOne was not drawn ...
   LINE_HEIGHT: 210,
 
   run: function() {
-    var systemRenderingCanvas = this.getSystemRenderingCanvas();
-    var emojiRenderingCanvas = this.getEmojiRenderingCanvas();
+    return Promise.all([
+        this.getSystemRenderingCanvas(),
+        this.getEmojiRenderingCanvas(),
+        this.getSVGRenderingCanvas()
+      ])
+      .then(function(values) {
+        var systemRenderingCanvas = values[0];
+        var emojiRenderingCanvas = values[1];
+        var svgRenderingCanvas = values[2];
 
-    var result = {
-      codePoints: this.codePoints,
-      string: this.string,
-      systemRenderingCanvas: systemRenderingCanvas,
-      emojiRenderingCanvas: emojiRenderingCanvas,
-      equal: this.canvasEqual(systemRenderingCanvas, emojiRenderingCanvas),
-      emojiRenderingEmpty: this.canvasEmpty(emojiRenderingCanvas)
-    };
+        var result = {
+          codePoints: this.codePoints,
+          string: this.string,
+          systemRenderingCanvas: systemRenderingCanvas,
+          emojiRenderingCanvas: emojiRenderingCanvas,
+          svgRenderingCanvas: svgRenderingCanvas,
+          equal: this.canvasEqual(systemRenderingCanvas, emojiRenderingCanvas),
+          emojiRenderingEmpty: this.canvasEmpty(emojiRenderingCanvas),
+          svgRenderingEmpty: this.canvasEmpty(svgRenderingCanvas)
+        };
 
-    if (!result.equal) {
-      return Promise.resolve(result);
-    } else {
-      return Promise.reject(result);
-    }
+        return result;
+      }.bind(this));
   },
 
   codePointsToString: function(codePoints) {
@@ -61,6 +68,67 @@ ComparisonTest.prototype = {
 
   getEmojiRenderingCanvas: function() {
     return this.getTextCanvasWithFont(this.FONT_NAME);
+  },
+
+  getSVGRenderingCanvas: function() {
+    var svgUrl = '../build/colorGlyphs/u' +
+      this.codePoints.filter(function(cp) {
+        // Remove zero width joiner.
+        return cp !== 0x200d;
+      })
+      .map(function(cp) {
+        var str = cp.toString(16);
+        while (str.length < 4) {
+          str = '0' + str;
+        }
+        return str;
+      }).join('-') + '.svg';
+    return new Promise(function(resolve) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', svgUrl, true);
+        xhr.responseType = 'text';
+        xhr.send();
+        xhr.onloadend = function() {
+          resolve(xhr.response);
+        };
+      })
+      .then(function(svgText) {
+        if (svgText.substr(0, 5) !== '<svg ') {
+          return;
+        }
+
+        // Gecko bug 700533. I love my job.
+        svgText = '<svg width="' +
+          this.SVG_SIZE + 'px" height="' +
+          this.SVG_SIZE + 'px" ' +
+          svgText.substr(5);
+        return 'data:image/svg+xml,' + encodeURIComponent(svgText);
+      }.bind(this))
+      .then(function(svgDataUrl) {
+        if (!svgDataUrl) {
+          return;
+        }
+
+        return new Promise(function(resolve) {
+          var svgImg = new Image();
+          svgImg.src = svgDataUrl;
+          svgImg.onload = function() {
+            resolve(svgImg);
+          };
+        }.bind(this));
+      }.bind(this))
+      .then(function(img) {
+        var canvas = document.createElement('canvas');
+        canvas.width = this.CANVAS_SIZE;
+        canvas.height = this.CANVAS_SIZE;
+        if (img) {
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
+            0, 0, this.CANVAS_SIZE, this.CANVAS_SIZE);
+        }
+
+        return canvas;
+      }.bind(this));
   },
 
   canvasEqual: function(aCanvas, bCanvas) {
@@ -156,8 +224,7 @@ TestLoader.prototype = {
           p = p.then(function() {
             var comparisonTest = new ComparisonTest(codePoints);
             return comparisonTest.run()
-              .then(this.reportData.bind(this),
-                this.reportData.bind(this));
+              .then(this.reportData.bind(this));
           }.bind(this));
         }.bind(this));
 
@@ -193,9 +260,12 @@ TestLoader.prototype = {
         return 'U+' + str;
       }).join(' ') + ', ' + result.string +
       ', equal: ' + result.equal +
-      ', empty: ' + result.emojiRenderingEmpty;
+      ', empty: ' + result.emojiRenderingEmpty +
+      ', reference: ' + !result.svgRenderingEmpty;
     reportEl.appendChild(reportTitleEl);
-    if (!result.equal && !result.emojiRenderingEmpty) {
+    if (!result.equal &&
+        !result.emojiRenderingEmpty &&
+        !result.svgRenderingEmpty) {
       reportEl.classList.add('pass');
     } else {
       reportEl.classList.add('error');
@@ -218,37 +288,13 @@ TestLoader.prototype = {
     result.systemRenderingCanvas.title = 'System font rendering on canvas.';
     reportEl.appendChild(result.emojiRenderingCanvas);
     result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
+    reportEl.appendChild(result.svgRenderingCanvas);
+    result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
     ref.textContent = result.string;
     ref.title = 'EmojiOne HTML rendering.';
     reportEl.appendChild(ref);
-
-    var svgRef = new Image();
-    svgRef.title = 'SVG source image.';
-    svgRef.crossOrigin = 'anonymous';
-    svgRef.src = '../build/colorGlyphs/u' +
-      result.codePoints.filter(function(cp) {
-        // Remove zero width joiner.
-        return cp !== 0x200d;
-      })
-      .map(function(cp) {
-        var str = cp.toString(16);
-        while (str.length < 4) {
-          str = '0' + str;
-        }
-        return str;
-      }).join('-') + '.svg';
-    svgRef.className = 'svg-ref';
-    svgRef.onload = function() {
-      var c = document.createElement('canvas');
-      c.width = c.height = result.emojiRenderingCanvas.width;
-      var ctx = c.getContext('2d');
-      ctx.drawImage(svgRef, 0, 0, c.width, c.height, 0, 0, c.width, c.height);
-      c.title = 'SVG rendered on canvas.';
-      svgRef.parentNode.appendChild(c);
-    };
-    reportEl.appendChild(svgRef);
   }
 };
 
