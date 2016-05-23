@@ -207,13 +207,17 @@ TestLoader.prototype = {
 
   appendReportDOM: function(reportEl, result) {
     reportEl.appendChild(result.systemRenderingCanvas);
+    result.systemRenderingCanvas.title = 'System font rendering on canvas.';
     reportEl.appendChild(result.emojiRenderingCanvas);
+    result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
     ref.textContent = result.string;
+    ref.title = 'EmojiOne HTML rendering.';
     reportEl.appendChild(ref);
 
     var svgRef = new Image();
+    svgRef.title = 'SVG source image.';
     svgRef.src = '../build/colorGlyphs/u' +
       result.codePoints.filter(function(cp) {
         // Remove zero width joiner.
