@@ -144,7 +144,15 @@ TestLoader.prototype = {
       .then(function(codePointsArr) {
         var p = Promise.resolve();
 
-        codePointsArr.forEach(function(codePoints) {
+        codePointsArr.forEach(function(codePoints, i) {
+          if (i % 50 === 0) {
+            // Flush the screen once on every 50 tests
+            p = p.then(function() {
+              return new Promise(function(resolve) {
+                window.requestAnimationFrame(resolve);
+              });
+            });
+          }
           p = p.then(function() {
             var comparisonTest = new ComparisonTest(codePoints);
             return comparisonTest.run()
@@ -218,6 +226,7 @@ TestLoader.prototype = {
 
     var svgRef = new Image();
     svgRef.title = 'SVG source image.';
+    svgRef.crossOrigin = 'anonymous';
     svgRef.src = '../build/colorGlyphs/u' +
       result.codePoints.filter(function(cp) {
         // Remove zero width joiner.
@@ -235,7 +244,7 @@ TestLoader.prototype = {
       var c = document.createElement('canvas');
       c.width = c.height = result.emojiRenderingCanvas.width;
       var ctx = c.getContext('2d');
-      ctx.drawImage(svgRef, 0, 0);
+      ctx.drawImage(svgRef, 0, 0, c.width, c.height, 0, 0, c.width, c.height);
       c.title = 'SVG rendered on canvas.';
       svgRef.parentNode.appendChild(c);
     };
