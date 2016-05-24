@@ -54,13 +54,19 @@ var addToXML = function(xml, p) {
 
 var codepoints = [];
 
-function expandColor(c) {
+function expandColor(c, o) {
+    // c is a hex color that might be shorthand (3 instead of 6 digits)
     if (c.substr(0, 1) == '#' && c.length == 4) {
         c = '#' + c.substr(1, 1) + c.substr(1, 1)
                 + c.substr(2, 1) + c.substr(2, 1)
                 + c.substr(3, 1) + c.substr(3, 1);
     }
-    return c;
+    // o is opacity as a decimal; convert to hex and append it
+    o = Math.round(255 * o).toString(16);
+    if (o.length < 2) {
+        o = "0" + o;
+    }
+    return c + o;
 }
 
 function hexByte(b) {
@@ -128,6 +134,7 @@ function processFile(fileName, data) {
                 if (e['$'] == undefined) {
                     return;
                 }
+                var opacity = e['$']['opacity'] || 1.0;
                 var color = e['$']['fill'];
                 var strokeColor = e['$']['stroke'];
                 if (color == undefined || color == 'none') {
@@ -153,7 +160,7 @@ function processFile(fileName, data) {
                 if (color == undefined) {
                     color = defaultColor;
                 } else {
-                    color = expandColor(color);
+                    color = expandColor(color, opacity);
                 }
                 if (e['#name'] == 'g') {
                     if (e['$$'] != undefined) {
@@ -170,7 +177,7 @@ function processFile(fileName, data) {
             });
         };
 
-        addToPaths("#000000", result['svg']['$$']);
+        addToPaths("#000000ff", result['svg']['$$']);
 
         var layerIndex = 0;
         var layers = [];
@@ -263,8 +270,6 @@ function generateTTX() {
         if (c.substr(0, 3) == "url") {
             console.log("unexpected color: " + c);
             c = "#000000ff";
-        } else {
-            c = c + "ff";
         }
         palette.ele("color", {index: index, value: c});
         index = index + 1;
