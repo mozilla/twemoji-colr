@@ -212,7 +212,7 @@ TestLoader.prototype = {
   AUTOEXPEND_REPORTS_LIMIT: 30,
 
   // In precentage
-  MISMATCH_THRESHOLD: 2,
+  MISMATCH_THRESHOLD: 1,
 
   loadCodePointsData: function() {
     return new Promise(function(resolve) {
