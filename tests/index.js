@@ -395,6 +395,24 @@ TestLoader.prototype = {
 };
 
 function start(arr) {
+  if (typeof arr === 'string') {
+    arr = arr.split(',').map(function(str) {
+      return str.split(' ')
+        .map(function(numStr) {
+          return numStr = numStr.trim();
+        })
+        .filter(function(numStr) {
+          return (numStr !== '');
+        })
+        .map(function(numStr) {
+        if (numStr.substr(0, 2) === 'U+') {
+          numStr = numStr.substr(2);
+        }
+        return parseInt(numStr, 16);
+      });
+    });
+  }
+
   (new TestLoader())
     .run(arr)
     .catch(function(e) {
@@ -402,6 +420,27 @@ function start(arr) {
       console.error(e);
     });
 }
+
+function changeHashAndStart(str) {
+  var hashStr = decodeURIComponent(document.location.hash.substr(1));
+  if (str === hashStr) {
+    start(str);
+  } else {
+    // trigger a hashchange
+    document.location.hash = '#' + str;
+  }
+}
+
+if (document.location.hash) {
+  document.getElementById('codepoints').value =
+    decodeURIComponent(document.location.hash.substr(1));
+}
+window.addEventListener('hashchange', function() {
+  var str = decodeURIComponent(document.location.hash.substr(1));
+  if (str) {
+    start(str);
+  }
+});
 
 document.body.classList.toggle('hide-pass',
   document.getElementById('hide-passed').checked);

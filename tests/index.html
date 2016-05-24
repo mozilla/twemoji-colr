@@ -8,9 +8,11 @@
   <script src="index.js" defer></script>
 </head>
 <body>
-  <h1>EmojiOne COLR test page
-    <button onclick="start([[0x1f4a9]])">Test 💩</button>
-    <button onclick="start()">Test all (will take a while)</button></h1>
+  <h1>😁 EmojiOne COLR test page
+    <button type="button" onclick="start()">Test all</button>
+    <form onsubmit="changeHashAndStart(this.codepoints.value); return false;">
+      <input type="text" name="codepoints" id="codepoints" size="5" value="U+1f4a9"
+        title="Custom tests, comma seperated for each test, space seperated for each code point." /><button>Test</button></form></h1>
   <p>Assertions:</p>
   <ol>
     <li>SVG source rendering must not be empty (<code>reference</code>)</li>

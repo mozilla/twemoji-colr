@@ -13,7 +13,11 @@ h1 {
   font-family: "EmojiOne", sans-serif;
 }
 
-button {
+h1 form {
+  display: inline;
+}
+
+button, h1 input {
   font-size: 1em;
   font-family: "EmojiOne", sans-serif;
 }
