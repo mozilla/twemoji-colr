@@ -9,8 +9,7 @@ ComparisonTest.prototype = {
   FONT_NAME: 'EmojiOne',
   CANVAS_SIZE: 180,
   SVG_SIZE: 64,
-  // Depend on font -- this is a guess since EmojiOne was not drawn ...
-  LINE_HEIGHT: 210,
+  LINE_HEIGHT: 180,
 
   run: function() {
     return Promise.all([
@@ -213,14 +212,6 @@ TestLoader.prototype = {
         var p = Promise.resolve();
 
         codePointsArr.forEach(function(codePoints, i) {
-          if (i % 50 === 0) {
-            // Flush the screen once on every 50 tests
-            p = p.then(function() {
-              return new Promise(function(resolve) {
-                window.requestAnimationFrame(resolve);
-              });
-            });
-          }
           p = p.then(function() {
             var comparisonTest = new ComparisonTest(codePoints);
             return comparisonTest.run()
@@ -263,15 +254,18 @@ TestLoader.prototype = {
       ', empty: ' + result.emojiRenderingEmpty +
       ', reference: ' + !result.svgRenderingEmpty;
     reportEl.appendChild(reportTitleEl);
-    if (!result.equal &&
-        !result.emojiRenderingEmpty &&
-        !result.svgRenderingEmpty) {
+
+    var pass = !result.equal &&
+      !result.emojiRenderingEmpty &&
+      !result.svgRenderingEmpty;
+
+    if (pass) {
       reportEl.classList.add('pass');
     } else {
       reportEl.classList.add('error');
     }
 
-    if (this.expendedReports <= this.AUTOEXPEND_REPORTS_LIMIT) {
+    if (!pass && this.expendedReports <= this.AUTOEXPEND_REPORTS_LIMIT) {
       this.appendReportDOM(reportEl, result);
       this.expendedReports++;
     } else {
