@@ -245,6 +245,12 @@ TestLoader.prototype = {
 
   run: function(arr) {
     this.expendedReports = 0;
+    this.summary = {
+      total: 0, pass: 0, error: 0,
+      mismatch: 0, webfont: 0, rendering: 0, reference: 0 };
+    this.summaryEl = document.createElement('p');
+    this.summaryEl.className = 'summary';
+    document.body.appendChild(this.summaryEl);
 
     var codePointsArrPromise;
     if (!arr) {
@@ -267,10 +273,11 @@ TestLoader.prototype = {
         return p;
       }.bind(this))
       .then(function() {
-        if (this.expendedReports > this.AUTOEXPEND_REPORTS_LIMIT) {
-          alert('Some report was not expended, in order to prevent ' +
-            'content process from freezing!');
-        }
+        this.summaryEl = null;
+      }.bind(this),
+      function(e) {
+        this.summaryEl = null;
+        throw e;
       }.bind(this));
   },
 
@@ -295,16 +302,40 @@ TestLoader.prototype = {
         }
         return 'U+' + str;
       }).join(' ') + ', ' + result.string +
-      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%' +
-      ', webfont: ' + !result.isEqualToSystem +
+      ', reference: ' + !result.svgRenderingEmpty +
       ', rendering: ' + !result.emojiRenderingEmpty +
-      ', reference: ' + !result.svgRenderingEmpty;
+      ', webfont: ' + !result.isEqualToSystem +
+      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%';
     reportEl.appendChild(reportTitleEl);
 
     var pass = (result.svgRenderingMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
       !result.isEqualToSystem &&
       !result.emojiRenderingEmpty &&
       !result.svgRenderingEmpty;
+
+    this.summary.total++;
+
+    if (pass) {
+      this.summary.pass++;
+    } else {
+      this.summary.error++;
+      if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
+        this.summary.mismatch++;
+      }
+      if (result.isEqualToSystem) {
+        this.summary.webfont++;
+      }
+      if (result.emojiRenderingEmpty) {
+        this.summary.rendering++;
+      }
+      if (result.svgRenderingEmpty) {
+        this.summary.reference++;
+      }
+    }
+    this.summaryEl.textContent =
+      ['total', 'pass', 'error', 'mismatch', 'webfont', 'rendering', 'reference']
+        .map(function(prop) { return prop + ': '  + this.summary[prop] }.bind(this))
+        .join(', ');
 
     if (pass) {
       reportEl.classList.add('pass');
@@ -325,20 +356,36 @@ TestLoader.prototype = {
   },
 
   appendReportDOM: function(reportEl, result) {
-    reportEl.appendChild(result.systemRenderingCanvas);
-    result.systemRenderingCanvas.title = 'System font rendering on canvas.';
-    reportEl.appendChild(result.emojiRenderingCanvas);
-    result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
-    reportEl.appendChild(result.svgRenderingCanvas);
-    result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
-    reportEl.appendChild(result.svgRenderingDiffImg);
-    result.svgRenderingDiffImg.title =
-      'Diff between source SVG and font rendering on canvas.';
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
     ref.textContent = result.string;
     ref.title = 'EmojiOne HTML rendering.';
     reportEl.appendChild(ref);
+
+    reportEl.appendChild(result.svgRenderingCanvas);
+    result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
+    if (result.svgRenderingEmpty) {
+      result.svgRenderingCanvas.className = 'report-error';
+    }
+
+    reportEl.appendChild(result.emojiRenderingCanvas);
+    result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
+    if (result.emojiRenderingEmpty) {
+      result.emojiRenderingCanvas.className = 'report-error';
+    }
+
+    reportEl.appendChild(result.systemRenderingCanvas);
+    result.systemRenderingCanvas.title = 'System font rendering on canvas.';
+    if (result.isEqualToSystem) {
+      result.systemRenderingCanvas.className = 'report-error';
+    }
+
+    reportEl.appendChild(result.svgRenderingDiffImg);
+    result.svgRenderingDiffImg.title =
+      'Diff between source SVG and font rendering on canvas.';
+    if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
+      result.svgRenderingDiffImg.className = 'report-error';
+    }
   }
 };
 
@@ -350,3 +397,6 @@ function start(arr) {
       console.error(e);
     });
 }
+
+document.body.classList.toggle('hide-pass',
+  document.getElementById('hide-passed').checked);
