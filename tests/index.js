@@ -250,6 +250,7 @@ TestLoader.prototype = {
       mismatch: 0, webfont: 0, rendering: 0, reference: 0 };
     this.summaryEl = document.createElement('p');
     this.summaryEl.className = 'summary';
+    this.startTime = Date.now();
     document.body.appendChild(this.summaryEl);
 
     var codePointsArrPromise;
@@ -273,9 +274,13 @@ TestLoader.prototype = {
         return p;
       }.bind(this))
       .then(function() {
+        this.summaryEl.textContent +=
+          ', time: ' + (Date.now() - this.startTime) + 'ms';
         this.summaryEl = null;
       }.bind(this),
       function(e) {
+        this.summaryEl.textContent +=
+          ', time: ' + (Date.now() - this.startTime) + 'ms';
         this.summaryEl = null;
         throw e;
       }.bind(this));
