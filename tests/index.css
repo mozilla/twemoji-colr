@@ -35,7 +35,7 @@ p.error {
   background-color: #ffcccc;
 }
 
-canvas, .dom-ref, .svg-ref {
+canvas, img, .dom-ref, .svg-ref {
   display: inline-block;
   font-family: "EmojiOne";
   font-size: 180px;

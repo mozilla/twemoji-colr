@@ -7,9 +7,9 @@ var ComparisonTest = function(codePoints) {
 
 ComparisonTest.prototype = {
   FONT_NAME: 'EmojiOne',
-  CANVAS_SIZE: 180,
+  CANVAS_SIZE: 640,
   SVG_SIZE: 64,
-  LINE_HEIGHT: 180,
+  LINE_HEIGHT: 640,
 
   run: function() {
     return Promise.all([
@@ -22,13 +22,28 @@ ComparisonTest.prototype = {
         var emojiRenderingCanvas = values[1];
         var svgRenderingCanvas = values[2];
 
+        var svgDiff =
+          this.imageCompare(svgRenderingCanvas, emojiRenderingCanvas);
+
+        values.push(svgDiff);
+        return Promise.all(values);
+      }.bind(this))
+      .then(function(values) {
+        var systemRenderingCanvas = values[0];
+        var emojiRenderingCanvas = values[1];
+        var svgRenderingCanvas = values[2];
+        var svgDiff = values[3];
+
         var result = {
           codePoints: this.codePoints,
           string: this.string,
           systemRenderingCanvas: systemRenderingCanvas,
           emojiRenderingCanvas: emojiRenderingCanvas,
           svgRenderingCanvas: svgRenderingCanvas,
-          equal: this.canvasEqual(systemRenderingCanvas, emojiRenderingCanvas),
+          svgRenderingDiffImg: svgDiff.img,
+          isEqualToSystem:
+            this.canvasEqual(systemRenderingCanvas, emojiRenderingCanvas),
+          svgRenderingMisMatchPercentage: svgDiff.misMatchPercentage,
           emojiRenderingEmpty: this.canvasEmpty(emojiRenderingCanvas),
           svgRenderingEmpty: this.canvasEmpty(svgRenderingCanvas)
         };
@@ -47,11 +62,16 @@ ComparisonTest.prototype = {
     return string;
   },
 
-  getTextCanvasWithFont: function(fontName) {
+  getCanvas: function() {
     var canvas = document.createElement('canvas', { willReadFrequently: true });
     canvas.width = this.CANVAS_SIZE;
     canvas.height = this.CANVAS_SIZE;
 
+    return canvas;
+  },
+
+  getTextCanvasWithFont: function(fontName) {
+    var canvas = this.getCanvas();
     var ctx = canvas.getContext('2d');
     ctx.font = this.CANVAS_SIZE + 'px ' + fontName;
     ctx.textBaseline = 'bottom';
@@ -117,9 +137,7 @@ ComparisonTest.prototype = {
         }.bind(this));
       }.bind(this))
       .then(function(img) {
-        var canvas = document.createElement('canvas');
-        canvas.width = this.CANVAS_SIZE;
-        canvas.height = this.CANVAS_SIZE;
+        var canvas = this.getCanvas();
         if (img) {
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
@@ -141,6 +159,30 @@ ComparisonTest.prototype = {
     }
 
     return true;
+  },
+
+  imageCompare: function(aCanvas, bCanvas) {
+    return Promise.all([
+        new Promise(function(res) { aCanvas.toBlob(res) }),
+        new Promise(function(res) { bCanvas.toBlob(res) })
+      ])
+      .then(function(blobs) {
+        return new Promise(function(resolve) {
+          resemble(blobs[0])
+            .compareTo(blobs[1])
+            .ignoreAntialiasing()
+            .onComplete(resolve);
+        });
+      })
+      .then(function(resambleDiffData) {
+        var img = new Image();
+        img.src = resambleDiffData.getImageDataUrl();
+
+        return {
+          misMatchPercentage: resambleDiffData.rawMisMatchPercentage,
+          img: img
+        }
+      });
   },
 
   canvasEmpty: function(canvas) {
@@ -168,6 +210,9 @@ var TestLoader = function() {
 
 TestLoader.prototype = {
   AUTOEXPEND_REPORTS_LIMIT: 30,
+
+  // In precentage
+  MISMATCH_THRESHOLD: 2,
 
   loadCodePointsData: function() {
     return new Promise(function(resolve) {
@@ -250,12 +295,14 @@ TestLoader.prototype = {
         }
         return 'U+' + str;
       }).join(' ') + ', ' + result.string +
-      ', equal: ' + result.equal +
-      ', empty: ' + result.emojiRenderingEmpty +
+      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%' +
+      ', webfont: ' + !result.isEqualToSystem +
+      ', rendering: ' + !result.emojiRenderingEmpty +
       ', reference: ' + !result.svgRenderingEmpty;
     reportEl.appendChild(reportTitleEl);
 
-    var pass = !result.equal &&
+    var pass = (result.svgRenderingMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
+      !result.isEqualToSystem &&
       !result.emojiRenderingEmpty &&
       !result.svgRenderingEmpty;
 
@@ -284,6 +331,9 @@ TestLoader.prototype = {
     result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
     reportEl.appendChild(result.svgRenderingCanvas);
     result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
+    reportEl.appendChild(result.svgRenderingDiffImg);
+    result.svgRenderingDiffImg.title =
+      'Diff between source SVG and font rendering on canvas.';
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
     ref.textContent = result.string;
