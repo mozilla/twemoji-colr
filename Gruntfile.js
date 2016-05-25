@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 src: 'build/glyphs/*.svg',
                 dest: 'build/raw-font',
                 options: {
-                    font: 'EmojiOne',
+                    font: 'EmojiOne Mozilla',
                     types: 'ttf',
 					codepointsFile: 'build/codepoints.js'
                 }
