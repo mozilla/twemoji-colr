@@ -12,44 +12,46 @@ ComparisonTest.prototype = {
   LINE_HEIGHT: 640,
 
   run: function() {
+    return this.runCanvases()
+      .then(this.runSVGImageCompare.bind(this))
+      .then(this.runCanvasesCompare.bind(this))
+      .then(function() {
+        return this;
+      }.bind(this));
+  },
+
+  runCanvases: function() {
     return Promise.all([
         this.getSystemRenderingCanvas(),
         this.getEmojiRenderingCanvas(),
         this.getSVGRenderingCanvas()
       ])
       .then(function(values) {
-        var systemRenderingCanvas = values[0];
-        var emojiRenderingCanvas = values[1];
-        var svgRenderingCanvas = values[2];
-
-        var svgDiff =
-          this.imageCompare(svgRenderingCanvas, emojiRenderingCanvas);
-
-        values.push(svgDiff);
-        return Promise.all(values);
-      }.bind(this))
-      .then(function(values) {
-        var systemRenderingCanvas = values[0];
-        var emojiRenderingCanvas = values[1];
-        var svgRenderingCanvas = values[2];
-        var svgDiff = values[3];
-
-        var result = {
-          codePoints: this.codePoints,
-          string: this.string,
-          systemRenderingCanvas: systemRenderingCanvas,
-          emojiRenderingCanvas: emojiRenderingCanvas,
-          svgRenderingCanvas: svgRenderingCanvas,
-          svgRenderingDiffImg: svgDiff.img,
-          isEqualToSystem:
-            this.canvasEqual(systemRenderingCanvas, emojiRenderingCanvas),
-          svgRenderingMisMatchPercentage: svgDiff.misMatchPercentage,
-          emojiRenderingEmpty: this.canvasEmpty(emojiRenderingCanvas),
-          svgRenderingEmpty: this.canvasEmpty(svgRenderingCanvas)
-        };
-
-        return result;
+        this.systemRenderingCanvas = values[0];
+        this.emojiRenderingCanvas = values[1];
+        this.svgRenderingCanvas = values[2];
       }.bind(this));
+  },
+
+  runSVGImageCompare: function() {
+    return this.imageCompare(this.svgRenderingCanvas, this.emojiRenderingCanvas)
+      .then(function(resambleDiffData) {
+        var img = new Image();
+        img.src = resambleDiffData.getImageDataUrl();
+
+        this.svgRenderingDiffImg = img;
+        this.svgRenderingMisMatchPercentage =
+          resambleDiffData.rawMisMatchPercentage;
+      }.bind(this));
+  },
+
+  runCanvasesCompare: function() {
+    this.isEqualToSystem = this.canvasEqual(
+      this.systemRenderingCanvas, this.emojiRenderingCanvas);
+    this.emojiRenderingEmpty =
+      this.canvasEmpty(this.emojiRenderingCanvas);
+    this.svgRenderingEmpty =
+      this.canvasEmpty(this.svgRenderingCanvas);
   },
 
   codePointsToString: function(codePoints) {
@@ -62,7 +64,7 @@ ComparisonTest.prototype = {
     return string;
   },
 
-  getCanvas: function() {
+  getEmptyCanvas: function() {
     var canvas = document.createElement('canvas', { willReadFrequently: true });
     canvas.width = this.CANVAS_SIZE;
     canvas.height = this.CANVAS_SIZE;
@@ -71,7 +73,7 @@ ComparisonTest.prototype = {
   },
 
   getTextCanvasWithFont: function(fontName) {
-    var canvas = this.getCanvas();
+    var canvas = this.getEmptyCanvas();
     var ctx = canvas.getContext('2d');
     ctx.font = this.CANVAS_SIZE + 'px ' + fontName;
     ctx.textBaseline = 'bottom';
@@ -137,7 +139,7 @@ ComparisonTest.prototype = {
         }.bind(this));
       }.bind(this))
       .then(function(img) {
-        var canvas = this.getCanvas();
+        var canvas = this.getEmptyCanvas();
         if (img) {
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
@@ -173,15 +175,6 @@ ComparisonTest.prototype = {
             .ignoreAntialiasing()
             .onComplete(resolve);
         });
-      })
-      .then(function(resambleDiffData) {
-        var img = new Image();
-        img.src = resambleDiffData.getImageDataUrl();
-
-        return {
-          misMatchPercentage: resambleDiffData.rawMisMatchPercentage,
-          img: img
-        }
       });
   },
 
