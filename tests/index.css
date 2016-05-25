@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "EmojiOne";
+  src: url('../build/EmojiOne.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: "EmojiOne", sans-serif;
+}
+
+h1 form {
+  display: inline;
+}
+
+button, h1 input {
+  font-size: 1em;
+  font-family: "EmojiOne", sans-serif;
+}
+
+p.summary {
+  font-family: monospace;
+  background-color: #ccc;
+  font-size: 16px;
+}
+
+span.title {
+  font-family: "EmojiOne", monospace;
+  display: block;
+  font-size: 16px;
+}
+
+span.clickable {
+  cursor: pointer;
+}
+
+p.pass {
+  background-color: #ccffcc;
+}
+
+body.hide-pass p.pass {
+  display: none;
+}
+
+p.error {
+  background-color: #ffcccc;
+}
+
+canvas, img, .dom-ref {
+  display: inline-block;
+  font-family: "EmojiOne";
+  font-size: 180px;
+  line-height: 180px;
+  vertical-align: middle;
+  text-align: center;
+  margin: 10px;
+  width: 180px;
+  height: 180px;
+  border: 5px solid #33ff33;
+  background: linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+}
+
+.dom-ref {
+  border-color: #cccccc;
+}
+
+.report-error {
+  border-color: #ff3333;
+}

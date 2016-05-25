@@ -83,6 +83,9 @@ function processFile(fileName, data) {
     // strip svg/ directory prefix and .svg extension off the name
     var baseName = fileName.replace(".svg", "").replace("svg/", "");
 
+    // Save the original file also for visual comparison
+    fs.writeFileSync(targetDir + "/colorGlyphs/u" + baseName + ".svg", data);
+
     // split name of glyph that corresponds to multi-char ligature
     var unicodes = baseName.split("-");
     if (unicodes.length > 1 && parseInt(unicodes[0], 16) < 0x0080 &&
@@ -334,6 +337,7 @@ function generateTTX() {
 rmdir(targetDir, function() {
     fs.mkdirSync(targetDir);
     fs.mkdirSync(targetDir + "/glyphs");
+    fs.mkdirSync(targetDir + "/colorGlyphs");
 
     // Read glyphs from the "extras" directory
     var extras = fs.readdirSync(extrasDir);

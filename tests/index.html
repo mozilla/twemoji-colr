@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EmojiOne COLR test page</title>
+  <link href="index.css" rel="stylesheet" type="text/css">
+  <script src="https://raw.githubusercontent.com/Huddle/Resemble.js/master/resemble.js" defer></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <h1>😁 EmojiOne COLR test page
+    <button type="button" onclick="start()">Test all</button>
+    <form onsubmit="changeHashAndStart(this.codepoints.value); return false;">
+      <input type="text" name="codepoints" id="codepoints" size="5" value="U+1f4a9"
+        title="Custom tests, comma seperated for each test, space seperated for each code point." /><button>Test</button></form></h1>
+  <p>Assertions:</p>
+  <ol>
+    <li>SVG source rendering must not be empty (<code>reference</code>)</li>
+    <li>EmojiOne rendering must not be empty (<code>rendering</code>)</li>
+    <li>EmojiOne rendering must be different than system font rendering (<code>webfont</code>)</li>
+    <li>EmojiOne rendering must match SVG source rendering (<code>mismatch</code>)</li>
+  </ol>
+  <p><label><input type="checkbox" id="hide-passed" onclick="document.body.classList.toggle('hide-pass', this.checked)">
+    Hide passed tests.</label></p>
+</body>
+</html>
