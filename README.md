@@ -22,12 +22,15 @@ The necessary tools can be installed via npm:
 
     # install the Grunt command processor (if you don't already have it)
     npm install grunt-cli
-    
+
     # install grunt project dependencies from packages.json
     npm install
-    
+
     # additional modules needed by the layerize.js script
     npm install rmdir unzip xmlbuilder
+
+    # Optional emoji-table to print character names on the test result page
+    npm install emoji-table
 
 After initially cloning the repository, you will also need to run:
 

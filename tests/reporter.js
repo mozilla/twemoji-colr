@@ -1,5 +1,64 @@
 'use strict';
 
+var EmojiInfoService = {
+  URL: '../node_modules/emoji-table/dist/emoji.json',
+  map: null,
+
+  _initPromise: null,
+  init: function() {
+    var p = new Promise(function(resolve) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', this.URL, true);
+        xhr.responseType = 'json';
+        xhr.send();
+        xhr.onloadend = function() {
+          resolve(xhr.response);
+        };
+      }.bind(this))
+      .then(function(json) {
+        this.map = new Map();
+
+        if (!json) {
+          console.warn('EmojiInfoService: Failed to load table.');
+          return;
+        }
+        for (var info of json) {
+          this.map.set(info.code, info);
+        }
+      }.bind(this));
+
+    this._initPromise = p;
+    return p;
+  },
+
+  getInfo: function(codePoints) {
+    var p = Promise.resolve();
+    if (!this.map) {
+      p = this.init();
+    }
+    return p.then(function() {
+      var codePointsStrArr = codePoints.map(function(cp) {
+        var str = cp.toString(16).toUpperCase();
+        while (str.length < 4) {
+          str = '0' + str;
+        }
+        return 'U+' + str;
+      });
+
+      var i = codePoints.length;
+      do {
+        var str = codePointsStrArr.slice(0, i).join(' ');
+        var info = this.map.get(str);
+        if (info) {
+          return info;
+        }
+      } while (--i);
+
+      return null;
+    }.bind(this));
+  }
+};
+
 var TestRunReport = function() {
   this.summary = new TestSummary();
   this.startTime = Date.now();
@@ -105,6 +164,22 @@ TestReport.prototype = {
       ', webfont: ' + !result.isEqualToSystem +
       ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%';
     reportEl.appendChild(reportTitleEl);
+
+    var infoEl = document.createElement('span');
+    infoEl.className = 'emoji-info';
+    infoEl.addEventListener('click', this);
+    infoEl.classList.add('clickable');
+    EmojiInfoService.getInfo(result.codePoints)
+      .then(function(info) {
+        if (!info) {
+          infoEl.parentNode.removeChild(infoEl);
+          return;
+        }
+        infoEl.textContent =
+          info.name + '. tags: ' + info.tags.join(', ') + '.';
+      })
+      .catch(function(e) { console.error(e); });
+    reportEl.appendChild(infoEl);
 
     if (this.passed) {
       reportEl.classList.add('passed');

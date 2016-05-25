@@ -28,10 +28,18 @@ p.summary {
   font-size: 16px;
 }
 
-span.title {
+span.title, span.emoji-info {
   font-family: "EmojiOne", monospace;
   display: block;
   font-size: 16px;
+}
+
+span.title {
+  font-weight: bold;
+}
+
+span.emoji-info {
+  color: #333;
 }
 
 span.clickable {
@@ -39,7 +47,7 @@ span.clickable {
 }
 
 p.passed {
-  background-color: #ccffcc;
+  background-color: #ddffdd;
 }
 
 body.hide-passed p.passed {
@@ -47,7 +55,7 @@ body.hide-passed p.passed {
 }
 
 p.failed {
-  background-color: #ffcccc;
+  background-color: #ffdddd;
 }
 
 .detail {
