@@ -6,7 +6,7 @@ var ComparisonTest = function(codePoints) {
 };
 
 ComparisonTest.prototype = {
-  FONT_NAME: 'EmojiOne',
+  FONT_NAME: 'EmojiOne Mozilla',
   CANVAS_SIZE: 640,
   SVG_SIZE: 64,
   LINE_HEIGHT: 640,

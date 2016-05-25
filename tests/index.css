@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "EmojiOne";
-  src: url('../build/EmojiOne.ttf') format('truetype');
+  font-family: "EmojiOne Mozilla";
+  src: url('../build/EmojiOne Mozilla.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-  font-family: "EmojiOne", sans-serif;
+  font-family: "EmojiOne Mozilla", sans-serif;
 }
 
 h1 form {
@@ -19,7 +19,7 @@ h1 form {
 
 button, h1 input {
   font-size: 1em;
-  font-family: "EmojiOne", sans-serif;
+  font-family: "EmojiOne Mozilla", sans-serif;
 }
 
 p.summary {
@@ -29,7 +29,7 @@ p.summary {
 }
 
 span.title, span.emoji-info {
-  font-family: "EmojiOne", monospace;
+  font-family: "EmojiOne Mozilla", monospace;
   display: block;
   font-size: 16px;
 }
@@ -68,7 +68,7 @@ p.failed {
 
 canvas, img, .dom-ref {
   display: inline-block;
-  font-family: "EmojiOne";
+  font-family: "EmojiOne Mozilla";
   font-size: 180px;
   line-height: 180px;
   vertical-align: middle;
