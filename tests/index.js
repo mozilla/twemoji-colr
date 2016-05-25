@@ -205,15 +205,9 @@ ComparisonTest.prototype = {
 };
 
 var TestLoader = function() {
-  this.clickableTitleElToResult = new WeakMap();
 }
 
 TestLoader.prototype = {
-  AUTOEXPEND_REPORTS_LIMIT: 30,
-
-  // In precentage
-  MISMATCH_THRESHOLD: 1,
-
   loadCodePointsData: function() {
     return new Promise(function(resolve) {
         var xhr = new XMLHttpRequest();
@@ -244,14 +238,8 @@ TestLoader.prototype = {
   },
 
   run: function(arr) {
-    this.expendedReports = 0;
-    this.summary = {
-      total: 0, pass: 0, error: 0,
-      mismatch: 0, webfont: 0, rendering: 0, reference: 0 };
-    this.summaryEl = document.createElement('p');
-    this.summaryEl.className = 'summary';
-    this.startTime = Date.now();
-    document.body.appendChild(this.summaryEl);
+    this.testRunReport = new TestRunReport();
+    document.body.appendChild(this.testRunReport.render());
 
     var codePointsArrPromise;
     if (!arr) {
@@ -267,130 +255,19 @@ TestLoader.prototype = {
           p = p.then(function() {
             var comparisonTest = new ComparisonTest(codePoints);
             return comparisonTest.run()
-              .then(this.reportData.bind(this));
+              .then(this.testRunReport.appendResult.bind(this.testRunReport));
           }.bind(this));
         }.bind(this));
 
         return p;
       }.bind(this))
       .then(function() {
-        this.summaryEl.textContent +=
-          ', time: ' + (Date.now() - this.startTime) + 'ms';
-        this.summaryEl = null;
+        this.testRunReport.reportFinish();
       }.bind(this),
       function(e) {
-        this.summaryEl.textContent +=
-          ', time: ' + (Date.now() - this.startTime) + 'ms';
-        this.summaryEl = null;
+        this.testRunReport.reportFinish();
         throw e;
       }.bind(this));
-  },
-
-  handleEvent: function(evt) {
-    evt.target.removeEventListener('click', this);
-    evt.target.classList.remove('clickable');
-    var result = this.clickableTitleElToResult.get(evt.target);
-
-    this.appendReportDOM(evt.target.parentNode, result);
-  },
-
-  reportData: function(result) {
-    var reportEl = document.createElement('p');
-    var reportTitleEl = document.createElement('span');
-    reportTitleEl.className = 'title';
-
-    reportTitleEl.textContent =
-      result.codePoints.map(function(cp) {
-        var str = cp.toString(16);
-        while (str.length < 4) {
-          str = '0' + str;
-        }
-        return 'U+' + str;
-      }).join(' ') + ', ' + result.string +
-      ', reference: ' + !result.svgRenderingEmpty +
-      ', rendering: ' + !result.emojiRenderingEmpty +
-      ', webfont: ' + !result.isEqualToSystem +
-      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%';
-    reportEl.appendChild(reportTitleEl);
-
-    var pass = (result.svgRenderingMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
-      !result.isEqualToSystem &&
-      !result.emojiRenderingEmpty &&
-      !result.svgRenderingEmpty;
-
-    this.summary.total++;
-
-    if (pass) {
-      this.summary.pass++;
-    } else {
-      this.summary.error++;
-      if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
-        this.summary.mismatch++;
-      }
-      if (result.isEqualToSystem) {
-        this.summary.webfont++;
-      }
-      if (result.emojiRenderingEmpty) {
-        this.summary.rendering++;
-      }
-      if (result.svgRenderingEmpty) {
-        this.summary.reference++;
-      }
-    }
-    this.summaryEl.textContent =
-      ['total', 'pass', 'error', 'mismatch', 'webfont', 'rendering', 'reference']
-        .map(function(prop) { return prop + ': '  + this.summary[prop] }.bind(this))
-        .join(', ');
-
-    if (pass) {
-      reportEl.classList.add('pass');
-    } else {
-      reportEl.classList.add('error');
-    }
-
-    if (!pass && this.expendedReports <= this.AUTOEXPEND_REPORTS_LIMIT) {
-      this.appendReportDOM(reportEl, result);
-      this.expendedReports++;
-    } else {
-      reportTitleEl.addEventListener('click', this);
-      reportTitleEl.classList.add('clickable');
-      this.clickableTitleElToResult.set(reportTitleEl, result);
-    }
-
-    document.body.appendChild(reportEl);
-  },
-
-  appendReportDOM: function(reportEl, result) {
-    var ref = document.createElement('span');
-    ref.className = 'dom-ref';
-    ref.textContent = result.string;
-    ref.title = 'EmojiOne HTML rendering.';
-    reportEl.appendChild(ref);
-
-    reportEl.appendChild(result.svgRenderingCanvas);
-    result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
-    if (result.svgRenderingEmpty) {
-      result.svgRenderingCanvas.className = 'report-error';
-    }
-
-    reportEl.appendChild(result.emojiRenderingCanvas);
-    result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
-    if (result.emojiRenderingEmpty) {
-      result.emojiRenderingCanvas.className = 'report-error';
-    }
-
-    reportEl.appendChild(result.systemRenderingCanvas);
-    result.systemRenderingCanvas.title = 'System font rendering on canvas.';
-    if (result.isEqualToSystem) {
-      result.systemRenderingCanvas.className = 'report-error';
-    }
-
-    reportEl.appendChild(result.svgRenderingDiffImg);
-    result.svgRenderingDiffImg.title =
-      'Diff between source SVG and font rendering on canvas.';
-    if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
-      result.svgRenderingDiffImg.className = 'report-error';
-    }
   }
 };
 
