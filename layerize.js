@@ -54,19 +54,30 @@ var addToXML = function(xml, p) {
 
 var codepoints = [];
 
-function expandColor(c, o) {
+function expandColor(c) {
+    if (c == undefined || c == 'none') {
+        return c;
+    }
     // c is a hex color that might be shorthand (3 instead of 6 digits)
     if (c.substr(0, 1) == '#' && c.length == 4) {
         c = '#' + c.substr(1, 1) + c.substr(1, 1)
                 + c.substr(2, 1) + c.substr(2, 1)
                 + c.substr(3, 1) + c.substr(3, 1);
     }
-    // o is opacity as a decimal; convert to hex and append it
-    o = Math.round(255 * o).toString(16);
-    if (o.length < 2) {
-        o = "0" + o;
+    return c + 'ff';
+}
+
+function applyOpacity(c, o) {
+    if (c == undefined || c == 'none') {
+        return c;
     }
-    return c + o;
+    var opacity = o * parseInt(c.substr(7), 16) / 255;
+    opacity = Math.round(opacity * 255);
+    opacity = opacity.toString(16);
+    if (opacity.length == 1) {
+        opacity = '0' + opacity;
+    }
+    return c.substr(0, 7) + opacity;
 }
 
 function hexByte(b) {
@@ -77,6 +88,219 @@ function hexByte(b) {
         s = s.substr(s.length - 2, 2);
     }
     return s;
+}
+
+function decodePath(d) {
+    var x = 0;
+    var y = 0;
+    var result = [];
+    var segStart = [0, 0];
+    while (d != "") {
+        var matches = d.match("^\s*([MmLlHhVvCcZzSsTtQqAa])");
+        if (!matches) {
+            break;
+        }
+        var len = matches[0].length;
+        d = d.substr(len);
+        var op = matches[1];
+        var coords;
+        var c = '\\s*(-?(?:[0-9]*\\.[0-9]+|[0-9]+)),?';
+        if (op == 'M') {
+            segStart = undefined;
+            while (coords = d.match('^' + c + c)) {
+                d = d.substr(coords[0].length);
+                x = Number(coords[1]);
+                y = Number(coords[2]);
+                if (segStart == undefined) {
+                    segStart = [x, y];
+                }
+                result.push([x, y]);
+            }
+        } else if (op == 'L') {
+            while (coords = d.match('^' + c + c)) {
+                d = d.substr(coords[0].length);
+                x = Number(coords[1]);
+                y = Number(coords[2]);
+                result.push([x, y]);
+            }
+        } else if (op == 'm') {
+            segStart = undefined;
+            while (coords = d.match('^' + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                y += Number(coords[2]);
+                if (segStart == undefined) {
+                    segStart = [x, y];
+                }
+                result.push([x, y]);
+            }
+        } else if (op == 'l') {
+            while (coords = d.match('^' + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                y += Number(coords[2]);
+                result.push([x, y]);
+            }
+        } else if (op == 'H') {
+            while (coords = d.match('^' + c)) {
+                d = d.substr(coords[0].length);
+                x = Number(coords[1]);
+                result.push([x, y]);
+            }
+        } else if (op == 'h') {
+            while (coords = d.match('^' + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                result.push([x, y]);
+            }
+        } else if (op == 'V') {
+            while (coords = d.match('^' + c)) {
+                d = d.substr(coords[0].length);
+                y = Number(coords[1]);
+                result.push([x, y]);
+            }
+        } else if (op == 'v') {
+            while (coords = d.match('^' + c)) {
+                d = d.substr(coords[0].length);
+                y += Number(coords[1]);
+                result.push([x, y]);
+            }
+        } else if (op == 'C') {
+            while (coords = d.match('^' + c + c + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+//                x = Number(coords[1]);
+//                y = Number(coords[2]);
+//                result.push([x, y]);
+//                x = Number(coords[3]);
+//                y = Number(coords[4]);
+//                result.push([x, y]);
+                x = Number(coords[5]);
+                y = Number(coords[6]);
+                result.push([x, y]);
+            }
+        } else if (op == 'c') {
+            while (coords = d.match('^' + c + c + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                y += Number(coords[2]);
+//                result.push([x, y]);
+                x += Number(coords[3]);
+                y += Number(coords[4]);
+//                result.push([x, y]);
+                x += Number(coords[5]);
+                y += Number(coords[6]);
+                result.push([x, y]);
+            }
+        } else if (op == 'S') {
+            while (coords = d.match('^' + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+//                x = Number(coords[1]);
+//                y = Number(coords[2]);
+//                result.push([x, y]);
+                x = Number(coords[3]);
+                y = Number(coords[4]);
+                result.push([x, y]);
+            }
+        } else if (op == 's') {
+            while (coords = d.match('^' + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                y += Number(coords[2]);
+//                result.push([x, y]);
+                x += Number(coords[3]);
+                y += Number(coords[4]);
+                result.push([x, y]);
+            }
+        } else if (op == 'Q') {
+            while (coords = d.match('^' + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+//                x = Number(coords[1]);
+//                y = Number(coords[2]);
+//                result.push([x, y]);
+                x = Number(coords[3]);
+                y = Number(coords[4]);
+                result.push([x, y]);
+            }
+        } else if (op == 'q') {
+            while (coords = d.match('^' + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                y += Number(coords[2]);
+//                result.push([x, y]);
+                x += Number(coords[3]);
+                y += Number(coords[4]);
+                result.push([x, y]);
+            }
+        } else if (op == 'T') {
+            while (coords = d.match('^' + c + c)) {
+                d = d.substr(coords[0].length);
+                x = Number(coords[1]);
+                y = Number(coords[2]);
+                result.push([x, y]);
+            }
+        } else if (op == 't') {
+            while (coords = d.match('^' + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[1]);
+                y += Number(coords[2]);
+                result.push([x, y]);
+            }
+        } else if (op == 'A') {
+            // we don't fully handle arc, just grab the endpoint
+            while (coords = d.match('^' + c + c + c + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+                x = Number(coords[6]);
+                y = Number(coords[7]);
+                result.push([x, y]);
+            }
+        } else if (op == 'a') {
+            while (coords = d.match('^' + c + c + c + c + c + c + c)) {
+                d = d.substr(coords[0].length);
+                x += Number(coords[6]);
+                y += Number(coords[7]);
+                result.push([x, y]);
+            }
+        } else if (op == 'Z' || op == 'z') {
+            x = segStart[0];
+            y = segStart[1];
+            result.push([x, y]);
+        }
+    }
+    return result;
+}
+
+function getBBox(p) {
+    if (p['#name'] == 'path') {
+        var points = decodePath(p['$']['d']);
+        var result = [undefined, undefined, undefined, undefined];
+        points.forEach(function(pt) {
+            if (result[0] == undefined || pt[0] < result[0]) { result[0] = pt[0]; }
+            if (result[1] == undefined || pt[1] < result[1]) { result[1] = pt[1]; }
+            if (result[2] == undefined || pt[0] > result[2]) { result[2] = pt[0]; }
+            if (result[3] == undefined || pt[1] > result[3]) { result[3] = pt[1]; }
+        });
+        return result;
+    } else if (p['#name'] == 'circle') {
+        var cx = Number(p['$']['cx']);
+        var cy = Number(p['$']['cy']);
+        var r = Number(p['$']['r']);
+        return [cx - r, cy - r, cx + r, cy + r];
+    } else if (p['#name'] == 'ellipse') {
+        var cx = Number(p['$']['cx']);
+        var cy = Number(p['$']['cy']);
+        var rx = Number(p['$']['rx']);
+        var ry = Number(p['$']['ry']);
+        return [cx - rx, cy - ry, cx + rx, cy + ry];
+    }
+    return [0, 0, 0, 0];
+}
+
+function overlap(a, b) {
+    if (a[2] < b[0] || b[2] < a[0] || a[3] < b[1] || b[3] < a[1]) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function processFile(fileName, data) {
@@ -104,7 +328,8 @@ function processFile(fileName, data) {
         var defs = {};
         var urlColor = {};
 
-        var addToPaths = function(defaultColor, elems) {
+        var addToPaths = function(defaultFill, defaultStroke, defaultOpacity,
+                                  defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
                     e['$$'].forEach(function (def) {
@@ -130,6 +355,9 @@ function processFile(fileName, data) {
                             }
                             var color = "#" + hexByte(r) + hexByte(g) + hexByte(b);
                             urlColor[id] = color;
+                        } else {
+                            var id = '#' + def['$']['id'];
+                            defs[id] = def;
                         }
                     });
                     return;
@@ -137,50 +365,115 @@ function processFile(fileName, data) {
                 if (e['$'] == undefined) {
                     return;
                 }
-                var opacity = e['$']['opacity'] || 1.0;
-                var color = e['$']['fill'];
-                var strokeColor = e['$']['stroke'];
-                if (color == undefined || color == 'none') {
-                    color = strokeColor;
-                } else if (strokeColor != undefined && strokeColor != 'none' && strokeColor != color) {
-                    // TODO: figure out what to do about stroke/fill mismatch
-                    console.log('### ' + baseName + ': color mismatch: ' + color + ' != ' + strokeColor);
-                } else if (color == undefined || color == 'none') {
-                    console.log('### ' + baseName + ': no color: ' + color);
-                } else if (color.substr(0, 3) == "url") {
-                    var id = color.substr(4, color.length - 5);
+
+                var fill = e['$']['fill'];
+                var stroke = e['$']['stroke'];
+                var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
+
+                if (fill && fill.substr(0, 3) == "url") {
+                    var id = fill.substr(4, fill.length - 5);
                     if (urlColor[id] == undefined) {
-                        console.log('### ' + baseName + ': no mapping for ' + color);
+                        console.log('### ' + baseName + ': no mapping for ' + fill);
                     } else {
-                        color = urlColor[id];
+                        fill = urlColor[id];
                     }
                 }
-                if (color == '#fff' || color == 'none') {
-                    e['$']['fill'] = '#ffffff';
-                } else {
-                    e['$']['fill'] = '#000000';
+                if (stroke && stroke.substr(0, 3) == "url") {
+                    var id = stroke.substr(4, stroke.length - 5);
+                    if (urlColor[id] == undefined) {
+                        console.log('### ' + baseName + ': no mapping for ' + stroke);
+                    } else {
+                        stroke = urlColor[id];
+                    }
                 }
-                if (color == undefined) {
-                    color = defaultColor;
-                } else {
-                    color = expandColor(color, opacity);
-                }
+
+                fill = expandColor(fill);
+                stroke = expandColor(stroke);
+
+                fill = fill || defaultFill;
+                stroke = stroke || defaultStroke;
+
+                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
+
                 if (e['#name'] == 'g') {
                     if (e['$$'] != undefined) {
-                        addToPaths(color, e['$$']);
+                        addToPaths(fill, stroke, opacity, strokeWidth, e['$']['transform'] || xform, e['$$']);
+                    }
+                } else if (e['#name'] == 'use') {
+                    var href = e['$']['xlink:href'];
+                    var target = defs[href];
+                    if (target) {
+                        addToPaths(fill, stroke, opacity, strokeWidth, e['$']['transform'] || xform,
+                                   [JSON.parse(JSON.stringify(target))]);
                     }
                 } else {
-                    var i = paths.length - 1;
-                    if (i >= 0 && paths[i].color == color) {
-                        paths[i].paths.push(e);
-                    } else {
-                        paths.push({color: color, paths: [e]});
+                    if (!e['$']['transform'] && xform) {
+                        e['$']['transform'] = xform;
+                    }
+                    if (fill != 'none') {
+                        var i = paths.length - 1;
+                        var sameLayer = false;
+                        var f = JSON.parse(JSON.stringify(e));
+                        f['$']['stroke'] = 'none';
+                        f['$']['stroke-width'] = '0';
+                        f['$']['fill'] = '#000';
+                        if (opacity != 1.0) {
+                            fill = applyOpacity(fill, opacity);
+                        }
+                        if (i >= 0 && paths[i].color == fill) {
+                            sameLayer = true;
+                            var bbox = getBBox(f);
+                            paths[i].paths.forEach(function(p) {
+                                if (overlap(bbox, getBBox(p, false))) {
+                                    sameLayer = false;
+                                }
+                            });
+                        }
+                        if (sameLayer) {
+                            paths[i].paths.push(f);
+                        } else {
+                            paths.push({color: fill, paths: [f]});
+                        }
+                    }
+
+                    // fontforge seems to hang on really complex thin strokes
+                    // so we arbitrarily discard them for now :(
+                    if (stroke != 'none') {
+                        if (e['#name'] != 'path' || Number(strokeWidth) > 0.25 ||
+                            (e['$']['d'].length < 500 && Number(strokeWidth) > 0.1)) {
+                            var i = paths.length - 1;
+                            var sameLayer = false;
+                            var s = JSON.parse(JSON.stringify(e));
+                            s['$']['fill'] = 'none';
+                            s['$']['stroke'] = '#000';
+                            s['$']['stroke-width'] = strokeWidth;
+                            if (opacity) {
+                                stroke = applyOpacity(stroke, opacity);
+                            }
+                            if (i >= 0 && paths[i].color == stroke) {
+                                sameLayer = true;
+                                var bbox = getBBox(s);
+                                paths[i].paths.forEach(function(p) {
+                                    if (overlap(bbox, getBBox(p))) {
+                                        sameLayer = false;
+                                    }
+                                });
+                            }
+                            if (sameLayer) {
+                                paths[i].paths.push(s);
+                            } else {
+                                paths.push({color: stroke, paths: [s]});
+                            }
+                        } else {
+                            //console.log("Skipping stroke in " + baseName + ", color " + stroke + " width " + strokeWidth);
+                            //console.log(e['$']);
+                        }
                     }
                 }
             });
         };
 
-        addToPaths("#000000ff", result['svg']['$$']);
+        addToPaths('#000000ff', 'none', 1.0, '1', undefined, result['svg']['$$']);
 
         var layerIndex = 0;
         var layers = [];
@@ -237,7 +530,6 @@ function processFile(fileName, data) {
         });
     });
 }
-
 
 function generateTTX() {
     // After we've processed all the source SVGs, we'll generate the auxiliary
