@@ -40,7 +40,7 @@ var TestSummary = function() {
 }
 TestSummary.prototype = {
   PROPS: Object.freeze(
-    ['total', 'pass', 'error',
+    ['total', 'passed', 'failed',
       'mismatch', 'webfont', 'rendering', 'reference']),
 
   render: function() {
@@ -73,7 +73,7 @@ var TestReport = function(result) {
   this.result = result;
   this.expended = false;
   this.detailRendered = false;
-  this.pass = (result.svgRenderingMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
+  this.passed = (result.svgRenderingMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
     !result.isEqualToSystem &&
     !result.emojiRenderingEmpty &&
     !result.svgRenderingEmpty;
@@ -106,13 +106,13 @@ TestReport.prototype = {
       ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%';
     reportEl.appendChild(reportTitleEl);
 
-    if (this.pass) {
-      reportEl.classList.add('pass');
+    if (this.passed) {
+      reportEl.classList.add('passed');
     } else {
-      reportEl.classList.add('error');
+      reportEl.classList.add('failed');
     }
 
-    if (!this.pass && canExpend) {
+    if (!this.passed && canExpend) {
       this.element.classList.add('expended');
       this.expended = true;
       this.appendReportDOM();
@@ -139,7 +139,7 @@ TestReport.prototype = {
   getSummary: function() {
     var result = this.result;
     return {
-      pass: this.pass, error: !this.pass,
+      passed: this.passed, failed: !this.passed,
       mismatch: (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD),
       webfont: result.isEqualToSystem,
       rendering: result.emojiRenderingEmpty,
@@ -164,26 +164,26 @@ TestReport.prototype = {
     detailEl.appendChild(result.svgRenderingCanvas);
     result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
     if (result.svgRenderingEmpty) {
-      result.svgRenderingCanvas.className = 'report-error';
+      result.svgRenderingCanvas.className = 'report-failed';
     }
 
     detailEl.appendChild(result.emojiRenderingCanvas);
     result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
     if (result.emojiRenderingEmpty) {
-      result.emojiRenderingCanvas.className = 'report-error';
+      result.emojiRenderingCanvas.className = 'report-failed';
     }
 
     detailEl.appendChild(result.systemRenderingCanvas);
     result.systemRenderingCanvas.title = 'System font rendering on canvas.';
     if (result.isEqualToSystem) {
-      result.systemRenderingCanvas.className = 'report-error';
+      result.systemRenderingCanvas.className = 'report-failed';
     }
 
     detailEl.appendChild(result.svgRenderingDiffImg);
     result.svgRenderingDiffImg.title =
       'Diff between source SVG and font rendering on canvas.';
     if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
-      result.svgRenderingDiffImg.className = 'report-error';
+      result.svgRenderingDiffImg.className = 'report-failed';
     }
 
     this.element.appendChild(detailEl);

@@ -312,5 +312,5 @@ window.addEventListener('hashchange', function() {
   }
 });
 
-document.body.classList.toggle('hide-pass',
+document.body.classList.toggle('hide-passed',
   document.getElementById('hide-passed').checked);

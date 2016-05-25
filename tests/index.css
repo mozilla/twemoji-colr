@@ -38,15 +38,15 @@ span.clickable {
   cursor: pointer;
 }
 
-p.pass {
+p.passed {
   background-color: #ccffcc;
 }
 
-body.hide-pass p.pass {
+body.hide-passed p.passed {
   display: none;
 }
 
-p.error {
+p.failed {
   background-color: #ffcccc;
 }
 
@@ -78,6 +78,6 @@ canvas, img, .dom-ref {
   border-color: #cccccc;
 }
 
-.report-error {
+.report-failed {
   border-color: #ff3333;
 }
