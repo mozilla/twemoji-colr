@@ -89,6 +89,9 @@ TestReport.prototype = {
 
     var reportTitleEl = document.createElement('span');
     reportTitleEl.className = 'title';
+    reportTitleEl.addEventListener('click', this);
+    reportTitleEl.classList.add('clickable');
+
     reportTitleEl.textContent =
       result.codePoints.map(function(cp) {
         var str = cp.toString(16);
@@ -110,20 +113,27 @@ TestReport.prototype = {
     }
 
     if (!this.pass && canExpend) {
+      this.element.classList.add('expended');
+      this.expended = true;
       this.appendReportDOM();
-    } else {
-      reportTitleEl.addEventListener('click', this);
-      reportTitleEl.classList.add('clickable');
     }
 
     return reportEl;
   },
 
   handleEvent: function(evt) {
-    evt.target.removeEventListener('click', this);
-    evt.target.classList.remove('clickable');
+    if (!this.detailRendered) {
+      this.appendReportDOM();
+    }
 
-    this.appendReportDOM();
+    if (!this.expended) {
+      this.element.classList.add('expended');
+      this.expended = true;
+    } else {
+      this.element.classList.remove('expended');
+      this.expended = false;
+    }
+
   },
 
   getSummary: function() {
@@ -139,40 +149,43 @@ TestReport.prototype = {
 
   appendReportDOM: function(reportEl, result) {
     this.detailRendered = true;
-    this.expended = true;
 
-    var reportEl = this.element;
+    var detailEl = document.createElement('span');
+    detailEl.className = 'detail';
+
     var result = this.result;
 
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
     ref.textContent = result.string;
     ref.title = 'EmojiOne HTML rendering.';
-    reportEl.appendChild(ref);
+    detailEl.appendChild(ref);
 
-    reportEl.appendChild(result.svgRenderingCanvas);
+    detailEl.appendChild(result.svgRenderingCanvas);
     result.svgRenderingCanvas.title = 'Source SVG rendering on canvas.';
     if (result.svgRenderingEmpty) {
       result.svgRenderingCanvas.className = 'report-error';
     }
 
-    reportEl.appendChild(result.emojiRenderingCanvas);
+    detailEl.appendChild(result.emojiRenderingCanvas);
     result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
     if (result.emojiRenderingEmpty) {
       result.emojiRenderingCanvas.className = 'report-error';
     }
 
-    reportEl.appendChild(result.systemRenderingCanvas);
+    detailEl.appendChild(result.systemRenderingCanvas);
     result.systemRenderingCanvas.title = 'System font rendering on canvas.';
     if (result.isEqualToSystem) {
       result.systemRenderingCanvas.className = 'report-error';
     }
 
-    reportEl.appendChild(result.svgRenderingDiffImg);
+    detailEl.appendChild(result.svgRenderingDiffImg);
     result.svgRenderingDiffImg.title =
       'Diff between source SVG and font rendering on canvas.';
     if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
       result.svgRenderingDiffImg.className = 'report-error';
     }
+
+    this.element.appendChild(detailEl);
   }
 };

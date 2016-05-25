@@ -50,6 +50,14 @@ p.error {
   background-color: #ffcccc;
 }
 
+.detail {
+  display: none;
+}
+
+.expended > .detail {
+  display: block;
+}
+
 canvas, img, .dom-ref {
   display: inline-block;
   font-family: "EmojiOne";
