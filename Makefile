@@ -26,8 +26,9 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	        -e '  s/EmojiOne Mozilla/EmojiOneMozilla/ if $$ps;' \
 	        -e '  print;' \
 	        -e '}' $(RAW_FONT).names
-	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT).renamed $(RAW_FONT).names
-	$(TTX) -m $(RAW_FONT).renamed $(OT_SOURCE)
+	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT).renamed.ttf $(RAW_FONT).names
+	python fixDirection.py $(RAW_FONT).renamed.ttf
+	$(TTX) -m $(RAW_FONT).renamed.ttf -o $(FINAL_TARGET) $(OT_SOURCE)
 
 $(RAW_FONT) : $(CODEPOINTS) $(GRUNTFILE)
 	grunt webfont
