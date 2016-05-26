@@ -41,7 +41,7 @@ to set up and clone the grunt-webfont submodule.
 
 The build process also requires [fontforge](https://fontforge.github.io/)
 and the TTX script from the [font-tools](https://github.com/behdad/fonttools/) package
-to be installed.
+to be installed, and assumes standard Perl and Python are available.
 
 ## Building the font
 
@@ -49,5 +49,5 @@ Once the necessary build tools are all in place, simply running
 
     make
 
-should build the color-emoji font `build/EmojiOne.ttf` from the source SVG files
+should build the color-emoji font `build/EmojiOne Mozilla.ttf` from the source SVG files
 found in `e1-svg.zip`.
