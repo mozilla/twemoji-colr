@@ -438,7 +438,14 @@ function processFile(fileName, data) {
 
                     // fontforge seems to hang on really complex thin strokes
                     // so we arbitrarily discard them for now :(
-                    if (stroke != 'none') {
+                    // Also skip stroking the zodiac-sign glyphs to work around
+                    // conversion problems with those outlines; we'll just have
+                    // slightly thinner symbols (fill only, no stroke)
+                    function skipStrokeOnZodiacSign(u) {
+                        u = parseInt(u, 16);
+                        return (u >= 0x2648 && u <= 0x2653);
+                    }
+                    if (stroke != 'none' && !skipStrokeOnZodiacSign(unicodes[0])) {
                         if (e['#name'] != 'path' || Number(strokeWidth) > 0.25 ||
                             (e['$']['d'].length < 500 && Number(strokeWidth) > 0.1)) {
                             var i = paths.length - 1;
