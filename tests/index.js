@@ -20,6 +20,8 @@ var GlyphDataService = {
         this.codePointsArr = [];
         this.map = new Map();
 
+        var zwjCodePointsStrArr = [];
+
         if (!glyphToCodePoints) {
           throw new Error(
             'EmojiInfoService: Failed to load glyph information.');
@@ -54,8 +56,22 @@ var GlyphDataService = {
 
           if (!/_layer/.test(glyphId)) {
             this.codePointsArr.push(codePoints);
+
+            if (codePoints.length > 1 &&
+                codePoints.indexOf(0x200d) !== -1) {
+              zwjCodePointsStrArr.push(codePointsStr);
+            }
           }
         }
+
+        zwjCodePointsStrArr.forEach(function(codePointsStr) {
+          // Merge the two layer info collected.
+          var noZWJInfo = this.map.get(codePointsStr.replace(/ U\+200D/g, ''));
+          var zwjInfo = this.map.get(codePointsStr);
+          zwjInfo.layers += noZWJInfo.layers;
+          zwjInfo.fileNames = noZWJInfo.fileNames.concat(zwjInfo.fileNames);
+          this.map.delete(codePointsStr.replace(/ U\+200D/g, ''));
+        }.bind(this));
       }.bind(this));
 
     this._initPromise = p;
