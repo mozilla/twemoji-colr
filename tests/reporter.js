@@ -133,7 +133,7 @@ var TestReport = function(result) {
   this.result = result;
   this.expended = false;
   this.detailRendered = false;
-  this.passed = (result.svgRenderingMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
+  this.passed = (result.diffData.rawMisMatchPercentage < this.MISMATCH_THRESHOLD) &&
     !result.isEqualToSystem &&
     !result.emojiRenderingEmpty &&
     !result.svgRenderingEmpty;
@@ -163,7 +163,7 @@ TestReport.prototype = {
       ', reference: ' + !result.svgRenderingEmpty +
       ', rendering: ' + !result.emojiRenderingEmpty +
       ', webfont: ' + !result.isEqualToSystem +
-      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%' +
+      ', mismatch: ' + result.diffData.rawMisMatchPercentage.toFixed(2) + '%' +
       ', retested: ' + result.retested;
     reportEl.appendChild(reportTitleEl);
 
@@ -217,7 +217,7 @@ TestReport.prototype = {
     var result = this.result;
     return {
       passed: this.passed, failed: !this.passed,
-      mismatch: (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD),
+      mismatch: (result.diffData.rawMisMatchPercentage >= this.MISMATCH_THRESHOLD),
       webfont: result.isEqualToSystem,
       rendering: result.emojiRenderingEmpty,
       reference: result.svgRenderingEmpty,
@@ -257,11 +257,13 @@ TestReport.prototype = {
       result.systemRenderingCanvas.className = 'report-failed';
     }
 
-    detailEl.appendChild(result.svgRenderingDiffImg);
-    result.svgRenderingDiffImg.title =
+    var img = new Image();
+    img.src = result.diffData.getImageDataUrl();
+    detailEl.appendChild(img);
+    img.title =
       'Diff between source SVG and font rendering on canvas.';
-    if (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
-      result.svgRenderingDiffImg.className = 'report-failed';
+    if (result.diffData.rawMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
+      img.className = 'report-failed';
     }
 
     this.element.appendChild(detailEl);

@@ -67,12 +67,7 @@ ComparisonTest.prototype = {
           return resambleDiffData;
       }.bind(this))
       .then(function(resambleDiffData) {
-        var img = new Image();
-        img.src = resambleDiffData.getImageDataUrl();
-
-        this.svgRenderingDiffImg = img;
-        this.svgRenderingMisMatchPercentage =
-          resambleDiffData.rawMisMatchPercentage;
+        this.diffData = resambleDiffData;
       }.bind(this));
   },
 
