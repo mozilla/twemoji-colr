@@ -15,6 +15,7 @@ module.exports = function(grunt) {
                 options: {
                     font: 'EmojiOne Mozilla',
                     types: 'ttf',
+                    autoHint: false,
                     version: 'Version 0.1',
                     codepointsFile: 'build/codepoints.js'
                 }
