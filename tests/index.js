@@ -1,5 +1,96 @@
 'use strict';
 
+var GlyphDataService = {
+  URL: '../build/codepoints.js',
+  codePointsArr: null,
+  map: null,
+
+  _initPromise: null,
+  init: function() {
+    var p = new Promise(function(resolve) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', this.URL, true);
+        xhr.responseType = 'json';
+        xhr.send();
+        xhr.onloadend = function() {
+          resolve(xhr.response);
+        };
+      }.bind(this))
+      .then(function(glyphToCodePoints) {
+        this.codePointsArr = [];
+        this.map = new Map();
+
+        if (!glyphToCodePoints) {
+          throw new Error(
+            'EmojiInfoService: Failed to load glyph information.');
+          return;
+        }
+        for (var glyphId in glyphToCodePoints) {
+          var codePoints = glyphId
+            .replace(/_layer\d+$/, '')
+            .substr(1)
+            .split(/[\-_]/)
+            .map(function(cpStr) {
+              return parseInt(cpStr, 16);
+            });
+          var codePointsStr = codePoints.map(function(cp) {
+            var str = cp.toString(16).toUpperCase();
+            while (str.length < 4) {
+              str = '0' + str;
+            }
+            return 'U+' + str;
+          }).join(' ');
+
+          var info = this.map.get(codePointsStr);
+          if (!info) {
+            this.map.set(codePointsStr, {
+              layers: 1,
+              fileNames: [glyphId]
+            });
+          } else {
+            info.layers++;
+            info.fileNames.push(glyphId);
+          }
+
+          if (!/_layer/.test(glyphId)) {
+            this.codePointsArr.push(codePoints);
+          }
+        }
+      }.bind(this));
+
+    this._initPromise = p;
+    return p;
+  },
+
+  getCodePointsArr: function() {
+    var p = Promise.resolve();
+    if (!this.codePointsArr) {
+      p = this.init();
+    }
+    return p.then(function() {
+      return this.codePointsArr;
+    }.bind(this));
+  },
+
+  getInfo: function(codePoints) {
+    var p = Promise.resolve();
+    if (!this.map) {
+      p = this.init();
+    }
+    return p.then(function() {
+      var codePointsStr = codePoints.map(function(cp) {
+        var str = cp.toString(16).toUpperCase();
+        while (str.length < 4) {
+          str = '0' + str;
+        }
+        return 'U+' + str;
+      }).join(' ');
+
+      return this.map.get(codePointsStr);
+    }.bind(this));
+  }
+};
+
 var ComparisonTest = function(codePoints) {
   this.codePoints = codePoints;
   this.string = this.codePointsToString(codePoints);
@@ -20,9 +111,12 @@ ComparisonTest.prototype = {
   RETEST_CANVAS_SIZE: 960,
 
   run: function() {
-    return this.runCanvases()
-      .then(this.runSVGImageCompare.bind(this))
-      .then(this.runCanvasesCompare.bind(this))
+    return Promise.all([
+        this.runCanvases()
+          .then(this.runSVGImageCompare.bind(this))
+          .then(this.runCanvasesCompare.bind(this)),
+        this.runGetLayerInfo()
+      ])
       .then(function() {
         return this;
       }.bind(this));
@@ -80,6 +174,13 @@ ComparisonTest.prototype = {
       this.canvasEmpty(this.svgRenderingCanvas);
   },
 
+  runGetLayerInfo: function() {
+    return GlyphDataService.getInfo(this.codePoints)
+      .then(function(layerInfo) {
+        this.layerInfo = layerInfo;
+      }.bind(this));
+  },
+
   codePointsToString: function(codePoints) {
     var string = String.fromCodePoint.apply(String, codePoints);
     if (codePoints.length === 1 && codePoints[0] < 0xffff) {
@@ -124,7 +225,7 @@ ComparisonTest.prototype = {
       return this.svgRawImgPromise;
     }
 
-    var svgUrl = '../build/colorGlyphs/u' +
+    var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
         // Remove zero width joiner.
         return cp !== 0x200d;
@@ -162,6 +263,8 @@ ComparisonTest.prototype = {
         if (!svgDataUrl) {
           return;
         }
+
+        this.svgDataUrl = svgDataUrl;
 
         return new Promise(function(resolve) {
           var svgImg = new Image();
@@ -242,42 +345,13 @@ var TestLoader = function() {
 }
 
 TestLoader.prototype = {
-  loadCodePointsData: function() {
-    return new Promise(function(resolve) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '../build/codepoints.js', true);
-        xhr.responseType = 'json';
-        xhr.send();
-        xhr.onloadend = function() {
-          resolve(xhr.response);
-        };
-      })
-      .then(function(glyphToCodePoints) {
-        var codePointsArr = [];
-        for (var glyphId in glyphToCodePoints) {
-          if (/_layer/.test(glyphId)) {
-            continue;
-          }
-
-          var codePoints = glyphId.substr(1).split('_')
-            .map(function(cpStr) {
-              return parseInt(cpStr, 16);
-            });
-
-          codePointsArr.push(codePoints);
-        }
-
-        return codePointsArr;
-      });
-  },
-
   run: function(arr) {
     this.testRunReport = new TestRunReport();
     document.body.appendChild(this.testRunReport.render());
 
     var codePointsArrPromise;
     if (!arr) {
-      codePointsArrPromise = this.loadCodePointsData();
+      codePointsArrPromise = GlyphDataService.getCodePointsArr();
     } else {
       codePointsArrPromise = Promise.resolve(arr);
     }

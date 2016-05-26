@@ -82,6 +82,12 @@ canvas, img, .dom-ref {
   background-size: 20px 20px;
 }
 
+.layer {
+  border-color: #cccccc;
+  width: 90px;
+  height: 90px;
+}
+
 .dom-ref {
   border-color: #cccccc;
 }

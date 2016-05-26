@@ -128,7 +128,6 @@ TestSummary.prototype = {
   }
 };
 
-
 var TestReport = function(result) {
   this.result = result;
   this.expended = false;
@@ -164,7 +163,8 @@ TestReport.prototype = {
       ', rendering: ' + !result.emojiRenderingEmpty +
       ', webfont: ' + !result.isEqualToSystem +
       ', mismatch: ' + result.diffData.rawMisMatchPercentage.toFixed(2) + '%' +
-      ', retested: ' + result.retested;
+      ', retested: ' + result.retested +
+      ', layers: ' + result.layerInfo.layers;
     reportEl.appendChild(reportTitleEl);
 
     var infoEl = document.createElement('span');
@@ -192,15 +192,22 @@ TestReport.prototype = {
     if (!this.passed && canExpend) {
       this.element.classList.add('expended');
       this.expended = true;
-      this.appendReportDOM();
+      this.appendDetailReportDOM();
     }
 
     return reportEl;
   },
 
   handleEvent: function(evt) {
+    if (evt.target.dataset.action === 'inspect-layers') {
+      evt.target.parentNode.removeChild(evt.target);
+
+      this.appendLayerReportDOM();
+      return;
+    }
+
     if (!this.detailRendered) {
-      this.appendReportDOM();
+      this.appendDetailReportDOM();
     }
 
     if (!this.expended) {
@@ -225,7 +232,7 @@ TestReport.prototype = {
     };
   },
 
-  appendReportDOM: function(reportEl, result) {
+  appendDetailReportDOM: function() {
     this.detailRendered = true;
 
     var detailEl = document.createElement('span');
@@ -265,6 +272,45 @@ TestReport.prototype = {
     if (result.diffData.rawMisMatchPercentage >= this.MISMATCH_THRESHOLD) {
       img.className = 'report-failed';
     }
+
+    var inspectLayersButton = document.createElement('button');
+    inspectLayersButton.dataset.action = 'inspect-layers';
+    inspectLayersButton.textContent = 'Inspect layers';
+    inspectLayersButton.type = 'button';
+    inspectLayersButton.addEventListener('click', this);
+    detailEl.appendChild(inspectLayersButton);
+
+    this.element.appendChild(detailEl);
+  },
+
+  appendLayerReportDOM: function() {
+    var detailEl = document.createElement('span');
+    detailEl.className = 'detail';
+
+    this.result.layerInfo.fileNames.forEach(function(fileName) {
+      var url = '../build/glyphs/' + fileName + '.svg';
+      var a = document.createElement('a');
+      a.target = '_blank';
+      a.href = url;
+      a.title = 'layer: ' + fileName + '.svg';
+
+      var img = new Image();
+      img.src = url;
+      img.className = 'layer';
+      a.appendChild(img);
+      detailEl.appendChild(a);
+    });
+
+    var a = document.createElement('a');
+    a.target = '_blank';
+    a.href = this.result.svgUrl;
+    a.title = 'color svg';
+
+    var img = new Image();
+    img.src = this.result.svgDataUrl;
+    img.className = 'layer';
+    a.appendChild(img);
+    detailEl.appendChild(a);
 
     this.element.appendChild(detailEl);
   }
