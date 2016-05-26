@@ -3,13 +3,21 @@
 var ComparisonTest = function(codePoints) {
   this.codePoints = codePoints;
   this.string = this.codePointsToString(codePoints);
+  this.retested = false;
 };
 
 ComparisonTest.prototype = {
   FONT_NAME: 'EmojiOne Mozilla',
-  CANVAS_SIZE: 640,
+  CANVAS_SIZE: 480,
   SVG_SIZE: 64,
-  LINE_HEIGHT: 640,
+
+  // To reduce false negative while maintain test speed,
+  // only re-test stuff when the mismatch is between these thresholds.
+  RETEST_THRESHOLD: 1,
+  RETEST_UPPER_THRESHOLD: 4,
+  // XXX: Bigger canvas size will shifts EmojiOne rendering position on
+  // Ubuntu for unknown reasons.
+  RETEST_CANVAS_SIZE: 960,
 
   run: function() {
     return this.runCanvases()
@@ -35,6 +43,29 @@ ComparisonTest.prototype = {
 
   runSVGImageCompare: function() {
     return this.imageCompare(this.svgRenderingCanvas, this.emojiRenderingCanvas)
+      .then(function(resambleDiffData) {
+        var mismatch = resambleDiffData.rawMisMatchPercentage;
+        if (mismatch > this.RETEST_THRESHOLD &&
+          mismatch < this.RETEST_UPPER_THRESHOLD) {
+            this.retested = true;
+            return Promise.all([
+                this.getSystemRenderingCanvas(this.RETEST_CANVAS_SIZE),
+                this.getEmojiRenderingCanvas(this.RETEST_CANVAS_SIZE),
+                this.getSVGRenderingCanvas(this.RETEST_CANVAS_SIZE)
+              ])
+              .then(function(values) {
+                this.systemRenderingCanvas = values[0];
+                this.emojiRenderingCanvas = values[1];
+                this.svgRenderingCanvas = values[2];
+              }.bind(this))
+              .then(function() {
+                return this.imageCompare(this.svgRenderingCanvas,
+                  this.emojiRenderingCanvas);
+              }.bind(this));
+          }
+
+          return resambleDiffData;
+      }.bind(this))
       .then(function(resambleDiffData) {
         var img = new Image();
         img.src = resambleDiffData.getImageDataUrl();
@@ -64,34 +95,40 @@ ComparisonTest.prototype = {
     return string;
   },
 
-  getEmptyCanvas: function() {
+  getEmptyCanvas: function(size) {
+    size = size || this.CANVAS_SIZE;
     var canvas = document.createElement('canvas', { willReadFrequently: true });
-    canvas.width = this.CANVAS_SIZE;
-    canvas.height = this.CANVAS_SIZE;
+    canvas.width = size;
+    canvas.height = size;
 
     return canvas;
   },
 
-  getTextCanvasWithFont: function(fontName) {
-    var canvas = this.getEmptyCanvas();
+  getTextCanvasWithFont: function(fontName, size) {
+    size = size || this.CANVAS_SIZE;
+    var canvas = this.getEmptyCanvas(size);
     var ctx = canvas.getContext('2d');
-    ctx.font = this.CANVAS_SIZE + 'px ' + fontName;
+    ctx.font = size + 'px ' + fontName;
     ctx.textBaseline = 'bottom';
     ctx.textAlign = 'center';
-    ctx.fillText(this.string, this.CANVAS_SIZE / 2, this.LINE_HEIGHT);
+    ctx.fillText(this.string, size / 2, size);
 
     return canvas;
   },
 
-  getSystemRenderingCanvas: function() {
-    return this.getTextCanvasWithFont();
+  getSystemRenderingCanvas: function(size) {
+    return this.getTextCanvasWithFont(undefined, size);
   },
 
-  getEmojiRenderingCanvas: function() {
-    return this.getTextCanvasWithFont(this.FONT_NAME);
+  getEmojiRenderingCanvas: function(size) {
+    return this.getTextCanvasWithFont(this.FONT_NAME, size);
   },
 
-  getSVGRenderingCanvas: function() {
+  getSVGRawImg: function() {
+    if (this.svgRawImgPromise) {
+      return this.svgRawImgPromise;
+    }
+
     var svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
         // Remove zero width joiner.
@@ -104,7 +141,8 @@ ComparisonTest.prototype = {
         }
         return str;
       }).join('-') + '.svg';
-    return new Promise(function(resolve) {
+
+    var p = this.svgRawImgPromise = new Promise(function(resolve) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', svgUrl, true);
         xhr.responseType = 'text';
@@ -137,13 +175,20 @@ ComparisonTest.prototype = {
             resolve(svgImg);
           };
         }.bind(this));
-      }.bind(this))
+      }.bind(this));
+
+    return p;
+  },
+
+  getSVGRenderingCanvas: function(size) {
+    size = size || this.CANVAS_SIZE;
+    return this.getSVGRawImg()
       .then(function(img) {
-        var canvas = this.getEmptyCanvas();
+        var canvas = this.getEmptyCanvas(size);
         if (img) {
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
-            0, 0, this.CANVAS_SIZE, this.CANVAS_SIZE);
+            0, 0, size, size);
         }
 
         return canvas;
@@ -170,6 +215,7 @@ ComparisonTest.prototype = {
       ])
       .then(function(blobs) {
         return new Promise(function(resolve) {
+          resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
@@ -192,7 +238,7 @@ ComparisonTest.prototype = {
 
   getImageDataArray: function(canvas) {
     return canvas.getContext('2d')
-      .getImageData(0, 0, this.CANVAS_SIZE, this.CANVAS_SIZE)
+      .getImageData(0, 0, canvas.width, canvas.height)
       .data;
   }
 };
@@ -286,7 +332,7 @@ function start(arr) {
   (new TestLoader())
     .run(arr)
     .catch(function(e) {
-      alert('Open JS Console to see error: ' + e.toString());
+      alert(e.toString() + '\n\n' + e.stack);
       console.error(e);
     });
 }

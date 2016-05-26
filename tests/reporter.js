@@ -100,7 +100,8 @@ var TestSummary = function() {
 TestSummary.prototype = {
   PROPS: Object.freeze(
     ['total', 'passed', 'failed',
-      'mismatch', 'webfont', 'rendering', 'reference']),
+      'mismatch', 'webfont', 'rendering', 'reference',
+      'retested']),
 
   render: function() {
     this.element = document.createElement('p');
@@ -162,7 +163,8 @@ TestReport.prototype = {
       ', reference: ' + !result.svgRenderingEmpty +
       ', rendering: ' + !result.emojiRenderingEmpty +
       ', webfont: ' + !result.isEqualToSystem +
-      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%';
+      ', mismatch: ' + result.svgRenderingMisMatchPercentage.toFixed(2) + '%' +
+      ', retested: ' + result.retested;
     reportEl.appendChild(reportTitleEl);
 
     var infoEl = document.createElement('span');
@@ -218,7 +220,8 @@ TestReport.prototype = {
       mismatch: (result.svgRenderingMisMatchPercentage >= this.MISMATCH_THRESHOLD),
       webfont: result.isEqualToSystem,
       rendering: result.emojiRenderingEmpty,
-      reference: result.svgRenderingEmpty
+      reference: result.svgRenderingEmpty,
+      retested: result.retested
     };
   },
 
