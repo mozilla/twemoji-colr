@@ -4,14 +4,15 @@ var fs         = require('fs'),
     xmlbuilder = require('xmlbuilder'),
     xml2js     = require('xml2js');
 
-var sourceZip = process.argv[2];
-var extrasDir = process.argv[3];
-var targetDir = process.argv[4];
-var fontName = process.argv[5];
+var sourceZip    = process.argv[2];
+var overridesDir = process.argv[3];
+var extrasDir    = process.argv[4];
+var targetDir    = process.argv[5];
+var fontName     = process.argv[6];
 
 if (fontName == undefined) {
     console.error("### Missing font name.");
-    console.error("### Usage: node " + process.argv[1] + " source-SVGs.zip extras-dir build-dir font-name");
+    console.error("### Usage: node " + process.argv[1] + " source-SVGs.zip overrides-dir extras-dir build-dir font-name");
     return;
 }
 
@@ -304,8 +305,8 @@ function overlap(a, b) {
 }
 
 function processFile(fileName, data) {
-    // strip svg/ directory prefix and .svg extension off the name
-    var baseName = fileName.replace(".svg", "").replace("svg/", "");
+    // strip .svg extension off the name
+    var baseName = fileName.replace(".svg", "");
 
     // Save the original file also for visual comparison
     fs.writeFileSync(targetDir + "/colorGlyphs/u" + baseName + ".svg", data);
@@ -647,17 +648,31 @@ rmdir(targetDir, function() {
         }
     });
 
+    // Get list of glyphs in the "overrides" directory, which will be used to replace
+    // same-named glyphs from the main source archive
+    var overrides = fs.readdirSync(overridesDir);
+
     // Finally, we're ready to process the images from the main source archive:
     fs.createReadStream(sourceZip).pipe(unzip.Parse()).on('entry', function (e) {
         var data = "";
-        var fileName = e.path;
+        var fileName = e.path.replace(/^.*\//, ""); // strip any directory names
         if (e.type == 'File') {
-            e.on("data", function (c) {
-                data += c.toString();
-            });
-            e.on("end", function () {
+            // Check for an override; if present, read that instead
+            var o = overrides.indexOf(fileName);
+            if (o >= 0) {
+                console.log("overriding " + fileName + " with local copy");
+                data = fs.readFileSync(overridesDir + "/" + fileName);
                 processFile(fileName, data);
-            });
+                overrides.splice(o, 1);
+                e.autodrain();
+            } else {
+                e.on("data", function (c) {
+                    data += c.toString();
+                });
+                e.on("end", function () {
+                    processFile(fileName, data);
+                });
+            }
         } else {
             e.autodrain();
         }

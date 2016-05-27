@@ -4,8 +4,9 @@ BUILD_DIR  = build
 
 FINAL_TARGET = $(BUILD_DIR)/$(FONT_NAME).ttf
 
-SVGS       = e1-svg.zip
-EXTRA_DIR  = extras
+SVGS         = e1-svg.zip
+OVERRIDE_DIR = overrides
+EXTRA_DIR    = extras
 
 GRUNTFILE  = Gruntfile.js
 LAYERIZE   = layerize.js
@@ -34,4 +35,4 @@ $(RAW_FONT) : $(CODEPOINTS) $(GRUNTFILE)
 	grunt webfont
 
 $(CODEPOINTS) $(OT_SOURCE) : $(LAYERIZE) $(SVGS) $(EXTRA_DIR)/*.svg
-	node $(LAYERIZE) $(SVGS) $(EXTRA_DIR) $(BUILD_DIR) $(FONT_NAME)
+	node $(LAYERIZE) $(SVGS) $(OVERRIDE_DIR) $(EXTRA_DIR) $(BUILD_DIR) $(FONT_NAME)
