@@ -182,12 +182,8 @@ function decodePath(d) {
         } else if (op == 'c') {
             while (coords = d.match('^' + c + c + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-                x += Number(coords[1]);
-                y += Number(coords[2]);
-//                result.push([x, y]);
-                x += Number(coords[3]);
-                y += Number(coords[4]);
-//                result.push([x, y]);
+//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
+//                result.push([x + Number(coords[3]), y + Number(coords[4])]);
                 x += Number(coords[5]);
                 y += Number(coords[6]);
                 result.push([x, y]);
@@ -205,9 +201,7 @@ function decodePath(d) {
         } else if (op == 's') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-                x += Number(coords[1]);
-                y += Number(coords[2]);
-//                result.push([x, y]);
+//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
                 x += Number(coords[3]);
                 y += Number(coords[4]);
                 result.push([x, y]);
@@ -215,9 +209,7 @@ function decodePath(d) {
         } else if (op == 'Q') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                x = Number(coords[1]);
-//                y = Number(coords[2]);
-//                result.push([x, y]);
+//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
                 x = Number(coords[3]);
                 y = Number(coords[4]);
                 result.push([x, y]);
@@ -225,9 +217,7 @@ function decodePath(d) {
         } else if (op == 'q') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-                x += Number(coords[1]);
-                y += Number(coords[2]);
-//                result.push([x, y]);
+//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
                 x += Number(coords[3]);
                 y += Number(coords[4]);
                 result.push([x, y]);
