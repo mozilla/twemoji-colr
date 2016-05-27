@@ -83,6 +83,8 @@ TestRunReport.prototype = {
       this.expendedReports++;
     }
     this.summary.update(testReport.getSummary());
+
+    testReport.minimizeMemoryUsage();
   },
   reportFinish: function() {
     this.summary.reportFinish({
@@ -142,14 +144,16 @@ TestReport.prototype = {
   // In precentage
   MISMATCH_THRESHOLD: 1,
 
+  // Set this to true to get rip of the canvases and other bits that would
+  // cause out of memory error in Windows XP
+  MINIMAL_REPORT: false,
+
   render: function(canExpend) {
     var result = this.result;
     var reportEl = this.element = document.createElement('p');
 
     var reportTitleEl = document.createElement('span');
     reportTitleEl.className = 'title';
-    reportTitleEl.addEventListener('click', this);
-    reportTitleEl.classList.add('clickable');
 
     reportTitleEl.textContent =
       result.codePoints.map(function(cp) {
@@ -169,8 +173,6 @@ TestReport.prototype = {
 
     var infoEl = document.createElement('span');
     infoEl.className = 'emoji-info';
-    infoEl.addEventListener('click', this);
-    infoEl.classList.add('clickable');
     EmojiInfoService.getInfo(result.codePoints)
       .then(function(info) {
         if (!info) {
@@ -189,13 +191,28 @@ TestReport.prototype = {
       reportEl.classList.add('failed');
     }
 
-    if (!this.passed && canExpend) {
-      this.element.classList.add('expended');
-      this.expended = true;
-      this.appendDetailReportDOM();
+    if (!this.MINIMAL_REPORT) {
+      reportTitleEl.addEventListener('click', this);
+      reportTitleEl.classList.add('clickable');
+      infoEl.addEventListener('click', this);
+      infoEl.classList.add('clickable');
+
+      if (!this.passed && canExpend) {
+        this.element.classList.add('expended');
+        this.expended = true;
+        this.appendDetailReportDOM();
+      }
     }
 
     return reportEl;
+  },
+
+  minimizeMemoryUsage: function() {
+    if (this.MINIMAL_REPORT) {
+      // Throw away the reference to the test result -- everything
+      // we need is printed on the DOM already.
+      this.result = null;
+    }
   },
 
   handleEvent: function(evt) {
