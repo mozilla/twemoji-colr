@@ -294,6 +294,32 @@ function overlap(a, b) {
     }
 }
 
+function addOrMerge(paths, p, color) {
+    var i = paths.length - 1;
+    var bbox = getBBox(p);
+    while (i >= 0) {
+        var hasOverlap = false;
+        paths[i].paths.forEach(function(pp) {
+            if (overlap(bbox, getBBox(pp))) {
+                hasOverlap = true;
+            }
+        });
+        if (hasOverlap) {
+            i = -1;
+            break;
+        }
+        if (paths[i].color == color) {
+            break;
+        }
+        --i;
+    }
+    if (i >= 0) {
+        paths[i].paths.push(p);
+    } else {
+        paths.push({color: color, paths: [p]});
+    }
+}
+
 function processFile(fileName, data) {
     // strip .svg extension off the name
     var baseName = fileName.replace(".svg", "");
@@ -402,8 +428,6 @@ function processFile(fileName, data) {
                         e['$']['transform'] = xform;
                     }
                     if (fill != 'none') {
-                        var i = paths.length - 1;
-                        var sameLayer = false;
                         var f = JSON.parse(JSON.stringify(e));
                         f['$']['stroke'] = 'none';
                         f['$']['stroke-width'] = '0';
@@ -411,20 +435,7 @@ function processFile(fileName, data) {
                         if (opacity != 1.0) {
                             fill = applyOpacity(fill, opacity);
                         }
-                        if (i >= 0 && paths[i].color == fill) {
-                            sameLayer = true;
-                            var bbox = getBBox(f);
-                            paths[i].paths.forEach(function(p) {
-                                if (overlap(bbox, getBBox(p, false))) {
-                                    sameLayer = false;
-                                }
-                            });
-                        }
-                        if (sameLayer) {
-                            paths[i].paths.push(f);
-                        } else {
-                            paths.push({color: fill, paths: [f]});
-                        }
+                        addOrMerge(paths, f, fill);
                     }
 
                     // fontforge seems to hang on really complex thin strokes
@@ -439,8 +450,6 @@ function processFile(fileName, data) {
                     if (stroke != 'none' && !skipStrokeOnZodiacSign(unicodes[0])) {
                         if (e['#name'] != 'path' || Number(strokeWidth) > 0.25 ||
                             (e['$']['d'].length < 500 && Number(strokeWidth) > 0.1)) {
-                            var i = paths.length - 1;
-                            var sameLayer = false;
                             var s = JSON.parse(JSON.stringify(e));
                             s['$']['fill'] = 'none';
                             s['$']['stroke'] = '#000';
@@ -448,20 +457,7 @@ function processFile(fileName, data) {
                             if (opacity) {
                                 stroke = applyOpacity(stroke, opacity);
                             }
-                            if (i >= 0 && paths[i].color == stroke) {
-                                sameLayer = true;
-                                var bbox = getBBox(s);
-                                paths[i].paths.forEach(function(p) {
-                                    if (overlap(bbox, getBBox(p))) {
-                                        sameLayer = false;
-                                    }
-                                });
-                            }
-                            if (sameLayer) {
-                                paths[i].paths.push(s);
-                            } else {
-                                paths.push({color: stroke, paths: [s]});
-                            }
+                            addOrMerge(paths, s, stroke);
                         } else {
                             //console.log("Skipping stroke in " + baseName + ", color " + stroke + " width " + strokeWidth);
                             //console.log(e['$']);
