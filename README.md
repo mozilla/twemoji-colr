@@ -21,23 +21,10 @@ is a prerequisite, as is the [Grunt](http://gruntjs.com/) task runner.
 The necessary tools can be installed via npm:
 
     # install the Grunt command processor (if you don't already have it)
-    npm install grunt-cli
+    npm install -g grunt-cli
 
-    # install grunt project dependencies from packages.json
+    # install dependencies from packages.json, including `grunt-webfont`.
     npm install
-
-    # additional modules needed by the layerize.js script
-    npm install rmdir unzip xmlbuilder
-
-    # Optional emoji-table to print character names on the test result page
-    npm install emoji-table
-
-After initially cloning the repository, you will also need to run:
-
-    git submodule init
-    git submodule update
-
-to set up and clone the grunt-webfont submodule.
 
 The build process also requires [fontforge](https://fontforge.github.io/)
 and the TTX script from the [font-tools](https://github.com/behdad/fonttools/) package
