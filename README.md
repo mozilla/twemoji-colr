@@ -15,20 +15,24 @@ if they try to use this font.
 
 This project makes use of [grunt-webfont](https://github.com/sapegin/grunt-webfont)
 and an additional [node.js](https://nodejs.org/en/) script.
-Therefore, installation of Node.js (and its package manager [npm](https://www.npmjs.com/))
-is a prerequisite, as is the [Grunt](http://gruntjs.com/) task runner.
+Therefore, installation of Node.js (and its package manager [npm](https://www.npmjs.com/)) is a prerequisite.
+Grunt will be installed as a package dependency — no need to install it globally.
 
 The necessary tools can be installed via npm:
-
-    # install the Grunt command processor (if you don't already have it)
-    npm install -g grunt-cli
 
     # install dependencies from packages.json, including `grunt-webfont`.
     npm install
 
 The build process also requires [fontforge](https://fontforge.github.io/)
-and the TTX script from the [font-tools](https://github.com/behdad/fonttools/) package
-to be installed, and assumes standard Perl and Python are available.
+and the TTX script from the [font-tools](https://github.com/behdad/fonttools/) package to be installed, and assumes standard Perl and Python are available.
+
+Both FontForge and font-tools can be installed via `homebrew` on OS X, or package managers on Linux:
+
+    # OS X
+    brew install fonttools fontforge
+
+    # Ubuntu, for example
+    sudo apt-get install fonttools fontforge
 
 ## Building the font
 
@@ -36,5 +40,4 @@ Once the necessary build tools are all in place, simply running
 
     make
 
-should build the color-emoji font `build/EmojiOne Mozilla.ttf` from the source SVG files
-found in `e1-svg.zip`.
+should build the color-emoji font `build/EmojiOne Mozilla.ttf` from the source SVG files found in `e1-svg.zip` file and `extras`, `overrides` directories.

@@ -1,4 +1,19 @@
 {
+  "name": "emojione-colr",
+  "description": "EmojiOne font in COLR/CPAL layered format.",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "author": "Jonathan Kew <jfkthame@gmail.com>",
+  "contributors": [
+    "Tim Guan-tin Chien <timdream@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/mozilla/emojione-colr/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla/emojione-colr.git"
+  },
   "dependencies": {
     "emoji-table": "^0.1.0",
     "grunt": "^1.0.1",
@@ -9,5 +24,16 @@
     "unzip": "^0.1.11",
     "xml2js": "^0.4.16",
     "xmlbuilder": "^8.2.2"
+  },
+  "keywords": [
+    "emoji",
+    "colr",
+    "emojione",
+    "unicode"
+  ],
+  "homepage": "https://github.com/mozilla/emojione-colr#readme",
+  "devDependencies": {},
+  "scripts": {
+    "grunt": "grunt"
   }
 }
