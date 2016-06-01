@@ -69,6 +69,15 @@ ScreenshotSlimerJSRunner.prototype = {
 
     var p = Promise.resolve();
     this.list.forEach(function(data, i) {
+      if (data.str.substr(0, 1) === '\u200d') {
+        p = p
+          .then(function() {
+            console.log('Skipping screenshot of lonely ZWJ (' +
+              (i + 1) + '/' + this.list.length + ').');
+          }.bind(this));
+        return;
+      }
+
       p = p
         .then(function() {
           console.log('Taking screenshot (' +
