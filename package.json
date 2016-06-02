@@ -32,7 +32,9 @@
     "unicode"
   ],
   "homepage": "https://github.com/mozilla/emojione-colr#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "resemblejs": "^2.2.1"
+  },
   "scripts": {
     "grunt": "grunt"
   }
