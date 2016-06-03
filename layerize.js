@@ -56,8 +56,19 @@ var addToXML = function(xml, p) {
 var codepoints = [];
 
 function expandColor(c) {
-    if (c == undefined || c == 'none') {
+    if (c == undefined) {
         return c;
+    }
+    c = c.toLowerCase();
+    if (c == 'none') {
+        return c;
+    }
+    if (c == 'red') {
+        c = '#f00';
+    } else if (c == 'green') {
+        c = '#0f0';
+    } else if (c == 'blue') {
+        c = '#00f';
     }
     // c is a hex color that might be shorthand (3 instead of 6 digits)
     if (c.substr(0, 1) == '#' && c.length == 4) {
@@ -320,6 +331,30 @@ function addOrMerge(paths, p, color) {
     }
 }
 
+function recordGradient(g, urlColor) {
+    var stops = [];
+    var id = '#' + g['$']['id'];
+    g['$$'].forEach(function (child) {
+        if (child['#name'] == "stop") {
+            stops.push(expandColor(child['$']['stop-color']));
+        }
+    });
+    var stopCount = stops.length;
+    var r = 0, g = 0, b = 0;
+    if (stopCount > 0) {
+        stops.forEach(function (stop) {
+            r = r + parseInt(stop.substr(1, 2), 16);
+            g = g + parseInt(stop.substr(3, 2), 16);
+            b = b + parseInt(stop.substr(5, 2), 16);
+        });
+        r = Math.round(r / stopCount);
+        g = Math.round(g / stopCount);
+        b = Math.round(b / stopCount);
+    }
+    var color = "#" + hexByte(r) + hexByte(g) + hexByte(b);
+    urlColor[id] = color;
+}
+
 function processFile(fileName, data) {
     // strip .svg extension off the name
     var baseName = fileName.replace(".svg", "");
@@ -351,27 +386,7 @@ function processFile(fileName, data) {
                 if (e['#name'] == 'defs') {
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
-                            var stops = [];
-                            var id = '#' + def['$']['id'];
-                            def['$$'].forEach(function (defChild) {
-                                if (defChild['#name'] == "stop") {
-                                    stops.push(expandColor(defChild['$']['stop-color']));
-                                }
-                            });
-                            var stopCount = stops.length;
-                            var r = 0, g = 0, b = 0;
-                            if (stopCount > 0) {
-                                stops.forEach(function (stop) {
-                                    r = r + parseInt(stop.substr(1, 2), 16);
-                                    g = g + parseInt(stop.substr(3, 2), 16);
-                                    b = b + parseInt(stop.substr(5, 2), 16);
-                                });
-                                r = Math.round(r / stopCount);
-                                g = Math.round(g / stopCount);
-                                b = Math.round(b / stopCount);
-                            }
-                            var color = "#" + hexByte(r) + hexByte(g) + hexByte(b);
-                            urlColor[id] = color;
+                            recordGradient(def, urlColor);
                         } else {
                             var id = '#' + def['$']['id'];
                             defs[id] = def;
@@ -379,8 +394,12 @@ function processFile(fileName, data) {
                     });
                     return;
                 }
-                if (e['$'] == undefined) {
+                if (e['#name'] == 'linearGradient') {
+                    recordGradient(e, urlColor);
                     return;
+                }
+                if (e['$'] == undefined) {
+                    e['$'] = {};
                 }
 
                 var fill = e['$']['fill'];
