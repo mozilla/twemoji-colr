@@ -364,13 +364,6 @@ function processFile(fileName, data) {
 
     // split name of glyph that corresponds to multi-char ligature
     var unicodes = baseName.split("-");
-    if (unicodes.length > 1 && parseInt(unicodes[0], 16) < 0x0080 &&
-        (chars.length == 0 || chars[chars.length - 1].unicode != unicodes[0])) {
-        // skip colored ligatures for basic ASCII symbols (digits etc) for now
-        // (TODO: consider whether we want to to support these)
-        console.log("skipping " + fileName);
-        return;
-    }
 
     var parser = new xml2js.Parser({preserveChildrenOrder: true,
                                     explicitChildren: true,
@@ -525,8 +518,14 @@ function processFile(fileName, data) {
             // simple character (single codepoint)
             chars.push({unicode: unicodes[0], components: layers});
         } else {
-            // ligatures: if not a Regional-Indicator pair, insert ZWJ between components
-            if (unicodes.length > 2 || (unicodes[1] < 0x1F3FB || unicodes[1] > 0x1F3FF)) {
+            // Ligatures: Keycap sequences only apply when there's U+FE0F in between.
+            // Otherwise, if not a Regional-Indicator pair or Fitzpatrick-modified char,
+            // insert ZWJ between components
+            if (unicodes.length == 2 && parseInt(unicodes[1], 16) == 0x20e3) {
+                unicodes = unicodes.join(",fe0f,").split(",");
+            } else if (unicodes.length > 2 ||
+                !((parseInt(unicodes[0], 16) >= 0x1f1e6 && parseInt(unicodes[0], 16) <= 0x1f1ff) ||
+                  (parseInt(unicodes[1], 16) >= 0x1f3fb && parseInt(unicodes[1], 16) <= 0x1f3ff))) {
                 unicodes = unicodes.join(",200d,").split(",");
             }
             ligatures.push({unicodes: unicodes, components: layers});
