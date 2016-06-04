@@ -155,20 +155,28 @@ TestReport.prototype = {
     var reportTitleEl = document.createElement('span');
     reportTitleEl.className = 'title';
 
-    reportTitleEl.textContent =
+    reportTitleEl.appendChild(document.createTextNode(
       result.codePoints.map(function(cp) {
         var str = cp.toString(16);
         while (str.length < 4) {
           str = '0' + str;
         }
         return 'U+' + str;
-      }).join(' ') + ', ' + result.string +
+      }).join(' ') + ', '));
+
+    var emojiEl = document.createElement('span');
+    emojiEl.className = 'emoji';
+    emojiEl.textContent = result.string;
+    reportTitleEl.appendChild(emojiEl);
+
+    reportTitleEl.appendChild(document.createTextNode(
       ', reference: ' + !result.svgRenderingEmpty +
       ', rendering: ' + !result.emojiRenderingEmpty +
       ', webfont: ' + !result.isEqualToSystem +
       ', mismatch: ' + result.diffData.rawMisMatchPercentage.toFixed(2) + '%' +
       ', retested: ' + result.retested +
-      ', layers: ' + result.layerInfo.layers;
+      ', layers: ' + result.layerInfo.layers));
+
     reportEl.appendChild(reportTitleEl);
 
     var infoEl = document.createElement('span');
