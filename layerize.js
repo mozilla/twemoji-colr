@@ -399,6 +399,27 @@ function processFile(fileName, data) {
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
+                var t = e['$']['transform'];
+                if (t) {
+                    // fontforge import doesn't understand 3-argument 'rotate',
+                    // so we decompose it into translate..rotate..untranslate
+                    var c = '(-?(?:[0-9]*\\.[0-9]+|[0-9]+))';
+                    while (true) {
+                        var m = t.match('rotate\\(' + c + '\\s+' + c + '\\s' + c + '\\)');
+                        if (!m) {
+                            break;
+                        }
+                        var a = Number(m[1]);
+                        var x = Number(m[2]);
+                        var y = Number(m[3]);
+                        var rep = 'translate(' + x + ' ' + y + ') ' +
+                                  'rotate(' + a + ') ' +
+                                  'translate(' + (-x) + ' ' + (-y) + ')';
+                        t = t.replace(m[0], rep);
+                    }
+                    e['$']['transform'] = t;
+                }
+
                 if (fill && fill.substr(0, 3) == "url") {
                     var id = fill.substr(4, fill.length - 5);
                     if (urlColor[id] == undefined) {
