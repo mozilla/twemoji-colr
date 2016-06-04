@@ -254,6 +254,8 @@ ComparisonTest.prototype = {
         return str;
       }).join('-') + '.svg';
 
+    var domParser = new DOMParser();
+
     var p = this.svgRawImgPromise = new Promise(function(resolve) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', svgUrl, true);
@@ -269,10 +271,13 @@ ComparisonTest.prototype = {
         }
 
         // Gecko bug 700533. I love my job.
-        svgText = '<svg width="' +
-          this.SVG_SIZE + 'px" height="' +
-          this.SVG_SIZE + 'px" ' +
-          svgText.substr(5);
+        var doc = domParser.parseFromString(svgText, 'image/svg+xml');
+        var hasWidth = !!doc.rootElement.getAttribute('width');
+        if (!hasWidth) {
+          doc.rootElement.setAttribute('width', this.SVG_SIZE);
+          doc.rootElement.setAttribute('height', this.SVG_SIZE);
+          svgText = doc.rootElement.outerHTML;
+        }
         return 'data:image/svg+xml,' + encodeURIComponent(svgText);
       }.bind(this))
       .then(function(svgDataUrl) {
