@@ -1,7 +1,7 @@
 'use strict';
 
-var GlyphDataService = {
-  URL: '../build/codepoints.js',
+var LayerInfoService = {
+  URL: '../build/layer_info.json',
   codePointsArr: null,
   map: null,
 
@@ -16,21 +16,19 @@ var GlyphDataService = {
           resolve(xhr.response);
         };
       }.bind(this))
-      .then(function(glyphToCodePoints) {
+      .then(function(layerInfo) {
         this.codePointsArr = [];
         this.map = new Map();
 
         var zwjCodePointsStrArr = [];
 
-        if (!glyphToCodePoints) {
+        if (!layerInfo) {
           throw new Error(
-            'EmojiInfoService: Failed to load glyph information.');
+            'LayerInfoService: Failed to load glyph layer information.');
           return;
         }
-        for (var glyphId in glyphToCodePoints) {
-          var codePoints = glyphId
-            .replace(/_layer\d+$/, '')
-            .substr(1)
+        for (var cp in layerInfo) {
+          var codePoints = cp
             .split(/[\-_]/)
             .map(function(cpStr) {
               return parseInt(cpStr, 16);
@@ -43,24 +41,16 @@ var GlyphDataService = {
             return 'U+' + str;
           }).join(' ');
 
-          var info = this.map.get(codePointsStr);
-          if (!info) {
-            this.map.set(codePointsStr, {
-              layers: 1,
-              fileNames: [glyphId]
-            });
-          } else {
-            info.layers++;
-            info.fileNames.push(glyphId);
-          }
+          this.map.set(codePointsStr, {
+            layers: layerInfo[cp].length,
+            fileNames: layerInfo[cp]
+          });
 
-          if (!/_layer/.test(glyphId)) {
-            this.codePointsArr.push(codePoints);
+          this.codePointsArr.push(codePoints);
 
-            if (codePoints.length > 1 &&
-                codePoints.indexOf(0x200d) !== -1) {
-              zwjCodePointsStrArr.push(codePointsStr);
-            }
+          if (codePoints.length > 1 &&
+              codePoints.indexOf(0x200d) !== -1) {
+            zwjCodePointsStrArr.push(codePointsStr);
           }
         }
 
@@ -191,7 +181,7 @@ ComparisonTest.prototype = {
   },
 
   runGetLayerInfo: function() {
-    return GlyphDataService.getInfo(this.codePoints)
+    return LayerInfoService.getInfo(this.codePoints)
       .then(function(layerInfo) {
         this.layerInfo = layerInfo;
       }.bind(this));
@@ -372,7 +362,7 @@ TestLoader.prototype = {
 
     var codePointsArrPromise;
     if (!arr) {
-      codePointsArrPromise = GlyphDataService.getCodePointsArr();
+      codePointsArrPromise = LayerInfoService.getCodePointsArr();
     } else {
       codePointsArrPromise = Promise.resolve(arr);
     }
