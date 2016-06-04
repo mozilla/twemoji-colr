@@ -468,6 +468,15 @@ function processFile(fileName, data) {
                         if (opacity != 1.0) {
                             fill = applyOpacity(fill, opacity);
                         }
+                        // Insert a Closepath before any Move commands within the path data,
+                        // as fontforge import doesn't handle unclosed paths reliably.
+                        if (f['#name'] == 'path') {
+                            var d = f['$']['d'];
+                            d = d.replace(/M/g, 'zM').replace(/m/g, 'zm').replace(/^z/, '').replace(/zz/gi, 'z');
+                            if (f['$']['d'] != d) {
+                                f['$']['d'] = d;
+                            }
+                        }
                         addOrMerge(paths, f, fill);
                     }
 
