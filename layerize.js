@@ -576,6 +576,10 @@ function processFile(fileName, data) {
 function generateTTX() {
     // After we've processed all the source SVGs, we'll generate the auxiliary
     // files needed for OpenType font creation.
+    // We also save the color-layer info in a separate JSON file, for the convenience
+    // of the test script.
+
+    var layerInfo = {};
 
     var ttFont = xmlbuilder.create("ttFont");
     ttFont.att("sfntVersion", "\\x00\\x01\\x00\\x00");
@@ -589,13 +593,16 @@ function generateTTX() {
         ch.components.forEach(function(cmp) {
             colorGlyph.ele("layer", {colorID: colorToId[cmp.color], name: "u" + cmp.glyphName});
         });
+        layerInfo[ch.unicode] = ch.components.map(function(cmp) { return "u" + cmp.glyphName; });
     });
     ligatures.forEach(function(lig) {
         var colorGlyph = COLR.ele("ColorGlyph", {name: "u" + lig.unicodes.join("_")});
         lig.components.forEach(function(cmp) {
             colorGlyph.ele("layer", {colorID: colorToId[cmp.color], name: "u" + cmp.glyphName});
         });
+        layerInfo[lig.unicodes.join("_")] = lig.components.map(function(cmp) { return "u" + cmp.glyphName; });
     });
+    fs.writeFileSync(targetDir + "/layer_info.json", JSON.stringify(layerInfo));
 
     // CPAL table maps color index values to RGB colors
     var CPAL = ttFont.ele("CPAL");
