@@ -136,8 +136,8 @@ ComparisonTest.prototype = {
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
-        // Remove zero width joiner.
-        return cp !== 0x200d;
+        // Remove zero width joiner and VS16.
+        return cp !== 0x200d && cp !== 0xfe0f;
       })
       .map(function(cp) {
         var str = cp.toString(16);
@@ -146,6 +146,8 @@ ComparisonTest.prototype = {
         }
         return str;
       }).join('-') + '.svg';
+
+    var domParser = new DOMParser();
 
     var p = this.svgRawImgPromise = new Promise(function(resolve) {
         var xhr = new XMLHttpRequest();
@@ -162,10 +164,13 @@ ComparisonTest.prototype = {
         }
 
         // Gecko bug 700533. I love my job.
-        svgText = '<svg width="' +
-          this.SVG_SIZE + 'px" height="' +
-          this.SVG_SIZE + 'px" ' +
-          svgText.substr(5);
+        var doc = domParser.parseFromString(svgText, 'image/svg+xml');
+        var hasWidth = !!doc.rootElement.getAttribute('width');
+        if (!hasWidth) {
+          doc.rootElement.setAttribute('width', this.SVG_SIZE);
+          doc.rootElement.setAttribute('height', this.SVG_SIZE);
+          svgText = doc.rootElement.outerHTML;
+        }
         return 'data:image/svg+xml,' + encodeURIComponent(svgText);
       }.bind(this))
       .then(function(svgDataUrl) {

@@ -9,8 +9,8 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  font-family: "EmojiOne Mozilla", sans-serif;
+.emoji {
+  font-family: "EmojiOne Mozilla";
 }
 
 h1 form {
@@ -19,7 +19,7 @@ h1 form {
 
 button, h1 input {
   font-size: 1em;
-  font-family: "EmojiOne Mozilla", sans-serif;
+  font-family: sans-serif;
 }
 
 p.summary {
@@ -29,7 +29,7 @@ p.summary {
 }
 
 span.title, span.emoji-info {
-  font-family: "EmojiOne Mozilla", monospace;
+  font-family: monospace;
   display: block;
   font-size: 16px;
 }
