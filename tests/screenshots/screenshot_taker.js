@@ -7,7 +7,7 @@ var HttpServer = require('http-server');
 var rmdir = require('rmdir');
 var fs = require('fs');
 
-var GlyphDataService = require('../utils/glyph_data_service').GlyphDataService;
+var LayerInfoService = require('../utils/layer_info_service').LayerInfoService;
 
 var ScreenshotTaker = function() {
 };
@@ -58,7 +58,7 @@ ScreenshotTaker.prototype = {
       }.bind(this))
       .then(function() {
         fs.mkdirSync(this.SCREENSHOT_DEST_DIR);
-        return GlyphDataService.getCodePointsArr();
+        return LayerInfoService.getCodePointsArr();
       }.bind(this))
       .then(function(codePointsArr) {
         return codePointsArr.map(function(arr) {
@@ -74,8 +74,8 @@ ScreenshotTaker.prototype = {
                 return string;
               })(arr),
             fileName: 'u' + arr.filter(function(cp) {
-                // Remove zero width joiner.
-                return cp !== 0x200d;
+                // Remove zero width joiner and VS16.
+                return cp !== 0x200d && cp !== 0xfe0f;
               })
               .map(function(cp) {
                 var str = cp.toString(16);

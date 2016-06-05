@@ -180,12 +180,12 @@ function decodePath(d) {
         } else if (op == 'C') {
             while (coords = d.match('^' + c + c + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                x = Number(coords[1]);
-//                y = Number(coords[2]);
-//                result.push([x, y]);
-//                x = Number(coords[3]);
-//                y = Number(coords[4]);
-//                result.push([x, y]);
+                x = Number(coords[1]);
+                y = Number(coords[2]);
+                result.push([x, y]);
+                x = Number(coords[3]);
+                y = Number(coords[4]);
+                result.push([x, y]);
                 x = Number(coords[5]);
                 y = Number(coords[6]);
                 result.push([x, y]);
@@ -193,8 +193,8 @@ function decodePath(d) {
         } else if (op == 'c') {
             while (coords = d.match('^' + c + c + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
-//                result.push([x + Number(coords[3]), y + Number(coords[4])]);
+                result.push([x + Number(coords[1]), y + Number(coords[2])]);
+                result.push([x + Number(coords[3]), y + Number(coords[4])]);
                 x += Number(coords[5]);
                 y += Number(coords[6]);
                 result.push([x, y]);
@@ -202,9 +202,9 @@ function decodePath(d) {
         } else if (op == 'S') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                x = Number(coords[1]);
-//                y = Number(coords[2]);
-//                result.push([x, y]);
+                x = Number(coords[1]);
+                y = Number(coords[2]);
+                result.push([x, y]);
                 x = Number(coords[3]);
                 y = Number(coords[4]);
                 result.push([x, y]);
@@ -212,7 +212,7 @@ function decodePath(d) {
         } else if (op == 's') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
+                result.push([x + Number(coords[1]), y + Number(coords[2])]);
                 x += Number(coords[3]);
                 y += Number(coords[4]);
                 result.push([x, y]);
@@ -220,7 +220,7 @@ function decodePath(d) {
         } else if (op == 'Q') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
+                result.push([x + Number(coords[1]), y + Number(coords[2])]);
                 x = Number(coords[3]);
                 y = Number(coords[4]);
                 result.push([x, y]);
@@ -228,7 +228,7 @@ function decodePath(d) {
         } else if (op == 'q') {
             while (coords = d.match('^' + c + c + c + c)) {
                 d = d.substr(coords[0].length);
-//                result.push([x + Number(coords[1]), y + Number(coords[2])]);
+                result.push([x + Number(coords[1]), y + Number(coords[2])]);
                 x += Number(coords[3]);
                 y += Number(coords[4]);
                 result.push([x, y]);
@@ -399,6 +399,27 @@ function processFile(fileName, data) {
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
+                var t = e['$']['transform'];
+                if (t) {
+                    // fontforge import doesn't understand 3-argument 'rotate',
+                    // so we decompose it into translate..rotate..untranslate
+                    var c = '(-?(?:[0-9]*\\.[0-9]+|[0-9]+))';
+                    while (true) {
+                        var m = t.match('rotate\\(' + c + '\\s+' + c + '\\s' + c + '\\)');
+                        if (!m) {
+                            break;
+                        }
+                        var a = Number(m[1]);
+                        var x = Number(m[2]);
+                        var y = Number(m[3]);
+                        var rep = 'translate(' + x + ' ' + y + ') ' +
+                                  'rotate(' + a + ') ' +
+                                  'translate(' + (-x) + ' ' + (-y) + ')';
+                        t = t.replace(m[0], rep);
+                    }
+                    e['$']['transform'] = t;
+                }
+
                 if (fill && fill.substr(0, 3) == "url") {
                     var id = fill.substr(4, fill.length - 5);
                     if (urlColor[id] == undefined) {
@@ -446,6 +467,15 @@ function processFile(fileName, data) {
                         f['$']['fill'] = '#000';
                         if (opacity != 1.0) {
                             fill = applyOpacity(fill, opacity);
+                        }
+                        // Insert a Closepath before any Move commands within the path data,
+                        // as fontforge import doesn't handle unclosed paths reliably.
+                        if (f['#name'] == 'path') {
+                            var d = f['$']['d'];
+                            d = d.replace(/M/g, 'zM').replace(/m/g, 'zm').replace(/^z/, '').replace(/zz/gi, 'z');
+                            if (f['$']['d'] != d) {
+                                f['$']['d'] = d;
+                            }
                         }
                         addOrMerge(paths, f, fill);
                     }
@@ -546,6 +576,10 @@ function processFile(fileName, data) {
 function generateTTX() {
     // After we've processed all the source SVGs, we'll generate the auxiliary
     // files needed for OpenType font creation.
+    // We also save the color-layer info in a separate JSON file, for the convenience
+    // of the test script.
+
+    var layerInfo = {};
 
     var ttFont = xmlbuilder.create("ttFont");
     ttFont.att("sfntVersion", "\\x00\\x01\\x00\\x00");
@@ -559,13 +593,16 @@ function generateTTX() {
         ch.components.forEach(function(cmp) {
             colorGlyph.ele("layer", {colorID: colorToId[cmp.color], name: "u" + cmp.glyphName});
         });
+        layerInfo[ch.unicode] = ch.components.map(function(cmp) { return "u" + cmp.glyphName; });
     });
     ligatures.forEach(function(lig) {
         var colorGlyph = COLR.ele("ColorGlyph", {name: "u" + lig.unicodes.join("_")});
         lig.components.forEach(function(cmp) {
             colorGlyph.ele("layer", {colorID: colorToId[cmp.color], name: "u" + cmp.glyphName});
         });
+        layerInfo[lig.unicodes.join("_")] = lig.components.map(function(cmp) { return "u" + cmp.glyphName; });
     });
+    fs.writeFileSync(targetDir + "/layer_info.json", JSON.stringify(layerInfo, null, 2));
 
     // CPAL table maps color index values to RGB colors
     var CPAL = ttFont.ele("CPAL");

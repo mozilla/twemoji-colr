@@ -1,8 +1,8 @@
 'use strict';
 
-var GlyphDataService = {
+var LayerInfoService = {
   // path relative to ./tests/
-  URL: '../build/codepoints.js',
+  URL: '../build/layer_info.json',
   codePointsArr: null,
   map: null,
 
@@ -26,21 +26,17 @@ var GlyphDataService = {
           resolve(JSON.parse(fs.readFileSync(filePath)));
         }
       }.bind(this))
-      .then(function(glyphToCodePoints) {
+      .then(function(layerInfo) {
         this.codePointsArr = [];
         this.map = new Map();
 
-        var zwjCodePointsStrArr = [];
-
-        if (!glyphToCodePoints) {
+        if (!layerInfo) {
           throw new Error(
-            'EmojiInfoService: Failed to load glyph information.');
+            'LayerInfoService: Failed to load glyph layer information.');
           return;
         }
-        for (var glyphId in glyphToCodePoints) {
-          var codePoints = glyphId
-            .replace(/_layer\d+$/, '')
-            .substr(1)
+        for (var cp in layerInfo) {
+          var codePoints = cp
             .split(/[\-_]/)
             .map(function(cpStr) {
               return parseInt(cpStr, 16);
@@ -53,35 +49,13 @@ var GlyphDataService = {
             return 'U+' + str;
           }).join(' ');
 
-          var info = this.map.get(codePointsStr);
-          if (!info) {
-            this.map.set(codePointsStr, {
-              layers: 1,
-              fileNames: [glyphId]
-            });
-          } else {
-            info.layers++;
-            info.fileNames.push(glyphId);
-          }
+          this.map.set(codePointsStr, {
+            layers: layerInfo[cp].length,
+            fileNames: layerInfo[cp]
+          });
 
-          if (!/_layer/.test(glyphId)) {
-            this.codePointsArr.push(codePoints);
-
-            if (codePoints.length > 1 &&
-                codePoints.indexOf(0x200d) !== -1) {
-              zwjCodePointsStrArr.push(codePointsStr);
-            }
-          }
+          this.codePointsArr.push(codePoints);
         }
-
-        zwjCodePointsStrArr.forEach(function(codePointsStr) {
-          // Merge the two layer info collected.
-          var noZWJInfo = this.map.get(codePointsStr.replace(/ U\+200D/g, ''));
-          var zwjInfo = this.map.get(codePointsStr);
-          zwjInfo.layers += noZWJInfo.layers;
-          zwjInfo.fileNames = noZWJInfo.fileNames.concat(zwjInfo.fileNames);
-          this.map.delete(codePointsStr.replace(/ U\+200D/g, ''));
-        }.bind(this));
       }.bind(this));
 
     this._initPromise = p;
@@ -118,5 +92,5 @@ var GlyphDataService = {
 };
 
 if (typeof exports === 'object') {
-  exports.GlyphDataService = GlyphDataService;
+  exports.LayerInfoService = LayerInfoService;
 }

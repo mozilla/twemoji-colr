@@ -84,7 +84,7 @@ ComparisonTest.prototype = {
   },
 
   runGetLayerInfo: function() {
-    return GlyphDataService.getInfo(this.codePoints)
+    return LayerInfoService.getInfo(this.codePoints)
       .then(function(layerInfo) {
         this.layerInfo = layerInfo;
       }.bind(this));
@@ -265,7 +265,7 @@ TestLoader.prototype = {
 
     var codePointsArrPromise;
     if (!arr) {
-      codePointsArrPromise = GlyphDataService.getCodePointsArr();
+      codePointsArrPromise = LayerInfoService.getCodePointsArr();
     } else {
       codePointsArrPromise = Promise.resolve(arr);
     }
