@@ -21,6 +21,7 @@ ScreenshotTaker.prototype = {
   }),
 
   SCREENSHOT_DEST_DIR: path.join(__dirname, 'results'),
+  COLOR_GLYPHS_DIR: path.join(__dirname, '..', '..', 'build', 'colorGlyphs'),
   SHOTLIST_FILENAME: 'shots.json',
 
   run: function() {
@@ -101,8 +102,9 @@ ScreenshotTaker.prototype = {
       var binPath = slimerjs.path;
       var childArgs = [
         path.join(__dirname, 'slimerjs-script.js'),
+        this.HTTP_SERVER_OPTIONS.port,
+        this.COLOR_GLYPHS_DIR,
         this.SCREENSHOT_DEST_DIR,
-        this.HTTP_SERVER_OPTIONS.port
       ];
 
       var cp = childProcess.execFile(binPath, childArgs);

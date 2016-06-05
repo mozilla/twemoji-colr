@@ -5,8 +5,10 @@ var webpage = require('webpage');
 var fs = require('fs');
 
 var ScreenshotSlimerJSRunner = function() {
-  this.port = system.args[2];
-  this.destDir = system.args[1];
+  this.port = system.args[1];
+  this.colorGlyphsDir = system.args[2];
+  this.destDir = system.args[3];
+
   console.log('Taking screenshot and saving it into: ' +
     this.destDir);
 };
@@ -88,6 +90,53 @@ ScreenshotSlimerJSRunner.prototype = {
         }.bind(this))
         .then(function() {
           var destFilePath = fs.join(this.destDir, data.fileName + '.png');
+          this.page.render(destFilePath);
+        }.bind(this))
+        .then(function() {
+          var svgText =
+            fs.read(fs.join(this.colorGlyphsDir, data.fileName + '.svg'), 'r');
+
+          this.page.evaluate(function(svgText) {
+            // Gecko bug 700533. I love my job.
+            var domParser = new DOMParser();
+            var doc = domParser.parseFromString(svgText, 'image/svg+xml');
+            var hasWidth = !!doc.rootElement.getAttribute('width');
+            if (!hasWidth) {
+              doc.rootElement.setAttribute('width', 64);
+              doc.rootElement.setAttribute('height', 64);
+              svgText = doc.rootElement.outerHTML;
+            }
+
+            var img = document.createElement('img');
+            img.src = 'data:image/svg+xml,' + encodeURIComponent(svgText);
+            img.onload = function() {
+              this.className = 'loaded';
+            };
+            img.onerror = function() {
+              this.className = 'error';
+            };
+            document.body.textContent = '';
+            document.body.appendChild(img);
+          }, svgText);
+
+          return new Promise(function(resolve, reject) {
+            var timer = setInterval(function() {
+              var className = this.page.evaluate(function() {
+                return document.body.firstElementChild.className;
+              });
+
+              if (className === 'loaded') {
+                clearTimeout(timer);
+                resolve();
+              } else if (className === 'error') {
+                clearTimeout(timer);
+                reject('Failed to load SVG image for ' + data.fileName);
+              }
+            }.bind(this), 10);
+          }.bind(this));
+        }.bind(this))
+        .then(function() {
+          var destFilePath = fs.join(this.destDir, data.fileName + '.svg.png');
           this.page.render(destFilePath);
         }.bind(this));
     }.bind(this));
