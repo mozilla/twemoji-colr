@@ -602,7 +602,7 @@ function generateTTX() {
         });
         layerInfo[lig.unicodes.join("_")] = lig.components.map(function(cmp) { return "u" + cmp.glyphName; });
     });
-    fs.writeFileSync(targetDir + "/layer_info.json", JSON.stringify(layerInfo));
+    fs.writeFileSync(targetDir + "/layer_info.json", JSON.stringify(layerInfo, null, 2));
 
     // CPAL table maps color index values to RGB colors
     var CPAL = ttFont.ele("CPAL");
