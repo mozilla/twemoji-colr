@@ -60,12 +60,14 @@ var EmojiInfoService = {
 };
 
 var TestRunReport = function() {
-  this.summary = new TestSummary();
+  this.summary = new TestSummary(this);
   this.startTime = Date.now();
   this.expendedReports = 0;
+
+  this.resultSummaries = new Map();
 }
 TestRunReport.prototype = {
-  AUTOEXPEND_REPORTS_LIMIT: 30,
+  AUTOEXPEND_REPORTS_LIMIT: 0,
 
   render: function() {
     var div = this.element = document.createElement('div');
@@ -82,7 +84,10 @@ TestRunReport.prototype = {
     if (testReport.expended) {
       this.expendedReports++;
     }
-    this.summary.update(testReport.getSummary());
+    var summary = testReport.getSummary();
+    this.summary.update(summary);
+
+    this.resultSummaries.set(summary, testReport.element);
 
     testReport.minimizeMemoryUsage();
   },
@@ -90,14 +95,43 @@ TestRunReport.prototype = {
     this.summary.reportFinish({
       time: (Date.now() - this.startTime)
     });
+  },
+  sortBy: function(prop) {
+    var summariesArr = [...this.resultSummaries.keys()];
+    summariesArr
+      .sort(function(a, b) {
+        switch (prop) {
+          case 'mismatch':
+            return (b.mismatchPresentage - a.mismatchPresentage);
+
+            break;
+
+          default: // Booleans
+            if (a[prop] === b[prop]) {
+              return 0;
+            }
+            if (a[prop]) {
+              return -1;
+            }
+            if (b[prop]) {
+              return 1;
+            }
+        }
+      })
+      .forEach(function(summary) {
+        var el = this.resultSummaries.get(summary);
+        this.element.appendChild(el);
+      }.bind(this));
   }
 };
 
-var TestSummary = function() {
+var TestSummary = function(runReport) {
+  this.runReport = runReport;
   this.summary = {};
   this.PROPS.forEach(function(prop) {
     this.summary[prop] = 0;
   }.bind(this));
+  this.elements = new Map();
 }
 TestSummary.prototype = {
   PROPS: Object.freeze(
@@ -109,7 +143,35 @@ TestSummary.prototype = {
     this.element = document.createElement('p');
     this.element.className = 'summary';
 
+    this.PROPS.forEach(function(prop, i) {
+      if (i !== 0) {
+        this.element.appendChild(document.createTextNode(' '));
+      }
+      var label = document.createElement('button');
+      label.title = 'Click to re-sort by this property.';
+      label.textContent = prop + ': ';
+      label.dataset.sortByProp = prop;
+      var value = document.createElement('span');
+      this.elements.set(prop, value);
+      label.appendChild(value);
+
+      this.element.appendChild(label);
+    }.bind(this));
+
+    this.element.addEventListener('click', this);
+
     return this.element;
+  },
+
+  handleEvent: function(evt) {
+    var sortByProp = evt.target.dataset.sortByProp;
+    if (!sortByProp) {
+      return;
+    }
+
+    evt.preventDefault();
+
+    this.runReport.sortBy(sortByProp);
   },
 
   update: function(obj) {
@@ -118,15 +180,13 @@ TestSummary.prototype = {
       if (obj[prop]) {
         this.summary[prop]++;
       }
+      this.elements.get(prop).textContent = this.summary[prop];
     }.bind(this));
-
-    this.element.textContent = this.PROPS.map(function(prop) {
-        return prop + ': '  + this.summary[prop] }.bind(this)
-      ).join(', ');
   },
 
   reportFinish: function(obj) {
-    this.element.textContent += ', time: ' + obj.time + 'ms';
+    this.element.appendChild(
+      document.createTextNode(' Time: ' + obj.time + 'ms'));
   }
 };
 
@@ -250,6 +310,7 @@ TestReport.prototype = {
     return {
       passed: this.passed, failed: !this.passed,
       mismatch: (result.diffData.rawMisMatchPercentage >= this.MISMATCH_THRESHOLD),
+      mismatchPresentage: result.diffData.rawMisMatchPercentage,
       webfont: result.isEqualToSystem,
       rendering: result.emojiRenderingEmpty,
       reference: result.svgRenderingEmpty,
