@@ -406,6 +406,12 @@ function processFile(fileName, data) {
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
+                // any path with an 'id' might get re-used, so remember it
+                if (e['$']['id']) {
+                    var id = '#' + e['$']['id'];
+                    defs[id] = JSON.parse(JSON.stringify(e));
+                }
+
                 var t = e['$']['transform'];
                 if (t) {
                     // fontforge import doesn't understand 3-argument 'rotate',
