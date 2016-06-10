@@ -305,24 +305,31 @@ function overlap(a, b) {
     }
 }
 
+function hasTransform(p) {
+    return p['$']['transform'] !== undefined;
+}
+
 function addOrMerge(paths, p, color) {
-    var i = paths.length - 1;
-    var bbox = getBBox(p);
-    while (i >= 0) {
-        var hasOverlap = false;
-        paths[i].paths.forEach(function(pp) {
-            if (overlap(bbox, getBBox(pp))) {
-                hasOverlap = true;
+    var i = -1;
+    if (!hasTransform(p)) {
+        i = paths.length - 1;
+        var bbox = getBBox(p);
+        while (i >= 0) {
+            var hasOverlap = false;
+            paths[i].paths.forEach(function(pp) {
+                if (hasTransform(pp) || overlap(bbox, getBBox(pp))) {
+                    hasOverlap = true;
+                }
+            });
+            if (hasOverlap) {
+                i = -1;
+                break;
             }
-        });
-        if (hasOverlap) {
-            i = -1;
-            break;
+            if (paths[i].color == color) {
+                break;
+            }
+            --i;
         }
-        if (paths[i].color == color) {
-            break;
-        }
-        --i;
     }
     if (i >= 0) {
         paths[i].paths.push(p);
