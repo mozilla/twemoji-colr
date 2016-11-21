@@ -1,3 +1,1 @@
-Zipped copy of the assets/svg directory from https://github.com/Ranks/emojione/archive/v2.2.1.zip
-
-Updated 2016-06-10
+Zipped copy of the assets/svg directory from https://github.com/Ranks/emojione/archive/v2.2.6.zip
