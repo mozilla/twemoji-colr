@@ -7,6 +7,8 @@ module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
 
+    var packageJSON = grunt.file.readJSON('package.json');
+
 	grunt.initConfig({
 		webfont: {
             EmojiOne: {
@@ -16,7 +18,7 @@ module.exports = function(grunt) {
                     font: 'EmojiOne Mozilla',
                     types: 'ttf',
                     autoHint: false,
-                    version: 'Version 0.2.2',
+                    version: 'Version ' + packageJSON.version,
                     codepointsFile: 'build/codepoints.js'
                 }
             },
