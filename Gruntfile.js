@@ -11,11 +11,11 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		webfont: {
-            EmojiOne: {
+            Twemoji: {
                 src: 'build/glyphs/*.svg',
                 dest: 'build/raw-font',
                 options: {
-                    font: 'EmojiOne Mozilla',
+                    font: 'Twemoji Mozilla',
                     types: 'ttf',
                     autoHint: false,
                     version: 'Version ' + packageJSON.version,

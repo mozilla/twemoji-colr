@@ -88,7 +88,7 @@ var ComparisonTest = function(codePoints) {
 };
 
 ComparisonTest.prototype = {
-  FONT_NAME: 'EmojiOne Mozilla',
+  FONT_NAME: 'Twemoji Mozilla',
   CANVAS_SIZE: 480,
   SVG_SIZE: 64,
 
@@ -96,7 +96,7 @@ ComparisonTest.prototype = {
   // only re-test stuff when the mismatch is between these thresholds.
   RETEST_THRESHOLD: 1,
   RETEST_UPPER_THRESHOLD: 4,
-  // XXX: Bigger canvas size will shifts EmojiOne rendering position on
+  // XXX: Bigger canvas size will shifts Twemoji rendering position on
   // Ubuntu for unknown reasons.
   RETEST_CANVAS_SIZE: 960,
 

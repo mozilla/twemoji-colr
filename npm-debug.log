@@ -1,0 +1,3113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Users\\ch36573\\Documents\\node-v6.11.2-win-x64\\node.exe',
+1 verbose cli   'C:\\Users\\ch36573\\Documents\\node-v6.11.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'canvas@1.6.5' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData canvas@1.6.5
+8 silly fetchNamedPackageData canvas
+9 silly mapToRegistry name canvas
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'canvas',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'canvas',
+12 silly mapToRegistry   name: 'canvas',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/canvas
+14 verbose request uri https://registry.npmjs.org/canvas
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 3:46:40 PM
+17 verbose request id 97dd6fe079a31dcf
+18 http request GET https://registry.npmjs.org/canvas
+19 http 200 https://registry.npmjs.org/canvas
+20 verbose headers { server: 'nginx/1.10.1',
+20 verbose headers   'content-type': 'application/json',
+20 verbose headers   'last-modified': 'Tue, 26 Sep 2017 04:34:34 GMT',
+20 verbose headers   etag: 'W/"59c9d8da-23693"',
+20 verbose headers   'content-encoding': 'gzip',
+20 verbose headers   'cache-control': 'max-age=300',
+20 verbose headers   'content-length': '17044',
+20 verbose headers   'accept-ranges': 'bytes',
+20 verbose headers   date: 'Tue, 10 Oct 2017 20:46:15 GMT',
+20 verbose headers   via: '1.1 varnish',
+20 verbose headers   age: '0',
+20 verbose headers   connection: 'keep-alive',
+20 verbose headers   'x-served-by': 'cache-lax8632-LAX',
+20 verbose headers   'x-cache': 'HIT',
+20 verbose headers   'x-cache-hits': '1',
+20 verbose headers   'x-timer': 'S1507668376.685952,VS0,VE30',
+20 verbose headers   vary: 'Accept-Encoding, Accept' }
+21 silly get cb [ 200,
+21 silly get   { server: 'nginx/1.10.1',
+21 silly get     'content-type': 'application/json',
+21 silly get     'last-modified': 'Tue, 26 Sep 2017 04:34:34 GMT',
+21 silly get     etag: 'W/"59c9d8da-23693"',
+21 silly get     'content-encoding': 'gzip',
+21 silly get     'cache-control': 'max-age=300',
+21 silly get     'content-length': '17044',
+21 silly get     'accept-ranges': 'bytes',
+21 silly get     date: 'Tue, 10 Oct 2017 20:46:15 GMT',
+21 silly get     via: '1.1 varnish',
+21 silly get     age: '0',
+21 silly get     connection: 'keep-alive',
+21 silly get     'x-served-by': 'cache-lax8632-LAX',
+21 silly get     'x-cache': 'HIT',
+21 silly get     'x-cache-hits': '1',
+21 silly get     'x-timer': 'S1507668376.685952,VS0,VE30',
+21 silly get     vary: 'Accept-Encoding, Accept' } ]
+22 verbose get saving canvas to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\canvas\.cache.json
+23 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+24 silly install normalizeTree
+25 silly loadCurrentTree Finishing
+26 silly loadIdealTree Starting
+27 silly install loadIdealTree
+28 silly cloneCurrentTree Starting
+29 silly install cloneCurrentTreeToIdealTree
+30 silly cloneCurrentTree Finishing
+31 silly loadShrinkwrap Starting
+32 silly install loadShrinkwrap
+33 silly loadShrinkwrap Finishing
+34 silly loadAllDepsIntoIdealTree Starting
+35 silly install loadAllDepsIntoIdealTree
+36 silly resolveWithNewModule canvas@1.6.5 checking installable status
+37 silly cache add args [ 'canvas@1.6.5', null ]
+38 verbose cache add spec canvas@1.6.5
+39 silly cache add parsed spec Result {
+39 silly cache add   raw: 'canvas@1.6.5',
+39 silly cache add   scope: null,
+39 silly cache add   escapedName: 'canvas',
+39 silly cache add   name: 'canvas',
+39 silly cache add   rawSpec: '1.6.5',
+39 silly cache add   spec: '1.6.5',
+39 silly cache add   type: 'version' }
+40 silly addNamed canvas@1.6.5
+41 verbose addNamed "1.6.5" is a plain semver version for canvas
+42 silly mapToRegistry name canvas
+43 silly mapToRegistry using default registry
+44 silly mapToRegistry registry https://registry.npmjs.org/
+45 silly mapToRegistry data Result {
+45 silly mapToRegistry   raw: 'canvas',
+45 silly mapToRegistry   scope: null,
+45 silly mapToRegistry   escapedName: 'canvas',
+45 silly mapToRegistry   name: 'canvas',
+45 silly mapToRegistry   rawSpec: '',
+45 silly mapToRegistry   spec: 'latest',
+45 silly mapToRegistry   type: 'tag' }
+46 silly mapToRegistry uri https://registry.npmjs.org/canvas
+47 verbose addNameVersion registry:https://registry.npmjs.org/canvas not in flight; fetching
+48 verbose get https://registry.npmjs.org/canvas not expired, no request
+49 silly mapToRegistry name canvas
+50 silly mapToRegistry using default registry
+51 silly mapToRegistry registry https://registry.npmjs.org/
+52 silly mapToRegistry data Result {
+52 silly mapToRegistry   raw: 'canvas',
+52 silly mapToRegistry   scope: null,
+52 silly mapToRegistry   escapedName: 'canvas',
+52 silly mapToRegistry   name: 'canvas',
+52 silly mapToRegistry   rawSpec: '',
+52 silly mapToRegistry   spec: 'latest',
+52 silly mapToRegistry   type: 'tag' }
+53 silly mapToRegistry uri https://registry.npmjs.org/canvas
+54 verbose addRemoteTarball https://registry.npmjs.org/canvas/-/canvas-1.6.5.tgz not in flight; adding
+55 verbose addRemoteTarball [ 'https://registry.npmjs.org/canvas/-/canvas-1.6.5.tgz',
+55 verbose addRemoteTarball   '557f9988f5d2c95fdc247c61a5ee43de52f6717c' ]
+56 info retry fetch attempt 1 at 3:46:41 PM
+57 info attempt registry request try #1 at 3:46:41 PM
+58 http fetch GET https://registry.npmjs.org/canvas/-/canvas-1.6.5.tgz
+59 http fetch 200 https://registry.npmjs.org/canvas/-/canvas-1.6.5.tgz
+60 silly fetchAndShaCheck shasum 557f9988f5d2c95fdc247c61a5ee43de52f6717c
+61 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\canvas\-\canvas-1.6.5.tgz not in flight; adding
+62 verbose addTmpTarball already have metadata; skipping unpack for canvas@1.6.5
+63 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+64 silly cache afterAdd canvas@1.6.5
+65 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\canvas\1.6.5\package\package.json not in flight; writing
+66 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+67 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\canvas\1.6.5\package\package.json written
+68 silly fetchNamedPackageData parse-css-font
+69 silly mapToRegistry name parse-css-font
+70 silly mapToRegistry using default registry
+71 silly mapToRegistry registry https://registry.npmjs.org/
+72 silly mapToRegistry data Result {
+72 silly mapToRegistry   raw: 'parse-css-font',
+72 silly mapToRegistry   scope: null,
+72 silly mapToRegistry   escapedName: 'parse-css-font',
+72 silly mapToRegistry   name: 'parse-css-font',
+72 silly mapToRegistry   rawSpec: '',
+72 silly mapToRegistry   spec: 'latest',
+72 silly mapToRegistry   type: 'tag' }
+73 silly mapToRegistry uri https://registry.npmjs.org/parse-css-font
+74 silly fetchNamedPackageData units-css
+75 silly mapToRegistry name units-css
+76 silly mapToRegistry using default registry
+77 silly mapToRegistry registry https://registry.npmjs.org/
+78 silly mapToRegistry data Result {
+78 silly mapToRegistry   raw: 'units-css',
+78 silly mapToRegistry   scope: null,
+78 silly mapToRegistry   escapedName: 'units-css',
+78 silly mapToRegistry   name: 'units-css',
+78 silly mapToRegistry   rawSpec: '',
+78 silly mapToRegistry   spec: 'latest',
+78 silly mapToRegistry   type: 'tag' }
+79 silly mapToRegistry uri https://registry.npmjs.org/units-css
+80 verbose request uri https://registry.npmjs.org/parse-css-font
+81 verbose request no auth needed
+82 info attempt registry request try #1 at 3:46:41 PM
+83 http request GET https://registry.npmjs.org/parse-css-font
+84 verbose request uri https://registry.npmjs.org/units-css
+85 verbose request no auth needed
+86 info attempt registry request try #1 at 3:46:41 PM
+87 http request GET https://registry.npmjs.org/units-css
+88 http 200 https://registry.npmjs.org/parse-css-font
+89 verbose headers { server: 'nginx/1.10.1',
+89 verbose headers   'content-type': 'application/json',
+89 verbose headers   'last-modified': 'Fri, 02 Oct 2015 23:26:27 GMT',
+89 verbose headers   etag: 'W/"560f12a3-1df4"',
+89 verbose headers   'content-encoding': 'gzip',
+89 verbose headers   'cache-control': 'max-age=300',
+89 verbose headers   'content-length': '1662',
+89 verbose headers   'accept-ranges': 'bytes',
+89 verbose headers   date: 'Tue, 10 Oct 2017 20:46:16 GMT',
+89 verbose headers   via: '1.1 varnish',
+89 verbose headers   age: '0',
+89 verbose headers   connection: 'keep-alive',
+89 verbose headers   'x-served-by': 'cache-lax8632-LAX',
+89 verbose headers   'x-cache': 'HIT',
+89 verbose headers   'x-cache-hits': '1',
+89 verbose headers   'x-timer': 'S1507668377.618151,VS0,VE34',
+89 verbose headers   vary: 'Accept-Encoding, Accept' }
+90 silly get cb [ 200,
+90 silly get   { server: 'nginx/1.10.1',
+90 silly get     'content-type': 'application/json',
+90 silly get     'last-modified': 'Fri, 02 Oct 2015 23:26:27 GMT',
+90 silly get     etag: 'W/"560f12a3-1df4"',
+90 silly get     'content-encoding': 'gzip',
+90 silly get     'cache-control': 'max-age=300',
+90 silly get     'content-length': '1662',
+90 silly get     'accept-ranges': 'bytes',
+90 silly get     date: 'Tue, 10 Oct 2017 20:46:16 GMT',
+90 silly get     via: '1.1 varnish',
+90 silly get     age: '0',
+90 silly get     connection: 'keep-alive',
+90 silly get     'x-served-by': 'cache-lax8632-LAX',
+90 silly get     'x-cache': 'HIT',
+90 silly get     'x-cache-hits': '1',
+90 silly get     'x-timer': 'S1507668377.618151,VS0,VE34',
+90 silly get     vary: 'Accept-Encoding, Accept' } ]
+91 verbose get saving parse-css-font to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\parse-css-font\.cache.json
+92 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+93 silly resolveWithNewModule parse-css-font@2.0.2 checking installable status
+94 silly cache add args [ 'parse-css-font@^2.0.2', null ]
+95 verbose cache add spec parse-css-font@^2.0.2
+96 silly cache add parsed spec Result {
+96 silly cache add   raw: 'parse-css-font@^2.0.2',
+96 silly cache add   scope: null,
+96 silly cache add   escapedName: 'parse-css-font',
+96 silly cache add   name: 'parse-css-font',
+96 silly cache add   rawSpec: '^2.0.2',
+96 silly cache add   spec: '>=2.0.2 <3.0.0',
+96 silly cache add   type: 'range' }
+97 silly addNamed parse-css-font@>=2.0.2 <3.0.0
+98 verbose addNamed ">=2.0.2 <3.0.0" is a valid semver range for parse-css-font
+99 silly addNameRange { name: 'parse-css-font',
+99 silly addNameRange   range: '>=2.0.2 <3.0.0',
+99 silly addNameRange   hasData: false }
+100 silly mapToRegistry name parse-css-font
+101 silly mapToRegistry using default registry
+102 silly mapToRegistry registry https://registry.npmjs.org/
+103 silly mapToRegistry data Result {
+103 silly mapToRegistry   raw: 'parse-css-font',
+103 silly mapToRegistry   scope: null,
+103 silly mapToRegistry   escapedName: 'parse-css-font',
+103 silly mapToRegistry   name: 'parse-css-font',
+103 silly mapToRegistry   rawSpec: '',
+103 silly mapToRegistry   spec: 'latest',
+103 silly mapToRegistry   type: 'tag' }
+104 silly mapToRegistry uri https://registry.npmjs.org/parse-css-font
+105 verbose addNameRange registry:https://registry.npmjs.org/parse-css-font not in flight; fetching
+106 verbose get https://registry.npmjs.org/parse-css-font not expired, no request
+107 silly addNameRange number 2 { name: 'parse-css-font',
+107 silly addNameRange   range: '>=2.0.2 <3.0.0',
+107 silly addNameRange   hasData: true }
+108 silly addNameRange versions [ 'parse-css-font', [ '1.0.0', '2.0.0', '2.0.1', '2.0.2' ] ]
+109 silly addNamed parse-css-font@2.0.2
+110 verbose addNamed "2.0.2" is a plain semver version for parse-css-font
+111 silly mapToRegistry name parse-css-font
+112 silly mapToRegistry using default registry
+113 silly mapToRegistry registry https://registry.npmjs.org/
+114 silly mapToRegistry data Result {
+114 silly mapToRegistry   raw: 'parse-css-font',
+114 silly mapToRegistry   scope: null,
+114 silly mapToRegistry   escapedName: 'parse-css-font',
+114 silly mapToRegistry   name: 'parse-css-font',
+114 silly mapToRegistry   rawSpec: '',
+114 silly mapToRegistry   spec: 'latest',
+114 silly mapToRegistry   type: 'tag' }
+115 silly mapToRegistry uri https://registry.npmjs.org/parse-css-font
+116 verbose addRemoteTarball https://registry.npmjs.org/parse-css-font/-/parse-css-font-2.0.2.tgz not in flight; adding
+117 verbose addRemoteTarball [ 'https://registry.npmjs.org/parse-css-font/-/parse-css-font-2.0.2.tgz',
+117 verbose addRemoteTarball   '7b60b060705a25a9b90b7f0ed493e5823248a652' ]
+118 info retry fetch attempt 1 at 3:46:41 PM
+119 info attempt registry request try #1 at 3:46:41 PM
+120 http fetch GET https://registry.npmjs.org/parse-css-font/-/parse-css-font-2.0.2.tgz
+121 http fetch 200 https://registry.npmjs.org/parse-css-font/-/parse-css-font-2.0.2.tgz
+122 silly fetchAndShaCheck shasum 7b60b060705a25a9b90b7f0ed493e5823248a652
+123 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\parse-css-font\-\parse-css-font-2.0.2.tgz not in flight; adding
+124 verbose addTmpTarball already have metadata; skipping unpack for parse-css-font@2.0.2
+125 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+126 silly cache afterAdd parse-css-font@2.0.2
+127 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\parse-css-font\2.0.2\package\package.json not in flight; writing
+128 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+129 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\parse-css-font\2.0.2\package\package.json written
+130 http 200 https://registry.npmjs.org/units-css
+131 verbose headers { server: 'nginx/1.10.1',
+131 verbose headers   'content-type': 'application/json',
+131 verbose headers   'last-modified': 'Sat, 10 Oct 2015 17:59:42 GMT',
+131 verbose headers   etag: 'W/"5619520e-39a2"',
+131 verbose headers   'content-encoding': 'gzip',
+131 verbose headers   'cache-control': 'max-age=300',
+131 verbose headers   'content-length': '2880',
+131 verbose headers   'accept-ranges': 'bytes',
+131 verbose headers   date: 'Tue, 10 Oct 2017 20:46:16 GMT',
+131 verbose headers   via: '1.1 varnish',
+131 verbose headers   age: '0',
+131 verbose headers   connection: 'keep-alive',
+131 verbose headers   'x-served-by': 'cache-lax8630-LAX',
+131 verbose headers   'x-cache': 'HIT',
+131 verbose headers   'x-cache-hits': '1',
+131 verbose headers   'x-timer': 'S1507668377.735683,VS0,VE77',
+131 verbose headers   vary: 'Accept-Encoding, Accept' }
+132 silly get cb [ 200,
+132 silly get   { server: 'nginx/1.10.1',
+132 silly get     'content-type': 'application/json',
+132 silly get     'last-modified': 'Sat, 10 Oct 2015 17:59:42 GMT',
+132 silly get     etag: 'W/"5619520e-39a2"',
+132 silly get     'content-encoding': 'gzip',
+132 silly get     'cache-control': 'max-age=300',
+132 silly get     'content-length': '2880',
+132 silly get     'accept-ranges': 'bytes',
+132 silly get     date: 'Tue, 10 Oct 2017 20:46:16 GMT',
+132 silly get     via: '1.1 varnish',
+132 silly get     age: '0',
+132 silly get     connection: 'keep-alive',
+132 silly get     'x-served-by': 'cache-lax8630-LAX',
+132 silly get     'x-cache': 'HIT',
+132 silly get     'x-cache-hits': '1',
+132 silly get     'x-timer': 'S1507668377.735683,VS0,VE77',
+132 silly get     vary: 'Accept-Encoding, Accept' } ]
+133 verbose get saving units-css to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\units-css\.cache.json
+134 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+135 silly resolveWithNewModule units-css@0.4.0 checking installable status
+136 silly cache add args [ 'units-css@^0.4.0', null ]
+137 verbose cache add spec units-css@^0.4.0
+138 silly cache add parsed spec Result {
+138 silly cache add   raw: 'units-css@^0.4.0',
+138 silly cache add   scope: null,
+138 silly cache add   escapedName: 'units-css',
+138 silly cache add   name: 'units-css',
+138 silly cache add   rawSpec: '^0.4.0',
+138 silly cache add   spec: '>=0.4.0 <0.5.0',
+138 silly cache add   type: 'range' }
+139 silly addNamed units-css@>=0.4.0 <0.5.0
+140 verbose addNamed ">=0.4.0 <0.5.0" is a valid semver range for units-css
+141 silly addNameRange { name: 'units-css', range: '>=0.4.0 <0.5.0', hasData: false }
+142 silly mapToRegistry name units-css
+143 silly mapToRegistry using default registry
+144 silly mapToRegistry registry https://registry.npmjs.org/
+145 silly mapToRegistry data Result {
+145 silly mapToRegistry   raw: 'units-css',
+145 silly mapToRegistry   scope: null,
+145 silly mapToRegistry   escapedName: 'units-css',
+145 silly mapToRegistry   name: 'units-css',
+145 silly mapToRegistry   rawSpec: '',
+145 silly mapToRegistry   spec: 'latest',
+145 silly mapToRegistry   type: 'tag' }
+146 silly mapToRegistry uri https://registry.npmjs.org/units-css
+147 verbose addNameRange registry:https://registry.npmjs.org/units-css not in flight; fetching
+148 verbose get https://registry.npmjs.org/units-css not expired, no request
+149 silly addNameRange number 2 { name: 'units-css', range: '>=0.4.0 <0.5.0', hasData: true }
+150 silly addNameRange versions [ 'units-css', [ '0.0.0', '0.1.0', '0.2.0', '0.3.0', '0.4.0' ] ]
+151 silly addNamed units-css@0.4.0
+152 verbose addNamed "0.4.0" is a plain semver version for units-css
+153 silly mapToRegistry name units-css
+154 silly mapToRegistry using default registry
+155 silly mapToRegistry registry https://registry.npmjs.org/
+156 silly mapToRegistry data Result {
+156 silly mapToRegistry   raw: 'units-css',
+156 silly mapToRegistry   scope: null,
+156 silly mapToRegistry   escapedName: 'units-css',
+156 silly mapToRegistry   name: 'units-css',
+156 silly mapToRegistry   rawSpec: '',
+156 silly mapToRegistry   spec: 'latest',
+156 silly mapToRegistry   type: 'tag' }
+157 silly mapToRegistry uri https://registry.npmjs.org/units-css
+158 verbose addRemoteTarball https://registry.npmjs.org/units-css/-/units-css-0.4.0.tgz not in flight; adding
+159 verbose addRemoteTarball [ 'https://registry.npmjs.org/units-css/-/units-css-0.4.0.tgz',
+159 verbose addRemoteTarball   'd6228653a51983d7c16ff28f8b9dc3b1ffed3a07' ]
+160 info retry fetch attempt 1 at 3:46:41 PM
+161 info attempt registry request try #1 at 3:46:41 PM
+162 http fetch GET https://registry.npmjs.org/units-css/-/units-css-0.4.0.tgz
+163 http fetch 200 https://registry.npmjs.org/units-css/-/units-css-0.4.0.tgz
+164 silly fetchAndShaCheck shasum d6228653a51983d7c16ff28f8b9dc3b1ffed3a07
+165 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\units-css\-\units-css-0.4.0.tgz not in flight; adding
+166 verbose addTmpTarball already have metadata; skipping unpack for units-css@0.4.0
+167 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+168 silly cache afterAdd units-css@0.4.0
+169 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\units-css\0.4.0\package\package.json not in flight; writing
+170 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+171 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\units-css\0.4.0\package\package.json written
+172 silly fetchNamedPackageData css-font-size-keywords
+173 silly mapToRegistry name css-font-size-keywords
+174 silly mapToRegistry using default registry
+175 silly mapToRegistry registry https://registry.npmjs.org/
+176 silly mapToRegistry data Result {
+176 silly mapToRegistry   raw: 'css-font-size-keywords',
+176 silly mapToRegistry   scope: null,
+176 silly mapToRegistry   escapedName: 'css-font-size-keywords',
+176 silly mapToRegistry   name: 'css-font-size-keywords',
+176 silly mapToRegistry   rawSpec: '',
+176 silly mapToRegistry   spec: 'latest',
+176 silly mapToRegistry   type: 'tag' }
+177 silly mapToRegistry uri https://registry.npmjs.org/css-font-size-keywords
+178 silly fetchNamedPackageData css-font-stretch-keywords
+179 silly mapToRegistry name css-font-stretch-keywords
+180 silly mapToRegistry using default registry
+181 silly mapToRegistry registry https://registry.npmjs.org/
+182 silly mapToRegistry data Result {
+182 silly mapToRegistry   raw: 'css-font-stretch-keywords',
+182 silly mapToRegistry   scope: null,
+182 silly mapToRegistry   escapedName: 'css-font-stretch-keywords',
+182 silly mapToRegistry   name: 'css-font-stretch-keywords',
+182 silly mapToRegistry   rawSpec: '',
+182 silly mapToRegistry   spec: 'latest',
+182 silly mapToRegistry   type: 'tag' }
+183 silly mapToRegistry uri https://registry.npmjs.org/css-font-stretch-keywords
+184 silly fetchNamedPackageData css-font-style-keywords
+185 silly mapToRegistry name css-font-style-keywords
+186 silly mapToRegistry using default registry
+187 silly mapToRegistry registry https://registry.npmjs.org/
+188 silly mapToRegistry data Result {
+188 silly mapToRegistry   raw: 'css-font-style-keywords',
+188 silly mapToRegistry   scope: null,
+188 silly mapToRegistry   escapedName: 'css-font-style-keywords',
+188 silly mapToRegistry   name: 'css-font-style-keywords',
+188 silly mapToRegistry   rawSpec: '',
+188 silly mapToRegistry   spec: 'latest',
+188 silly mapToRegistry   type: 'tag' }
+189 silly mapToRegistry uri https://registry.npmjs.org/css-font-style-keywords
+190 silly fetchNamedPackageData css-font-weight-keywords
+191 silly mapToRegistry name css-font-weight-keywords
+192 silly mapToRegistry using default registry
+193 silly mapToRegistry registry https://registry.npmjs.org/
+194 silly mapToRegistry data Result {
+194 silly mapToRegistry   raw: 'css-font-weight-keywords',
+194 silly mapToRegistry   scope: null,
+194 silly mapToRegistry   escapedName: 'css-font-weight-keywords',
+194 silly mapToRegistry   name: 'css-font-weight-keywords',
+194 silly mapToRegistry   rawSpec: '',
+194 silly mapToRegistry   spec: 'latest',
+194 silly mapToRegistry   type: 'tag' }
+195 silly mapToRegistry uri https://registry.npmjs.org/css-font-weight-keywords
+196 silly fetchNamedPackageData css-global-keywords
+197 silly mapToRegistry name css-global-keywords
+198 silly mapToRegistry using default registry
+199 silly mapToRegistry registry https://registry.npmjs.org/
+200 silly mapToRegistry data Result {
+200 silly mapToRegistry   raw: 'css-global-keywords',
+200 silly mapToRegistry   scope: null,
+200 silly mapToRegistry   escapedName: 'css-global-keywords',
+200 silly mapToRegistry   name: 'css-global-keywords',
+200 silly mapToRegistry   rawSpec: '',
+200 silly mapToRegistry   spec: 'latest',
+200 silly mapToRegistry   type: 'tag' }
+201 silly mapToRegistry uri https://registry.npmjs.org/css-global-keywords
+202 silly fetchNamedPackageData css-list-helpers
+203 silly mapToRegistry name css-list-helpers
+204 silly mapToRegistry using default registry
+205 silly mapToRegistry registry https://registry.npmjs.org/
+206 silly mapToRegistry data Result {
+206 silly mapToRegistry   raw: 'css-list-helpers',
+206 silly mapToRegistry   scope: null,
+206 silly mapToRegistry   escapedName: 'css-list-helpers',
+206 silly mapToRegistry   name: 'css-list-helpers',
+206 silly mapToRegistry   rawSpec: '',
+206 silly mapToRegistry   spec: 'latest',
+206 silly mapToRegistry   type: 'tag' }
+207 silly mapToRegistry uri https://registry.npmjs.org/css-list-helpers
+208 silly fetchNamedPackageData css-system-font-keywords
+209 silly mapToRegistry name css-system-font-keywords
+210 silly mapToRegistry using default registry
+211 silly mapToRegistry registry https://registry.npmjs.org/
+212 silly mapToRegistry data Result {
+212 silly mapToRegistry   raw: 'css-system-font-keywords',
+212 silly mapToRegistry   scope: null,
+212 silly mapToRegistry   escapedName: 'css-system-font-keywords',
+212 silly mapToRegistry   name: 'css-system-font-keywords',
+212 silly mapToRegistry   rawSpec: '',
+212 silly mapToRegistry   spec: 'latest',
+212 silly mapToRegistry   type: 'tag' }
+213 silly mapToRegistry uri https://registry.npmjs.org/css-system-font-keywords
+214 silly fetchNamedPackageData tcomb
+215 silly mapToRegistry name tcomb
+216 silly mapToRegistry using default registry
+217 silly mapToRegistry registry https://registry.npmjs.org/
+218 silly mapToRegistry data Result {
+218 silly mapToRegistry   raw: 'tcomb',
+218 silly mapToRegistry   scope: null,
+218 silly mapToRegistry   escapedName: 'tcomb',
+218 silly mapToRegistry   name: 'tcomb',
+218 silly mapToRegistry   rawSpec: '',
+218 silly mapToRegistry   spec: 'latest',
+218 silly mapToRegistry   type: 'tag' }
+219 silly mapToRegistry uri https://registry.npmjs.org/tcomb
+220 silly fetchNamedPackageData unquote
+221 silly mapToRegistry name unquote
+222 silly mapToRegistry using default registry
+223 silly mapToRegistry registry https://registry.npmjs.org/
+224 silly mapToRegistry data Result {
+224 silly mapToRegistry   raw: 'unquote',
+224 silly mapToRegistry   scope: null,
+224 silly mapToRegistry   escapedName: 'unquote',
+224 silly mapToRegistry   name: 'unquote',
+224 silly mapToRegistry   rawSpec: '',
+224 silly mapToRegistry   spec: 'latest',
+224 silly mapToRegistry   type: 'tag' }
+225 silly mapToRegistry uri https://registry.npmjs.org/unquote
+226 verbose request uri https://registry.npmjs.org/css-font-size-keywords
+227 verbose request no auth needed
+228 info attempt registry request try #1 at 3:46:42 PM
+229 http request GET https://registry.npmjs.org/css-font-size-keywords
+230 verbose request uri https://registry.npmjs.org/css-font-stretch-keywords
+231 verbose request no auth needed
+232 info attempt registry request try #1 at 3:46:42 PM
+233 http request GET https://registry.npmjs.org/css-font-stretch-keywords
+234 verbose request uri https://registry.npmjs.org/css-font-style-keywords
+235 verbose request no auth needed
+236 info attempt registry request try #1 at 3:46:42 PM
+237 http request GET https://registry.npmjs.org/css-font-style-keywords
+238 verbose request uri https://registry.npmjs.org/css-font-weight-keywords
+239 verbose request no auth needed
+240 info attempt registry request try #1 at 3:46:42 PM
+241 http request GET https://registry.npmjs.org/css-font-weight-keywords
+242 verbose request uri https://registry.npmjs.org/css-global-keywords
+243 verbose request no auth needed
+244 info attempt registry request try #1 at 3:46:42 PM
+245 http request GET https://registry.npmjs.org/css-global-keywords
+246 verbose request uri https://registry.npmjs.org/css-list-helpers
+247 verbose request no auth needed
+248 info attempt registry request try #1 at 3:46:42 PM
+249 http request GET https://registry.npmjs.org/css-list-helpers
+250 verbose request uri https://registry.npmjs.org/css-system-font-keywords
+251 verbose request no auth needed
+252 info attempt registry request try #1 at 3:46:42 PM
+253 http request GET https://registry.npmjs.org/css-system-font-keywords
+254 verbose request uri https://registry.npmjs.org/tcomb
+255 verbose request no auth needed
+256 info attempt registry request try #1 at 3:46:42 PM
+257 http request GET https://registry.npmjs.org/tcomb
+258 verbose request uri https://registry.npmjs.org/unquote
+259 verbose request no auth needed
+260 info attempt registry request try #1 at 3:46:42 PM
+261 http request GET https://registry.npmjs.org/unquote
+262 http 200 https://registry.npmjs.org/css-font-stretch-keywords
+263 verbose headers { server: 'nginx/1.10.1',
+263 verbose headers   'content-type': 'application/json',
+263 verbose headers   'last-modified': 'Fri, 02 Oct 2015 23:02:28 GMT',
+263 verbose headers   etag: 'W/"560f0d04-e3f"',
+263 verbose headers   'content-encoding': 'gzip',
+263 verbose headers   'cache-control': 'max-age=300',
+263 verbose headers   'content-length': '1007',
+263 verbose headers   'accept-ranges': 'bytes',
+263 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+263 verbose headers   via: '1.1 varnish',
+263 verbose headers   age: '0',
+263 verbose headers   connection: 'keep-alive',
+263 verbose headers   'x-served-by': 'cache-lax8632-LAX',
+263 verbose headers   'x-cache': 'HIT',
+263 verbose headers   'x-cache-hits': '1',
+263 verbose headers   'x-timer': 'S1507668377.064096,VS0,VE91',
+263 verbose headers   vary: 'Accept-Encoding, Accept' }
+264 silly get cb [ 200,
+264 silly get   { server: 'nginx/1.10.1',
+264 silly get     'content-type': 'application/json',
+264 silly get     'last-modified': 'Fri, 02 Oct 2015 23:02:28 GMT',
+264 silly get     etag: 'W/"560f0d04-e3f"',
+264 silly get     'content-encoding': 'gzip',
+264 silly get     'cache-control': 'max-age=300',
+264 silly get     'content-length': '1007',
+264 silly get     'accept-ranges': 'bytes',
+264 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+264 silly get     via: '1.1 varnish',
+264 silly get     age: '0',
+264 silly get     connection: 'keep-alive',
+264 silly get     'x-served-by': 'cache-lax8632-LAX',
+264 silly get     'x-cache': 'HIT',
+264 silly get     'x-cache-hits': '1',
+264 silly get     'x-timer': 'S1507668377.064096,VS0,VE91',
+264 silly get     vary: 'Accept-Encoding, Accept' } ]
+265 verbose get saving css-font-stretch-keywords to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-font-stretch-keywords\.cache.json
+266 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+267 http 200 https://registry.npmjs.org/css-font-size-keywords
+268 verbose headers { server: 'nginx/1.10.1',
+268 verbose headers   'content-type': 'application/json',
+268 verbose headers   'last-modified': 'Sun, 27 Sep 2015 10:17:06 GMT',
+268 verbose headers   etag: 'W/"5607c222-95b"',
+268 verbose headers   'content-encoding': 'gzip',
+268 verbose headers   'cache-control': 'max-age=300',
+268 verbose headers   'content-length': '867',
+268 verbose headers   'accept-ranges': 'bytes',
+268 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+268 verbose headers   via: '1.1 varnish',
+268 verbose headers   age: '0',
+268 verbose headers   connection: 'keep-alive',
+268 verbose headers   'x-served-by': 'cache-lax8630-LAX',
+268 verbose headers   'x-cache': 'HIT',
+268 verbose headers   'x-cache-hits': '1',
+268 verbose headers   'x-timer': 'S1507668377.063893,VS0,VE91',
+268 verbose headers   vary: 'Accept-Encoding, Accept' }
+269 silly get cb [ 200,
+269 silly get   { server: 'nginx/1.10.1',
+269 silly get     'content-type': 'application/json',
+269 silly get     'last-modified': 'Sun, 27 Sep 2015 10:17:06 GMT',
+269 silly get     etag: 'W/"5607c222-95b"',
+269 silly get     'content-encoding': 'gzip',
+269 silly get     'cache-control': 'max-age=300',
+269 silly get     'content-length': '867',
+269 silly get     'accept-ranges': 'bytes',
+269 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+269 silly get     via: '1.1 varnish',
+269 silly get     age: '0',
+269 silly get     connection: 'keep-alive',
+269 silly get     'x-served-by': 'cache-lax8630-LAX',
+269 silly get     'x-cache': 'HIT',
+269 silly get     'x-cache-hits': '1',
+269 silly get     'x-timer': 'S1507668377.063893,VS0,VE91',
+269 silly get     vary: 'Accept-Encoding, Accept' } ]
+270 verbose get saving css-font-size-keywords to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-font-size-keywords\.cache.json
+271 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+272 silly resolveWithNewModule css-font-stretch-keywords@1.0.1 checking installable status
+273 silly cache add args [ 'css-font-stretch-keywords@^1.0.1', null ]
+274 verbose cache add spec css-font-stretch-keywords@^1.0.1
+275 silly cache add parsed spec Result {
+275 silly cache add   raw: 'css-font-stretch-keywords@^1.0.1',
+275 silly cache add   scope: null,
+275 silly cache add   escapedName: 'css-font-stretch-keywords',
+275 silly cache add   name: 'css-font-stretch-keywords',
+275 silly cache add   rawSpec: '^1.0.1',
+275 silly cache add   spec: '>=1.0.1 <2.0.0',
+275 silly cache add   type: 'range' }
+276 silly addNamed css-font-stretch-keywords@>=1.0.1 <2.0.0
+277 verbose addNamed ">=1.0.1 <2.0.0" is a valid semver range for css-font-stretch-keywords
+278 silly addNameRange { name: 'css-font-stretch-keywords',
+278 silly addNameRange   range: '>=1.0.1 <2.0.0',
+278 silly addNameRange   hasData: false }
+279 silly mapToRegistry name css-font-stretch-keywords
+280 silly mapToRegistry using default registry
+281 silly mapToRegistry registry https://registry.npmjs.org/
+282 silly mapToRegistry data Result {
+282 silly mapToRegistry   raw: 'css-font-stretch-keywords',
+282 silly mapToRegistry   scope: null,
+282 silly mapToRegistry   escapedName: 'css-font-stretch-keywords',
+282 silly mapToRegistry   name: 'css-font-stretch-keywords',
+282 silly mapToRegistry   rawSpec: '',
+282 silly mapToRegistry   spec: 'latest',
+282 silly mapToRegistry   type: 'tag' }
+283 silly mapToRegistry uri https://registry.npmjs.org/css-font-stretch-keywords
+284 verbose addNameRange registry:https://registry.npmjs.org/css-font-stretch-keywords not in flight; fetching
+285 silly resolveWithNewModule css-font-size-keywords@1.0.0 checking installable status
+286 silly cache add args [ 'css-font-size-keywords@^1.0.0', null ]
+287 verbose cache add spec css-font-size-keywords@^1.0.0
+288 silly cache add parsed spec Result {
+288 silly cache add   raw: 'css-font-size-keywords@^1.0.0',
+288 silly cache add   scope: null,
+288 silly cache add   escapedName: 'css-font-size-keywords',
+288 silly cache add   name: 'css-font-size-keywords',
+288 silly cache add   rawSpec: '^1.0.0',
+288 silly cache add   spec: '>=1.0.0 <2.0.0',
+288 silly cache add   type: 'range' }
+289 silly addNamed css-font-size-keywords@>=1.0.0 <2.0.0
+290 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for css-font-size-keywords
+291 silly addNameRange { name: 'css-font-size-keywords',
+291 silly addNameRange   range: '>=1.0.0 <2.0.0',
+291 silly addNameRange   hasData: false }
+292 silly mapToRegistry name css-font-size-keywords
+293 silly mapToRegistry using default registry
+294 silly mapToRegistry registry https://registry.npmjs.org/
+295 silly mapToRegistry data Result {
+295 silly mapToRegistry   raw: 'css-font-size-keywords',
+295 silly mapToRegistry   scope: null,
+295 silly mapToRegistry   escapedName: 'css-font-size-keywords',
+295 silly mapToRegistry   name: 'css-font-size-keywords',
+295 silly mapToRegistry   rawSpec: '',
+295 silly mapToRegistry   spec: 'latest',
+295 silly mapToRegistry   type: 'tag' }
+296 silly mapToRegistry uri https://registry.npmjs.org/css-font-size-keywords
+297 verbose addNameRange registry:https://registry.npmjs.org/css-font-size-keywords not in flight; fetching
+298 verbose get https://registry.npmjs.org/css-font-stretch-keywords not expired, no request
+299 silly addNameRange number 2 { name: 'css-font-stretch-keywords',
+299 silly addNameRange   range: '>=1.0.1 <2.0.0',
+299 silly addNameRange   hasData: true }
+300 silly addNameRange versions [ 'css-font-stretch-keywords', [ '1.0.0', '1.0.1' ] ]
+301 silly addNamed css-font-stretch-keywords@1.0.1
+302 verbose addNamed "1.0.1" is a plain semver version for css-font-stretch-keywords
+303 verbose get https://registry.npmjs.org/css-font-size-keywords not expired, no request
+304 silly addNameRange number 2 { name: 'css-font-size-keywords',
+304 silly addNameRange   range: '>=1.0.0 <2.0.0',
+304 silly addNameRange   hasData: true }
+305 silly addNameRange versions [ 'css-font-size-keywords', [ '1.0.0' ] ]
+306 silly addNamed css-font-size-keywords@1.0.0
+307 verbose addNamed "1.0.0" is a plain semver version for css-font-size-keywords
+308 silly mapToRegistry name css-font-stretch-keywords
+309 silly mapToRegistry using default registry
+310 silly mapToRegistry registry https://registry.npmjs.org/
+311 silly mapToRegistry data Result {
+311 silly mapToRegistry   raw: 'css-font-stretch-keywords',
+311 silly mapToRegistry   scope: null,
+311 silly mapToRegistry   escapedName: 'css-font-stretch-keywords',
+311 silly mapToRegistry   name: 'css-font-stretch-keywords',
+311 silly mapToRegistry   rawSpec: '',
+311 silly mapToRegistry   spec: 'latest',
+311 silly mapToRegistry   type: 'tag' }
+312 silly mapToRegistry uri https://registry.npmjs.org/css-font-stretch-keywords
+313 verbose addRemoteTarball https://registry.npmjs.org/css-font-stretch-keywords/-/css-font-stretch-keywords-1.0.1.tgz not in flight; adding
+314 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-font-stretch-keywords/-/css-font-stretch-keywords-1.0.1.tgz',
+314 verbose addRemoteTarball   '50cee9b9ba031fb5c952d4723139f1e107b54b10' ]
+315 silly mapToRegistry name css-font-size-keywords
+316 silly mapToRegistry using default registry
+317 silly mapToRegistry registry https://registry.npmjs.org/
+318 silly mapToRegistry data Result {
+318 silly mapToRegistry   raw: 'css-font-size-keywords',
+318 silly mapToRegistry   scope: null,
+318 silly mapToRegistry   escapedName: 'css-font-size-keywords',
+318 silly mapToRegistry   name: 'css-font-size-keywords',
+318 silly mapToRegistry   rawSpec: '',
+318 silly mapToRegistry   spec: 'latest',
+318 silly mapToRegistry   type: 'tag' }
+319 silly mapToRegistry uri https://registry.npmjs.org/css-font-size-keywords
+320 verbose addRemoteTarball https://registry.npmjs.org/css-font-size-keywords/-/css-font-size-keywords-1.0.0.tgz not in flight; adding
+321 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-font-size-keywords/-/css-font-size-keywords-1.0.0.tgz',
+321 verbose addRemoteTarball   '854875ace9aca6a8d2ee0d345a44aae9bb6db6cb' ]
+322 http 200 https://registry.npmjs.org/css-global-keywords
+323 verbose headers { server: 'nginx/1.10.1',
+323 verbose headers   'content-type': 'application/json',
+323 verbose headers   'last-modified': 'Fri, 02 Oct 2015 23:04:01 GMT',
+323 verbose headers   etag: 'W/"560f0d61-d10"',
+323 verbose headers   'content-encoding': 'gzip',
+323 verbose headers   'cache-control': 'max-age=300',
+323 verbose headers   'content-length': '963',
+323 verbose headers   'accept-ranges': 'bytes',
+323 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+323 verbose headers   via: '1.1 varnish',
+323 verbose headers   age: '0',
+323 verbose headers   connection: 'keep-alive',
+323 verbose headers   'x-served-by': 'cache-lax8622-LAX',
+323 verbose headers   'x-cache': 'HIT',
+323 verbose headers   'x-cache-hits': '1',
+323 verbose headers   'x-timer': 'S1507668377.169763,VS0,VE30',
+323 verbose headers   vary: 'Accept-Encoding, Accept' }
+324 silly get cb [ 200,
+324 silly get   { server: 'nginx/1.10.1',
+324 silly get     'content-type': 'application/json',
+324 silly get     'last-modified': 'Fri, 02 Oct 2015 23:04:01 GMT',
+324 silly get     etag: 'W/"560f0d61-d10"',
+324 silly get     'content-encoding': 'gzip',
+324 silly get     'cache-control': 'max-age=300',
+324 silly get     'content-length': '963',
+324 silly get     'accept-ranges': 'bytes',
+324 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+324 silly get     via: '1.1 varnish',
+324 silly get     age: '0',
+324 silly get     connection: 'keep-alive',
+324 silly get     'x-served-by': 'cache-lax8622-LAX',
+324 silly get     'x-cache': 'HIT',
+324 silly get     'x-cache-hits': '1',
+324 silly get     'x-timer': 'S1507668377.169763,VS0,VE30',
+324 silly get     vary: 'Accept-Encoding, Accept' } ]
+325 verbose get saving css-global-keywords to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-global-keywords\.cache.json
+326 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+327 info retry fetch attempt 1 at 3:46:42 PM
+328 info attempt registry request try #1 at 3:46:42 PM
+329 http fetch GET https://registry.npmjs.org/css-font-stretch-keywords/-/css-font-stretch-keywords-1.0.1.tgz
+330 info retry fetch attempt 1 at 3:46:42 PM
+331 info attempt registry request try #1 at 3:46:42 PM
+332 http fetch GET https://registry.npmjs.org/css-font-size-keywords/-/css-font-size-keywords-1.0.0.tgz
+333 http 200 https://registry.npmjs.org/tcomb
+334 verbose headers { server: 'nginx/1.10.1',
+334 verbose headers   'content-type': 'application/json',
+334 verbose headers   'last-modified': 'Wed, 04 Oct 2017 23:50:06 GMT',
+334 verbose headers   etag: 'W/"59d573ae-18a68"',
+334 verbose headers   'content-encoding': 'gzip',
+334 verbose headers   'cache-control': 'max-age=300',
+334 verbose headers   'content-length': '12220',
+334 verbose headers   'accept-ranges': 'bytes',
+334 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+334 verbose headers   via: '1.1 varnish',
+334 verbose headers   age: '106',
+334 verbose headers   connection: 'keep-alive',
+334 verbose headers   'x-served-by': 'cache-lax8634-LAX',
+334 verbose headers   'x-cache': 'HIT',
+334 verbose headers   'x-cache-hits': '1',
+334 verbose headers   'x-timer': 'S1507668377.180401,VS0,VE1',
+334 verbose headers   vary: 'Accept-Encoding, Accept' }
+335 silly get cb [ 200,
+335 silly get   { server: 'nginx/1.10.1',
+335 silly get     'content-type': 'application/json',
+335 silly get     'last-modified': 'Wed, 04 Oct 2017 23:50:06 GMT',
+335 silly get     etag: 'W/"59d573ae-18a68"',
+335 silly get     'content-encoding': 'gzip',
+335 silly get     'cache-control': 'max-age=300',
+335 silly get     'content-length': '12220',
+335 silly get     'accept-ranges': 'bytes',
+335 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+335 silly get     via: '1.1 varnish',
+335 silly get     age: '106',
+335 silly get     connection: 'keep-alive',
+335 silly get     'x-served-by': 'cache-lax8634-LAX',
+335 silly get     'x-cache': 'HIT',
+335 silly get     'x-cache-hits': '1',
+335 silly get     'x-timer': 'S1507668377.180401,VS0,VE1',
+335 silly get     vary: 'Accept-Encoding, Accept' } ]
+336 verbose get saving tcomb to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\tcomb\.cache.json
+337 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+338 http 200 https://registry.npmjs.org/css-font-weight-keywords
+339 verbose headers { server: 'nginx/1.10.1',
+339 verbose headers   'content-type': 'application/json',
+339 verbose headers   'last-modified': 'Fri, 02 Oct 2015 22:44:45 GMT',
+339 verbose headers   etag: 'W/"560f08dd-98d"',
+339 verbose headers   'content-encoding': 'gzip',
+339 verbose headers   'cache-control': 'max-age=300',
+339 verbose headers   'content-length': '888',
+339 verbose headers   'accept-ranges': 'bytes',
+339 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+339 verbose headers   via: '1.1 varnish',
+339 verbose headers   age: '0',
+339 verbose headers   connection: 'keep-alive',
+339 verbose headers   'x-served-by': 'cache-lax8633-LAX',
+339 verbose headers   'x-cache': 'HIT',
+339 verbose headers   'x-cache-hits': '1',
+339 verbose headers   'x-timer': 'S1507668377.177807,VS0,VE31',
+339 verbose headers   vary: 'Accept-Encoding, Accept' }
+340 silly get cb [ 200,
+340 silly get   { server: 'nginx/1.10.1',
+340 silly get     'content-type': 'application/json',
+340 silly get     'last-modified': 'Fri, 02 Oct 2015 22:44:45 GMT',
+340 silly get     etag: 'W/"560f08dd-98d"',
+340 silly get     'content-encoding': 'gzip',
+340 silly get     'cache-control': 'max-age=300',
+340 silly get     'content-length': '888',
+340 silly get     'accept-ranges': 'bytes',
+340 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+340 silly get     via: '1.1 varnish',
+340 silly get     age: '0',
+340 silly get     connection: 'keep-alive',
+340 silly get     'x-served-by': 'cache-lax8633-LAX',
+340 silly get     'x-cache': 'HIT',
+340 silly get     'x-cache-hits': '1',
+340 silly get     'x-timer': 'S1507668377.177807,VS0,VE31',
+340 silly get     vary: 'Accept-Encoding, Accept' } ]
+341 verbose get saving css-font-weight-keywords to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-font-weight-keywords\.cache.json
+342 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+343 http 200 https://registry.npmjs.org/css-list-helpers
+344 verbose headers { server: 'nginx/1.10.1',
+344 verbose headers   'content-type': 'application/json',
+344 verbose headers   'last-modified': 'Fri, 02 Oct 2015 05:40:10 GMT',
+344 verbose headers   etag: 'W/"560e18ba-11aa"',
+344 verbose headers   'content-encoding': 'gzip',
+344 verbose headers   'cache-control': 'max-age=300',
+344 verbose headers   'content-length': '1326',
+344 verbose headers   'accept-ranges': 'bytes',
+344 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+344 verbose headers   via: '1.1 varnish',
+344 verbose headers   age: '0',
+344 verbose headers   connection: 'keep-alive',
+344 verbose headers   'x-served-by': 'cache-lax8629-LAX',
+344 verbose headers   'x-cache': 'MISS',
+344 verbose headers   'x-cache-hits': '0',
+344 verbose headers   'x-timer': 'S1507668377.179593,VS0,VE30',
+344 verbose headers   vary: 'Accept-Encoding, Accept' }
+345 silly get cb [ 200,
+345 silly get   { server: 'nginx/1.10.1',
+345 silly get     'content-type': 'application/json',
+345 silly get     'last-modified': 'Fri, 02 Oct 2015 05:40:10 GMT',
+345 silly get     etag: 'W/"560e18ba-11aa"',
+345 silly get     'content-encoding': 'gzip',
+345 silly get     'cache-control': 'max-age=300',
+345 silly get     'content-length': '1326',
+345 silly get     'accept-ranges': 'bytes',
+345 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+345 silly get     via: '1.1 varnish',
+345 silly get     age: '0',
+345 silly get     connection: 'keep-alive',
+345 silly get     'x-served-by': 'cache-lax8629-LAX',
+345 silly get     'x-cache': 'MISS',
+345 silly get     'x-cache-hits': '0',
+345 silly get     'x-timer': 'S1507668377.179593,VS0,VE30',
+345 silly get     vary: 'Accept-Encoding, Accept' } ]
+346 verbose get saving css-list-helpers to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-list-helpers\.cache.json
+347 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+348 http 200 https://registry.npmjs.org/unquote
+349 verbose headers { server: 'nginx/1.10.1',
+349 verbose headers   'content-type': 'application/json',
+349 verbose headers   'last-modified': 'Wed, 18 Mar 2015 20:12:41 GMT',
+349 verbose headers   etag: 'W/"5509dc39-c2e"',
+349 verbose headers   'content-encoding': 'gzip',
+349 verbose headers   'cache-control': 'max-age=300',
+349 verbose headers   'content-length': '963',
+349 verbose headers   'accept-ranges': 'bytes',
+349 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+349 verbose headers   via: '1.1 varnish',
+349 verbose headers   age: '0',
+349 verbose headers   connection: 'keep-alive',
+349 verbose headers   'x-served-by': 'cache-lax8621-LAX',
+349 verbose headers   'x-cache': 'HIT',
+349 verbose headers   'x-cache-hits': '1',
+349 verbose headers   'x-timer': 'S1507668377.180627,VS0,VE30',
+349 verbose headers   vary: 'Accept-Encoding, Accept' }
+350 silly get cb [ 200,
+350 silly get   { server: 'nginx/1.10.1',
+350 silly get     'content-type': 'application/json',
+350 silly get     'last-modified': 'Wed, 18 Mar 2015 20:12:41 GMT',
+350 silly get     etag: 'W/"5509dc39-c2e"',
+350 silly get     'content-encoding': 'gzip',
+350 silly get     'cache-control': 'max-age=300',
+350 silly get     'content-length': '963',
+350 silly get     'accept-ranges': 'bytes',
+350 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+350 silly get     via: '1.1 varnish',
+350 silly get     age: '0',
+350 silly get     connection: 'keep-alive',
+350 silly get     'x-served-by': 'cache-lax8621-LAX',
+350 silly get     'x-cache': 'HIT',
+350 silly get     'x-cache-hits': '1',
+350 silly get     'x-timer': 'S1507668377.180627,VS0,VE30',
+350 silly get     vary: 'Accept-Encoding, Accept' } ]
+351 verbose get saving unquote to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\unquote\.cache.json
+352 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+353 http 200 https://registry.npmjs.org/css-system-font-keywords
+354 verbose headers { server: 'nginx/1.10.1',
+354 verbose headers   'content-type': 'application/json',
+354 verbose headers   'last-modified': 'Fri, 02 Oct 2015 23:19:15 GMT',
+354 verbose headers   etag: 'W/"560f10f3-908"',
+354 verbose headers   'content-encoding': 'gzip',
+354 verbose headers   'cache-control': 'max-age=300',
+354 verbose headers   'content-length': '828',
+354 verbose headers   'accept-ranges': 'bytes',
+354 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+354 verbose headers   via: '1.1 varnish',
+354 verbose headers   age: '0',
+354 verbose headers   connection: 'keep-alive',
+354 verbose headers   'x-served-by': 'cache-lax8626-LAX',
+354 verbose headers   'x-cache': 'HIT',
+354 verbose headers   'x-cache-hits': '1',
+354 verbose headers   'x-timer': 'S1507668377.172940,VS0,VE40',
+354 verbose headers   vary: 'Accept-Encoding, Accept' }
+355 silly get cb [ 200,
+355 silly get   { server: 'nginx/1.10.1',
+355 silly get     'content-type': 'application/json',
+355 silly get     'last-modified': 'Fri, 02 Oct 2015 23:19:15 GMT',
+355 silly get     etag: 'W/"560f10f3-908"',
+355 silly get     'content-encoding': 'gzip',
+355 silly get     'cache-control': 'max-age=300',
+355 silly get     'content-length': '828',
+355 silly get     'accept-ranges': 'bytes',
+355 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+355 silly get     via: '1.1 varnish',
+355 silly get     age: '0',
+355 silly get     connection: 'keep-alive',
+355 silly get     'x-served-by': 'cache-lax8626-LAX',
+355 silly get     'x-cache': 'HIT',
+355 silly get     'x-cache-hits': '1',
+355 silly get     'x-timer': 'S1507668377.172940,VS0,VE40',
+355 silly get     vary: 'Accept-Encoding, Accept' } ]
+356 verbose get saving css-system-font-keywords to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-system-font-keywords\.cache.json
+357 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+358 silly resolveWithNewModule css-global-keywords@1.0.1 checking installable status
+359 silly cache add args [ 'css-global-keywords@^1.0.1', null ]
+360 verbose cache add spec css-global-keywords@^1.0.1
+361 silly cache add parsed spec Result {
+361 silly cache add   raw: 'css-global-keywords@^1.0.1',
+361 silly cache add   scope: null,
+361 silly cache add   escapedName: 'css-global-keywords',
+361 silly cache add   name: 'css-global-keywords',
+361 silly cache add   rawSpec: '^1.0.1',
+361 silly cache add   spec: '>=1.0.1 <2.0.0',
+361 silly cache add   type: 'range' }
+362 silly addNamed css-global-keywords@>=1.0.1 <2.0.0
+363 verbose addNamed ">=1.0.1 <2.0.0" is a valid semver range for css-global-keywords
+364 silly addNameRange { name: 'css-global-keywords',
+364 silly addNameRange   range: '>=1.0.1 <2.0.0',
+364 silly addNameRange   hasData: false }
+365 silly mapToRegistry name css-global-keywords
+366 silly mapToRegistry using default registry
+367 silly mapToRegistry registry https://registry.npmjs.org/
+368 silly mapToRegistry data Result {
+368 silly mapToRegistry   raw: 'css-global-keywords',
+368 silly mapToRegistry   scope: null,
+368 silly mapToRegistry   escapedName: 'css-global-keywords',
+368 silly mapToRegistry   name: 'css-global-keywords',
+368 silly mapToRegistry   rawSpec: '',
+368 silly mapToRegistry   spec: 'latest',
+368 silly mapToRegistry   type: 'tag' }
+369 silly mapToRegistry uri https://registry.npmjs.org/css-global-keywords
+370 verbose addNameRange registry:https://registry.npmjs.org/css-global-keywords not in flight; fetching
+371 silly resolveWithNewModule tcomb@2.7.0 checking installable status
+372 silly cache add args [ 'tcomb@^2.5.0', null ]
+373 verbose cache add spec tcomb@^2.5.0
+374 silly cache add parsed spec Result {
+374 silly cache add   raw: 'tcomb@^2.5.0',
+374 silly cache add   scope: null,
+374 silly cache add   escapedName: 'tcomb',
+374 silly cache add   name: 'tcomb',
+374 silly cache add   rawSpec: '^2.5.0',
+374 silly cache add   spec: '>=2.5.0 <3.0.0',
+374 silly cache add   type: 'range' }
+375 silly addNamed tcomb@>=2.5.0 <3.0.0
+376 verbose addNamed ">=2.5.0 <3.0.0" is a valid semver range for tcomb
+377 silly addNameRange { name: 'tcomb', range: '>=2.5.0 <3.0.0', hasData: false }
+378 silly mapToRegistry name tcomb
+379 silly mapToRegistry using default registry
+380 silly mapToRegistry registry https://registry.npmjs.org/
+381 silly mapToRegistry data Result {
+381 silly mapToRegistry   raw: 'tcomb',
+381 silly mapToRegistry   scope: null,
+381 silly mapToRegistry   escapedName: 'tcomb',
+381 silly mapToRegistry   name: 'tcomb',
+381 silly mapToRegistry   rawSpec: '',
+381 silly mapToRegistry   spec: 'latest',
+381 silly mapToRegistry   type: 'tag' }
+382 silly mapToRegistry uri https://registry.npmjs.org/tcomb
+383 verbose addNameRange registry:https://registry.npmjs.org/tcomb not in flight; fetching
+384 silly resolveWithNewModule css-font-weight-keywords@1.0.0 checking installable status
+385 silly cache add args [ 'css-font-weight-keywords@^1.0.0', null ]
+386 verbose cache add spec css-font-weight-keywords@^1.0.0
+387 silly cache add parsed spec Result {
+387 silly cache add   raw: 'css-font-weight-keywords@^1.0.0',
+387 silly cache add   scope: null,
+387 silly cache add   escapedName: 'css-font-weight-keywords',
+387 silly cache add   name: 'css-font-weight-keywords',
+387 silly cache add   rawSpec: '^1.0.0',
+387 silly cache add   spec: '>=1.0.0 <2.0.0',
+387 silly cache add   type: 'range' }
+388 silly addNamed css-font-weight-keywords@>=1.0.0 <2.0.0
+389 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for css-font-weight-keywords
+390 silly addNameRange { name: 'css-font-weight-keywords',
+390 silly addNameRange   range: '>=1.0.0 <2.0.0',
+390 silly addNameRange   hasData: false }
+391 silly mapToRegistry name css-font-weight-keywords
+392 silly mapToRegistry using default registry
+393 silly mapToRegistry registry https://registry.npmjs.org/
+394 silly mapToRegistry data Result {
+394 silly mapToRegistry   raw: 'css-font-weight-keywords',
+394 silly mapToRegistry   scope: null,
+394 silly mapToRegistry   escapedName: 'css-font-weight-keywords',
+394 silly mapToRegistry   name: 'css-font-weight-keywords',
+394 silly mapToRegistry   rawSpec: '',
+394 silly mapToRegistry   spec: 'latest',
+394 silly mapToRegistry   type: 'tag' }
+395 silly mapToRegistry uri https://registry.npmjs.org/css-font-weight-keywords
+396 verbose addNameRange registry:https://registry.npmjs.org/css-font-weight-keywords not in flight; fetching
+397 silly resolveWithNewModule css-list-helpers@1.0.1 checking installable status
+398 silly cache add args [ 'css-list-helpers@^1.0.1', null ]
+399 verbose cache add spec css-list-helpers@^1.0.1
+400 silly cache add parsed spec Result {
+400 silly cache add   raw: 'css-list-helpers@^1.0.1',
+400 silly cache add   scope: null,
+400 silly cache add   escapedName: 'css-list-helpers',
+400 silly cache add   name: 'css-list-helpers',
+400 silly cache add   rawSpec: '^1.0.1',
+400 silly cache add   spec: '>=1.0.1 <2.0.0',
+400 silly cache add   type: 'range' }
+401 silly addNamed css-list-helpers@>=1.0.1 <2.0.0
+402 verbose addNamed ">=1.0.1 <2.0.0" is a valid semver range for css-list-helpers
+403 silly addNameRange { name: 'css-list-helpers',
+403 silly addNameRange   range: '>=1.0.1 <2.0.0',
+403 silly addNameRange   hasData: false }
+404 silly mapToRegistry name css-list-helpers
+405 silly mapToRegistry using default registry
+406 silly mapToRegistry registry https://registry.npmjs.org/
+407 silly mapToRegistry data Result {
+407 silly mapToRegistry   raw: 'css-list-helpers',
+407 silly mapToRegistry   scope: null,
+407 silly mapToRegistry   escapedName: 'css-list-helpers',
+407 silly mapToRegistry   name: 'css-list-helpers',
+407 silly mapToRegistry   rawSpec: '',
+407 silly mapToRegistry   spec: 'latest',
+407 silly mapToRegistry   type: 'tag' }
+408 silly mapToRegistry uri https://registry.npmjs.org/css-list-helpers
+409 verbose addNameRange registry:https://registry.npmjs.org/css-list-helpers not in flight; fetching
+410 silly resolveWithNewModule unquote@1.1.0 checking installable status
+411 silly cache add args [ 'unquote@^1.1.0', null ]
+412 verbose cache add spec unquote@^1.1.0
+413 silly cache add parsed spec Result {
+413 silly cache add   raw: 'unquote@^1.1.0',
+413 silly cache add   scope: null,
+413 silly cache add   escapedName: 'unquote',
+413 silly cache add   name: 'unquote',
+413 silly cache add   rawSpec: '^1.1.0',
+413 silly cache add   spec: '>=1.1.0 <2.0.0',
+413 silly cache add   type: 'range' }
+414 silly addNamed unquote@>=1.1.0 <2.0.0
+415 verbose addNamed ">=1.1.0 <2.0.0" is a valid semver range for unquote
+416 silly addNameRange { name: 'unquote', range: '>=1.1.0 <2.0.0', hasData: false }
+417 silly mapToRegistry name unquote
+418 silly mapToRegistry using default registry
+419 silly mapToRegistry registry https://registry.npmjs.org/
+420 silly mapToRegistry data Result {
+420 silly mapToRegistry   raw: 'unquote',
+420 silly mapToRegistry   scope: null,
+420 silly mapToRegistry   escapedName: 'unquote',
+420 silly mapToRegistry   name: 'unquote',
+420 silly mapToRegistry   rawSpec: '',
+420 silly mapToRegistry   spec: 'latest',
+420 silly mapToRegistry   type: 'tag' }
+421 silly mapToRegistry uri https://registry.npmjs.org/unquote
+422 verbose addNameRange registry:https://registry.npmjs.org/unquote not in flight; fetching
+423 verbose get https://registry.npmjs.org/css-global-keywords not expired, no request
+424 silly addNameRange number 2 { name: 'css-global-keywords',
+424 silly addNameRange   range: '>=1.0.1 <2.0.0',
+424 silly addNameRange   hasData: true }
+425 silly addNameRange versions [ 'css-global-keywords', [ '1.0.0', '1.0.1' ] ]
+426 silly addNamed css-global-keywords@1.0.1
+427 verbose addNamed "1.0.1" is a plain semver version for css-global-keywords
+428 silly resolveWithNewModule css-system-font-keywords@1.0.0 checking installable status
+429 silly cache add args [ 'css-system-font-keywords@^1.0.0', null ]
+430 verbose cache add spec css-system-font-keywords@^1.0.0
+431 silly cache add parsed spec Result {
+431 silly cache add   raw: 'css-system-font-keywords@^1.0.0',
+431 silly cache add   scope: null,
+431 silly cache add   escapedName: 'css-system-font-keywords',
+431 silly cache add   name: 'css-system-font-keywords',
+431 silly cache add   rawSpec: '^1.0.0',
+431 silly cache add   spec: '>=1.0.0 <2.0.0',
+431 silly cache add   type: 'range' }
+432 silly addNamed css-system-font-keywords@>=1.0.0 <2.0.0
+433 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for css-system-font-keywords
+434 silly addNameRange { name: 'css-system-font-keywords',
+434 silly addNameRange   range: '>=1.0.0 <2.0.0',
+434 silly addNameRange   hasData: false }
+435 silly mapToRegistry name css-system-font-keywords
+436 silly mapToRegistry using default registry
+437 silly mapToRegistry registry https://registry.npmjs.org/
+438 silly mapToRegistry data Result {
+438 silly mapToRegistry   raw: 'css-system-font-keywords',
+438 silly mapToRegistry   scope: null,
+438 silly mapToRegistry   escapedName: 'css-system-font-keywords',
+438 silly mapToRegistry   name: 'css-system-font-keywords',
+438 silly mapToRegistry   rawSpec: '',
+438 silly mapToRegistry   spec: 'latest',
+438 silly mapToRegistry   type: 'tag' }
+439 silly mapToRegistry uri https://registry.npmjs.org/css-system-font-keywords
+440 verbose addNameRange registry:https://registry.npmjs.org/css-system-font-keywords not in flight; fetching
+441 http 200 https://registry.npmjs.org/css-font-style-keywords
+442 verbose headers { server: 'nginx/1.10.1',
+442 verbose headers   'content-type': 'application/json',
+442 verbose headers   'last-modified': 'Fri, 02 Oct 2015 23:00:56 GMT',
+442 verbose headers   etag: 'W/"560f0ca8-ce3"',
+442 verbose headers   'content-encoding': 'gzip',
+442 verbose headers   'cache-control': 'max-age=300',
+442 verbose headers   'content-length': '940',
+442 verbose headers   'accept-ranges': 'bytes',
+442 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+442 verbose headers   via: '1.1 varnish',
+442 verbose headers   age: '0',
+442 verbose headers   connection: 'keep-alive',
+442 verbose headers   'x-served-by': 'cache-lax8625-LAX',
+442 verbose headers   'x-cache': 'HIT',
+442 verbose headers   'x-cache-hits': '1',
+442 verbose headers   'x-timer': 'S1507668377.177524,VS0,VE77',
+442 verbose headers   vary: 'Accept-Encoding, Accept' }
+443 silly get cb [ 200,
+443 silly get   { server: 'nginx/1.10.1',
+443 silly get     'content-type': 'application/json',
+443 silly get     'last-modified': 'Fri, 02 Oct 2015 23:00:56 GMT',
+443 silly get     etag: 'W/"560f0ca8-ce3"',
+443 silly get     'content-encoding': 'gzip',
+443 silly get     'cache-control': 'max-age=300',
+443 silly get     'content-length': '940',
+443 silly get     'accept-ranges': 'bytes',
+443 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+443 silly get     via: '1.1 varnish',
+443 silly get     age: '0',
+443 silly get     connection: 'keep-alive',
+443 silly get     'x-served-by': 'cache-lax8625-LAX',
+443 silly get     'x-cache': 'HIT',
+443 silly get     'x-cache-hits': '1',
+443 silly get     'x-timer': 'S1507668377.177524,VS0,VE77',
+443 silly get     vary: 'Accept-Encoding, Accept' } ]
+444 verbose get saving css-font-style-keywords to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\css-font-style-keywords\.cache.json
+445 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+446 silly mapToRegistry name css-global-keywords
+447 silly mapToRegistry using default registry
+448 silly mapToRegistry registry https://registry.npmjs.org/
+449 silly mapToRegistry data Result {
+449 silly mapToRegistry   raw: 'css-global-keywords',
+449 silly mapToRegistry   scope: null,
+449 silly mapToRegistry   escapedName: 'css-global-keywords',
+449 silly mapToRegistry   name: 'css-global-keywords',
+449 silly mapToRegistry   rawSpec: '',
+449 silly mapToRegistry   spec: 'latest',
+449 silly mapToRegistry   type: 'tag' }
+450 silly mapToRegistry uri https://registry.npmjs.org/css-global-keywords
+451 verbose addRemoteTarball https://registry.npmjs.org/css-global-keywords/-/css-global-keywords-1.0.1.tgz not in flight; adding
+452 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-global-keywords/-/css-global-keywords-1.0.1.tgz',
+452 verbose addRemoteTarball   '72a9aea72796d019b1d2a3252de4e5aaa37e4a69' ]
+453 http fetch 200 https://registry.npmjs.org/css-font-stretch-keywords/-/css-font-stretch-keywords-1.0.1.tgz
+454 http fetch 200 https://registry.npmjs.org/css-font-size-keywords/-/css-font-size-keywords-1.0.0.tgz
+455 verbose get https://registry.npmjs.org/tcomb not expired, no request
+456 silly addNameRange number 2 { name: 'tcomb', range: '>=2.5.0 <3.0.0', hasData: true }
+457 silly addNameRange versions [ 'tcomb',
+457 silly addNameRange   [ '0.0.1',
+457 silly addNameRange     '0.0.2',
+457 silly addNameRange     '0.0.3',
+457 silly addNameRange     '0.0.4',
+457 silly addNameRange     '0.0.5',
+457 silly addNameRange     '0.0.6',
+457 silly addNameRange     '0.0.7',
+457 silly addNameRange     '0.0.8',
+457 silly addNameRange     '0.0.9',
+457 silly addNameRange     '0.0.10',
+457 silly addNameRange     '0.0.11',
+457 silly addNameRange     '0.0.12',
+457 silly addNameRange     '0.1.0',
+457 silly addNameRange     '0.2.0',
+457 silly addNameRange     '0.2.1',
+457 silly addNameRange     '0.3.0',
+457 silly addNameRange     '0.3.1',
+457 silly addNameRange     '0.3.2',
+457 silly addNameRange     '0.3.3',
+457 silly addNameRange     '0.3.4',
+457 silly addNameRange     '0.3.5',
+457 silly addNameRange     '0.3.6',
+457 silly addNameRange     '0.4.0',
+457 silly addNameRange     '1.0.0',
+457 silly addNameRange     '1.0.1',
+457 silly addNameRange     '1.0.2',
+457 silly addNameRange     '1.0.3',
+457 silly addNameRange     '2.0.0-beta',
+457 silly addNameRange     '2.0.0',
+457 silly addNameRange     '2.0.1',
+457 silly addNameRange     '2.1.0',
+457 silly addNameRange     '1.1.0',
+457 silly addNameRange     '2.2.0',
+457 silly addNameRange     '2.2.1',
+457 silly addNameRange     '2.3.0',
+457 silly addNameRange     '2.4.0',
+457 silly addNameRange     '2.4.1',
+457 silly addNameRange     '2.5.0',
+457 silly addNameRange     '2.5.1',
+457 silly addNameRange     '2.5.2',
+457 silly addNameRange     '2.6.0',
+457 silly addNameRange     '2.7.0',
+457 silly addNameRange     '3.0.0',
+457 silly addNameRange     '3.1.0',
+457 silly addNameRange     '3.2.0',
+457 silly addNameRange     '3.2.1',
+457 silly addNameRange     '3.2.2',
+457 silly addNameRange     '3.2.3',
+457 silly addNameRange     '3.2.4',
+457 silly addNameRange     '3.2.5',
+457 silly addNameRange     '3.2.6',
+457 silly addNameRange     '3.2.7',
+457 silly addNameRange     '3.2.8',
+457 silly addNameRange     '3.2.9',
+457 silly addNameRange     '3.2.10',
+457 silly addNameRange     '3.2.11',
+457 silly addNameRange     '3.2.12',
+457 silly addNameRange     '3.2.13',
+457 silly addNameRange     '3.2.14',
+457 silly addNameRange     '3.2.15',
+457 silly addNameRange     '3.2.16',
+457 silly addNameRange     '3.2.17',
+457 silly addNameRange     '3.2.18',
+457 silly addNameRange     '3.2.19',
+457 silly addNameRange     '3.2.20',
+457 silly addNameRange     '3.2.21',
+457 silly addNameRange     '3.2.22',
+457 silly addNameRange     '3.2.23',
+457 silly addNameRange     '3.2.24' ] ]
+458 silly addNamed tcomb@2.7.0
+459 verbose addNamed "2.7.0" is a plain semver version for tcomb
+460 verbose get https://registry.npmjs.org/css-font-weight-keywords not expired, no request
+461 silly addNameRange number 2 { name: 'css-font-weight-keywords',
+461 silly addNameRange   range: '>=1.0.0 <2.0.0',
+461 silly addNameRange   hasData: true }
+462 silly addNameRange versions [ 'css-font-weight-keywords', [ '1.0.0' ] ]
+463 silly addNamed css-font-weight-keywords@1.0.0
+464 verbose addNamed "1.0.0" is a plain semver version for css-font-weight-keywords
+465 verbose get https://registry.npmjs.org/css-list-helpers not expired, no request
+466 silly addNameRange number 2 { name: 'css-list-helpers',
+466 silly addNameRange   range: '>=1.0.1 <2.0.0',
+466 silly addNameRange   hasData: true }
+467 silly addNameRange versions [ 'css-list-helpers', [ '1.0.0', '1.0.1' ] ]
+468 silly addNamed css-list-helpers@1.0.1
+469 verbose addNamed "1.0.1" is a plain semver version for css-list-helpers
+470 silly mapToRegistry name tcomb
+471 silly mapToRegistry using default registry
+472 silly mapToRegistry registry https://registry.npmjs.org/
+473 silly mapToRegistry data Result {
+473 silly mapToRegistry   raw: 'tcomb',
+473 silly mapToRegistry   scope: null,
+473 silly mapToRegistry   escapedName: 'tcomb',
+473 silly mapToRegistry   name: 'tcomb',
+473 silly mapToRegistry   rawSpec: '',
+473 silly mapToRegistry   spec: 'latest',
+473 silly mapToRegistry   type: 'tag' }
+474 silly mapToRegistry uri https://registry.npmjs.org/tcomb
+475 verbose addRemoteTarball https://registry.npmjs.org/tcomb/-/tcomb-2.7.0.tgz not in flight; adding
+476 verbose addRemoteTarball [ 'https://registry.npmjs.org/tcomb/-/tcomb-2.7.0.tgz',
+476 verbose addRemoteTarball   '10d62958041669a5d53567b9a4ee8cde22b1c2b0' ]
+477 verbose get https://registry.npmjs.org/unquote not expired, no request
+478 silly addNameRange number 2 { name: 'unquote', range: '>=1.1.0 <2.0.0', hasData: true }
+479 silly addNameRange versions [ 'unquote', [ '1.0.0', '1.1.0' ] ]
+480 silly addNamed unquote@1.1.0
+481 verbose addNamed "1.1.0" is a plain semver version for unquote
+482 silly mapToRegistry name css-font-weight-keywords
+483 silly mapToRegistry using default registry
+484 silly mapToRegistry registry https://registry.npmjs.org/
+485 silly mapToRegistry data Result {
+485 silly mapToRegistry   raw: 'css-font-weight-keywords',
+485 silly mapToRegistry   scope: null,
+485 silly mapToRegistry   escapedName: 'css-font-weight-keywords',
+485 silly mapToRegistry   name: 'css-font-weight-keywords',
+485 silly mapToRegistry   rawSpec: '',
+485 silly mapToRegistry   spec: 'latest',
+485 silly mapToRegistry   type: 'tag' }
+486 silly mapToRegistry uri https://registry.npmjs.org/css-font-weight-keywords
+487 verbose addRemoteTarball https://registry.npmjs.org/css-font-weight-keywords/-/css-font-weight-keywords-1.0.0.tgz not in flight; adding
+488 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-font-weight-keywords/-/css-font-weight-keywords-1.0.0.tgz',
+488 verbose addRemoteTarball   '9bc04671ac85bc724b574ef5d3ac96b0d604fd97' ]
+489 info retry fetch attempt 1 at 3:46:42 PM
+490 info attempt registry request try #1 at 3:46:42 PM
+491 http fetch GET https://registry.npmjs.org/css-global-keywords/-/css-global-keywords-1.0.1.tgz
+492 silly mapToRegistry name css-list-helpers
+493 silly mapToRegistry using default registry
+494 silly mapToRegistry registry https://registry.npmjs.org/
+495 silly mapToRegistry data Result {
+495 silly mapToRegistry   raw: 'css-list-helpers',
+495 silly mapToRegistry   scope: null,
+495 silly mapToRegistry   escapedName: 'css-list-helpers',
+495 silly mapToRegistry   name: 'css-list-helpers',
+495 silly mapToRegistry   rawSpec: '',
+495 silly mapToRegistry   spec: 'latest',
+495 silly mapToRegistry   type: 'tag' }
+496 silly mapToRegistry uri https://registry.npmjs.org/css-list-helpers
+497 verbose addRemoteTarball https://registry.npmjs.org/css-list-helpers/-/css-list-helpers-1.0.1.tgz not in flight; adding
+498 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-list-helpers/-/css-list-helpers-1.0.1.tgz',
+498 verbose addRemoteTarball   'fff57192202db83240c41686f919e449a7024f7d' ]
+499 silly mapToRegistry name unquote
+500 silly mapToRegistry using default registry
+501 silly mapToRegistry registry https://registry.npmjs.org/
+502 silly mapToRegistry data Result {
+502 silly mapToRegistry   raw: 'unquote',
+502 silly mapToRegistry   scope: null,
+502 silly mapToRegistry   escapedName: 'unquote',
+502 silly mapToRegistry   name: 'unquote',
+502 silly mapToRegistry   rawSpec: '',
+502 silly mapToRegistry   spec: 'latest',
+502 silly mapToRegistry   type: 'tag' }
+503 silly mapToRegistry uri https://registry.npmjs.org/unquote
+504 verbose addRemoteTarball https://registry.npmjs.org/unquote/-/unquote-1.1.0.tgz not in flight; adding
+505 verbose addRemoteTarball [ 'https://registry.npmjs.org/unquote/-/unquote-1.1.0.tgz',
+505 verbose addRemoteTarball   '98e1fc608b6b854c75afb1b95afc099ba69d942f' ]
+506 verbose get https://registry.npmjs.org/css-system-font-keywords not expired, no request
+507 silly addNameRange number 2 { name: 'css-system-font-keywords',
+507 silly addNameRange   range: '>=1.0.0 <2.0.0',
+507 silly addNameRange   hasData: true }
+508 silly addNameRange versions [ 'css-system-font-keywords', [ '1.0.0' ] ]
+509 silly addNamed css-system-font-keywords@1.0.0
+510 verbose addNamed "1.0.0" is a plain semver version for css-system-font-keywords
+511 silly fetchAndShaCheck shasum 50cee9b9ba031fb5c952d4723139f1e107b54b10
+512 silly fetchAndShaCheck shasum 854875ace9aca6a8d2ee0d345a44aae9bb6db6cb
+513 silly mapToRegistry name css-system-font-keywords
+514 silly mapToRegistry using default registry
+515 silly mapToRegistry registry https://registry.npmjs.org/
+516 silly mapToRegistry data Result {
+516 silly mapToRegistry   raw: 'css-system-font-keywords',
+516 silly mapToRegistry   scope: null,
+516 silly mapToRegistry   escapedName: 'css-system-font-keywords',
+516 silly mapToRegistry   name: 'css-system-font-keywords',
+516 silly mapToRegistry   rawSpec: '',
+516 silly mapToRegistry   spec: 'latest',
+516 silly mapToRegistry   type: 'tag' }
+517 silly mapToRegistry uri https://registry.npmjs.org/css-system-font-keywords
+518 verbose addRemoteTarball https://registry.npmjs.org/css-system-font-keywords/-/css-system-font-keywords-1.0.0.tgz not in flight; adding
+519 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-system-font-keywords/-/css-system-font-keywords-1.0.0.tgz',
+519 verbose addRemoteTarball   '85c6f086aba4eb32c571a3086affc434b84823ed' ]
+520 info retry fetch attempt 1 at 3:46:42 PM
+521 info attempt registry request try #1 at 3:46:42 PM
+522 http fetch GET https://registry.npmjs.org/tcomb/-/tcomb-2.7.0.tgz
+523 info retry fetch attempt 1 at 3:46:42 PM
+524 info attempt registry request try #1 at 3:46:42 PM
+525 http fetch GET https://registry.npmjs.org/css-list-helpers/-/css-list-helpers-1.0.1.tgz
+526 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-font-stretch-keywords\-\css-font-stretch-keywords-1.0.1.tgz not in flight; adding
+527 verbose addTmpTarball already have metadata; skipping unpack for css-font-stretch-keywords@1.0.1
+528 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+529 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-font-size-keywords\-\css-font-size-keywords-1.0.0.tgz not in flight; adding
+530 verbose addTmpTarball already have metadata; skipping unpack for css-font-size-keywords@1.0.0
+531 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+532 info retry fetch attempt 1 at 3:46:42 PM
+533 info attempt registry request try #1 at 3:46:42 PM
+534 http fetch GET https://registry.npmjs.org/unquote/-/unquote-1.1.0.tgz
+535 info retry fetch attempt 1 at 3:46:42 PM
+536 info attempt registry request try #1 at 3:46:42 PM
+537 http fetch GET https://registry.npmjs.org/css-font-weight-keywords/-/css-font-weight-keywords-1.0.0.tgz
+538 silly resolveWithNewModule css-font-style-keywords@1.0.1 checking installable status
+539 silly cache add args [ 'css-font-style-keywords@^1.0.1', null ]
+540 verbose cache add spec css-font-style-keywords@^1.0.1
+541 silly cache add parsed spec Result {
+541 silly cache add   raw: 'css-font-style-keywords@^1.0.1',
+541 silly cache add   scope: null,
+541 silly cache add   escapedName: 'css-font-style-keywords',
+541 silly cache add   name: 'css-font-style-keywords',
+541 silly cache add   rawSpec: '^1.0.1',
+541 silly cache add   spec: '>=1.0.1 <2.0.0',
+541 silly cache add   type: 'range' }
+542 silly addNamed css-font-style-keywords@>=1.0.1 <2.0.0
+543 verbose addNamed ">=1.0.1 <2.0.0" is a valid semver range for css-font-style-keywords
+544 silly addNameRange { name: 'css-font-style-keywords',
+544 silly addNameRange   range: '>=1.0.1 <2.0.0',
+544 silly addNameRange   hasData: false }
+545 silly mapToRegistry name css-font-style-keywords
+546 silly mapToRegistry using default registry
+547 silly mapToRegistry registry https://registry.npmjs.org/
+548 silly mapToRegistry data Result {
+548 silly mapToRegistry   raw: 'css-font-style-keywords',
+548 silly mapToRegistry   scope: null,
+548 silly mapToRegistry   escapedName: 'css-font-style-keywords',
+548 silly mapToRegistry   name: 'css-font-style-keywords',
+548 silly mapToRegistry   rawSpec: '',
+548 silly mapToRegistry   spec: 'latest',
+548 silly mapToRegistry   type: 'tag' }
+549 silly mapToRegistry uri https://registry.npmjs.org/css-font-style-keywords
+550 verbose addNameRange registry:https://registry.npmjs.org/css-font-style-keywords not in flight; fetching
+551 info retry fetch attempt 1 at 3:46:42 PM
+552 info attempt registry request try #1 at 3:46:42 PM
+553 http fetch GET https://registry.npmjs.org/css-system-font-keywords/-/css-system-font-keywords-1.0.0.tgz
+554 verbose get https://registry.npmjs.org/css-font-style-keywords not expired, no request
+555 silly addNameRange number 2 { name: 'css-font-style-keywords',
+555 silly addNameRange   range: '>=1.0.1 <2.0.0',
+555 silly addNameRange   hasData: true }
+556 silly addNameRange versions [ 'css-font-style-keywords', [ '1.0.0', '1.0.1' ] ]
+557 silly addNamed css-font-style-keywords@1.0.1
+558 verbose addNamed "1.0.1" is a plain semver version for css-font-style-keywords
+559 silly mapToRegistry name css-font-style-keywords
+560 silly mapToRegistry using default registry
+561 silly mapToRegistry registry https://registry.npmjs.org/
+562 silly mapToRegistry data Result {
+562 silly mapToRegistry   raw: 'css-font-style-keywords',
+562 silly mapToRegistry   scope: null,
+562 silly mapToRegistry   escapedName: 'css-font-style-keywords',
+562 silly mapToRegistry   name: 'css-font-style-keywords',
+562 silly mapToRegistry   rawSpec: '',
+562 silly mapToRegistry   spec: 'latest',
+562 silly mapToRegistry   type: 'tag' }
+563 silly mapToRegistry uri https://registry.npmjs.org/css-font-style-keywords
+564 verbose addRemoteTarball https://registry.npmjs.org/css-font-style-keywords/-/css-font-style-keywords-1.0.1.tgz not in flight; adding
+565 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-font-style-keywords/-/css-font-style-keywords-1.0.1.tgz',
+565 verbose addRemoteTarball   '5c3532813f63b4a1de954d13cea86ab4333409e4' ]
+566 info retry fetch attempt 1 at 3:46:42 PM
+567 info attempt registry request try #1 at 3:46:42 PM
+568 http fetch GET https://registry.npmjs.org/css-font-style-keywords/-/css-font-style-keywords-1.0.1.tgz
+569 silly cache afterAdd css-font-size-keywords@1.0.0
+570 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-size-keywords\1.0.0\package\package.json not in flight; writing
+571 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+572 silly cache afterAdd css-font-stretch-keywords@1.0.1
+573 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-stretch-keywords\1.0.1\package\package.json not in flight; writing
+574 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+575 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-size-keywords\1.0.0\package\package.json written
+576 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-stretch-keywords\1.0.1\package\package.json written
+577 http fetch 200 https://registry.npmjs.org/css-global-keywords/-/css-global-keywords-1.0.1.tgz
+578 http fetch 200 https://registry.npmjs.org/tcomb/-/tcomb-2.7.0.tgz
+579 silly fetchAndShaCheck shasum 72a9aea72796d019b1d2a3252de4e5aaa37e4a69
+580 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-global-keywords\-\css-global-keywords-1.0.1.tgz not in flight; adding
+581 verbose addTmpTarball already have metadata; skipping unpack for css-global-keywords@1.0.1
+582 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+583 silly cache afterAdd css-global-keywords@1.0.1
+584 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-global-keywords\1.0.1\package\package.json not in flight; writing
+585 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+586 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-global-keywords\1.0.1\package\package.json written
+587 http fetch 200 https://registry.npmjs.org/css-list-helpers/-/css-list-helpers-1.0.1.tgz
+588 http fetch 200 https://registry.npmjs.org/css-system-font-keywords/-/css-system-font-keywords-1.0.0.tgz
+589 silly fetchAndShaCheck shasum fff57192202db83240c41686f919e449a7024f7d
+590 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-list-helpers\-\css-list-helpers-1.0.1.tgz not in flight; adding
+591 verbose addTmpTarball already have metadata; skipping unpack for css-list-helpers@1.0.1
+592 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+593 http fetch 200 https://registry.npmjs.org/unquote/-/unquote-1.1.0.tgz
+594 silly fetchAndShaCheck shasum 85c6f086aba4eb32c571a3086affc434b84823ed
+595 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-system-font-keywords\-\css-system-font-keywords-1.0.0.tgz not in flight; adding
+596 verbose addTmpTarball already have metadata; skipping unpack for css-system-font-keywords@1.0.0
+597 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+598 silly fetchAndShaCheck shasum 98e1fc608b6b854c75afb1b95afc099ba69d942f
+599 http fetch 200 https://registry.npmjs.org/css-font-weight-keywords/-/css-font-weight-keywords-1.0.0.tgz
+600 http fetch 200 https://registry.npmjs.org/css-font-style-keywords/-/css-font-style-keywords-1.0.1.tgz
+601 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\unquote\-\unquote-1.1.0.tgz not in flight; adding
+602 verbose addTmpTarball already have metadata; skipping unpack for unquote@1.1.0
+603 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+604 silly cache afterAdd css-list-helpers@1.0.1
+605 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-list-helpers\1.0.1\package\package.json not in flight; writing
+606 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+607 silly fetchAndShaCheck shasum 9bc04671ac85bc724b574ef5d3ac96b0d604fd97
+608 silly fetchAndShaCheck shasum 5c3532813f63b4a1de954d13cea86ab4333409e4
+609 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-font-weight-keywords\-\css-font-weight-keywords-1.0.0.tgz not in flight; adding
+610 verbose addTmpTarball already have metadata; skipping unpack for css-font-weight-keywords@1.0.0
+611 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+612 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\css-font-style-keywords\-\css-font-style-keywords-1.0.1.tgz not in flight; adding
+613 verbose addTmpTarball already have metadata; skipping unpack for css-font-style-keywords@1.0.1
+614 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+615 silly cache afterAdd css-system-font-keywords@1.0.0
+616 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-system-font-keywords\1.0.0\package\package.json not in flight; writing
+617 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+618 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-list-helpers\1.0.1\package\package.json written
+619 silly cache afterAdd unquote@1.1.0
+620 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\unquote\1.1.0\package\package.json not in flight; writing
+621 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+622 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-system-font-keywords\1.0.0\package\package.json written
+623 silly cache afterAdd css-font-style-keywords@1.0.1
+624 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-style-keywords\1.0.1\package\package.json not in flight; writing
+625 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+626 silly cache afterAdd css-font-weight-keywords@1.0.0
+627 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-weight-keywords\1.0.0\package\package.json not in flight; writing
+628 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+629 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\unquote\1.1.0\package\package.json written
+630 silly fetchAndShaCheck shasum 10d62958041669a5d53567b9a4ee8cde22b1c2b0
+631 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\tcomb\-\tcomb-2.7.0.tgz not in flight; adding
+632 verbose addTmpTarball already have metadata; skipping unpack for tcomb@2.7.0
+633 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+634 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-style-keywords\1.0.1\package\package.json written
+635 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\css-font-weight-keywords\1.0.0\package\package.json written
+636 silly cache afterAdd tcomb@2.7.0
+637 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\tcomb\2.7.0\package\package.json not in flight; writing
+638 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+639 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\tcomb\2.7.0\package\package.json written
+640 silly fetchNamedPackageData isnumeric
+641 silly mapToRegistry name isnumeric
+642 silly mapToRegistry using default registry
+643 silly mapToRegistry registry https://registry.npmjs.org/
+644 silly mapToRegistry data Result {
+644 silly mapToRegistry   raw: 'isnumeric',
+644 silly mapToRegistry   scope: null,
+644 silly mapToRegistry   escapedName: 'isnumeric',
+644 silly mapToRegistry   name: 'isnumeric',
+644 silly mapToRegistry   rawSpec: '',
+644 silly mapToRegistry   spec: 'latest',
+644 silly mapToRegistry   type: 'tag' }
+645 silly mapToRegistry uri https://registry.npmjs.org/isnumeric
+646 silly fetchNamedPackageData viewport-dimensions
+647 silly mapToRegistry name viewport-dimensions
+648 silly mapToRegistry using default registry
+649 silly mapToRegistry registry https://registry.npmjs.org/
+650 silly mapToRegistry data Result {
+650 silly mapToRegistry   raw: 'viewport-dimensions',
+650 silly mapToRegistry   scope: null,
+650 silly mapToRegistry   escapedName: 'viewport-dimensions',
+650 silly mapToRegistry   name: 'viewport-dimensions',
+650 silly mapToRegistry   rawSpec: '',
+650 silly mapToRegistry   spec: 'latest',
+650 silly mapToRegistry   type: 'tag' }
+651 silly mapToRegistry uri https://registry.npmjs.org/viewport-dimensions
+652 verbose request uri https://registry.npmjs.org/isnumeric
+653 verbose request no auth needed
+654 info attempt registry request try #1 at 3:46:42 PM
+655 http request GET https://registry.npmjs.org/isnumeric
+656 verbose request uri https://registry.npmjs.org/viewport-dimensions
+657 verbose request no auth needed
+658 info attempt registry request try #1 at 3:46:42 PM
+659 http request GET https://registry.npmjs.org/viewport-dimensions
+660 http 200 https://registry.npmjs.org/isnumeric
+661 verbose headers { server: 'nginx/1.10.1',
+661 verbose headers   'content-type': 'application/json',
+661 verbose headers   'last-modified': 'Sat, 05 Aug 2017 18:29:13 GMT',
+661 verbose headers   etag: 'W/"59860e79-5b09"',
+661 verbose headers   'content-encoding': 'gzip',
+661 verbose headers   'cache-control': 'max-age=300',
+661 verbose headers   'content-length': '2937',
+661 verbose headers   'accept-ranges': 'bytes',
+661 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+661 verbose headers   via: '1.1 varnish',
+661 verbose headers   age: '0',
+661 verbose headers   connection: 'keep-alive',
+661 verbose headers   'x-served-by': 'cache-lax8632-LAX',
+661 verbose headers   'x-cache': 'MISS',
+661 verbose headers   'x-cache-hits': '0',
+661 verbose headers   'x-timer': 'S1507668378.557408,VS0,VE31',
+661 verbose headers   vary: 'Accept-Encoding, Accept' }
+662 silly get cb [ 200,
+662 silly get   { server: 'nginx/1.10.1',
+662 silly get     'content-type': 'application/json',
+662 silly get     'last-modified': 'Sat, 05 Aug 2017 18:29:13 GMT',
+662 silly get     etag: 'W/"59860e79-5b09"',
+662 silly get     'content-encoding': 'gzip',
+662 silly get     'cache-control': 'max-age=300',
+662 silly get     'content-length': '2937',
+662 silly get     'accept-ranges': 'bytes',
+662 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+662 silly get     via: '1.1 varnish',
+662 silly get     age: '0',
+662 silly get     connection: 'keep-alive',
+662 silly get     'x-served-by': 'cache-lax8632-LAX',
+662 silly get     'x-cache': 'MISS',
+662 silly get     'x-cache-hits': '0',
+662 silly get     'x-timer': 'S1507668378.557408,VS0,VE31',
+662 silly get     vary: 'Accept-Encoding, Accept' } ]
+663 verbose get saving isnumeric to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\isnumeric\.cache.json
+664 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+665 silly resolveWithNewModule isnumeric@0.2.0 checking installable status
+666 silly cache add args [ 'isnumeric@^0.2.0', null ]
+667 verbose cache add spec isnumeric@^0.2.0
+668 silly cache add parsed spec Result {
+668 silly cache add   raw: 'isnumeric@^0.2.0',
+668 silly cache add   scope: null,
+668 silly cache add   escapedName: 'isnumeric',
+668 silly cache add   name: 'isnumeric',
+668 silly cache add   rawSpec: '^0.2.0',
+668 silly cache add   spec: '>=0.2.0 <0.3.0',
+668 silly cache add   type: 'range' }
+669 silly addNamed isnumeric@>=0.2.0 <0.3.0
+670 verbose addNamed ">=0.2.0 <0.3.0" is a valid semver range for isnumeric
+671 silly addNameRange { name: 'isnumeric', range: '>=0.2.0 <0.3.0', hasData: false }
+672 silly mapToRegistry name isnumeric
+673 silly mapToRegistry using default registry
+674 silly mapToRegistry registry https://registry.npmjs.org/
+675 silly mapToRegistry data Result {
+675 silly mapToRegistry   raw: 'isnumeric',
+675 silly mapToRegistry   scope: null,
+675 silly mapToRegistry   escapedName: 'isnumeric',
+675 silly mapToRegistry   name: 'isnumeric',
+675 silly mapToRegistry   rawSpec: '',
+675 silly mapToRegistry   spec: 'latest',
+675 silly mapToRegistry   type: 'tag' }
+676 silly mapToRegistry uri https://registry.npmjs.org/isnumeric
+677 verbose addNameRange registry:https://registry.npmjs.org/isnumeric not in flight; fetching
+678 verbose get https://registry.npmjs.org/isnumeric not expired, no request
+679 silly addNameRange number 2 { name: 'isnumeric', range: '>=0.2.0 <0.3.0', hasData: true }
+680 silly addNameRange versions [ 'isnumeric',
+680 silly addNameRange   [ '0.0.1',
+680 silly addNameRange     '0.0.2',
+680 silly addNameRange     '0.0.3',
+680 silly addNameRange     '0.0.4',
+680 silly addNameRange     '0.0.5',
+680 silly addNameRange     '0.0.6',
+680 silly addNameRange     '0.0.7',
+680 silly addNameRange     '0.0.9',
+680 silly addNameRange     '0.0.10',
+680 silly addNameRange     '0.1.1',
+680 silly addNameRange     '0.1.2',
+680 silly addNameRange     '0.1.3',
+680 silly addNameRange     '0.1.4',
+680 silly addNameRange     '0.1.5',
+680 silly addNameRange     '0.2.0',
+680 silly addNameRange     '0.3.0',
+680 silly addNameRange     '0.3.1',
+680 silly addNameRange     '0.3.2' ] ]
+681 silly addNamed isnumeric@0.2.0
+682 verbose addNamed "0.2.0" is a plain semver version for isnumeric
+683 silly mapToRegistry name isnumeric
+684 silly mapToRegistry using default registry
+685 silly mapToRegistry registry https://registry.npmjs.org/
+686 silly mapToRegistry data Result {
+686 silly mapToRegistry   raw: 'isnumeric',
+686 silly mapToRegistry   scope: null,
+686 silly mapToRegistry   escapedName: 'isnumeric',
+686 silly mapToRegistry   name: 'isnumeric',
+686 silly mapToRegistry   rawSpec: '',
+686 silly mapToRegistry   spec: 'latest',
+686 silly mapToRegistry   type: 'tag' }
+687 silly mapToRegistry uri https://registry.npmjs.org/isnumeric
+688 verbose addRemoteTarball https://registry.npmjs.org/isnumeric/-/isnumeric-0.2.0.tgz not in flight; adding
+689 verbose addRemoteTarball [ 'https://registry.npmjs.org/isnumeric/-/isnumeric-0.2.0.tgz',
+689 verbose addRemoteTarball   'a2347ba360de19e33d0ffd590fddf7755cbf2e64' ]
+690 info retry fetch attempt 1 at 3:46:42 PM
+691 info attempt registry request try #1 at 3:46:42 PM
+692 http fetch GET https://registry.npmjs.org/isnumeric/-/isnumeric-0.2.0.tgz
+693 http 200 https://registry.npmjs.org/viewport-dimensions
+694 verbose headers { server: 'nginx/1.10.1',
+694 verbose headers   'content-type': 'application/json',
+694 verbose headers   'last-modified': 'Thu, 03 Sep 2015 16:26:24 GMT',
+694 verbose headers   etag: 'W/"55e874b0-19a8"',
+694 verbose headers   'content-encoding': 'gzip',
+694 verbose headers   'cache-control': 'max-age=300',
+694 verbose headers   'content-length': '1871',
+694 verbose headers   'accept-ranges': 'bytes',
+694 verbose headers   date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+694 verbose headers   via: '1.1 varnish',
+694 verbose headers   age: '0',
+694 verbose headers   connection: 'keep-alive',
+694 verbose headers   'x-served-by': 'cache-lax8630-LAX',
+694 verbose headers   'x-cache': 'HIT',
+694 verbose headers   'x-cache-hits': '1',
+694 verbose headers   'x-timer': 'S1507668378.558943,VS0,VE96',
+694 verbose headers   vary: 'Accept-Encoding, Accept' }
+695 silly get cb [ 200,
+695 silly get   { server: 'nginx/1.10.1',
+695 silly get     'content-type': 'application/json',
+695 silly get     'last-modified': 'Thu, 03 Sep 2015 16:26:24 GMT',
+695 silly get     etag: 'W/"55e874b0-19a8"',
+695 silly get     'content-encoding': 'gzip',
+695 silly get     'cache-control': 'max-age=300',
+695 silly get     'content-length': '1871',
+695 silly get     'accept-ranges': 'bytes',
+695 silly get     date: 'Tue, 10 Oct 2017 20:46:17 GMT',
+695 silly get     via: '1.1 varnish',
+695 silly get     age: '0',
+695 silly get     connection: 'keep-alive',
+695 silly get     'x-served-by': 'cache-lax8630-LAX',
+695 silly get     'x-cache': 'HIT',
+695 silly get     'x-cache-hits': '1',
+695 silly get     'x-timer': 'S1507668378.558943,VS0,VE96',
+695 silly get     vary: 'Accept-Encoding, Accept' } ]
+696 verbose get saving viewport-dimensions to C:\Users\aspire\AppData\Roaming\npm-cache\registry.npmjs.org\viewport-dimensions\.cache.json
+697 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+698 silly resolveWithNewModule viewport-dimensions@0.2.0 checking installable status
+699 silly cache add args [ 'viewport-dimensions@^0.2.0', null ]
+700 verbose cache add spec viewport-dimensions@^0.2.0
+701 silly cache add parsed spec Result {
+701 silly cache add   raw: 'viewport-dimensions@^0.2.0',
+701 silly cache add   scope: null,
+701 silly cache add   escapedName: 'viewport-dimensions',
+701 silly cache add   name: 'viewport-dimensions',
+701 silly cache add   rawSpec: '^0.2.0',
+701 silly cache add   spec: '>=0.2.0 <0.3.0',
+701 silly cache add   type: 'range' }
+702 silly addNamed viewport-dimensions@>=0.2.0 <0.3.0
+703 verbose addNamed ">=0.2.0 <0.3.0" is a valid semver range for viewport-dimensions
+704 silly addNameRange { name: 'viewport-dimensions',
+704 silly addNameRange   range: '>=0.2.0 <0.3.0',
+704 silly addNameRange   hasData: false }
+705 silly mapToRegistry name viewport-dimensions
+706 silly mapToRegistry using default registry
+707 silly mapToRegistry registry https://registry.npmjs.org/
+708 silly mapToRegistry data Result {
+708 silly mapToRegistry   raw: 'viewport-dimensions',
+708 silly mapToRegistry   scope: null,
+708 silly mapToRegistry   escapedName: 'viewport-dimensions',
+708 silly mapToRegistry   name: 'viewport-dimensions',
+708 silly mapToRegistry   rawSpec: '',
+708 silly mapToRegistry   spec: 'latest',
+708 silly mapToRegistry   type: 'tag' }
+709 silly mapToRegistry uri https://registry.npmjs.org/viewport-dimensions
+710 verbose addNameRange registry:https://registry.npmjs.org/viewport-dimensions not in flight; fetching
+711 verbose get https://registry.npmjs.org/viewport-dimensions not expired, no request
+712 silly addNameRange number 2 { name: 'viewport-dimensions',
+712 silly addNameRange   range: '>=0.2.0 <0.3.0',
+712 silly addNameRange   hasData: true }
+713 silly addNameRange versions [ 'viewport-dimensions', [ '0.1.0', '0.2.0' ] ]
+714 silly addNamed viewport-dimensions@0.2.0
+715 verbose addNamed "0.2.0" is a plain semver version for viewport-dimensions
+716 silly mapToRegistry name viewport-dimensions
+717 silly mapToRegistry using default registry
+718 silly mapToRegistry registry https://registry.npmjs.org/
+719 silly mapToRegistry data Result {
+719 silly mapToRegistry   raw: 'viewport-dimensions',
+719 silly mapToRegistry   scope: null,
+719 silly mapToRegistry   escapedName: 'viewport-dimensions',
+719 silly mapToRegistry   name: 'viewport-dimensions',
+719 silly mapToRegistry   rawSpec: '',
+719 silly mapToRegistry   spec: 'latest',
+719 silly mapToRegistry   type: 'tag' }
+720 silly mapToRegistry uri https://registry.npmjs.org/viewport-dimensions
+721 verbose addRemoteTarball https://registry.npmjs.org/viewport-dimensions/-/viewport-dimensions-0.2.0.tgz not in flight; adding
+722 verbose addRemoteTarball [ 'https://registry.npmjs.org/viewport-dimensions/-/viewport-dimensions-0.2.0.tgz',
+722 verbose addRemoteTarball   'de740747db5387fd1725f5175e91bac76afdf36c' ]
+723 http fetch 200 https://registry.npmjs.org/isnumeric/-/isnumeric-0.2.0.tgz
+724 info retry fetch attempt 1 at 3:46:42 PM
+725 info attempt registry request try #1 at 3:46:42 PM
+726 http fetch GET https://registry.npmjs.org/viewport-dimensions/-/viewport-dimensions-0.2.0.tgz
+727 silly fetchAndShaCheck shasum a2347ba360de19e33d0ffd590fddf7755cbf2e64
+728 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\isnumeric\-\isnumeric-0.2.0.tgz not in flight; adding
+729 verbose addTmpTarball already have metadata; skipping unpack for isnumeric@0.2.0
+730 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+731 silly cache afterAdd isnumeric@0.2.0
+732 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\isnumeric\0.2.0\package\package.json not in flight; writing
+733 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+734 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\isnumeric\0.2.0\package\package.json written
+735 http fetch 200 https://registry.npmjs.org/viewport-dimensions/-/viewport-dimensions-0.2.0.tgz
+736 silly fetchAndShaCheck shasum de740747db5387fd1725f5175e91bac76afdf36c
+737 verbose addTmpTarball C:\Users\aspire\AppData\Local\Temp\npm-6564-8283ea20\registry.npmjs.org\viewport-dimensions\-\viewport-dimensions-0.2.0.tgz not in flight; adding
+738 verbose addTmpTarball already have metadata; skipping unpack for viewport-dimensions@0.2.0
+739 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+740 silly cache afterAdd viewport-dimensions@0.2.0
+741 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\viewport-dimensions\0.2.0\package\package.json not in flight; writing
+742 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+743 verbose afterAdd C:\Users\aspire\AppData\Roaming\npm-cache\viewport-dimensions\0.2.0\package\package.json written
+744 silly loadAllDepsIntoIdealTree Finishing
+745 silly loadIdealTree Finishing
+746 silly currentTree emojione-colr@0.2.2
+746 silly currentTree +-- abbrev@1.1.1
+746 silly currentTree +-- ajv@5.2.3
+746 silly currentTree +-- ansi-regex@2.1.1
+746 silly currentTree +-- ansi-styles@2.2.1
+746 silly currentTree +-- aproba@1.2.0
+746 silly currentTree +-- are-we-there-yet@1.1.4
+746 silly currentTree | +-- isarray@1.0.0
+746 silly currentTree | +-- readable-stream@2.3.3
+746 silly currentTree | `-- string_decoder@1.0.3
+746 silly currentTree +-- argparse@1.0.9
+746 silly currentTree +-- array-differ@1.0.0
+746 silly currentTree +-- array-find-index@1.0.2
+746 silly currentTree +-- array-union@1.0.2
+746 silly currentTree +-- array-uniq@1.0.3
+746 silly currentTree +-- arrify@1.0.1
+746 silly currentTree +-- asn1@0.2.3
+746 silly currentTree +-- assert-plus@1.0.0
+746 silly currentTree +-- async@1.5.2
+746 silly currentTree +-- asynckit@0.4.0
+746 silly currentTree +-- aws-sign2@0.7.0
+746 silly currentTree +-- aws4@1.6.0
+746 silly currentTree +-- balanced-match@1.0.0
+746 silly currentTree +-- bcrypt-pbkdf@1.0.1
+746 silly currentTree +-- binary@0.3.0
+746 silly currentTree +-- bindings@1.3.0
+746 silly currentTree +-- block-stream@0.0.9
+746 silly currentTree +-- boom@4.3.1
+746 silly currentTree +-- brace-expansion@1.1.8
+746 silly currentTree +-- buffers@0.1.1
+746 silly currentTree +-- bufferstreams@1.1.1
+746 silly currentTree | +-- isarray@1.0.0
+746 silly currentTree | +-- readable-stream@2.3.3
+746 silly currentTree | `-- string_decoder@1.0.3
+746 silly currentTree +-- builtin-modules@1.1.1
+746 silly currentTree +-- camelcase-keys@2.1.0
+746 silly currentTree +-- camelcase@2.1.1
+746 silly currentTree +-- caseless@0.12.0
+746 silly currentTree +-- chainsaw@0.1.0
+746 silly currentTree +-- chalk@1.1.3
+746 silly currentTree +-- clap@1.2.3
+746 silly currentTree +-- co@4.6.0
+746 silly currentTree +-- coa@1.0.4
+746 silly currentTree +-- code-point-at@1.1.0
+746 silly currentTree +-- coffee-script@1.10.0
+746 silly currentTree +-- colors@1.1.2
+746 silly currentTree +-- combined-stream@1.0.5
+746 silly currentTree +-- concat-map@0.0.1
+746 silly currentTree +-- console-control-strings@1.1.0
+746 silly currentTree +-- core-util-is@1.0.2
+746 silly currentTree +-- cryptiles@3.1.2
+746 silly currentTree | `-- boom@5.2.0
+746 silly currentTree +-- csso@2.0.0
+746 silly currentTree +-- cubic2quad@1.1.1
+746 silly currentTree +-- currently-unhandled@0.4.1
+746 silly currentTree +-- cycle@1.0.3
+746 silly currentTree +-- dashdash@1.14.1
+746 silly currentTree +-- dateformat@1.0.12
+746 silly currentTree +-- decamelize@1.2.0
+746 silly currentTree +-- delayed-stream@1.0.0
+746 silly currentTree +-- delegates@1.0.0
+746 silly currentTree +-- ecc-jsbn@0.1.1
+746 silly currentTree +-- emoji-table@0.1.0
+746 silly currentTree +-- error-ex@1.3.1
+746 silly currentTree +-- escape-string-regexp@1.0.5
+746 silly currentTree +-- esprima@2.7.3
+746 silly currentTree +-- eventemitter2@0.4.14
+746 silly currentTree +-- exit@0.1.2
+746 silly currentTree +-- extend@3.0.1
+746 silly currentTree +-- extsprintf@1.3.0
+746 silly currentTree +-- eyes@0.1.8
+746 silly currentTree +-- fast-deep-equal@1.0.0
+746 silly currentTree +-- find-up@1.1.2
+746 silly currentTree +-- findup-sync@0.3.0
+746 silly currentTree | `-- glob@5.0.15
+746 silly currentTree +-- forever-agent@0.6.1
+746 silly currentTree +-- form-data@2.3.1
+746 silly currentTree +-- fs.realpath@1.0.0
+746 silly currentTree +-- fstream@1.0.11
+746 silly currentTree +-- gauge@2.7.4
+746 silly currentTree +-- get-stdin@4.0.1
+746 silly currentTree +-- getobject@0.1.0
+746 silly currentTree +-- getpass@0.1.7
+746 silly currentTree +-- glob@7.0.6
+746 silly currentTree +-- graceful-fs@4.1.11
+746 silly currentTree +-- grunt-cli@1.2.0
+746 silly currentTree +-- grunt-known-options@1.1.0
+746 silly currentTree +-- grunt-legacy-log-utils@1.0.0
+746 silly currentTree | `-- lodash@4.3.0
+746 silly currentTree +-- grunt-legacy-log@1.0.0
+746 silly currentTree +-- grunt-legacy-util@1.0.0
+746 silly currentTree | `-- lodash@4.3.0
+746 silly currentTree +-- grunt-webfont@1.6.0
+746 silly currentTree | `-- lodash@4.3.0
+746 silly currentTree +-- grunt@1.0.1
+746 silly currentTree +-- har-schema@2.0.0
+746 silly currentTree +-- har-validator@5.0.3
+746 silly currentTree +-- has-ansi@2.0.0
+746 silly currentTree +-- has-unicode@2.0.1
+746 silly currentTree +-- hawk@6.0.2
+746 silly currentTree +-- hoek@4.2.0
+746 silly currentTree +-- hooker@0.2.3
+746 silly currentTree +-- hosted-git-info@2.5.0
+746 silly currentTree +-- http-signature@1.2.0
+746 silly currentTree +-- iconv-lite@0.4.19
+746 silly currentTree +-- indent-string@2.1.0
+746 silly currentTree +-- inflight@1.0.6
+746 silly currentTree +-- inherits@2.0.3
+746 silly currentTree +-- is-arrayish@0.2.1
+746 silly currentTree +-- is-builtin-module@1.0.0
+746 silly currentTree +-- is-finite@1.0.2
+746 silly currentTree +-- is-fullwidth-code-point@1.0.0
+746 silly currentTree +-- is-typedarray@1.0.0
+746 silly currentTree +-- is-utf8@0.2.1
+746 silly currentTree +-- is@0.2.7
+746 silly currentTree +-- isarray@0.0.1
+746 silly currentTree +-- isexe@2.0.0
+746 silly currentTree +-- isstream@0.1.2
+746 silly currentTree +-- js-yaml@3.5.5
+746 silly currentTree +-- jsbn@0.1.1
+746 silly currentTree +-- json-schema-traverse@0.3.1
+746 silly currentTree +-- json-schema@0.2.3
+746 silly currentTree +-- json-stable-stringify@1.0.1
+746 silly currentTree +-- json-stringify-safe@5.0.1
+746 silly currentTree +-- jsonify@0.0.0
+746 silly currentTree +-- jsprim@1.4.1
+746 silly currentTree +-- load-grunt-tasks@3.5.2
+746 silly currentTree +-- load-json-file@1.1.0
+746 silly currentTree +-- lodash@3.10.1
+746 silly currentTree +-- loud-rejection@1.6.0
+746 silly currentTree +-- map-obj@1.0.1
+746 silly currentTree +-- match-stream@0.0.2
+746 silly currentTree | `-- readable-stream@1.0.34
+746 silly currentTree +-- memorystream@0.3.1
+746 silly currentTree +-- meow@3.7.0
+746 silly currentTree +-- microbuffer@1.0.0
+746 silly currentTree +-- mime-db@1.30.0
+746 silly currentTree +-- mime-types@2.1.17
+746 silly currentTree +-- minimatch@3.0.4
+746 silly currentTree +-- minimist@1.2.0
+746 silly currentTree +-- mkdirp@0.5.1
+746 silly currentTree | `-- minimist@0.0.8
+746 silly currentTree +-- multimatch@2.1.0
+746 silly currentTree +-- nan@2.7.0
+746 silly currentTree +-- natives@1.1.0
+746 silly currentTree +-- node-gyp@3.6.2
+746 silly currentTree | `-- semver@5.3.0
+746 silly currentTree +-- node.extend@1.0.8
+746 silly currentTree +-- node.flow@1.2.3
+746 silly currentTree +-- nopt@3.0.6
+746 silly currentTree +-- normalize-package-data@2.4.0
+746 silly currentTree +-- npmlog@4.1.2
+746 silly currentTree +-- number-is-nan@1.0.1
+746 silly currentTree +-- oauth-sign@0.8.2
+746 silly currentTree +-- object-assign@4.1.1
+746 silly currentTree +-- object-keys@0.4.0
+746 silly currentTree +-- once@1.4.0
+746 silly currentTree +-- os-homedir@1.0.2
+746 silly currentTree +-- os-tmpdir@1.0.2
+746 silly currentTree +-- osenv@0.1.4
+746 silly currentTree +-- over@0.0.5
+746 silly currentTree +-- pako@0.2.9
+746 silly currentTree +-- parse-json@2.2.0
+746 silly currentTree +-- path-exists@2.1.0
+746 silly currentTree +-- path-is-absolute@1.0.1
+746 silly currentTree +-- path-type@1.1.0
+746 silly currentTree +-- performance-now@2.1.0
+746 silly currentTree +-- pify@2.3.0
+746 silly currentTree +-- pinkie-promise@2.0.1
+746 silly currentTree +-- pinkie@2.0.4
+746 silly currentTree +-- pkg-up@1.0.0
+746 silly currentTree +-- pkginfo@0.3.1
+746 silly currentTree +-- process-nextick-args@1.0.7
+746 silly currentTree +-- pullstream@0.4.1
+746 silly currentTree | `-- readable-stream@1.0.34
+746 silly currentTree +-- punycode@1.4.1
+746 silly currentTree +-- q@1.5.0
+746 silly currentTree +-- qs@6.5.1
+746 silly currentTree +-- read-pkg-up@1.0.1
+746 silly currentTree +-- read-pkg@1.1.0
+746 silly currentTree +-- readable-stream@1.1.14
+746 silly currentTree +-- redent@1.0.0
+746 silly currentTree +-- repeating@2.0.1
+746 silly currentTree +-- request@2.83.0
+746 silly currentTree +-- resemblejs@2.2.6
+746 silly currentTree +-- resolve-from@2.0.0
+746 silly currentTree +-- resolve-pkg@0.1.0
+746 silly currentTree +-- resolve@1.1.7
+746 silly currentTree +-- rimraf@2.2.8
+746 silly currentTree +-- rmdir@1.2.0
+746 silly currentTree +-- safe-buffer@5.1.1
+746 silly currentTree +-- sax@0.6.1
+746 silly currentTree +-- semver@5.4.1
+746 silly currentTree +-- set-blocking@2.0.0
+746 silly currentTree +-- setimmediate@1.0.5
+746 silly currentTree +-- signal-exit@3.0.2
+746 silly currentTree +-- slice-stream@1.0.0
+746 silly currentTree | `-- readable-stream@1.0.34
+746 silly currentTree +-- sntp@2.0.2
+746 silly currentTree +-- source-map@0.5.7
+746 silly currentTree +-- spdx-correct@1.0.2
+746 silly currentTree +-- spdx-expression-parse@1.0.4
+746 silly currentTree +-- spdx-license-ids@1.2.2
+746 silly currentTree +-- sprintf-js@1.0.3
+746 silly currentTree +-- sshpk@1.13.1
+746 silly currentTree +-- stack-trace@0.0.10
+746 silly currentTree +-- string_decoder@0.10.31
+746 silly currentTree +-- string-width@1.0.2
+746 silly currentTree +-- stringstream@0.0.5
+746 silly currentTree +-- strip-ansi@3.0.1
+746 silly currentTree +-- strip-bom@2.0.0
+746 silly currentTree +-- strip-indent@1.0.1
+746 silly currentTree +-- supports-color@2.0.0
+746 silly currentTree +-- svg-pathdata@1.0.0
+746 silly currentTree | `-- readable-stream@1.0.34
+746 silly currentTree +-- svg2ttf@2.1.1
+746 silly currentTree +-- svgicons2svgfont@1.1.0
+746 silly currentTree +-- svgo@0.6.6
+746 silly currentTree | +-- js-yaml@3.6.1
+746 silly currentTree | `-- sax@1.2.4
+746 silly currentTree +-- svgpath@2.2.1
+746 silly currentTree +-- tar@2.2.1
+746 silly currentTree +-- temp@0.8.3
+746 silly currentTree +-- tough-cookie@2.3.3
+746 silly currentTree +-- traverse@0.3.9
+746 silly currentTree +-- trim-newlines@1.0.0
+746 silly currentTree +-- ttf2eot@1.3.0
+746 silly currentTree | +-- argparse@0.1.16
+746 silly currentTree | `-- underscore.string@2.4.0
+746 silly currentTree +-- ttf2woff@1.3.0
+746 silly currentTree | +-- argparse@0.1.16
+746 silly currentTree | `-- underscore.string@2.4.0
+746 silly currentTree +-- ttf2woff2@2.0.3
+746 silly currentTree +-- tunnel-agent@0.6.0
+746 silly currentTree +-- tweetnacl@0.14.5
+746 silly currentTree +-- underscore.string@3.2.3
+746 silly currentTree +-- underscore@1.7.0
+746 silly currentTree +-- unzip@0.1.11
+746 silly currentTree | +-- fstream@0.1.31
+746 silly currentTree | +-- graceful-fs@3.0.11
+746 silly currentTree | `-- readable-stream@1.0.34
+746 silly currentTree +-- util-deprecate@1.0.2
+746 silly currentTree +-- uuid@3.1.0
+746 silly currentTree +-- validate-npm-package-license@3.0.1
+746 silly currentTree +-- verror@1.10.0
+746 silly currentTree +-- whet.extend@0.9.9
+746 silly currentTree +-- which@1.2.14
+746 silly currentTree +-- wide-align@1.1.2
+746 silly currentTree +-- winston@2.1.1
+746 silly currentTree | +-- async@1.0.0
+746 silly currentTree | `-- colors@1.0.3
+746 silly currentTree +-- wrappy@1.0.2
+746 silly currentTree +-- xml2js@0.4.19
+746 silly currentTree | `-- xmlbuilder@9.0.4
+746 silly currentTree +-- xmlbuilder@8.2.2
+746 silly currentTree `-- xmldom@0.1.27
+747 silly idealTree emojione-colr@0.2.2
+747 silly idealTree +-- abbrev@1.1.1
+747 silly idealTree +-- ajv@5.2.3
+747 silly idealTree +-- ansi-regex@2.1.1
+747 silly idealTree +-- ansi-styles@2.2.1
+747 silly idealTree +-- aproba@1.2.0
+747 silly idealTree +-- are-we-there-yet@1.1.4
+747 silly idealTree | +-- isarray@1.0.0
+747 silly idealTree | +-- readable-stream@2.3.3
+747 silly idealTree | `-- string_decoder@1.0.3
+747 silly idealTree +-- argparse@1.0.9
+747 silly idealTree +-- array-differ@1.0.0
+747 silly idealTree +-- array-find-index@1.0.2
+747 silly idealTree +-- array-union@1.0.2
+747 silly idealTree +-- array-uniq@1.0.3
+747 silly idealTree +-- arrify@1.0.1
+747 silly idealTree +-- asn1@0.2.3
+747 silly idealTree +-- assert-plus@1.0.0
+747 silly idealTree +-- async@1.5.2
+747 silly idealTree +-- asynckit@0.4.0
+747 silly idealTree +-- aws-sign2@0.7.0
+747 silly idealTree +-- aws4@1.6.0
+747 silly idealTree +-- balanced-match@1.0.0
+747 silly idealTree +-- bcrypt-pbkdf@1.0.1
+747 silly idealTree +-- binary@0.3.0
+747 silly idealTree +-- bindings@1.3.0
+747 silly idealTree +-- block-stream@0.0.9
+747 silly idealTree +-- boom@4.3.1
+747 silly idealTree +-- brace-expansion@1.1.8
+747 silly idealTree +-- buffers@0.1.1
+747 silly idealTree +-- bufferstreams@1.1.1
+747 silly idealTree | +-- isarray@1.0.0
+747 silly idealTree | +-- readable-stream@2.3.3
+747 silly idealTree | `-- string_decoder@1.0.3
+747 silly idealTree +-- builtin-modules@1.1.1
+747 silly idealTree +-- camelcase-keys@2.1.0
+747 silly idealTree +-- camelcase@2.1.1
+747 silly idealTree +-- canvas@1.6.5
+747 silly idealTree +-- caseless@0.12.0
+747 silly idealTree +-- chainsaw@0.1.0
+747 silly idealTree +-- chalk@1.1.3
+747 silly idealTree +-- clap@1.2.3
+747 silly idealTree +-- co@4.6.0
+747 silly idealTree +-- coa@1.0.4
+747 silly idealTree +-- code-point-at@1.1.0
+747 silly idealTree +-- coffee-script@1.10.0
+747 silly idealTree +-- colors@1.1.2
+747 silly idealTree +-- combined-stream@1.0.5
+747 silly idealTree +-- concat-map@0.0.1
+747 silly idealTree +-- console-control-strings@1.1.0
+747 silly idealTree +-- core-util-is@1.0.2
+747 silly idealTree +-- cryptiles@3.1.2
+747 silly idealTree | `-- boom@5.2.0
+747 silly idealTree +-- css-font-size-keywords@1.0.0
+747 silly idealTree +-- css-font-stretch-keywords@1.0.1
+747 silly idealTree +-- css-font-style-keywords@1.0.1
+747 silly idealTree +-- css-font-weight-keywords@1.0.0
+747 silly idealTree +-- css-global-keywords@1.0.1
+747 silly idealTree +-- css-list-helpers@1.0.1
+747 silly idealTree +-- css-system-font-keywords@1.0.0
+747 silly idealTree +-- csso@2.0.0
+747 silly idealTree +-- cubic2quad@1.1.1
+747 silly idealTree +-- currently-unhandled@0.4.1
+747 silly idealTree +-- cycle@1.0.3
+747 silly idealTree +-- dashdash@1.14.1
+747 silly idealTree +-- dateformat@1.0.12
+747 silly idealTree +-- decamelize@1.2.0
+747 silly idealTree +-- delayed-stream@1.0.0
+747 silly idealTree +-- delegates@1.0.0
+747 silly idealTree +-- ecc-jsbn@0.1.1
+747 silly idealTree +-- emoji-table@0.1.0
+747 silly idealTree +-- error-ex@1.3.1
+747 silly idealTree +-- escape-string-regexp@1.0.5
+747 silly idealTree +-- esprima@2.7.3
+747 silly idealTree +-- eventemitter2@0.4.14
+747 silly idealTree +-- exit@0.1.2
+747 silly idealTree +-- extend@3.0.1
+747 silly idealTree +-- extsprintf@1.3.0
+747 silly idealTree +-- eyes@0.1.8
+747 silly idealTree +-- fast-deep-equal@1.0.0
+747 silly idealTree +-- find-up@1.1.2
+747 silly idealTree +-- findup-sync@0.3.0
+747 silly idealTree | `-- glob@5.0.15
+747 silly idealTree +-- forever-agent@0.6.1
+747 silly idealTree +-- form-data@2.3.1
+747 silly idealTree +-- fs.realpath@1.0.0
+747 silly idealTree +-- fstream@1.0.11
+747 silly idealTree +-- gauge@2.7.4
+747 silly idealTree +-- get-stdin@4.0.1
+747 silly idealTree +-- getobject@0.1.0
+747 silly idealTree +-- getpass@0.1.7
+747 silly idealTree +-- glob@7.0.6
+747 silly idealTree +-- graceful-fs@4.1.11
+747 silly idealTree +-- grunt-cli@1.2.0
+747 silly idealTree +-- grunt-known-options@1.1.0
+747 silly idealTree +-- grunt-legacy-log-utils@1.0.0
+747 silly idealTree | `-- lodash@4.3.0
+747 silly idealTree +-- grunt-legacy-log@1.0.0
+747 silly idealTree +-- grunt-legacy-util@1.0.0
+747 silly idealTree | `-- lodash@4.3.0
+747 silly idealTree +-- grunt-webfont@1.6.0
+747 silly idealTree | `-- lodash@4.3.0
+747 silly idealTree +-- grunt@1.0.1
+747 silly idealTree +-- har-schema@2.0.0
+747 silly idealTree +-- har-validator@5.0.3
+747 silly idealTree +-- has-ansi@2.0.0
+747 silly idealTree +-- has-unicode@2.0.1
+747 silly idealTree +-- hawk@6.0.2
+747 silly idealTree +-- hoek@4.2.0
+747 silly idealTree +-- hooker@0.2.3
+747 silly idealTree +-- hosted-git-info@2.5.0
+747 silly idealTree +-- http-signature@1.2.0
+747 silly idealTree +-- iconv-lite@0.4.19
+747 silly idealTree +-- indent-string@2.1.0
+747 silly idealTree +-- inflight@1.0.6
+747 silly idealTree +-- inherits@2.0.3
+747 silly idealTree +-- is-arrayish@0.2.1
+747 silly idealTree +-- is-builtin-module@1.0.0
+747 silly idealTree +-- is-finite@1.0.2
+747 silly idealTree +-- is-fullwidth-code-point@1.0.0
+747 silly idealTree +-- is-typedarray@1.0.0
+747 silly idealTree +-- is-utf8@0.2.1
+747 silly idealTree +-- is@0.2.7
+747 silly idealTree +-- isarray@0.0.1
+747 silly idealTree +-- isexe@2.0.0
+747 silly idealTree +-- isnumeric@0.2.0
+747 silly idealTree +-- isstream@0.1.2
+747 silly idealTree +-- js-yaml@3.5.5
+747 silly idealTree +-- jsbn@0.1.1
+747 silly idealTree +-- json-schema-traverse@0.3.1
+747 silly idealTree +-- json-schema@0.2.3
+747 silly idealTree +-- json-stable-stringify@1.0.1
+747 silly idealTree +-- json-stringify-safe@5.0.1
+747 silly idealTree +-- jsonify@0.0.0
+747 silly idealTree +-- jsprim@1.4.1
+747 silly idealTree +-- load-grunt-tasks@3.5.2
+747 silly idealTree +-- load-json-file@1.1.0
+747 silly idealTree +-- lodash@3.10.1
+747 silly idealTree +-- loud-rejection@1.6.0
+747 silly idealTree +-- map-obj@1.0.1
+747 silly idealTree +-- match-stream@0.0.2
+747 silly idealTree | `-- readable-stream@1.0.34
+747 silly idealTree +-- memorystream@0.3.1
+747 silly idealTree +-- meow@3.7.0
+747 silly idealTree +-- microbuffer@1.0.0
+747 silly idealTree +-- mime-db@1.30.0
+747 silly idealTree +-- mime-types@2.1.17
+747 silly idealTree +-- minimatch@3.0.4
+747 silly idealTree +-- minimist@1.2.0
+747 silly idealTree +-- mkdirp@0.5.1
+747 silly idealTree | `-- minimist@0.0.8
+747 silly idealTree +-- multimatch@2.1.0
+747 silly idealTree +-- nan@2.7.0
+747 silly idealTree +-- natives@1.1.0
+747 silly idealTree +-- node-gyp@3.6.2
+747 silly idealTree | `-- semver@5.3.0
+747 silly idealTree +-- node.extend@1.0.8
+747 silly idealTree +-- node.flow@1.2.3
+747 silly idealTree +-- nopt@3.0.6
+747 silly idealTree +-- normalize-package-data@2.4.0
+747 silly idealTree +-- npmlog@4.1.2
+747 silly idealTree +-- number-is-nan@1.0.1
+747 silly idealTree +-- oauth-sign@0.8.2
+747 silly idealTree +-- object-assign@4.1.1
+747 silly idealTree +-- object-keys@0.4.0
+747 silly idealTree +-- once@1.4.0
+747 silly idealTree +-- os-homedir@1.0.2
+747 silly idealTree +-- os-tmpdir@1.0.2
+747 silly idealTree +-- osenv@0.1.4
+747 silly idealTree +-- over@0.0.5
+747 silly idealTree +-- pako@0.2.9
+747 silly idealTree +-- parse-css-font@2.0.2
+747 silly idealTree +-- parse-json@2.2.0
+747 silly idealTree +-- path-exists@2.1.0
+747 silly idealTree +-- path-is-absolute@1.0.1
+747 silly idealTree +-- path-type@1.1.0
+747 silly idealTree +-- performance-now@2.1.0
+747 silly idealTree +-- pify@2.3.0
+747 silly idealTree +-- pinkie-promise@2.0.1
+747 silly idealTree +-- pinkie@2.0.4
+747 silly idealTree +-- pkg-up@1.0.0
+747 silly idealTree +-- pkginfo@0.3.1
+747 silly idealTree +-- process-nextick-args@1.0.7
+747 silly idealTree +-- pullstream@0.4.1
+747 silly idealTree | `-- readable-stream@1.0.34
+747 silly idealTree +-- punycode@1.4.1
+747 silly idealTree +-- q@1.5.0
+747 silly idealTree +-- qs@6.5.1
+747 silly idealTree +-- read-pkg-up@1.0.1
+747 silly idealTree +-- read-pkg@1.1.0
+747 silly idealTree +-- readable-stream@1.1.14
+747 silly idealTree +-- redent@1.0.0
+747 silly idealTree +-- repeating@2.0.1
+747 silly idealTree +-- request@2.83.0
+747 silly idealTree +-- resemblejs@2.2.6
+747 silly idealTree +-- resolve-from@2.0.0
+747 silly idealTree +-- resolve-pkg@0.1.0
+747 silly idealTree +-- resolve@1.1.7
+747 silly idealTree +-- rimraf@2.2.8
+747 silly idealTree +-- rmdir@1.2.0
+747 silly idealTree +-- safe-buffer@5.1.1
+747 silly idealTree +-- sax@0.6.1
+747 silly idealTree +-- semver@5.4.1
+747 silly idealTree +-- set-blocking@2.0.0
+747 silly idealTree +-- setimmediate@1.0.5
+747 silly idealTree +-- signal-exit@3.0.2
+747 silly idealTree +-- slice-stream@1.0.0
+747 silly idealTree | `-- readable-stream@1.0.34
+747 silly idealTree +-- sntp@2.0.2
+747 silly idealTree +-- source-map@0.5.7
+747 silly idealTree +-- spdx-correct@1.0.2
+747 silly idealTree +-- spdx-expression-parse@1.0.4
+747 silly idealTree +-- spdx-license-ids@1.2.2
+747 silly idealTree +-- sprintf-js@1.0.3
+747 silly idealTree +-- sshpk@1.13.1
+747 silly idealTree +-- stack-trace@0.0.10
+747 silly idealTree +-- string_decoder@0.10.31
+747 silly idealTree +-- string-width@1.0.2
+747 silly idealTree +-- stringstream@0.0.5
+747 silly idealTree +-- strip-ansi@3.0.1
+747 silly idealTree +-- strip-bom@2.0.0
+747 silly idealTree +-- strip-indent@1.0.1
+747 silly idealTree +-- supports-color@2.0.0
+747 silly idealTree +-- svg-pathdata@1.0.0
+747 silly idealTree | `-- readable-stream@1.0.34
+747 silly idealTree +-- svg2ttf@2.1.1
+747 silly idealTree +-- svgicons2svgfont@1.1.0
+747 silly idealTree +-- svgo@0.6.6
+747 silly idealTree | +-- js-yaml@3.6.1
+747 silly idealTree | `-- sax@1.2.4
+747 silly idealTree +-- svgpath@2.2.1
+747 silly idealTree +-- tar@2.2.1
+747 silly idealTree +-- tcomb@2.7.0
+747 silly idealTree +-- temp@0.8.3
+747 silly idealTree +-- tough-cookie@2.3.3
+747 silly idealTree +-- traverse@0.3.9
+747 silly idealTree +-- trim-newlines@1.0.0
+747 silly idealTree +-- ttf2eot@1.3.0
+747 silly idealTree | +-- argparse@0.1.16
+747 silly idealTree | `-- underscore.string@2.4.0
+747 silly idealTree +-- ttf2woff@1.3.0
+747 silly idealTree | +-- argparse@0.1.16
+747 silly idealTree | `-- underscore.string@2.4.0
+747 silly idealTree +-- ttf2woff2@2.0.3
+747 silly idealTree +-- tunnel-agent@0.6.0
+747 silly idealTree +-- tweetnacl@0.14.5
+747 silly idealTree +-- underscore.string@3.2.3
+747 silly idealTree +-- underscore@1.7.0
+747 silly idealTree +-- units-css@0.4.0
+747 silly idealTree +-- unquote@1.1.0
+747 silly idealTree +-- unzip@0.1.11
+747 silly idealTree | +-- fstream@0.1.31
+747 silly idealTree | +-- graceful-fs@3.0.11
+747 silly idealTree | `-- readable-stream@1.0.34
+747 silly idealTree +-- util-deprecate@1.0.2
+747 silly idealTree +-- uuid@3.1.0
+747 silly idealTree +-- validate-npm-package-license@3.0.1
+747 silly idealTree +-- verror@1.10.0
+747 silly idealTree +-- viewport-dimensions@0.2.0
+747 silly idealTree +-- whet.extend@0.9.9
+747 silly idealTree +-- which@1.2.14
+747 silly idealTree +-- wide-align@1.1.2
+747 silly idealTree +-- winston@2.1.1
+747 silly idealTree | +-- async@1.0.0
+747 silly idealTree | `-- colors@1.0.3
+747 silly idealTree +-- wrappy@1.0.2
+747 silly idealTree +-- xml2js@0.4.19
+747 silly idealTree | `-- xmlbuilder@9.0.4
+747 silly idealTree +-- xmlbuilder@8.2.2
+747 silly idealTree `-- xmldom@0.1.27
+748 silly generateActionsToTake Starting
+749 silly install generateActionsToTake
+750 silly generateActionsToTake Finishing
+751 silly diffTrees action count 14
+752 silly diffTrees add css-font-size-keywords@1.0.0
+753 silly diffTrees add css-font-stretch-keywords@1.0.1
+754 silly diffTrees add css-font-style-keywords@1.0.1
+755 silly diffTrees add css-font-weight-keywords@1.0.0
+756 silly diffTrees add css-global-keywords@1.0.1
+757 silly diffTrees add css-system-font-keywords@1.0.0
+758 silly diffTrees add isnumeric@0.2.0
+759 silly diffTrees add tcomb@2.7.0
+760 silly diffTrees add css-list-helpers@1.0.1
+761 silly diffTrees add unquote@1.1.0
+762 silly diffTrees add viewport-dimensions@0.2.0
+763 silly diffTrees add parse-css-font@2.0.2
+764 silly diffTrees add units-css@0.4.0
+765 silly diffTrees add canvas@1.6.5
+766 silly decomposeActions action count 112
+767 silly decomposeActions fetch css-font-size-keywords@1.0.0
+768 silly decomposeActions extract css-font-size-keywords@1.0.0
+769 silly decomposeActions test css-font-size-keywords@1.0.0
+770 silly decomposeActions preinstall css-font-size-keywords@1.0.0
+771 silly decomposeActions build css-font-size-keywords@1.0.0
+772 silly decomposeActions install css-font-size-keywords@1.0.0
+773 silly decomposeActions postinstall css-font-size-keywords@1.0.0
+774 silly decomposeActions finalize css-font-size-keywords@1.0.0
+775 silly decomposeActions fetch css-font-stretch-keywords@1.0.1
+776 silly decomposeActions extract css-font-stretch-keywords@1.0.1
+777 silly decomposeActions test css-font-stretch-keywords@1.0.1
+778 silly decomposeActions preinstall css-font-stretch-keywords@1.0.1
+779 silly decomposeActions build css-font-stretch-keywords@1.0.1
+780 silly decomposeActions install css-font-stretch-keywords@1.0.1
+781 silly decomposeActions postinstall css-font-stretch-keywords@1.0.1
+782 silly decomposeActions finalize css-font-stretch-keywords@1.0.1
+783 silly decomposeActions fetch css-font-style-keywords@1.0.1
+784 silly decomposeActions extract css-font-style-keywords@1.0.1
+785 silly decomposeActions test css-font-style-keywords@1.0.1
+786 silly decomposeActions preinstall css-font-style-keywords@1.0.1
+787 silly decomposeActions build css-font-style-keywords@1.0.1
+788 silly decomposeActions install css-font-style-keywords@1.0.1
+789 silly decomposeActions postinstall css-font-style-keywords@1.0.1
+790 silly decomposeActions finalize css-font-style-keywords@1.0.1
+791 silly decomposeActions fetch css-font-weight-keywords@1.0.0
+792 silly decomposeActions extract css-font-weight-keywords@1.0.0
+793 silly decomposeActions test css-font-weight-keywords@1.0.0
+794 silly decomposeActions preinstall css-font-weight-keywords@1.0.0
+795 silly decomposeActions build css-font-weight-keywords@1.0.0
+796 silly decomposeActions install css-font-weight-keywords@1.0.0
+797 silly decomposeActions postinstall css-font-weight-keywords@1.0.0
+798 silly decomposeActions finalize css-font-weight-keywords@1.0.0
+799 silly decomposeActions fetch css-global-keywords@1.0.1
+800 silly decomposeActions extract css-global-keywords@1.0.1
+801 silly decomposeActions test css-global-keywords@1.0.1
+802 silly decomposeActions preinstall css-global-keywords@1.0.1
+803 silly decomposeActions build css-global-keywords@1.0.1
+804 silly decomposeActions install css-global-keywords@1.0.1
+805 silly decomposeActions postinstall css-global-keywords@1.0.1
+806 silly decomposeActions finalize css-global-keywords@1.0.1
+807 silly decomposeActions fetch css-system-font-keywords@1.0.0
+808 silly decomposeActions extract css-system-font-keywords@1.0.0
+809 silly decomposeActions test css-system-font-keywords@1.0.0
+810 silly decomposeActions preinstall css-system-font-keywords@1.0.0
+811 silly decomposeActions build css-system-font-keywords@1.0.0
+812 silly decomposeActions install css-system-font-keywords@1.0.0
+813 silly decomposeActions postinstall css-system-font-keywords@1.0.0
+814 silly decomposeActions finalize css-system-font-keywords@1.0.0
+815 silly decomposeActions fetch isnumeric@0.2.0
+816 silly decomposeActions extract isnumeric@0.2.0
+817 silly decomposeActions test isnumeric@0.2.0
+818 silly decomposeActions preinstall isnumeric@0.2.0
+819 silly decomposeActions build isnumeric@0.2.0
+820 silly decomposeActions install isnumeric@0.2.0
+821 silly decomposeActions postinstall isnumeric@0.2.0
+822 silly decomposeActions finalize isnumeric@0.2.0
+823 silly decomposeActions fetch tcomb@2.7.0
+824 silly decomposeActions extract tcomb@2.7.0
+825 silly decomposeActions test tcomb@2.7.0
+826 silly decomposeActions preinstall tcomb@2.7.0
+827 silly decomposeActions build tcomb@2.7.0
+828 silly decomposeActions install tcomb@2.7.0
+829 silly decomposeActions postinstall tcomb@2.7.0
+830 silly decomposeActions finalize tcomb@2.7.0
+831 silly decomposeActions fetch css-list-helpers@1.0.1
+832 silly decomposeActions extract css-list-helpers@1.0.1
+833 silly decomposeActions test css-list-helpers@1.0.1
+834 silly decomposeActions preinstall css-list-helpers@1.0.1
+835 silly decomposeActions build css-list-helpers@1.0.1
+836 silly decomposeActions install css-list-helpers@1.0.1
+837 silly decomposeActions postinstall css-list-helpers@1.0.1
+838 silly decomposeActions finalize css-list-helpers@1.0.1
+839 silly decomposeActions fetch unquote@1.1.0
+840 silly decomposeActions extract unquote@1.1.0
+841 silly decomposeActions test unquote@1.1.0
+842 silly decomposeActions preinstall unquote@1.1.0
+843 silly decomposeActions build unquote@1.1.0
+844 silly decomposeActions install unquote@1.1.0
+845 silly decomposeActions postinstall unquote@1.1.0
+846 silly decomposeActions finalize unquote@1.1.0
+847 silly decomposeActions fetch viewport-dimensions@0.2.0
+848 silly decomposeActions extract viewport-dimensions@0.2.0
+849 silly decomposeActions test viewport-dimensions@0.2.0
+850 silly decomposeActions preinstall viewport-dimensions@0.2.0
+851 silly decomposeActions build viewport-dimensions@0.2.0
+852 silly decomposeActions install viewport-dimensions@0.2.0
+853 silly decomposeActions postinstall viewport-dimensions@0.2.0
+854 silly decomposeActions finalize viewport-dimensions@0.2.0
+855 silly decomposeActions fetch parse-css-font@2.0.2
+856 silly decomposeActions extract parse-css-font@2.0.2
+857 silly decomposeActions test parse-css-font@2.0.2
+858 silly decomposeActions preinstall parse-css-font@2.0.2
+859 silly decomposeActions build parse-css-font@2.0.2
+860 silly decomposeActions install parse-css-font@2.0.2
+861 silly decomposeActions postinstall parse-css-font@2.0.2
+862 silly decomposeActions finalize parse-css-font@2.0.2
+863 silly decomposeActions fetch units-css@0.4.0
+864 silly decomposeActions extract units-css@0.4.0
+865 silly decomposeActions test units-css@0.4.0
+866 silly decomposeActions preinstall units-css@0.4.0
+867 silly decomposeActions build units-css@0.4.0
+868 silly decomposeActions install units-css@0.4.0
+869 silly decomposeActions postinstall units-css@0.4.0
+870 silly decomposeActions finalize units-css@0.4.0
+871 silly decomposeActions fetch canvas@1.6.5
+872 silly decomposeActions extract canvas@1.6.5
+873 silly decomposeActions test canvas@1.6.5
+874 silly decomposeActions preinstall canvas@1.6.5
+875 silly decomposeActions build canvas@1.6.5
+876 silly decomposeActions install canvas@1.6.5
+877 silly decomposeActions postinstall canvas@1.6.5
+878 silly decomposeActions finalize canvas@1.6.5
+879 silly runTopLevelLifecycles Starting
+880 silly executeActions Starting
+881 silly install executeActions
+882 silly doSerial global-install 0
+883 silly doParallel fetch 14
+884 verbose correctMkdir C:\Users\aspire\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+885 verbose lock using C:\Users\aspire\AppData\Roaming\npm-cache\_locks\staging-4aff2769be150513.lock for C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging
+886 silly doParallel extract 14
+887 silly extract css-font-size-keywords@1.0.0
+888 silly extract css-font-stretch-keywords@1.0.1
+889 silly extract css-font-style-keywords@1.0.1
+890 silly extract css-font-weight-keywords@1.0.0
+891 silly extract css-global-keywords@1.0.1
+892 silly extract css-system-font-keywords@1.0.0
+893 silly extract isnumeric@0.2.0
+894 silly extract tcomb@2.7.0
+895 silly extract css-list-helpers@1.0.1
+896 silly extract unquote@1.1.0
+897 silly extract viewport-dimensions@0.2.0
+898 silly extract parse-css-font@2.0.2
+899 silly extract units-css@0.4.0
+900 silly extract canvas@1.6.5
+901 verbose unbuild node_modules\.staging\css-font-size-keywords-b3aabbbb
+902 verbose unbuild node_modules\.staging\css-font-stretch-keywords-082664bf
+903 verbose unbuild node_modules\.staging\css-font-style-keywords-0e46e5e4
+904 verbose unbuild node_modules\.staging\css-font-weight-keywords-49df0a06
+905 verbose unbuild node_modules\.staging\css-global-keywords-de1c611e
+906 verbose unbuild node_modules\.staging\isnumeric-1ff00957
+907 verbose unbuild node_modules\.staging\css-system-font-keywords-671c7346
+908 verbose unbuild node_modules\.staging\tcomb-2090fdd0
+909 verbose unbuild node_modules\.staging\css-list-helpers-16bcbabd
+910 verbose unbuild node_modules\.staging\viewport-dimensions-2a8eb001
+911 verbose unbuild node_modules\.staging\unquote-b46a0ed9
+912 verbose unbuild node_modules\.staging\parse-css-font-238a39f9
+913 verbose unbuild node_modules\.staging\units-css-a06a7f6c
+914 verbose unbuild node_modules\.staging\canvas-e2f6771e
+915 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+916 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb
+917 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+918 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf
+919 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+920 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4
+921 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+922 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06
+923 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+924 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957
+925 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+926 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e
+927 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+928 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346
+929 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+930 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0
+931 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+932 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd
+933 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+934 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001
+935 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+936 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9
+937 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9 is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+938 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9
+939 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+940 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c
+941 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-font-size-keywords\1.0.0\package.tgz
+942 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb
+943 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb is being purged
+944 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb
+945 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-font-stretch-keywords\1.0.1\package.tgz
+946 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf
+947 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf is being purged
+948 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf
+949 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-font-style-keywords\1.0.1\package.tgz
+950 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4
+951 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4 is being purged
+952 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4
+953 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e is being purged from base C:\Users\ch36573\Documents\Git\emojione-colr
+954 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e
+955 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-font-weight-keywords\1.0.0\package.tgz
+956 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06
+957 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06 is being purged
+958 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06
+959 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\isnumeric\0.2.0\package.tgz
+960 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957
+961 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957 is being purged
+962 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957
+963 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-global-keywords\1.0.1\package.tgz
+964 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e
+965 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e is being purged
+966 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e
+967 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-system-font-keywords\1.0.0\package.tgz
+968 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346
+969 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346 is being purged
+970 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346
+971 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\tcomb\2.7.0\package.tgz
+972 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0
+973 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0 is being purged
+974 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0
+975 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\css-list-helpers\1.0.1\package.tgz
+976 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd
+977 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd is being purged
+978 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd
+979 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\viewport-dimensions\0.2.0\package.tgz
+980 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001
+981 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001 is being purged
+982 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001
+983 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\unquote\1.1.0\package.tgz
+984 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9
+985 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9 is being purged
+986 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9
+987 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\parse-css-font\2.0.2\package.tgz
+988 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9
+989 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9 is being purged
+990 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9
+991 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\units-css\0.4.0\package.tgz
+992 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c
+993 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c is being purged
+994 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c
+995 silly gunzTarPerm modes [ '777', '666' ]
+996 silly gunzTarPerm modes [ '777', '666' ]
+997 silly gunzTarPerm modes [ '777', '666' ]
+998 verbose tar unpack C:\Users\aspire\AppData\Roaming\npm-cache\canvas\1.6.5\package.tgz
+999 verbose tar unpacking to C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e
+1000 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e is being purged
+1001 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e
+1002 silly gunzTarPerm modes [ '777', '666' ]
+1003 silly gunzTarPerm modes [ '777', '666' ]
+1004 silly gunzTarPerm modes [ '777', '666' ]
+1005 silly gunzTarPerm modes [ '777', '666' ]
+1006 silly gunzTarPerm modes [ '777', '666' ]
+1007 silly gunzTarPerm modes [ '777', '666' ]
+1008 silly gunzTarPerm modes [ '777', '666' ]
+1009 silly gunzTarPerm modes [ '777', '666' ]
+1010 silly gunzTarPerm modes [ '777', '666' ]
+1011 silly gunzTarPerm modes [ '777', '666' ]
+1012 silly gunzTarPerm modes [ '777', '666' ]
+1013 silly gunzTarPerm extractEntry package.json
+1014 silly gunzTarPerm extractEntry package.json
+1015 silly gunzTarPerm extractEntry package.json
+1016 silly gunzTarPerm extractEntry package.json
+1017 silly gunzTarPerm extractEntry package.json
+1018 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+1019 silly gunzTarPerm extractEntry package.json
+1020 silly gunzTarPerm extractEntry package.json
+1021 silly gunzTarPerm extractEntry package.json
+1022 silly gunzTarPerm extractEntry package.json
+1023 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+1024 silly gunzTarPerm extractEntry package.json
+1025 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+1026 silly gunzTarPerm extractEntry package.json
+1027 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+1028 silly gunzTarPerm extractEntry package.json
+1029 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+1030 silly gunzTarPerm extractEntry package.json
+1031 silly gunzTarPerm extractEntry package.json
+1032 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+1033 silly gunzTarPerm extractEntry .npmignore
+1034 silly gunzTarPerm extractEntry README.md
+1035 silly gunzTarPerm extractEntry .npmignore
+1036 silly gunzTarPerm extractEntry README.md
+1037 silly gunzTarPerm extractEntry .npmignore
+1038 silly gunzTarPerm extractEntry README.md
+1039 silly gunzTarPerm extractEntry .npmignore
+1040 silly gunzTarPerm extractEntry README.md
+1041 silly gunzTarPerm extractEntry .npmignore
+1042 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+1043 silly gunzTarPerm extractEntry README.md
+1044 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+1045 silly gunzTarPerm extractEntry .npmignore
+1046 silly gunzTarPerm extractEntry README.md
+1047 silly gunzTarPerm extractEntry README.md
+1048 silly gunzTarPerm extractEntry LICENSE
+1049 silly gunzTarPerm extractEntry .npmignore
+1050 silly gunzTarPerm extractEntry README.md
+1051 silly gunzTarPerm extractEntry .npmignore
+1052 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+1053 silly gunzTarPerm extractEntry README.md
+1054 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+1055 silly gunzTarPerm extractEntry README.md
+1056 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+1057 silly gunzTarPerm extractEntry LICENSE
+1058 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+1059 silly gunzTarPerm extractEntry .npmignore
+1060 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+1061 silly gunzTarPerm extractEntry README.md
+1062 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+1063 silly gunzTarPerm extractEntry .npmignore
+1064 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+1065 silly gunzTarPerm extractEntry README.md
+1066 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+1067 silly gunzTarPerm extractEntry README.md
+1068 silly gunzTarPerm extractEntry LICENSE
+1069 silly gunzTarPerm extractEntry .npmignore
+1070 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+1071 silly gunzTarPerm extractEntry index.js
+1072 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+1073 silly gunzTarPerm extractEntry LICENSE
+1074 silly gunzTarPerm extractEntry CHANGELOG.md
+1075 silly gunzTarPerm extractEntry LICENSE
+1076 silly gunzTarPerm extractEntry CHANGELOG.md
+1077 silly gunzTarPerm extractEntry LICENSE
+1078 silly gunzTarPerm extractEntry CHANGELOG.md
+1079 silly gunzTarPerm extractEntry Gruntfile.js
+1080 silly gunzTarPerm modified mode [ 'Gruntfile.js', 420, 438 ]
+1081 silly gunzTarPerm extractEntry isNumeric.min.js
+1082 silly gunzTarPerm modified mode [ 'isNumeric.min.js', 420, 438 ]
+1083 silly gunzTarPerm extractEntry index.js
+1084 silly gunzTarPerm extractEntry CHANGELOG.md
+1085 silly gunzTarPerm extractEntry LICENSE
+1086 silly gunzTarPerm extractEntry CHANGELOG.md
+1087 silly gunzTarPerm extractEntry index.js
+1088 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+1089 silly gunzTarPerm extractEntry LICENSE.md
+1090 silly gunzTarPerm modified mode [ 'LICENSE.md', 420, 438 ]
+1091 silly gunzTarPerm extractEntry index.js
+1092 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+1093 silly gunzTarPerm extractEntry CHANGELOG.md
+1094 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 420, 438 ]
+1095 silly gunzTarPerm extractEntry LICENSE
+1096 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+1097 silly gunzTarPerm extractEntry index.js
+1098 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+1099 silly gunzTarPerm extractEntry index.js
+1100 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+1101 silly gunzTarPerm extractEntry LICENSE.md
+1102 silly gunzTarPerm modified mode [ 'LICENSE.md', 420, 438 ]
+1103 silly gunzTarPerm extractEntry .travis.yml
+1104 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+1105 silly gunzTarPerm extractEntry History.md
+1106 silly gunzTarPerm modified mode [ 'History.md', 420, 438 ]
+1107 silly gunzTarPerm extractEntry LICENSE
+1108 silly gunzTarPerm extractEntry CHANGELOG.md
+1109 silly gunzTarPerm extractEntry index.js
+1110 silly gunzTarPerm extractEntry CHANGELOG.md
+1111 silly gunzTarPerm extractEntry LICENSE
+1112 silly gunzTarPerm extractEntry CHANGELOG.md
+1113 silly gunzTarPerm extractEntry index.json
+1114 silly gunzTarPerm extractEntry index.json
+1115 silly gunzTarPerm extractEntry isNumeric.js
+1116 silly gunzTarPerm modified mode [ 'isNumeric.js', 420, 438 ]
+1117 silly gunzTarPerm extractEntry spec.js
+1118 silly gunzTarPerm modified mode [ 'spec.js', 420, 438 ]
+1119 silly gunzTarPerm extractEntry index.json
+1120 silly gunzTarPerm extractEntry test/test.js
+1121 silly gunzTarPerm modified mode [ 'test/test.js', 420, 438 ]
+1122 silly gunzTarPerm extractEntry dist/viewport.js
+1123 silly gunzTarPerm modified mode [ 'dist/viewport.js', 420, 438 ]
+1124 silly gunzTarPerm extractEntry dist/viewport.min.js
+1125 silly gunzTarPerm modified mode [ 'dist/viewport.min.js', 420, 438 ]
+1126 silly gunzTarPerm extractEntry .env
+1127 silly gunzTarPerm modified mode [ '.env', 420, 438 ]
+1128 silly gunzTarPerm extractEntry bower_components/isnumeric/package.json
+1129 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/package.json', 420, 438 ]
+1130 silly gunzTarPerm extractEntry Readme.md
+1131 silly gunzTarPerm modified mode [ 'Readme.md', 420, 438 ]
+1132 silly gunzTarPerm extractEntry index.json
+1133 silly gunzTarPerm extractEntry index.json
+1134 silly gunzTarPerm extractEntry index.d.ts
+1135 silly gunzTarPerm modified mode [ 'index.d.ts', 420, 438 ]
+1136 silly gunzTarPerm extractEntry index.json
+1137 silly gunzTarPerm extractEntry lib/helpers.js
+1138 silly gunzTarPerm extractEntry binding.gyp
+1139 silly gunzTarPerm modified mode [ 'binding.gyp', 493, 511 ]
+1140 silly gunzTarPerm extractEntry .github/ISSUE_TEMPLATE.md
+1141 silly gunzTarPerm modified mode [ '.github/ISSUE_TEMPLATE.md', 420, 438 ]
+1142 silly gunzTarPerm extractEntry .travis.yml
+1143 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+1144 silly gunzTarPerm extractEntry .env
+1145 silly gunzTarPerm modified mode [ '.env', 420, 438 ]
+1146 silly gunzTarPerm extractEntry bower_components/isnumeric/.npmignore
+1147 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/.npmignore', 420, 438 ]
+1148 silly gunzTarPerm extractEntry bower_components/isnumeric/README.md
+1149 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/README.md', 420, 438 ]
+1150 silly gunzTarPerm extractEntry lib/Any.js
+1151 silly gunzTarPerm modified mode [ 'lib/Any.js', 420, 438 ]
+1152 silly gunzTarPerm extractEntry lib/func.js
+1153 silly gunzTarPerm modified mode [ 'lib/func.js', 420, 438 ]
+1154 silly gunzTarPerm extractEntry lib/bindings.js
+1155 silly gunzTarPerm modified mode [ 'lib/bindings.js', 420, 438 ]
+1156 silly gunzTarPerm extractEntry lib/canvas.js
+1157 silly gunzTarPerm modified mode [ 'lib/canvas.js', 420, 438 ]
+1158 silly gunzTarPerm extractEntry lib/context2d.js
+1159 silly gunzTarPerm modified mode [ 'lib/context2d.js', 420, 438 ]
+1160 silly gunzTarPerm extractEntry bower_components/isnumeric/Gruntfile.js
+1161 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/Gruntfile.js', 420, 438 ]
+1162 silly gunzTarPerm extractEntry lib/image.js
+1163 silly gunzTarPerm modified mode [ 'lib/image.js', 420, 438 ]
+1164 silly gunzTarPerm extractEntry lib/getFunctionName.js
+1165 silly gunzTarPerm modified mode [ 'lib/getFunctionName.js', 420, 438 ]
+1166 silly gunzTarPerm extractEntry lib/getTypeName.js
+1167 silly gunzTarPerm modified mode [ 'lib/getTypeName.js', 420, 438 ]
+1168 silly gunzTarPerm extractEntry bower_components/isnumeric/isNumeric.js
+1169 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/isNumeric.js', 420, 438 ]
+1170 silly gunzTarPerm extractEntry bower_components/isnumeric/isNumeric.min.js
+1171 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/isNumeric.min.js', 420, 438 ]
+1172 silly gunzTarPerm extractEntry lib/jpegstream.js
+1173 silly gunzTarPerm modified mode [ 'lib/jpegstream.js', 420, 438 ]
+1174 silly gunzTarPerm extractEntry lib/pdfstream.js
+1175 silly gunzTarPerm modified mode [ 'lib/pdfstream.js', 420, 438 ]
+1176 silly gunzTarPerm extractEntry lib/intersection.js
+1177 silly gunzTarPerm modified mode [ 'lib/intersection.js', 420, 438 ]
+1178 silly gunzTarPerm extractEntry lib/fromJSON.js
+1179 silly gunzTarPerm modified mode [ 'lib/fromJSON.js', 420, 438 ]
+1180 silly gunzTarPerm extractEntry bower_components/isnumeric/spec.js
+1181 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/spec.js', 420, 438 ]
+1182 silly gunzTarPerm extractEntry bower_components/isnumeric/.bower.json
+1183 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/.bower.json', 420, 438 ]
+1184 silly gunzTarPerm extractEntry lib/is.js
+1185 silly gunzTarPerm modified mode [ 'lib/is.js', 420, 438 ]
+1186 silly gunzTarPerm extractEntry lib/isArray.js
+1187 silly gunzTarPerm modified mode [ 'lib/isArray.js', 420, 438 ]
+1188 silly gunzTarPerm extractEntry lib/pngstream.js
+1189 silly gunzTarPerm modified mode [ 'lib/pngstream.js', 420, 438 ]
+1190 silly gunzTarPerm extractEntry src/Image.cc
+1191 silly gunzTarPerm modified mode [ 'src/Image.cc', 420, 438 ]
+1192 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd\node_modules is being purged
+1193 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd\node_modules
+1194 silly gunzTarPerm extractEntry src/Canvas.cc
+1195 silly gunzTarPerm modified mode [ 'src/Canvas.cc', 420, 438 ]
+1196 silly gunzTarPerm extractEntry src/CanvasGradient.cc
+1197 silly gunzTarPerm modified mode [ 'src/CanvasGradient.cc', 420, 438 ]
+1198 silly gunzTarPerm extractEntry lib/isBoolean.js
+1199 silly gunzTarPerm modified mode [ 'lib/isBoolean.js', 420, 438 ]
+1200 silly gunzTarPerm extractEntry lib/isFunction.js
+1201 silly gunzTarPerm modified mode [ 'lib/isFunction.js', 420, 438 ]
+1202 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb\node_modules is being purged
+1203 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb\node_modules
+1204 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e\node_modules is being purged
+1205 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e\node_modules
+1206 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346\node_modules is being purged
+1207 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346\node_modules
+1208 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4\node_modules is being purged
+1209 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4\node_modules
+1210 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf\node_modules is being purged
+1211 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf\node_modules
+1212 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06\node_modules is being purged
+1213 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06\node_modules
+1214 silly gunzTarPerm extractEntry bower_components/isnumeric/.travis.yml
+1215 silly gunzTarPerm modified mode [ 'bower_components/isnumeric/.travis.yml', 420, 438 ]
+1216 silly gunzTarPerm extractEntry bower_components/viewport-dimensions/index.js
+1217 silly gunzTarPerm modified mode [ 'bower_components/viewport-dimensions/index.js', 420, 438 ]
+1218 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9\node_modules is being purged
+1219 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9\node_modules
+1220 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9\node_modules is being purged
+1221 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9\node_modules
+1222 silly gunzTarPerm extractEntry lib/isIdentity.js
+1223 silly gunzTarPerm modified mode [ 'lib/isIdentity.js', 420, 438 ]
+1224 silly gunzTarPerm extractEntry lib/union.js
+1225 silly gunzTarPerm modified mode [ 'lib/union.js', 420, 438 ]
+1226 silly gunzTarPerm extractEntry src/CanvasGradient.h
+1227 silly gunzTarPerm modified mode [ 'src/CanvasGradient.h', 420, 438 ]
+1228 silly gunzTarPerm extractEntry src/CanvasPattern.cc
+1229 silly gunzTarPerm modified mode [ 'src/CanvasPattern.cc', 420, 438 ]
+1230 silly gunzTarPerm extractEntry bower_components/viewport-dimensions/.bower.json
+1231 silly gunzTarPerm modified mode [ 'bower_components/viewport-dimensions/.bower.json', 420, 438 ]
+1232 silly gunzTarPerm extractEntry bower_components/viewport-dimensions/LICENSE.md
+1233 silly gunzTarPerm modified mode [ 'bower_components/viewport-dimensions/LICENSE.md', 420, 438 ]
+1234 silly gunzTarPerm extractEntry lib/isMaybe.js
+1235 silly gunzTarPerm modified mode [ 'lib/isMaybe.js', 420, 438 ]
+1236 silly gunzTarPerm extractEntry lib/forbidNewOperator.js
+1237 silly gunzTarPerm modified mode [ 'lib/forbidNewOperator.js', 420, 438 ]
+1238 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957\node_modules is being purged
+1239 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957\node_modules
+1240 silly gunzTarPerm extractEntry src/CanvasPattern.h
+1241 silly gunzTarPerm modified mode [ 'src/CanvasPattern.h', 420, 438 ]
+1242 silly gunzTarPerm extractEntry src/CanvasRenderingContext2d.cc
+1243 silly gunzTarPerm modified mode [ 'src/CanvasRenderingContext2d.cc', 493, 511 ]
+1244 silly gunzTarPerm extractEntry bower_components/viewport-dimensions/bower.json
+1245 silly gunzTarPerm modified mode [ 'bower_components/viewport-dimensions/bower.json', 420, 438 ]
+1246 silly gunzTarPerm extractEntry bower_components/viewport-dimensions/dist/viewport.js
+1247 silly gunzTarPerm modified mode [ 'bower_components/viewport-dimensions/dist/viewport.js',
+1247 silly gunzTarPerm   420,
+1247 silly gunzTarPerm   438 ]
+1248 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001\node_modules is being purged
+1249 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001\node_modules
+1250 silly gunzTarPerm extractEntry src/CanvasRenderingContext2d.h
+1251 silly gunzTarPerm modified mode [ 'src/CanvasRenderingContext2d.h', 420, 438 ]
+1252 silly gunzTarPerm extractEntry src/FontFace.cc
+1253 silly gunzTarPerm modified mode [ 'src/FontFace.cc', 493, 511 ]
+1254 silly gunzTarPerm extractEntry lib/isNil.js
+1255 silly gunzTarPerm modified mode [ 'lib/isNil.js', 420, 438 ]
+1256 silly gunzTarPerm extractEntry lib/fail.js
+1257 silly gunzTarPerm modified mode [ 'lib/fail.js', 420, 438 ]
+1258 silly gunzTarPerm extractEntry bower_components/viewport-dimensions/dist/viewport.min.js
+1259 silly gunzTarPerm modified mode [ 'bower_components/viewport-dimensions/dist/viewport.min.js',
+1259 silly gunzTarPerm   420,
+1259 silly gunzTarPerm   438 ]
+1260 silly gunzTarPerm extractEntry dist/units.js
+1261 silly gunzTarPerm modified mode [ 'dist/units.js', 420, 438 ]
+1262 silly gunzTarPerm extractEntry dist/units.min.js
+1263 silly gunzTarPerm modified mode [ 'dist/units.min.js', 420, 438 ]
+1264 silly gunzTarPerm extractEntry lib/index.js
+1265 silly gunzTarPerm modified mode [ 'lib/index.js', 420, 438 ]
+1266 silly gunzTarPerm extractEntry lib/isNumber.js
+1267 silly gunzTarPerm modified mode [ 'lib/isNumber.js', 420, 438 ]
+1268 silly gunzTarPerm extractEntry lib/enums.js
+1269 silly gunzTarPerm modified mode [ 'lib/enums.js', 420, 438 ]
+1270 silly gunzTarPerm extractEntry src/FontFace.h
+1271 silly gunzTarPerm modified mode [ 'src/FontFace.h', 420, 438 ]
+1272 silly gunzTarPerm extractEntry src/Canvas.h
+1273 silly gunzTarPerm modified mode [ 'src/Canvas.h', 420, 438 ]
+1274 silly gunzTarPerm extractEntry lib/utilities.js
+1275 silly gunzTarPerm modified mode [ 'lib/utilities.js', 420, 438 ]
+1276 silly gunzTarPerm extractEntry lib/conversions/angle.js
+1277 silly gunzTarPerm modified mode [ 'lib/conversions/angle.js', 420, 438 ]
+1278 silly gunzTarPerm extractEntry src/Image.h
+1279 silly gunzTarPerm modified mode [ 'src/Image.h', 420, 438 ]
+1280 silly gunzTarPerm extractEntry src/ImageData.cc
+1281 silly gunzTarPerm modified mode [ 'src/ImageData.cc', 420, 438 ]
+1282 silly gunzTarPerm extractEntry lib/isObject.js
+1283 silly gunzTarPerm modified mode [ 'lib/isObject.js', 420, 438 ]
+1284 silly gunzTarPerm extractEntry lib/dict.js
+1285 silly gunzTarPerm modified mode [ 'lib/dict.js', 420, 438 ]
+1286 silly gunzTarPerm extractEntry src/ImageData.h
+1287 silly gunzTarPerm modified mode [ 'src/ImageData.h', 420, 438 ]
+1288 silly gunzTarPerm extractEntry src/JPEGStream.h
+1289 silly gunzTarPerm modified mode [ 'src/JPEGStream.h', 420, 438 ]
+1290 silly gunzTarPerm extractEntry lib/conversions/index.js
+1291 silly gunzTarPerm modified mode [ 'lib/conversions/index.js', 420, 438 ]
+1292 silly gunzTarPerm extractEntry lib/conversions/length.js
+1293 silly gunzTarPerm modified mode [ 'lib/conversions/length.js', 420, 438 ]
+1294 silly gunzTarPerm extractEntry lib/isString.js
+1295 silly gunzTarPerm modified mode [ 'lib/isString.js', 420, 438 ]
+1296 silly gunzTarPerm extractEntry lib/declare.js
+1297 silly gunzTarPerm modified mode [ 'lib/declare.js', 420, 438 ]
+1298 silly gunzTarPerm extractEntry lib/isStruct.js
+1299 silly gunzTarPerm modified mode [ 'lib/isStruct.js', 420, 438 ]
+1300 silly gunzTarPerm extractEntry lib/create.js
+1301 silly gunzTarPerm modified mode [ 'lib/create.js', 420, 438 ]
+1302 silly gunzTarPerm extractEntry lib/conversions/resolution.js
+1303 silly gunzTarPerm modified mode [ 'lib/conversions/resolution.js', 420, 438 ]
+1304 silly gunzTarPerm extractEntry src/PNG.h
+1305 silly gunzTarPerm modified mode [ 'src/PNG.h', 420, 438 ]
+1306 silly gunzTarPerm extractEntry src/Point.h
+1307 silly gunzTarPerm modified mode [ 'src/Point.h', 420, 438 ]
+1308 silly gunzTarPerm extractEntry lib/isType.js
+1309 silly gunzTarPerm modified mode [ 'lib/isType.js', 420, 438 ]
+1310 silly gunzTarPerm extractEntry lib/assert.js
+1311 silly gunzTarPerm modified mode [ 'lib/assert.js', 420, 438 ]
+1312 silly gunzTarPerm extractEntry src/closure.h
+1313 silly gunzTarPerm modified mode [ 'src/closure.h', 420, 438 ]
+1314 silly gunzTarPerm extractEntry src/color.cc
+1315 silly gunzTarPerm modified mode [ 'src/color.cc', 420, 438 ]
+1316 silly gunzTarPerm extractEntry src/color.h
+1317 silly gunzTarPerm modified mode [ 'src/color.h', 420, 438 ]
+1318 silly gunzTarPerm extractEntry src/init.cc
+1319 silly gunzTarPerm modified mode [ 'src/init.cc', 493, 511 ]
+1320 silly gunzTarPerm extractEntry lib/isTypeName.js
+1321 silly gunzTarPerm modified mode [ 'lib/isTypeName.js', 420, 438 ]
+1322 silly gunzTarPerm extractEntry lib/String.js
+1323 silly gunzTarPerm modified mode [ 'lib/String.js', 420, 438 ]
+1324 silly gunzTarPerm extractEntry util/has_lib.sh
+1325 silly gunzTarPerm modified mode [ 'util/has_lib.sh', 493, 511 ]
+1326 silly gunzTarPerm extractEntry lib/isUnion.js
+1327 silly gunzTarPerm modified mode [ 'lib/isUnion.js', 420, 438 ]
+1328 silly gunzTarPerm extractEntry lib/RegExp.js
+1329 silly gunzTarPerm modified mode [ 'lib/RegExp.js', 420, 438 ]
+1330 silly gunzTarPerm extractEntry lib/list.js
+1331 silly gunzTarPerm modified mode [ 'lib/list.js', 420, 438 ]
+1332 silly gunzTarPerm extractEntry lib/Object.js
+1333 silly gunzTarPerm modified mode [ 'lib/Object.js', 420, 438 ]
+1334 silly gunzTarPerm extractEntry lib/match.js
+1335 silly gunzTarPerm modified mode [ 'lib/match.js', 420, 438 ]
+1336 silly gunzTarPerm extractEntry lib/Number.js
+1337 silly gunzTarPerm modified mode [ 'lib/Number.js', 420, 438 ]
+1338 silly gunzTarPerm extractEntry lib/maybe.js
+1339 silly gunzTarPerm modified mode [ 'lib/maybe.js', 420, 438 ]
+1340 silly gunzTarPerm extractEntry lib/Nil.js
+1341 silly gunzTarPerm modified mode [ 'lib/Nil.js', 420, 438 ]
+1342 silly gunzTarPerm extractEntry lib/mixin.js
+1343 silly gunzTarPerm modified mode [ 'lib/mixin.js', 420, 438 ]
+1344 silly gunzTarPerm extractEntry lib/Function.js
+1345 silly gunzTarPerm modified mode [ 'lib/Function.js', 420, 438 ]
+1346 silly gunzTarPerm extractEntry lib/refinement.js
+1347 silly gunzTarPerm modified mode [ 'lib/refinement.js', 420, 438 ]
+1348 silly gunzTarPerm extractEntry lib/Error.js
+1349 silly gunzTarPerm modified mode [ 'lib/Error.js', 420, 438 ]
+1350 silly gunzTarPerm extractEntry lib/stringify.js
+1351 silly gunzTarPerm modified mode [ 'lib/stringify.js', 420, 438 ]
+1352 silly gunzTarPerm extractEntry lib/Date.js
+1353 silly gunzTarPerm modified mode [ 'lib/Date.js', 420, 438 ]
+1354 silly gunzTarPerm extractEntry lib/struct.js
+1355 silly gunzTarPerm modified mode [ 'lib/struct.js', 420, 438 ]
+1356 silly gunzTarPerm extractEntry lib/Boolean.js
+1357 silly gunzTarPerm modified mode [ 'lib/Boolean.js', 420, 438 ]
+1358 silly gunzTarPerm extractEntry lib/tuple.js
+1359 silly gunzTarPerm modified mode [ 'lib/tuple.js', 420, 438 ]
+1360 silly gunzTarPerm extractEntry lib/Array.js
+1361 silly gunzTarPerm modified mode [ 'lib/Array.js', 420, 438 ]
+1362 silly gunzTarPerm extractEntry lib/update.js
+1363 silly gunzTarPerm modified mode [ 'lib/update.js', 420, 438 ]
+1364 silly gunzTarPerm extractEntry lib/irreducible.js
+1365 silly gunzTarPerm modified mode [ 'lib/irreducible.js', 420, 438 ]
+1366 silly gunzTarPerm extractEntry lib/fromJSON.d.ts
+1367 silly gunzTarPerm modified mode [ 'lib/fromJSON.d.ts', 420, 438 ]
+1368 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c\node_modules is being purged
+1369 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c\node_modules
+1370 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e\node_modules is being purged
+1371 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e\node_modules
+1372 silly gentlyRm C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0\node_modules is being purged
+1373 verbose gentlyRm don't care about contents; nuking C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0\node_modules
+1374 silly doParallel preinstall 14
+1375 silly preinstall css-font-size-keywords@1.0.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb
+1376 info lifecycle css-font-size-keywords@1.0.0~preinstall: css-font-size-keywords@1.0.0
+1377 silly preinstall css-font-stretch-keywords@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf
+1378 info lifecycle css-font-stretch-keywords@1.0.1~preinstall: css-font-stretch-keywords@1.0.1
+1379 silly preinstall css-font-style-keywords@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4
+1380 info lifecycle css-font-style-keywords@1.0.1~preinstall: css-font-style-keywords@1.0.1
+1381 silly preinstall css-font-weight-keywords@1.0.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06
+1382 info lifecycle css-font-weight-keywords@1.0.0~preinstall: css-font-weight-keywords@1.0.0
+1383 silly preinstall css-global-keywords@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e
+1384 info lifecycle css-global-keywords@1.0.1~preinstall: css-global-keywords@1.0.1
+1385 silly preinstall css-system-font-keywords@1.0.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346
+1386 info lifecycle css-system-font-keywords@1.0.0~preinstall: css-system-font-keywords@1.0.0
+1387 silly preinstall isnumeric@0.2.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957
+1388 info lifecycle isnumeric@0.2.0~preinstall: isnumeric@0.2.0
+1389 silly preinstall tcomb@2.7.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0
+1390 info lifecycle tcomb@2.7.0~preinstall: tcomb@2.7.0
+1391 silly preinstall css-list-helpers@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd
+1392 info lifecycle css-list-helpers@1.0.1~preinstall: css-list-helpers@1.0.1
+1393 silly preinstall unquote@1.1.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9
+1394 info lifecycle unquote@1.1.0~preinstall: unquote@1.1.0
+1395 silly preinstall viewport-dimensions@0.2.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001
+1396 info lifecycle viewport-dimensions@0.2.0~preinstall: viewport-dimensions@0.2.0
+1397 silly preinstall parse-css-font@2.0.2 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9
+1398 info lifecycle parse-css-font@2.0.2~preinstall: parse-css-font@2.0.2
+1399 silly preinstall units-css@0.4.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c
+1400 info lifecycle units-css@0.4.0~preinstall: units-css@0.4.0
+1401 silly preinstall canvas@1.6.5 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e
+1402 info lifecycle canvas@1.6.5~preinstall: canvas@1.6.5
+1403 silly lifecycle css-font-size-keywords@1.0.0~preinstall: no script for preinstall, continuing
+1404 silly lifecycle css-font-stretch-keywords@1.0.1~preinstall: no script for preinstall, continuing
+1405 silly lifecycle css-font-style-keywords@1.0.1~preinstall: no script for preinstall, continuing
+1406 silly lifecycle css-font-weight-keywords@1.0.0~preinstall: no script for preinstall, continuing
+1407 silly lifecycle css-global-keywords@1.0.1~preinstall: no script for preinstall, continuing
+1408 silly lifecycle css-system-font-keywords@1.0.0~preinstall: no script for preinstall, continuing
+1409 silly lifecycle isnumeric@0.2.0~preinstall: no script for preinstall, continuing
+1410 silly lifecycle tcomb@2.7.0~preinstall: no script for preinstall, continuing
+1411 silly lifecycle css-list-helpers@1.0.1~preinstall: no script for preinstall, continuing
+1412 silly lifecycle unquote@1.1.0~preinstall: no script for preinstall, continuing
+1413 silly lifecycle viewport-dimensions@0.2.0~preinstall: no script for preinstall, continuing
+1414 silly lifecycle parse-css-font@2.0.2~preinstall: no script for preinstall, continuing
+1415 silly lifecycle units-css@0.4.0~preinstall: no script for preinstall, continuing
+1416 silly lifecycle canvas@1.6.5~preinstall: no script for preinstall, continuing
+1417 silly doReverseSerial remove 0
+1418 silly doSerial move 0
+1419 silly doSerial finalize 14
+1420 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-font-size-keywords
+1421 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-font-stretch-keywords
+1422 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-font-style-keywords
+1423 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-font-weight-keywords
+1424 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-global-keywords
+1425 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-system-font-keywords
+1426 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\isnumeric
+1427 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\tcomb
+1428 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\css-list-helpers
+1429 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\unquote
+1430 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\viewport-dimensions
+1431 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\parse-css-font
+1432 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\units-css
+1433 silly finalize C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\canvas
+1434 silly doSerial build 14
+1435 silly build css-font-size-keywords@1.0.0
+1436 info linkStuff css-font-size-keywords@1.0.0
+1437 silly linkStuff css-font-size-keywords@1.0.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1438 verbose linkBins css-font-size-keywords@1.0.0
+1439 verbose linkMans css-font-size-keywords@1.0.0
+1440 silly build css-font-stretch-keywords@1.0.1
+1441 info linkStuff css-font-stretch-keywords@1.0.1
+1442 silly linkStuff css-font-stretch-keywords@1.0.1 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1443 verbose linkBins css-font-stretch-keywords@1.0.1
+1444 verbose linkMans css-font-stretch-keywords@1.0.1
+1445 silly build css-font-style-keywords@1.0.1
+1446 info linkStuff css-font-style-keywords@1.0.1
+1447 silly linkStuff css-font-style-keywords@1.0.1 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1448 verbose linkBins css-font-style-keywords@1.0.1
+1449 verbose linkMans css-font-style-keywords@1.0.1
+1450 silly build css-font-weight-keywords@1.0.0
+1451 info linkStuff css-font-weight-keywords@1.0.0
+1452 silly linkStuff css-font-weight-keywords@1.0.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1453 verbose linkBins css-font-weight-keywords@1.0.0
+1454 verbose linkMans css-font-weight-keywords@1.0.0
+1455 silly build css-global-keywords@1.0.1
+1456 info linkStuff css-global-keywords@1.0.1
+1457 silly linkStuff css-global-keywords@1.0.1 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1458 verbose linkBins css-global-keywords@1.0.1
+1459 verbose linkMans css-global-keywords@1.0.1
+1460 silly build css-system-font-keywords@1.0.0
+1461 info linkStuff css-system-font-keywords@1.0.0
+1462 silly linkStuff css-system-font-keywords@1.0.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1463 verbose linkBins css-system-font-keywords@1.0.0
+1464 verbose linkMans css-system-font-keywords@1.0.0
+1465 silly build isnumeric@0.2.0
+1466 info linkStuff isnumeric@0.2.0
+1467 silly linkStuff isnumeric@0.2.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1468 verbose linkBins isnumeric@0.2.0
+1469 verbose linkMans isnumeric@0.2.0
+1470 silly build tcomb@2.7.0
+1471 info linkStuff tcomb@2.7.0
+1472 silly linkStuff tcomb@2.7.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1473 verbose linkBins tcomb@2.7.0
+1474 verbose linkMans tcomb@2.7.0
+1475 silly build css-list-helpers@1.0.1
+1476 info linkStuff css-list-helpers@1.0.1
+1477 silly linkStuff css-list-helpers@1.0.1 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1478 verbose linkBins css-list-helpers@1.0.1
+1479 verbose linkMans css-list-helpers@1.0.1
+1480 silly build unquote@1.1.0
+1481 info linkStuff unquote@1.1.0
+1482 silly linkStuff unquote@1.1.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1483 verbose linkBins unquote@1.1.0
+1484 verbose linkMans unquote@1.1.0
+1485 silly build viewport-dimensions@0.2.0
+1486 info linkStuff viewport-dimensions@0.2.0
+1487 silly linkStuff viewport-dimensions@0.2.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1488 verbose linkBins viewport-dimensions@0.2.0
+1489 verbose linkMans viewport-dimensions@0.2.0
+1490 silly build parse-css-font@2.0.2
+1491 info linkStuff parse-css-font@2.0.2
+1492 silly linkStuff parse-css-font@2.0.2 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1493 verbose linkBins parse-css-font@2.0.2
+1494 verbose linkMans parse-css-font@2.0.2
+1495 silly build units-css@0.4.0
+1496 info linkStuff units-css@0.4.0
+1497 silly linkStuff units-css@0.4.0 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1498 verbose linkBins units-css@0.4.0
+1499 verbose linkMans units-css@0.4.0
+1500 silly build canvas@1.6.5
+1501 info linkStuff canvas@1.6.5
+1502 silly linkStuff canvas@1.6.5 has C:\Users\ch36573\Documents\Git\emojione-colr\node_modules as its parent node_modules
+1503 verbose linkBins canvas@1.6.5
+1504 verbose linkMans canvas@1.6.5
+1505 silly doSerial global-link 0
+1506 silly doParallel update-linked 0
+1507 silly doSerial install 14
+1508 silly install css-font-size-keywords@1.0.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-size-keywords-b3aabbbb
+1509 info lifecycle css-font-size-keywords@1.0.0~install: css-font-size-keywords@1.0.0
+1510 silly lifecycle css-font-size-keywords@1.0.0~install: no script for install, continuing
+1511 silly install css-font-stretch-keywords@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-stretch-keywords-082664bf
+1512 info lifecycle css-font-stretch-keywords@1.0.1~install: css-font-stretch-keywords@1.0.1
+1513 silly lifecycle css-font-stretch-keywords@1.0.1~install: no script for install, continuing
+1514 silly install css-font-style-keywords@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-style-keywords-0e46e5e4
+1515 info lifecycle css-font-style-keywords@1.0.1~install: css-font-style-keywords@1.0.1
+1516 silly lifecycle css-font-style-keywords@1.0.1~install: no script for install, continuing
+1517 silly install css-font-weight-keywords@1.0.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-font-weight-keywords-49df0a06
+1518 info lifecycle css-font-weight-keywords@1.0.0~install: css-font-weight-keywords@1.0.0
+1519 silly lifecycle css-font-weight-keywords@1.0.0~install: no script for install, continuing
+1520 silly install css-global-keywords@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-global-keywords-de1c611e
+1521 info lifecycle css-global-keywords@1.0.1~install: css-global-keywords@1.0.1
+1522 silly lifecycle css-global-keywords@1.0.1~install: no script for install, continuing
+1523 silly install css-system-font-keywords@1.0.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-system-font-keywords-671c7346
+1524 info lifecycle css-system-font-keywords@1.0.0~install: css-system-font-keywords@1.0.0
+1525 silly lifecycle css-system-font-keywords@1.0.0~install: no script for install, continuing
+1526 silly install isnumeric@0.2.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\isnumeric-1ff00957
+1527 info lifecycle isnumeric@0.2.0~install: isnumeric@0.2.0
+1528 silly lifecycle isnumeric@0.2.0~install: no script for install, continuing
+1529 silly install tcomb@2.7.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\tcomb-2090fdd0
+1530 info lifecycle tcomb@2.7.0~install: tcomb@2.7.0
+1531 silly lifecycle tcomb@2.7.0~install: no script for install, continuing
+1532 silly install css-list-helpers@1.0.1 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\css-list-helpers-16bcbabd
+1533 info lifecycle css-list-helpers@1.0.1~install: css-list-helpers@1.0.1
+1534 silly lifecycle css-list-helpers@1.0.1~install: no script for install, continuing
+1535 silly install unquote@1.1.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\unquote-b46a0ed9
+1536 info lifecycle unquote@1.1.0~install: unquote@1.1.0
+1537 silly lifecycle unquote@1.1.0~install: no script for install, continuing
+1538 silly install viewport-dimensions@0.2.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\viewport-dimensions-2a8eb001
+1539 info lifecycle viewport-dimensions@0.2.0~install: viewport-dimensions@0.2.0
+1540 silly lifecycle viewport-dimensions@0.2.0~install: no script for install, continuing
+1541 silly install parse-css-font@2.0.2 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\parse-css-font-238a39f9
+1542 info lifecycle parse-css-font@2.0.2~install: parse-css-font@2.0.2
+1543 silly lifecycle parse-css-font@2.0.2~install: no script for install, continuing
+1544 silly install units-css@0.4.0 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\units-css-a06a7f6c
+1545 info lifecycle units-css@0.4.0~install: units-css@0.4.0
+1546 silly lifecycle units-css@0.4.0~install: no script for install, continuing
+1547 silly install canvas@1.6.5 C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging\canvas-e2f6771e
+1548 info lifecycle canvas@1.6.5~install: canvas@1.6.5
+1549 verbose lifecycle canvas@1.6.5~install: unsafe-perm in lifecycle true
+1550 verbose lifecycle canvas@1.6.5~install: PATH: C:\Users\ch36573\Documents\node-v6.11.2-win-x64\node_modules\npm\bin\node-gyp-bin;C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\canvas\node_modules\.bin;C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Users\ch36573\Documents\node-v6.11.2-win-x64\;
+1551 verbose lifecycle canvas@1.6.5~install: CWD: C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\canvas
+1552 silly lifecycle canvas@1.6.5~install: Args: [ '/d /s /c', 'node-gyp rebuild' ]
+1553 silly lifecycle canvas@1.6.5~install: Returned: code: 1  signal: null
+1554 info lifecycle canvas@1.6.5~install: Failed to exec install script
+1555 verbose unlock done using C:\Users\aspire\AppData\Roaming\npm-cache\_locks\staging-4aff2769be150513.lock for C:\Users\ch36573\Documents\Git\emojione-colr\node_modules\.staging
+1556 silly rollbackFailedOptional Starting
+1557 silly rollbackFailedOptional Finishing
+1558 silly runTopLevelLifecycles Finishing
+1559 silly install printInstalled
+1560 verbose stack Error: canvas@1.6.5 install: `node-gyp rebuild`
+1560 verbose stack Exit status 1
+1560 verbose stack     at EventEmitter.<anonymous> (C:\Users\ch36573\Documents\node-v6.11.2-win-x64\node_modules\npm\lib\utils\lifecycle.js:255:16)
+1560 verbose stack     at emitTwo (events.js:106:13)
+1560 verbose stack     at EventEmitter.emit (events.js:191:7)
+1560 verbose stack     at ChildProcess.<anonymous> (C:\Users\ch36573\Documents\node-v6.11.2-win-x64\node_modules\npm\lib\utils\spawn.js:40:14)
+1560 verbose stack     at emitTwo (events.js:106:13)
+1560 verbose stack     at ChildProcess.emit (events.js:191:7)
+1560 verbose stack     at maybeClose (internal/child_process.js:891:16)
+1560 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+1561 verbose pkgid canvas@1.6.5
+1562 verbose cwd C:\Users\ch36573\Documents\Git\emojione-colr
+1563 error Windows_NT 6.3.9600
+1564 error argv "C:\\Users\\ch36573\\Documents\\node-v6.11.2-win-x64\\node.exe" "C:\\Users\\ch36573\\Documents\\node-v6.11.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js" "install" "canvas@1.6.5"
+1565 error node v6.11.2
+1566 error npm  v3.10.10
+1567 error code ELIFECYCLE
+1568 error canvas@1.6.5 install: `node-gyp rebuild`
+1568 error Exit status 1
+1569 error Failed at the canvas@1.6.5 install script 'node-gyp rebuild'.
+1569 error Make sure you have the latest version of node.js and npm installed.
+1569 error If you do, this is most likely a problem with the canvas package,
+1569 error not with npm itself.
+1569 error Tell the author that this fails on your system:
+1569 error     node-gyp rebuild
+1569 error You can get information on how to open an issue for this project with:
+1569 error     npm bugs canvas
+1569 error Or if that isn't available, you can get their info via:
+1569 error     npm owner ls canvas
+1569 error There is likely additional logging output above.
+1570 verbose exit [ 1, true ]
