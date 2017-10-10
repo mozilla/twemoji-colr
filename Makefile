@@ -4,13 +4,13 @@ PERL       ?= perl
 PYTHON     ?= python
 TTX        ?= ttx
 
-FONT_NAME  = EmojiOne\ Mozilla
+FONT_NAME  = Twemoji\ Mozilla
 
 BUILD_DIR  = build
 
 FINAL_TARGET = $(BUILD_DIR)/$(FONT_NAME).ttf
 
-SVGS         = e1-svg.zip
+SVGS         = twe-svg.zip
 OVERRIDE_DIR = overrides
 EXTRA_DIR    = extras
 
@@ -29,7 +29,7 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	        -e 'while(<>) {' \
 	        -e '  $$ps = 1 if m/nameID="6"/;' \
 	        -e '  $$ps = 0 if m|</namerecord>|;' \
-	        -e '  s/EmojiOne Mozilla/EmojiOneMozilla/ if $$ps;' \
+	        -e '  s/Twemoji Mozilla/TwemojiMozilla/ if $$ps;' \
 	        -e '  print;' \
 	        -e '}' $(RAW_FONT).names
 	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT).renamed.ttf $(RAW_FONT).names

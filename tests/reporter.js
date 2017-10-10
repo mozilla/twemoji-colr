@@ -329,7 +329,7 @@ TestReport.prototype = {
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
     ref.textContent = result.string;
-    ref.title = 'EmojiOne HTML rendering.';
+    ref.title = 'Twemoji HTML rendering.';
     detailEl.appendChild(ref);
 
     detailEl.appendChild(result.svgRenderingCanvas);
@@ -339,7 +339,7 @@ TestReport.prototype = {
     }
 
     detailEl.appendChild(result.emojiRenderingCanvas);
-    result.emojiRenderingCanvas.title = 'EmojiOne font rendering on canvas.';
+    result.emojiRenderingCanvas.title = 'Twemoji font rendering on canvas.';
     if (result.emojiRenderingEmpty) {
       result.emojiRenderingCanvas.className = 'report-failed';
     }
