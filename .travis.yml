@@ -12,7 +12,8 @@ before_install:
 
 install:
   - npm install
-  - npm install canvas@^1.6.5
+  - npm install -g install-peerdeps
+  - install-peerdeps resemblejs@2.2.6
 
 script:
   - make
