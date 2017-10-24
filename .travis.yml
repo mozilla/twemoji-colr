@@ -6,7 +6,7 @@ node_js:
   - "node"
 
 before_install:
-  - sudo add-apt-repository ppa:deadsnakes/ppa
+  - sudo add-apt-repository ppa:deadsnakes/ppa -y
   - sudo apt-get update -qq
   - sudo apt-get install -qq fonttools fontforge python3.6
 
