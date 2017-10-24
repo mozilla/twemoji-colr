@@ -12,6 +12,7 @@ before_install:
 
 install:
   - npm install
+  - npm install canvas@^1.6.5
 
 script:
   - make
