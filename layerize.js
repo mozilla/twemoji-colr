@@ -55,6 +55,8 @@ var addToXML = function(xml, p) {
 
 var codepoints = [];
 
+console.log('$$');
+
 function expandColor(c) {
     if (c == undefined) {
         return c;
