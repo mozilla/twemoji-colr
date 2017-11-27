@@ -4,6 +4,8 @@
 Project to create a COLR/CPAL-based color OpenType font
 from the [Twemoji](https://twitter.github.io/twemoji/) collection of emoji images.
 
+Based on Mozilla's [emojione-colr](https://github.com/mozilla/emojione-colr).
+
 Note that the resulting font will **only** be useful on systems that support
 layered color TrueType fonts; this includes Windows 8.1 and later,
 as well as Mozilla Firefox and other Gecko-based applications running on
