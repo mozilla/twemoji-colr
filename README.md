@@ -1,7 +1,8 @@
-# emojione-colr
+# twemoji-colr
+[![Build Status](https://travis-ci.org/TheEssemCraft/twemoji-colr.svg?branch=master)](https://travis-ci.org/TheEssemCraft/twemoji-colr)
 
 Project to create a COLR/CPAL-based color OpenType font
-from the [EmojiOne](http://emojione.com) collection of emoji images.
+from the [Twemoji](https://twitter.github.io/twemoji/) collection of emoji images.
 
 Note that the resulting font will **only** be useful on systems that support
 layered color TrueType fonts; this includes Windows 8.1 and later,
@@ -40,4 +41,4 @@ Once the necessary build tools are all in place, simply running
 
     make
 
-should build the color-emoji font `build/EmojiOne Mozilla.ttf` from the source SVG files found in `e1-svg.zip` file and `extras`, `overrides` directories.
+should build the color-emoji font `build/Twemoji Mozilla.ttf` from the source SVG files found in `twe-svg.zip` file and `extras`, `overrides` directories.
