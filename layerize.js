@@ -364,16 +364,6 @@ function recordGradient(g, urlColor) {
 }
 
 function processFile(fileName, data) {
-    if (!e['$$']) {
-        console.log("Removing defs tag from " + fileName);
-        replace({
-            regex: "/<defs id=\"defs6\"[\s]*\/>/g",
-            replacement: "",
-            paths: [fileName],
-            recursive: true,
-            silent: false,
-        });
-    }
     // strip .svg extension off the name
     var baseName = fileName.replace(".svg", "");
 
@@ -395,7 +385,16 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
-                    if(!e['$$']) throw new Error('problem with ' + fileName);
+                        if (!e['$$']) {
+                            console.log("Removing defs tag from " + fileName);
+                            replace({
+                                regex: "/<defs id=\"defs6\"[\s]*\/>/g",
+                                replacement: "",
+                                paths: [fileName],
+                                recursive: true,
+                                silent: false,
+                            });
+                        }
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
                             recordGradient(def, urlColor);
