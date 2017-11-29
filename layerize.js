@@ -364,6 +364,7 @@ function recordGradient(g, urlColor) {
 }
 
 function processFile(fileName, data) {
+    console.log(fileName);
     replace({
         regex: "/<defs id=\"defs6\"[\s]*\/>/g",
         replacement: "",
