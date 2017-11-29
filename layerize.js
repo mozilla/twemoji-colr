@@ -386,7 +386,7 @@ function processFile(fileName, data) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
                     replace({
-                        regex: "/<defs id="defs6"[\s]*\/>/g",
+                        regex: "/<defs id=\"defs6\"[\s]*\/>/g",
                         replacement: "",
                         paths: ['$$'],
                         recursive: true,
