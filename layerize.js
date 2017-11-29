@@ -390,7 +390,7 @@ function processFile(fileName, data) {
                             replace({
                                 regex: "/<defs id=\"defs6\"[\s]*\/>/g",
                                 replacement: "",
-                                paths: ["/svg/" + fileName],
+                                paths: [fileName],
                                 recursive: true,
                                 silent: false,
                             });
