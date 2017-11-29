@@ -20,6 +20,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-webfont": "^1.4.0",
     "load-grunt-tasks": "^3.5.0",
+    "replace": "^0.3.0",
     "rmdir": "^1.2.0",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.16",
