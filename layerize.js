@@ -722,7 +722,10 @@ rmdir(targetDir, function() {
                 overrides.splice(o, 1);
                 e.autodrain();
             } else {
-e.on("removeEmptyDefs", function () {
+                e.on("data", function (c) {
+                    data += c.toString();
+                });
+                e.on("end", function () {
                         if (!e['$$']) {
                             console.log("Removing defs tag from " + fileName);
                             replace({
@@ -732,11 +735,7 @@ e.on("removeEmptyDefs", function () {
                                 recursive: true,
                                 silent: false,
                             });
-                        }});
-                e.on("data", function (c) {
-                    data += c.toString();
-                });
-                e.on("end", function () {
+                        }
                     processFile(fileName, data);
                 });
             }
