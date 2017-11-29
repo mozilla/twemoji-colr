@@ -364,7 +364,7 @@ function recordGradient(g, urlColor) {
 }
 
 function processFile(fileName, data) {
-    if(!e['$$']) {
+    if (!e['$$']) {
         console.log("Removing defs tag from " + fileName);
         replace({
             regex: "/<defs id=\"defs6\"[\s]*\/>/g",
