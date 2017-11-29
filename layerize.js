@@ -2,7 +2,8 @@ var fs         = require('fs'),
     rmdir      = require('rmdir'),
     unzip      = require('unzip'),
     xmlbuilder = require('xmlbuilder'),
-    xml2js     = require('xml2js');
+    xml2js     = require('xml2js'),
+    replace    = require('replace');
 
 var sourceZip    = process.argv[2];
 var overridesDir = process.argv[3];
@@ -384,6 +385,13 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
+                    replace({
+                        regex: "/<defs id="defs6"[\s]*\/>/g",
+                        replacement: "",
+                        paths: ['$$'],
+                        recursive: true,
+                        silent: false,
+                    });
                     if(!e['$$']) throw new Error('problem with ' + fileName);
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
