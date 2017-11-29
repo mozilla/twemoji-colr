@@ -384,6 +384,7 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
+                    if(!e['$$']) throw new Error('problem with ' + fileName);
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
                             recordGradient(def, urlColor);
