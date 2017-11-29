@@ -364,14 +364,16 @@ function recordGradient(g, urlColor) {
 }
 
 function processFile(fileName, data) {
-    console.log(fileName);
-    replace({
-        regex: "/<defs id=\"defs6\"[\s]*\/>/g",
-        replacement: "",
-        paths: fileName,
-        recursive: true,
-        silent: false,
-    });
+    if(!e['$$']) {
+        console.log("Removing defs tag from " + fileName);
+        replace({
+            regex: "/<defs id=\"defs6\"[\s]*\/>/g",
+            replacement: "",
+            paths: [fileName],
+            recursive: true,
+            silent: false,
+        });
+    }
     // strip .svg extension off the name
     var baseName = fileName.replace(".svg", "");
 
