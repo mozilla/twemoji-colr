@@ -2,7 +2,7 @@ var fs         = require('fs'),
     rmdir      = require('rmdir'),
     unzip      = require('unzip'),
     xmlbuilder = require('xmlbuilder'),
-    xml2js     = require('xml2js'),
+    xml2js     = require('xml2js');
 
 var sourceZip    = process.argv[2];
 var overridesDir = process.argv[3];
