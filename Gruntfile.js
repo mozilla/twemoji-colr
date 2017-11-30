@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                     types: 'ttf',
 engine: 'fontforge',
                     autoHint: false,
-			execMaxBuffer: 2048 * 200,
+			execMaxBuffer: 1024 * 500,
                     version: 'Version ' + packageJSON.version,
                     codepointsFile: 'build/codepoints.js'
                 }
