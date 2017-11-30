@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 		},
 	});
 
-	grunt.loadTasks('grunt-webfont/tasks');
+	grunt.loadNpmTasks('grunt-webfont');
 
 	grunt.registerTask('default', ['webfont']);
 };
