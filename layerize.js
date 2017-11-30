@@ -377,9 +377,10 @@ function processFile(fileName, data) {
                                     explicitArray: true});
     
     // remove defs tag if it is empty to avoid erroring
-    if (!e['$$']) {
+    var defsCheck = new RegExp("/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*<\/defs>))/g");
+    if (defsCheck.test(data)) {
         console.log('removing empty defs from ' + fileName);
-        data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
+        data = data.toString().replace(defsCheck, '');
     }
     
     parser.parseString(data, function (err, result) {
