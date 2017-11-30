@@ -17,6 +17,7 @@ module.exports = function(grunt) {
                 options: {
                     font: 'Twemoji Mozilla',
                     types: 'ttf',
+engine: 'fontforge',
                     autoHint: false,
 			execMaxBuffer: 2048 * 200,
                     version: 'Version ' + packageJSON.version,
