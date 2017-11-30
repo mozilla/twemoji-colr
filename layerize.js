@@ -376,7 +376,7 @@ function processFile(fileName, data) {
     var parser = new xml2js.Parser({preserveChildrenOrder: true,
                                     explicitChildren: true,
                                     explicitArray: true});
-data = data.replace(/<defs id=\"defs6\"[\s]*\/>/g, ");
+data = data.replace("/<defs id=\"defs6\"[\s]*\/>/g,");
     parser.parseString(data, function (err, result) {
         var paths = [];
         var defs = {};
