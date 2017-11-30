@@ -377,7 +377,7 @@ function processFile(fileName, data) {
                                     explicitArray: true});
     
     // remove defs tag if it is empty to avoid erroring
-    if(!e['$$']) {
+    if (!e['$$']) {
         console.log('removing empty defs from ' + fileName);
         data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
     }
