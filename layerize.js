@@ -3,7 +3,6 @@ var fs         = require('fs'),
     unzip      = require('unzip'),
     xmlbuilder = require('xmlbuilder'),
     xml2js     = require('xml2js'),
-    replace    = require('replace');
 
 var sourceZip    = process.argv[2];
 var overridesDir = process.argv[3];
