@@ -729,7 +729,7 @@ rmdir(targetDir, function() {
                         if (!e['$$']) {
                             console.log("Removing defs tag from " + fileName);
                             replace({
-                                regex: "/<defs id=\"defs6\"[\s]*\/>/g",
+                                regex: "<defs id=\"defs6\"[\s]*\/>",
                                 replacement: "",
                                 paths: [fileName],
                                 recursive: true,
