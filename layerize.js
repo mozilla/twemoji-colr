@@ -376,6 +376,7 @@ function processFile(fileName, data) {
     var parser = new xml2js.Parser({preserveChildrenOrder: true,
                                     explicitChildren: true,
                                     explicitArray: true});
+data = (/<defs id=\"defs6\"[\s]*\/>/gi).replace(data)
     parser.parseString(data, function (err, result) {
         var paths = [];
         var defs = {};
@@ -385,16 +386,7 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
-if (!e['$$']) {
-                            console.log("Removing defs tag from " + fileName);
-                            replace({
-                                regex: "<defs id=\"defs6\"[\s]*\/>",
-                                replacement: "",
-                                paths: [fileName],
-                                recursive: true,
-                                silent: false,
-                            });
-                        }
+if(!e['$$']) throw new Error('problem with ' + fileName);
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
                             recordGradient(def, urlColor);
