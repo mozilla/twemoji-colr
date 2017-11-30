@@ -377,7 +377,10 @@ function processFile(fileName, data) {
                                     explicitArray: true});
     
     // remove defs tag if it is empty to avoid erroring
-    data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
+    if(!e['$$']) {
+        console.log('removing empty defs from ' + fileName);
+        data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
+    }
     
     parser.parseString(data, function (err, result) {
         var paths = [];
@@ -388,7 +391,7 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
-if(!e['$$']) throw new Error('problem with ' + fileName);
+                    if(!e['$$']) throw new Error(fileName + '\'s defs tag is empty');
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
                             recordGradient(def, urlColor);
