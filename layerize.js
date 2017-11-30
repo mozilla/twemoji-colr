@@ -385,7 +385,16 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'defs') {
-if(!e['$$']) throw new Error('problem with ' + filename);
+if (!e['$$']) {
+                            console.log("Removing defs tag from " + fileName);
+                            replace({
+                                regex: "<defs id=\"defs6\"[\s]*\/>",
+                                replacement: "",
+                                paths: [fileName],
+                                recursive: true,
+                                silent: false,
+                            });
+                        }
                     e['$$'].forEach(function (def) {
                         if (def['#name'] == 'linearGradient') {
                             recordGradient(def, urlColor);
@@ -726,16 +735,6 @@ rmdir(targetDir, function() {
                     data += c.toString();
                 });
                 e.on("end", function () {
-                        if (!e['$$']) {
-                            console.log("Removing defs tag from " + fileName);
-                            replace({
-                                regex: "<defs id=\"defs6\"[\s]*\/>",
-                                replacement: "",
-                                paths: [fileName],
-                                recursive: true,
-                                silent: false,
-                            });
-                        }
                     processFile(fileName, data);
                 });
             }
