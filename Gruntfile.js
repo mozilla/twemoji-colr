@@ -18,6 +18,7 @@ module.exports = function(grunt) {
                     font: 'Twemoji Mozilla',
                     types: 'ttf',
                     autoHint: false,
+			execMaxBuffer: 2048 * 200,
                     version: 'Version ' + packageJSON.version,
                     codepointsFile: 'build/codepoints.js'
                 }
