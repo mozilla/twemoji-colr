@@ -375,7 +375,10 @@ function processFile(fileName, data) {
     var parser = new xml2js.Parser({preserveChildrenOrder: true,
                                     explicitChildren: true,
                                     explicitArray: true});
-data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*<\/defs>))/g, '');
+    
+    // remove defs tag if it is empty to avoid erroring
+    data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
+    
     parser.parseString(data, function (err, result) {
         var paths = [];
         var defs = {};
