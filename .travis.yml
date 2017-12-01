@@ -8,6 +8,7 @@ node_js:
 before_install:
   - sudo add-apt-repository ppa:deadsnakes/ppa -y
   - sudo add-apt-repository ppa:fontforge/fontforge -y
+  - sudo add-apt-repository ppa:olivier-berten/fonts -y
   - sudo apt-get update -qq
   - sudo apt-get install -qq fonttools fontforge python2.6 libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++ ttfautohint
 
