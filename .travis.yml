@@ -17,6 +17,9 @@ install:
   
 after_failure:
   - cat build/Twemoji\ Mozilla.ttx
+  
+after_script:
+  - cat build/Twemoji\ Mozilla.ttx
 
 script:
   - make
