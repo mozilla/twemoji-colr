@@ -37,7 +37,7 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	$(TTX) -m $(RAW_FONT).renamed.ttf -o $(FINAL_TARGET) $(OT_SOURCE)
 
 $(RAW_FONT) : $(CODEPOINTS) $(GRUNTFILE)
-	$(NPM) run grunt webfont -- --verbose
+	$(NPM) run grunt webfont
 
 $(CODEPOINTS) $(OT_SOURCE) : $(LAYERIZE) $(SVGS) $(OVERRIDE_DIR) $(EXTRA_DIR) $(EXTRA_DIR)/*.svg
 	$(NODE) $(LAYERIZE) $(SVGS) $(OVERRIDE_DIR) $(EXTRA_DIR) $(BUILD_DIR) $(FONT_NAME)
