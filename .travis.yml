@@ -15,7 +15,7 @@ install:
   - npm install
   
 after_failure:
-  - cat "build/Twemoji\ Mozilla.ttx"
+  - cat build/Twemoji\ Mozilla.ttx
 
 script:
   - make
