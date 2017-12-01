@@ -26,7 +26,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: yTIm2josKlDJQ7gfKafS09+hd6XxMJC49qH4wOlv31z/O00$
+    - secure: yTIm2josKlDJQ7gfKafS09+hd6XxMJC49qH4wOlv31z/O00$
   app: twemoji-colr
   on:
     repo: TheEssemCraft/twemoji-colr
