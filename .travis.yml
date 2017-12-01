@@ -23,3 +23,11 @@ after_script:
 
 script:
   - make
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: x3wT+SjkwGa2CDVCnWdTJilvYg99AT5GdJalM3IF8HM2B5L$
+  app: twemoji-colr
+  on:
+    repo: TheEssemCraft/twemoji-colr
