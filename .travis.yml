@@ -13,6 +13,9 @@ before_install:
 
 install:
   - npm install
+  
+after_failure:
+  - cat "build/Twemoji\ Mozilla.ttx"
 
 script:
   - make
