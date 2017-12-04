@@ -8,6 +8,7 @@ app.get('/', function(request, response) {
     response.sendfile(__dirname + '/tests' + '/index.html');
 }).listen(app.get('port'), function() {
     app.use('/', express.static(__dirname + '/tests'));
-    app.use('/node_modules/resemblejs', express.static(__dirname + '/node_modules/resemblejs'));
+    app.use('/node_modules', express.static(__dirname + '/node_modules'));
     app.use('/build', express.static(__dirname + '/build'));
+    
 });
