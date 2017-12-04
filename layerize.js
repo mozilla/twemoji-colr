@@ -555,7 +555,7 @@ function processFile(fileName, data) {
             layers.push({color: path.color, glyphName: glyphName});
 
             // if we haven't seen this color before, add it to the palette
-            console.log(path.color);
+            console.log(path);
             if (colorToId[path.color] == undefined) {
                 colorToId[path.color] = colors.length;
                 colors.push(path.color);
