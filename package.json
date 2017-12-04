@@ -37,6 +37,7 @@
     "resemblejs": "^2.2.1"
   },
   "scripts": {
-    "grunt": "grunt"
+    "grunt": "grunt",
+	"start": "node loop.js"
   }
 }
