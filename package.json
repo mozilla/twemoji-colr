@@ -38,6 +38,6 @@
   },
   "scripts": {
     "grunt": "grunt",
-    "start": "node loop.js"
+    "start": "node heroku.js"
   }
 }
