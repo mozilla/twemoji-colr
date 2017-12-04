@@ -407,7 +407,7 @@ function processFile(fileName, data) {
                     e['$'] = {};
                 }
 
-                var fill = e['$']['style'];
+                var fill = e['$']['style.fill'];
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
