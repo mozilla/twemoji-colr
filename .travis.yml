@@ -12,7 +12,6 @@ before_install:
   - sudo apt-get install -qq fonttools fontforge python libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++ ttfautohint
 
 install:
-  - npm cache clean --force
   - npm install
   
 after_failure:
