@@ -26,7 +26,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    - secure: "yTIm2josKlDJQ7gfKafS09+hd6XxMJC49qH4wOlv31z/O00$"
+      secure: "kNknHrtHa/xKXNgCSy5TiTvVNdXaJmasVlsKUf/op03Fo2fXohzoRZbZikDPHwJRpYMecje2nEVYFUEG3YgMbvvYhRCa+PMTl7vqaw4KutLFfkGEtODCbgOwz22fDeEU5J3dI+YJC20YInRxziwwY0SkTPN453A055ihB7De18F6VSm/UCX/CdyryXtDiTEdhEHORNb8nNqOUd0TYWGundtEDeFNZjl3Y365s0o3/Ra49NSoqmAlZ3kz3N12FlrQ5p5iPjMKiD1k9acly/rmGtVmJnr6rWLkTp2YBOxYoi3Vbu0GK9MlcI96J7gZV4RTplS8RMsNECKbpJyUvy6dKUjlzq+LSCB5ojbUMGFypuPDEtNdNoZR2zlcfm1rLII6P6xeKrPCCmbQl200ksFVYPjOwgMoVJcI4WK2MzqncDWZEAaMgrhwSrrRVESh7p7SDbWt1+hUgkdme3zzuyfufSpRkzz2jTGZTVlcd0OlqgX3TX2D52IzveLhUvmh0NS/xBNLs2dfu00o5R/0YhsxpadDNVWEDsQZgZvpAwOz/ofMKwCfwFPzcBaWqDRCAaay4hhVcmEwHy0VMQSPDCWZwEdRnRB7+hzrS2yoB3E+xzf2RnJuw15gxGsuf7EV7Mc6018ZRbZr4yzAjoUv2UYKcfwQQBRbQqSQhjiU+IvsPko="
   app: twemoji-colr
   on:
     repo: TheEssemCraft/twemoji-colr
