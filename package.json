@@ -1,18 +1,19 @@
 {
-  "name": "emojione-colr",
-  "description": "EmojiOne font in COLR/CPAL layered format.",
-  "version": "0.2.2",
+  "name": "twemoji-colr",
+  "description": "Twemoji font in COLR/CPAL layered format.",
+  "version": "0.3.0",
   "license": "Apache-2.0",
   "author": "Jonathan Kew <jfkthame@gmail.com>",
   "contributors": [
     "Tim Guan-tin Chien <timdream@gmail.com>"
+	"Essem <smswessem@gmail.com>"
   ],
   "bugs": {
-    "url": "https://github.com/mozilla/emojione-colr/issues"
+    "url": "https://github.com/TheEssemCraft/twemoji-colr/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mozilla/emojione-colr.git"
+    "url": "git+https://github.com/TheEssemCraft/twemoji-colr.git"
   },
   "dependencies": {
     "emoji-table": "^0.1.0",
@@ -28,10 +29,10 @@
   "keywords": [
     "emoji",
     "colr",
-    "emojione",
+    "twemoji",
     "unicode"
   ],
-  "homepage": "https://github.com/mozilla/emojione-colr#readme",
+  "homepage": "https://github.com/TheEssemCraft/twemoji-colr#readme",
   "devDependencies": {
     "resemblejs": "^2.2.1"
   },
