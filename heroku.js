@@ -8,4 +8,6 @@ app.get('/', function(request, response) {
     response.sendfile(__dirname + '/tests' + '/index.html');
 }).listen(app.get('port'), function() {
     app.use('/', express.static(__dirname + '/tests'));
+    app.use('/resemble', express.static(__dirname + '/node_modules/resemblejs'));
+    app.use('/font', express.static(__dirname + '/build'));
 });
