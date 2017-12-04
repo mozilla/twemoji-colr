@@ -6,6 +6,6 @@ app.set('port', (process.env.PORT || 5000));
 //For avoidong Heroku $PORT error
 app.get('/', function(request, response) {
     response.sendfile(__dirname + '/tests' + '/index.html');
-}).listen(app.get('port'), function() {
-    console.log('App is running, server is listening on port ', app.get('port'));
-});
+}).configure(function() {
+    app.use('/tests', express.static(__dirname + '/tests'));
+}).listen(port);
