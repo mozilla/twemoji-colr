@@ -377,7 +377,7 @@ function processFile(fileName, data) {
                                     explicitArray: true});
     
     // remove defs tag if it is empty to avoid erroring
-   data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
+    data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
     
     parser.parseString(data, function (err, result) {
         var paths = [];
@@ -407,7 +407,9 @@ function processFile(fileName, data) {
                     e['$'] = {};
                 }
 
-                var fill = e['$']['style.fill'];
+                var stylePath = e['$']['style'];
+                
+                var fill = stylePath.replace(/.*((fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));).*/g, "$3");
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
