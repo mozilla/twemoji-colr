@@ -30,3 +30,4 @@ deploy:
   app: twemoji-colr
   on:
     repo: TheEssemCraft/twemoji-colr
+  skip_cleanup: true
