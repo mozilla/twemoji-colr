@@ -17,7 +17,7 @@ install:
 
 after_script:
   - cat build/Twemoji\ Mozilla.ttx
-  - grep '/(#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([^0-9a-fA-F])([^0-9a-fA-F]))/g' build/Twemoji\ Mozilla.ttx
+  - grep '/(#([0-9a-fA-F])([0-9a-fA-F])([^0-9a-fA-F])([^0-9a-fA-F])([0-9a-fA-F]?)([0-9a-fA-F]?))/g' build/Twemoji\ Mozilla.ttx
 
 script:
   - make
