@@ -406,10 +406,8 @@ function processFile(fileName, data) {
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
-
-                console.log(e['$']['style']);
                 
-                var fill = e['$']['style'].toString().replace(/.*((fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));).*/g, "$3");
+                var fill = e['$']['style'];
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
