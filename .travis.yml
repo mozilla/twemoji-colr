@@ -14,10 +14,7 @@ before_install:
 install:
   - sudo pip install fonttools
   - npm install
-  
-after_failure:
-  - cat build/Twemoji\ Mozilla.ttx
-  
+
 after_script:
   - cat build/Twemoji\ Mozilla.ttx
 
