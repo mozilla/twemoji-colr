@@ -12,7 +12,7 @@ before_install:
   - sudo apt-get install -qq fontforge python libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++ ttfautohint
 
 install:
-  - pip install fonttools
+  - sudo pip install fonttools
   - npm install
   
 after_failure:
