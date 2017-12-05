@@ -76,8 +76,9 @@ function expandColor(c) {
                 + c.substr(2, 1) + c.substr(2, 1)
                 + c.substr(3, 1) + c.substr(3, 1);
     }
-    console.log(c);
-    return c + 'ff';
+    if (c) {
+        return c + 'ff';
+    }
 }
 
 function applyOpacity(c, o) {
