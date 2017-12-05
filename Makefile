@@ -33,6 +33,7 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	        -e '  print;' \
 	        -e '}' $(RAW_FONT).names
 	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT).renamed.ttf $(RAW_FONT).names
+	fontforge -lang=py -script fixDirection.py $(RAW_FONT).renamed.ttf
 	$(TTX) -m $(RAW_FONT).renamed.ttf -o $(FINAL_TARGET) $(OT_SOURCE)
 
 $(RAW_FONT) : $(CODEPOINTS) $(GRUNTFILE)
