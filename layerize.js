@@ -406,8 +406,8 @@ function processFile(fileName, data) {
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
-                
-                var fill = e['$']['style'];
+
+                var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
