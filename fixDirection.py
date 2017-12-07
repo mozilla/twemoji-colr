@@ -7,7 +7,7 @@ fontfile = sys.argv[1]
 
 f = fontforge.open(fontfile)
 flip = psMat.scale(1,-1)
-align = psMat.translate(0,100)
+align = psMat.translate(0,300)
 
 for glyph in f.glyphs():
     glyph.transform(flip)
