@@ -6,7 +6,7 @@ import math
 fontfile = sys.argv[1]
 
 f = fontforge.open(fontfile)
-flip = psMat.scale(2,-2)
+flip = psMat.scale(1.5,-1.5)
 align = psMat.translate(0,400)
 
 for glyph in f.glyphs():
