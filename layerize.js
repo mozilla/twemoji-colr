@@ -4,6 +4,8 @@ var fs         = require('fs'),
     xmlbuilder = require('xmlbuilder'),
     xml2js     = require('xml2js');
 
+var parseString = require('xml2js').parseString;
+
 var sourceZip    = process.argv[2];
 var overridesDir = process.argv[3];
 var extrasDir    = process.argv[4];
@@ -368,6 +370,22 @@ function processFile(fileName, data) {
     // strip .svg extension off the name
     var baseName = fileName.replace(".svg", "");
     
+    var parser = new xml2js.Parser({preserveChildrenOrder: true,
+                                    explicitChildren: true,
+                                    explicitArray: true});
+    
+    // flip svg file to avoid it being upside down in the final product
+    parser.parseString(data, function (err, result) {
+        result.svg.weight = "99";
+        // create a new builder object and then convert
+        // our json back to xml.
+        var builder = new xml2js.Builder();
+        var xml = builder.buildObject(json);
+        fs.writeFile('edited-test.xml', xml, function(err, data){
+            console.log("successfully written our update xml to file");
+        })
+    });
+    
     // remove defs tag if it is empty to avoid erroring
     data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
 
@@ -376,10 +394,6 @@ function processFile(fileName, data) {
 
     // split name of glyph that corresponds to multi-char ligature
     var unicodes = baseName.split("-");
-
-    var parser = new xml2js.Parser({preserveChildrenOrder: true,
-                                    explicitChildren: true,
-                                    explicitArray: true});
     
     parser.parseString(data, function (err, result) {
         var paths = [];
