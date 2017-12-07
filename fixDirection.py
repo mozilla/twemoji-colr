@@ -11,7 +11,7 @@ reverse = psMat.scale(-1)
 
 for glyph in f.glyphs():
     glyph.transform(rotate)
-    glyph.transform(reverse)
+#    glyph.transform(reverse)
     glyph.correctDirection()
 
 f.generate(fontfile)
