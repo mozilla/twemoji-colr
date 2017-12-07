@@ -7,7 +7,7 @@ fontfile = sys.argv[1]
 
 f = fontforge.open(fontfile)
 rotate = psMat.rotate(math.radians(180))
-reverse = psMat.scale(-1)
+reverse = psMat.scale(0,-1)
 
 for glyph in f.glyphs():
 #    glyph.transform(rotate)
