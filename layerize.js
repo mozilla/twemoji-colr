@@ -374,6 +374,8 @@ function processFile(fileName, data) {
                                     explicitChildren: true,
                                     explicitArray: true});
     
+    console.log(data);
+    
     // flip svg file to avoid it being upside down in the final product
     parser.parseString(data, function (err, result) {
         result.svg.weight = "99";
