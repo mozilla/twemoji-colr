@@ -378,14 +378,7 @@ function processFile(fileName, data) {
     
     // flip svg file to avoid it being upside down in the final product
     parser.parseString(data, function (err, result) {
-        result.svg.weight = "99";
-        // create a new builder object and then convert
-        // our json back to xml.
-        var builder = new xml2js.Builder();
-        var xml = builder.buildObject(json);
-        fs.writeFile('edited-test.xml', xml, function(err, data){
-            console.log("successfully written our update xml to file");
-        })
+        result.svg.$.transform = "scale(1,-1) translate(0,-100)";
     });
     
     // remove defs tag if it is empty to avoid erroring
