@@ -374,11 +374,6 @@ function processFile(fileName, data) {
                                     explicitChildren: true,
                                     explicitArray: true});
     
-    // flip svg file to avoid it being upside down in the final product
-    parser.parseString(data, function (err, result) {
-        result.svg.$.transform = "scale(1,-1) translate(0,-100)";
-    });
-    
     // remove defs tag if it is empty to avoid erroring
     data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
 
