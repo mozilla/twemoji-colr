@@ -541,8 +541,6 @@ function processFile(fileName, data) {
         paths.forEach(function(path) {
             var svg = xmlbuilder.create("svg");
             
-            console.log(result);
-            
             svg.att('transform', 'scale(1,-1) translate(0,-100)');
             
             for (var i in result['svg']['$']) {
