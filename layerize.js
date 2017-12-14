@@ -540,6 +540,9 @@ function processFile(fileName, data) {
         var layers = [];
         paths.forEach(function(path) {
             var svg = xmlbuilder.create("svg");
+            
+            console.log(result);
+            
             for (var i in result['svg']['$']) {
                 svg.att(i, result['svg']['$'][i]);
             }
