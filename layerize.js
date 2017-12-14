@@ -543,6 +543,8 @@ function processFile(fileName, data) {
             
             console.log(result);
             
+            svg.att('transform', 'scale(1,-1) translate(0,-100)');
+            
             for (var i in result['svg']['$']) {
                 svg.att(i, result['svg']['$'][i]);
             }
