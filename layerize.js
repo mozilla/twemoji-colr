@@ -425,7 +425,7 @@ function processFile(fileName, data) {
                 }
 
                 var t = e['$']['transform'];
-                if (t) {
+                /*if (t) {
                     // fontforge import doesn't understand 3-argument 'rotate',
                     // so we decompose it into translate..rotate..untranslate
                     var c = '(-?(?:[0-9]*\\.[0-9]+|[0-9]+))';
@@ -443,7 +443,7 @@ function processFile(fileName, data) {
                         t = t.replace(m[0], rep);
                     }
                     e['$']['transform'] = t;
-                }
+                }*/
 
                 if (fill && fill.substr(0, 3) == "url") {
                     var id = fill.substr(4, fill.length - 5);
