@@ -387,14 +387,15 @@ TestReport.prototype = {
       detailEl.appendChild(a);
     });
     
-    var sourceUrl = '../build/colorGlyphs' + fileName + '.svg';
+    console.log(this.result);
+    
     var a = document.createElement('a');
     a.target = '_blank';
-    a.href = sourceUrl;
+    a.href = this.result.svgUrl;
     a.title = 'color svg';
 
     var img = new Image();
-    img.src = sourceUrl;
+    img.src = this.result.svgDataUrl;
     img.className = 'layer';
     a.appendChild(img);
     detailEl.appendChild(a);
