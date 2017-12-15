@@ -395,7 +395,7 @@ TestReport.prototype = {
     a.title = 'color svg';
 
     var img = new Image();
-    img.src = this.result.svgDataUrl;
+    img.src = this.result.svgUrl;
     img.className = 'layer';
     a.appendChild(img);
     detailEl.appendChild(a);
