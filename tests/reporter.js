@@ -325,6 +325,8 @@ TestReport.prototype = {
     detailEl.className = 'detail';
 
     var result = this.result;
+    
+    console.log(result);
 
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
@@ -386,8 +388,6 @@ TestReport.prototype = {
       a.appendChild(img);
       detailEl.appendChild(a);
     });
-    
-    console.log(this.result);
     
     var a = document.createElement('a');
     a.target = '_blank';
