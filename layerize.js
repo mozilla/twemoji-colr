@@ -541,7 +541,7 @@ function processFile(fileName, data) {
         paths.forEach(function(path) {
             var svg = xmlbuilder.create("svg");
             
-            svg.att('transform', 'scale(1.25,-1.25) translate(0,0)');
+            svg.att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
             
             for (var i in result['svg']['$']) {
                 svg.att(i, result['svg']['$'][i]);
