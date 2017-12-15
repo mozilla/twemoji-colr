@@ -276,11 +276,11 @@ ComparisonTest.prototype = {
   getSVGRenderingCanvas: function(size) {
     size = size || this.CANVAS_SIZE;
     return this.getSVGRawImg()
-      .then(function(img) {
+      .then(function(svgImg) {
         var canvas = this.getEmptyCanvas(size);
-        if (img) {
+        if (svgImg) {
           var ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
+          ctx.drawImage(svgImg, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
             0, 0, size, size);
         }
 
