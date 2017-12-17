@@ -260,6 +260,8 @@ ComparisonTest.prototype = {
         if (!svgDataUrl) {
           return;
         }
+        
+        console.log(svgDataUrl);
 
         this.svgDataUrl = svgDataUrl;
 
