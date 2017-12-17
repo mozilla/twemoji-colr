@@ -227,6 +227,8 @@ ComparisonTest.prototype = {
         }
         return str;
       }).join('-') + '.svg';
+    
+    console.log(svgUrl);
 
     var domParser = new DOMParser();
 
