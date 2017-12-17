@@ -254,7 +254,8 @@ ComparisonTest.prototype = {
           doc.rootElement.setAttribute('height', this.SVG_SIZE);
           svgText = doc.rootElement.outerHTML;
         }
-        return 'data:image/svg+xml,' + encodeURIComponent(svgText);
+        var svgDataUrl = 'data:image/svg+xml,' + encodeURIComponent(svgText);
+        return svgDataUrl;
       }.bind(this))
       .then(function(svgDataUrl) {
         
