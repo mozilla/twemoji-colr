@@ -257,11 +257,12 @@ ComparisonTest.prototype = {
         return 'data:image/svg+xml,' + encodeURIComponent(svgText);
       }.bind(this))
       .then(function(svgDataUrl) {
+        
+        console.log(svgDataUrl);
+        
         if (!svgDataUrl) {
           return;
         }
-        
-        console.log(svgDataUrl);
 
         this.svgDataUrl = svgDataUrl;
 
