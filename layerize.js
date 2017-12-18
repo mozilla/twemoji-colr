@@ -408,12 +408,6 @@ function processFile(fileName, data) {
                     return;
                 }
                 
-                if (e['#name'] == 'path') {
-                    if (!e['$']['transform']) {
-                        e['$']['transform'] = 'scale(1)';
-                    }
-                }
-                
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
@@ -554,16 +548,14 @@ function processFile(fileName, data) {
                 svg.att(i, result['svg']['$'][i]);
             }
             
-            if (result['svg']['path'] != undefined) {
-                console.log(result['svg']['path']['$']['transform']);
-            }
-            
             //if (result['svg']['path']['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
             //    result['svg']['path']['$']['transform'] = 0;
             //}
 
             path.paths.forEach(curry(addToXML, svg));
             var svgString = svg.toString();
+            
+            console.log(svgString);
 
             // see if there's an already-defined component that matches this shape
             var glyphName = components[svgString];
