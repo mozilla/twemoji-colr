@@ -408,6 +408,12 @@ function processFile(fileName, data) {
                     return;
                 }
                 
+                if (e['#name'] == 'path') {
+                    if (!e['$']['transform']) {
+                        e['$']['transform'] = 'scale(1)';
+                    }
+                }
+                
                 console.log(e);
                 
                 if (e['$'] == undefined) {
