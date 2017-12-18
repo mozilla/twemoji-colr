@@ -414,8 +414,6 @@ function processFile(fileName, data) {
                     }
                 }
                 
-                console.log(e);
-                
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
