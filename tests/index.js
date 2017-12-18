@@ -245,7 +245,7 @@ ComparisonTest.prototype = {
         
         console.log(svgText);
         
-        if (svgText.substr(0, 5) !== '<svg ') {
+        if (svgText.substr(0, 5) !== '<?xml') {
           return;
         }
 
