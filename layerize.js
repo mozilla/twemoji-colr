@@ -547,7 +547,7 @@ function processFile(fileName, data) {
                 svg.att(i, result['svg']['$'][i]);
             }
             
-            if (result['svg']['path']['$']['transform'] != undefined) {
+            if (result['svg']['path'] != undefined) {
                 console.log(result['svg']['path']['$']['transform']);
             }
             
