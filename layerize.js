@@ -407,6 +407,9 @@ function processFile(fileName, data) {
                     recordGradient(e, urlColor);
                     return;
                 }
+                
+                console.log(e);
+                
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
