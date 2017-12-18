@@ -547,12 +547,13 @@ function processFile(fileName, data) {
             for (var i in result['svg']['$']) {
                 svg.att(i, result['svg']['$'][i]);
             }
-            
-            //if (result['svg']['path']['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
-            //    result['svg']['path']['$']['transform'] = 0;
-            //}
 
             path.paths.forEach(curry(addToXML, svg));
+            
+            if (result['svg']['path']['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
+                result['svg']['path']['$']['transform'] = undefined;
+            }
+            
             var svgString = svg.toString();
             
             console.log(svgString);
