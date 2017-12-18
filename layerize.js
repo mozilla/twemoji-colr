@@ -547,7 +547,9 @@ function processFile(fileName, data) {
                 svg.att(i, result['svg']['$'][i]);
             }
             
-            console.log(result['svg']['path']['$']['transform']);
+            if (result['svg']['path']['$']['transform'] != undefined) {
+                console.log(result['svg']['path']['$']['transform']);
+            }
             
             //if (result['svg']['path']['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
             //    result['svg']['path']['$']['transform'] = 0;
