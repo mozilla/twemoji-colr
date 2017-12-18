@@ -242,6 +242,9 @@ ComparisonTest.prototype = {
         };
       })
       .then(function(svgText) {
+        
+        console.log(svgText);
+        
         if (svgText.substr(0, 5) !== '<svg ') {
           return;
         }
