@@ -563,7 +563,7 @@ function processFile(fileName, data) {
                             console.log("Removed transform");
                         }
                     }
-                    console.log("Yes, it is reading this line");
+                    console.log(json['svg']['path']);
                 }
                 var builder = new xml2js.Builder();
                 var svgString = builder.buildObject(json);
