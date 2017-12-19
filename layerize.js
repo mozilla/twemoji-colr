@@ -557,11 +557,8 @@ function processFile(fileName, data) {
             parser.parseString(svgString, function(err, result){
                 var json = result;
                 if (json['svg']['path'] != undefined) {
-                    console.log(json['svg']['path']);
-                    for (var i in json['svg']['path']['$']) {
-                        if (json.svg.path[i].$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
-                            json.svg.path[i].$.transform = undefined;
-                        }
+                    if (json['svg']['path']['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
+                        json['svg']['path']['$']['transform'] = undefined;
                     }
                 }
                 var builder = new xml2js.Builder();
