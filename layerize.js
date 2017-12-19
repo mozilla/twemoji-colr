@@ -550,12 +550,23 @@ function processFile(fileName, data) {
 
             path.paths.forEach(curry(addToXML, svg));
             
-            if (svg.path.$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
-                svg.path.$.transform = undefined;
-            }
+            //if (svg.path.$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
+            //    svg.path.$.transform = undefined;
+            //}
             
             var svgString = svg.end();
 
+            parseString(svgString, function(err, result){
+                var json = result;
+                for (var i in json['svg']['path']['$']) {
+                    if (json.svg.path[i].$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
+                        json.svg.path[i].$.transform = undefined;
+                    }
+                }
+                var builder = new xml2js.Builder();
+                var svgString = builder.buildObject(json);
+            });
+            
             // see if there's an already-defined component that matches this shape
             var glyphName = components[svgString];
 
