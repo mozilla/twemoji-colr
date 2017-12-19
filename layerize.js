@@ -559,9 +559,9 @@ function processFile(fileName, data) {
                             console.log("Removed transform");
                         }
                     }
-                }
                 var builder = new xml2js.Builder();
                 var svgString = builder.buildObject(json);
+                }
             });
             
             // see if there's an already-defined component that matches this shape
