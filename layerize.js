@@ -562,8 +562,8 @@ function processFile(fileName, data) {
                             json['svg']['path']['$']['transform'] = undefined;
                             console.log("Removed transform");
                         }
-                        console.log("Yes, it is reading this line");
                     }
+                    console.log("Yes, it is reading this line");
                 }
                 var builder = new xml2js.Builder();
                 var svgString = builder.buildObject(json);
