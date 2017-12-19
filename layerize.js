@@ -550,7 +550,11 @@ function processFile(fileName, data) {
 
             path.paths.forEach(curry(addToXML, svg));
             
-            var svgString = svg.toString();
+            if (svg.path.$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
+                svg.path.$.transform = undefined;
+            }
+            
+            var svgString = svg.end();
 
             // see if there's an already-defined component that matches this shape
             var glyphName = components[svgString];
