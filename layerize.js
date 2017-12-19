@@ -548,16 +548,12 @@ function processFile(fileName, data) {
 
             path.paths.forEach(curry(addToXML, svg));
             
-            //if (svg.path.$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
-            //    svg.path.$.transform = undefined;
-            //}
-            
             var svgString = svg.toString();
 
             parser.parseString(svgString, function(err, result){
                 var json = result;
-                for (i = 0; i < json.svg.path.length; i++) {
-                    if (json.svg.path[i] != undefined) {
+                if (json.svg.path[i] != undefined) {
+                    for (i = 0; i < json.svg.path.length; i++) {
                         if (json.svg.path[i].$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
                             json.svg.path[i].$.transform = undefined;
                             console.log("Removed transform");
