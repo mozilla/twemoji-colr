@@ -554,13 +554,16 @@ function processFile(fileName, data) {
             //    svg.path.$.transform = undefined;
             //}
             
-            var svgString = svg.end();
+            var svgString = svg.toString();
 
             parseString(svgString, function(err, result){
                 var json = result;
-                for (var i in json['svg']['path']['$']) {
-                    if (json.svg.path[i].$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
-                        json.svg.path[i].$.transform = undefined;
+                if (json['svg']['path']['$'] != undefined) {
+                    console.log(json);
+                    for (var i in json['svg']['path']['$']) {
+                        if (json.svg.path[i].$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
+                            json.svg.path[i].$.transform = undefined;
+                        }
                     }
                 }
                 var builder = new xml2js.Builder();
