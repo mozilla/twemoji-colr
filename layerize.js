@@ -558,7 +558,7 @@ function processFile(fileName, data) {
 
             parseString(svgString, function(err, result){
                 var json = result;
-                if (json['svg']['path']['$'] != undefined) {
+                if (json['svg']['path'] != undefined) {
                     console.log(json);
                     for (var i in json['svg']['path']['$']) {
                         if (json.svg.path[i].$.transform == 'matrix(1.25,0,0,-1.25,0,45)') {
