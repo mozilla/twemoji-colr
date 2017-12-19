@@ -558,8 +558,9 @@ function processFile(fileName, data) {
                 var json = result;
                 if (json['svg']['path'] != undefined) {
                     if (json['svg']['path']['$'] != undefined) {
-                        if (json['svg']['path']['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
+                        if (json['svg']['path']['$']['transform'] == "matrix(1.25,0,0,-1.25,0,45)") {
                             json['svg']['path']['$']['transform'] = undefined;
+                            console.log("Removed transform");
                         }
                     }
                 }
