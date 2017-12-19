@@ -4,8 +4,6 @@ var fs         = require('fs'),
     xmlbuilder = require('xmlbuilder'),
     xml2js     = require('xml2js');
 
-var parseString = require('xml2js').parseString;
-
 var sourceZip    = process.argv[2];
 var overridesDir = process.argv[3];
 var extrasDir    = process.argv[4];
@@ -556,7 +554,7 @@ function processFile(fileName, data) {
             
             var svgString = svg.toString();
 
-            parseString(svgString, function(err, result){
+            parser.parseString(svgString, function(err, result){
                 var json = result;
                 if (json['svg']['path'] != undefined) {
                     for (var i in json['svg']['path']['$']) {
