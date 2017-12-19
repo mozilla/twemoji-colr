@@ -561,8 +561,6 @@ function processFile(fileName, data) {
                         }
                     }
                     var svgString = builder.buildObject(json);
-                } else {
-                    break
                 }
             });
             
