@@ -557,17 +557,13 @@ function processFile(fileName, data) {
                     if (Array.isArray(json.svg.path)){
                         for (i = 0; i < json.svg.path.length; i++) {
                             if (json.svg.path[i].$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
-                                console.log(json.svg.path[i]);
-                                json.svg.path[i].$.transform = '';
-                                console.log(json.svg.path[i]);
+                                delete json.svg.path[i].$.transform;
                             }
                         }
                     }
                     else if (json.svg.path.hasOwnProperty('$')){
                         if(json.svg.path.$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
-                            console.log(json.svg.path);
-                            json.svg.path.$.transform = '';
-                            console.log(json.svg.path);
+                            delete json.svg.path.$.transform;
                         }
                     }
                 var svgString = builder.buildObject(json);
