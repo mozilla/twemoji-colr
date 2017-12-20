@@ -568,8 +568,8 @@ function processFile(fileName, data) {
                                 console.log("Removed transform");
                         }
                     }
+                var svgString = builder.buildObject(json);
                 }
-                    var svgString = builder.buildObject(json);
             });
             
             // see if there's an already-defined component that matches this shape
