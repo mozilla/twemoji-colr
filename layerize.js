@@ -561,6 +561,8 @@ function processFile(fileName, data) {
                         } else if (json.svg.path.$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
                             json.svg.path.$.transform = null;
                             console.log("Removed transform");
+                        } else {
+                            break
                         }
                     }
                     var svgString = builder.buildObject(json);
