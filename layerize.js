@@ -554,21 +554,22 @@ function processFile(fileName, data) {
                 var json = result;
                 var builder = new xml2js.Builder();
                 if (json.svg.path != undefined) {
-                    if (json.svg.path.$ != undefined) {
+                    if (Array.isArray(json.svg.path)){
                         for (i = 0; i < json.svg.path.length; i++) {
                             if (json.svg.path[i].$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
                                 json.svg.path[i].$.transform = null;
                                 console.log("Removed transform");
-                            } else if (json.svg.path.$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
-                                json.svg.path.$.transform = null;
-                                console.log("Removed transform");
-                            } else {
-                            break
                             }
                         }
                     }
-                    var svgString = builder.buildObject(json);
+                    else if (json.svg.path.hasOwnProperty('$')){
+                        if(json.svg.path.$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
+                                json.svg.path.$.transform = null;
+                                console.log("Removed transform");
+                        }
+                    }
                 }
+                    var svgString = builder.buildObject(json);
             });
             
             // see if there's an already-defined component that matches this shape
