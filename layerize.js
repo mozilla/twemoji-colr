@@ -566,7 +566,9 @@ function processFile(fileName, data) {
                             json.svg.path.$.transform = "test";
                         }
                     }
+                console.log(svgString);
                 var svgString = builder.buildObject(json);
+                console.log(svgString);
                 }
             });
             
