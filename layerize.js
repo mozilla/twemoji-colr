@@ -558,7 +558,7 @@ function processFile(fileName, data) {
                         for (i = 0; i < json.svg.path.length; i++) {
                             if (json.svg.path[i].$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
                                 console.log(json.svg.path[i]);
-                                json.svg.path[i].$.transform = undefined;
+                                json.svg.path[i].$.transform = '';
                                 console.log(json.svg.path[i]);
                             }
                         }
@@ -566,7 +566,7 @@ function processFile(fileName, data) {
                     else if (json.svg.path.hasOwnProperty('$')){
                         if(json.svg.path.$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
                             console.log(json.svg.path);
-                            json.svg.path.$.transform = undefined;
+                            json.svg.path.$.transform = '';
                             console.log(json.svg.path);
                         }
                     }
