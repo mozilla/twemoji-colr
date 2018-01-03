@@ -43,6 +43,7 @@ var curry = function(f) {
 };
 
 var addToXML = function(xml, p) {
+    console.log(p);
     if (p["#name"] == "g") {
         var g = xml.ele("g", p['$']);
         if (p['$$']) {
@@ -566,9 +567,9 @@ function processFile(fileName, data) {
                             json.svg.path.$.transform = "test";
                         }
                     }
-                console.log(svgString);
+                //console.log(svgString);
                 svgString = builder.buildObject(json);
-                console.log(svgString);
+                //console.log(svgString);
                 }
             });
             
