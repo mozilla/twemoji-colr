@@ -544,13 +544,13 @@ function processFile(fileName, data) {
         paths.forEach(function(path) {
             var svg = xmlbuilder.create("svg");
             
-            svg.att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
-            
             for (var i in result['svg']['$']) {
                 svg.att(i, result['svg']['$'][i]);
             }
 
             path.paths.forEach(curry(addToXML, svg));
+            
+            svg.root().att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
             
             var svgString = svg.toString();
 
