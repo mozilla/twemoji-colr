@@ -554,7 +554,7 @@ function processFile(fileName, data) {
             
             var svgString = svg.toString();
 
-            parser.parseString(svgString, function(err, result){
+            /*parser.parseString(svgString, function(err, result){
                 var json = result;
                 var builder = new xml2js.Builder();
                 if (json.svg.path != undefined) {
@@ -570,11 +570,11 @@ function processFile(fileName, data) {
                             json.svg.path.$.transform = "test";
                         }
                     }
-                //console.log(svgString);
+                console.log(svgString);
                 svgString = builder.buildObject(json);
-                //console.log(svgString);
+                console.log(svgString);
                 }
-            });
+            });*/
             
             // see if there's an already-defined component that matches this shape
             var glyphName = components[svgString];
