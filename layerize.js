@@ -49,7 +49,7 @@ var addToXML = function(xml, p) {
             p['$$'].forEach(curry(addToXML, g));
         }
     } else if (p["#name"] == "path") {
-        if (p['$']['transform']) {
+        if (p['$']['transform'] != null) {
             if (p['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
                 p['$']['transform'] = null;
             }
