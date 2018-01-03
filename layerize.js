@@ -52,6 +52,7 @@ var addToXML = function(xml, p) {
         if (p['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
             p['$']['transform'] = null;
         }
+        xml.ele("path", p['$']);
     } else {
         xml.ele(p["#name"], p['$']);
     }
