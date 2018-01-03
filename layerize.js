@@ -43,7 +43,6 @@ var curry = function(f) {
 };
 
 var addToXML = function(xml, p) {
-    console.log(p);
     if (p["#name"] == "g") {
         var g = xml.ele("g", p['$']);
         if (p['$$']) {
