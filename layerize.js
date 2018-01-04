@@ -396,6 +396,10 @@ function processFile(fileName, data) {
         var addToPaths = function(defaultFill, defaultStroke, defaultOpacity,
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
+                if (e['#name'] == 'metadata') {
+                    e = undefined;
+                }
+                
                 if (e['#name'] == 'defs') {
                     if(!e['$$']) throw new Error(fileName + '\'s defs tag is empty');
                     e['$$'].forEach(function (def) {
