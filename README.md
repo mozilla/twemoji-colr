@@ -26,7 +26,7 @@ The necessary tools can be installed via npm:
     # install dependencies from packages.json, including `grunt-webfont`.
     npm install
 
-The build process also requires [fontforge](https://fontforge.github.io/) (version 20140101 or greater)
+The build process also requires [fontforge](https://fontforge.github.io/)
 and the TTX script from the [font-tools](https://github.com/behdad/fonttools/) package to be installed, and assumes standard Perl and Python are available.
 
 Both FontForge and font-tools can be installed via `homebrew` on OS X, or package managers on Linux:
