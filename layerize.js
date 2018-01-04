@@ -406,7 +406,7 @@ function processFile(fileName, data) {
                             var id = '#' + def['$']['id'];
                             defs[id] = def;
                         }
-                        console.log(def);
+                        console.log(defs);
                     });
                     return;
                 }
