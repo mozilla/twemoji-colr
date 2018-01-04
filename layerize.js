@@ -378,12 +378,12 @@ function processFile(fileName, data) {
     var parser = new xml2js.Parser({preserveChildrenOrder: true,
                                     explicitChildren: true,
                                     explicitArray: true});
-    
-    // remove defs tag if it is empty to avoid erroring
-    data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
 
     // Save the original file also for visual comparison
     fs.writeFileSync(targetDir + "/colorGlyphs/u" + baseName + ".svg", data);
+    
+    // remove defs tag if it is empty to avoid erroring
+    data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
 
     // split name of glyph that corresponds to multi-char ligature
     var unicodes = baseName.split("-");
