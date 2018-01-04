@@ -399,6 +399,7 @@ function processFile(fileName, data) {
                 if (e['#name'] == 'defs') {
                     if(!e['$$']) throw new Error(fileName + '\'s defs tag is empty');
                     e['$$'].forEach(function (def) {
+                        console.log(def);
                         if (def['#name'] == 'linearGradient') {
                             recordGradient(def, urlColor);
                         } else {
