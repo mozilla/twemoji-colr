@@ -398,7 +398,7 @@ function processFile(fileName, data) {
             elems.forEach(function (e) {
                 if (e['#name'] == 'metadata') {
                     e = undefined;
-                    return
+                    return;
                 }
                 
                 if (e['#name'] == 'defs') {
