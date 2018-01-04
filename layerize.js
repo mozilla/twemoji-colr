@@ -35,6 +35,7 @@ var colorToId = {};
 
 var curry = function(f) {
     console.log(f);
+    console.log("---");
     var parameters = Array.prototype.slice.call(arguments, 1);
     return function() {
         return f.apply(this, parameters.concat(
@@ -42,6 +43,7 @@ var curry = function(f) {
         ));
     };
     console.log(f);
+    console.log("---");
 };
 
 var addToXML = function(xml, p) {
