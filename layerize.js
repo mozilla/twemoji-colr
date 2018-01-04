@@ -397,6 +397,8 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 
+                console.log(e['#name']);
+                
                 if (e['#name'] == 'metadata') {
                     e = undefined;
                     return;
@@ -406,14 +408,12 @@ function processFile(fileName, data) {
                     // throw new Error(fileName + '\'s defs tag is empty');
                     if (e['$$'] != undefined) {
                         e['$$'].forEach(function (def) {
-                            console.log(def);
                             if (def['#name'] == 'linearGradient') {
                                 recordGradient(def, urlColor);
                             } else {
                                 var id = '#' + def['$']['id'];
                                 defs[id] = def;
                             }
-                            console.log(defs);
                         })
                     }
                     return;
