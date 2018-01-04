@@ -383,7 +383,7 @@ function processFile(fileName, data) {
     fs.writeFileSync(targetDir + "/colorGlyphs/u" + baseName + ".svg", data);
     
     // remove defs tag if it is empty to avoid erroring
-    data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
+    // data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
 
     // split name of glyph that corresponds to multi-char ligature
     var unicodes = baseName.split("-");
@@ -396,23 +396,26 @@ function processFile(fileName, data) {
         var addToPaths = function(defaultFill, defaultStroke, defaultOpacity,
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
+                
                 if (e['#name'] == 'metadata') {
                     e = undefined;
                     return;
                 }
                 
                 if (e['#name'] == 'defs') {
-                    if(!e['$$']) throw new Error(fileName + '\'s defs tag is empty');
-                    e['$$'].forEach(function (def) {
-                        console.log(def);
-                        if (def['#name'] == 'linearGradient') {
-                            recordGradient(def, urlColor);
-                        } else {
-                            var id = '#' + def['$']['id'];
-                            defs[id] = def;
-                        }
-                        console.log(defs);
-                    });
+                    // throw new Error(fileName + '\'s defs tag is empty');
+                    if (e['$$'] != undefined) {
+                        e['$$'].forEach(function (def) {
+                            console.log(def);
+                            if (def['#name'] == 'linearGradient') {
+                                recordGradient(def, urlColor);
+                            } else {
+                                var id = '#' + def['$']['id'];
+                                defs[id] = def;
+                            }
+                            console.log(defs);
+                        })
+                    }
                     return;
                 }
                 if (e['#name'] == 'linearGradient') {
