@@ -34,12 +34,14 @@ var colors = [];
 var colorToId = {};
 
 var curry = function(f) {
+    console.log(f);
     var parameters = Array.prototype.slice.call(arguments, 1);
     return function() {
         return f.apply(this, parameters.concat(
             Array.prototype.slice.call(arguments, 0)
         ));
     };
+    console.log(f);
 };
 
 var addToXML = function(xml, p) {
