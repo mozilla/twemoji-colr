@@ -417,7 +417,8 @@ function processFile(fileName, data) {
                         })
                     }
                     console.log(defs);
-                    return;
+                    addToPaths(fill, stroke, opacity, strokeWidth, xform, [JSON.parse(JSON.stringify(defs))]);
+                    //return;
                 }
                 if (e['#name'] == 'linearGradient') {
                     recordGradient(e, urlColor);
@@ -429,7 +430,7 @@ function processFile(fileName, data) {
                 }
 
                 if (e['$']['style']) {
-                var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
+                    var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
                 }
                 
                 var clipPath = e['$']['clip-path'];
