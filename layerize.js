@@ -397,7 +397,7 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 
-                console.log(e['#name']);
+                // console.log(e['#name']);
                 
                 if (e['#name'] == 'metadata') {
                     e = undefined;
