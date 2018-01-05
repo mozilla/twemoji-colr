@@ -490,6 +490,9 @@ function processFile(fileName, data) {
                 var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
 
                 if (e['#name'] == 'g') {
+                    if (e['$']['clip-path'] != undefined) {
+                        addToPaths(fill, stroke, opacity, strokeWidth, e['$']['transform'] || xform, e['$']['clip-path']);
+                    }
                     if (e['$$'] != undefined) {
                         addToPaths(fill, stroke, opacity, strokeWidth, e['$']['transform'] || xform, e['$$']);
                     }
