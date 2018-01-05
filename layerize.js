@@ -420,6 +420,7 @@ function processFile(fileName, data) {
                             }
                         })
                     }
+                    console.log(defs);
                     return;
                 }
                 if (e['#name'] == 'linearGradient') {
