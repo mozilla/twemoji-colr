@@ -417,8 +417,7 @@ function processFile(fileName, data) {
                         })
                     }
                     console.log(defs);
-                    addToPaths(fill, stroke, opacity, strokeWidth, xform, [JSON.parse(JSON.stringify(defs))]);
-                    //return;
+                    return;
                 }
                 if (e['#name'] == 'linearGradient') {
                     recordGradient(e, urlColor);
