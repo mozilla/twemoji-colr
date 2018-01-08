@@ -564,7 +564,7 @@ function processFile(fileName, data) {
                 svg.att(i, result['svg']['$'][i]);
             }
             
-            console.log(path.paths);
+            console.log(result);
 
             path.paths.forEach(curry(addToXML, svg));
             
