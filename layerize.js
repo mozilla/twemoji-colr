@@ -564,6 +564,10 @@ function processFile(fileName, data) {
                 svg.att(i, result['svg']['$'][i]);
             }
             
+            for (var i in result['svg']['defs']) {
+                svg.ele(result['svg']['defs'][i]);
+            }
+            
             console.log(result);
 
             path.paths.forEach(curry(addToXML, svg));
@@ -571,28 +575,6 @@ function processFile(fileName, data) {
             svg.root().att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
             
             var svgString = svg.toString();
-
-            /*parser.parseString(svgString, function(err, result){
-                var json = result;
-                var builder = new xml2js.Builder();
-                if (json.svg.path != undefined) {
-                    if (Array.isArray(json.svg.path)){
-                        for (i = 0; i < json.svg.path.length; i++) {
-                            if (json.svg.path[i].$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
-                                json.svg.path[i].$.transform = "test";
-                            }
-                        }
-                    }
-                    else if (json.svg.path.hasOwnProperty('$')){
-                        if(json.svg.path.$.transform == "matrix(1.25,0,0,-1.25,0,45)") {
-                            json.svg.path.$.transform = "test";
-                        }
-                    }
-                console.log(svgString);
-                svgString = builder.buildObject(json);
-                console.log(svgString);
-                }
-            });*/
             
             // see if there's an already-defined component that matches this shape
             var glyphName = components[svgString];
