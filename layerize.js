@@ -415,6 +415,7 @@ function processFile(fileName, data) {
                                 defs[id] = def;
                             }
                         })
+                        addToPaths(fill, stroke, opacity, strokeWidth, e['$']['transform'] || xform, e['$$']);
                     }
                     // console.log(defs);
                     return;
