@@ -432,8 +432,8 @@ function processFile(fileName, data) {
 
                 if (e['$']['style']) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
-                    var opacityCheck = e['$']['style'].match(/((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g);
-                    if (opacityCheck) {
+                    var opacityCheck = new RegExp(/((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
+                    if (opacityCheck.test(e['$']['style'])) {
                         var opacity = e['$']['style'].replace(/((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$2');
                     }
                 }
