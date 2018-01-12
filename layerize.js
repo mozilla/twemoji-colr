@@ -436,7 +436,7 @@ function processFile(fileName, data) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
                     var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
                     if (opacityCheck.test(e['$']['style'])) {
-                        var opacity = e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3');
+                        var opacity = e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') * defaultOpacity;
                     }
                 }
                 
