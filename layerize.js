@@ -404,7 +404,7 @@ function processFile(fileName, data) {
                     return;
                 }
                 
-                if (e['#name'] == 'defs') {
+                /*if (e['#name'] == 'defs') {
                     // throw new Error(fileName + '\'s defs tag is empty');
                     if (e['$$'] != undefined) {
                         e['$$'].forEach(function (def) {
@@ -419,7 +419,8 @@ function processFile(fileName, data) {
                     }
                     // console.log(defs);
                     return;
-                }
+                }*/
+                
                 if (e['#name'] == 'linearGradient') {
                     recordGradient(e, urlColor);
                     return;
