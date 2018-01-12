@@ -429,12 +429,14 @@ function processFile(fileName, data) {
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
+                
+                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
 
                 if (e['$']['style']) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
-                    var opacityCheck = new RegExp(/((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
+                    var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
                     if (opacityCheck.test(e['$']['style'])) {
-                        var opacity = e['$']['style'].replace(/((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3');
+                        var opacity = e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3');
                     }
                 }
                 
@@ -492,8 +494,6 @@ function processFile(fileName, data) {
 
                 fill = fill || defaultFill;
                 stroke = stroke || defaultStroke;
-
-                // var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
 
                 if (e['#name'] == 'g') {
                     if (e['$$'] != undefined) {
