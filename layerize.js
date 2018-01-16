@@ -429,8 +429,6 @@ function processFile(fileName, data) {
                 if (e['$'] == undefined) {
                     e['$'] = {};
                 }
-                
-                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
 
                 if (e['$']['style']) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
@@ -439,6 +437,8 @@ function processFile(fileName, data) {
                         var opacity = e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') * defaultOpacity;
                     }
                 }
+                
+                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
                 
                 var clipPath = e['$']['clip-path'];
                 
