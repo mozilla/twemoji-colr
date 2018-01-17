@@ -430,15 +430,15 @@ function processFile(fileName, data) {
                     e['$'] = {};
                 }
 
+                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
+                
                 if (e['$']['style']) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
                     var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
                     if (opacityCheck.test(e['$']['style'])) {
-                        var opacity = e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') * defaultOpacity;
+                        var opacity = (e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') || 1.0) * defaultOpacity;
                     }
                 }
-                
-                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
                 
                 var clipPath = e['$']['clip-path'];
                 
