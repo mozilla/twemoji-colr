@@ -437,6 +437,9 @@ function processFile(fileName, data) {
                     var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
                     if (opacityCheck.test(e['$']['style'])) {
                         opacity = (e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') || 1.0) * defaultOpacity;
+                        if (isNaN(opacity)) {
+                            opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
+                        }
                         console.log(opacity);
                     }
                 }
