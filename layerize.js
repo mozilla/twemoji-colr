@@ -431,9 +431,15 @@ function processFile(fileName, data) {
                 }
 
                 var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
+                var stroke = e['$']['stroke'];
+                var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
                 
                 if (e['$']['style']) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
+                    stroke = e['$']['style'].replace(/(stroke:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
+                    /*if (isNaN(stroke)) {
+                        stroke = null;
+                    }*/
                     var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
                     if (opacityCheck.test(e['$']['style'])) {
                         opacity = (e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') || 1.0) * defaultOpacity;
@@ -444,9 +450,6 @@ function processFile(fileName, data) {
                 }
                 
                 var clipPath = e['$']['clip-path'];
-                
-                var stroke = e['$']['stroke'];
-                var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
 
                 // any path with an 'id' might get re-used, so remember it
                 if (e['$']['id']) {
