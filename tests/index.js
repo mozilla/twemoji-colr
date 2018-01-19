@@ -227,8 +227,6 @@ ComparisonTest.prototype = {
         }*/
         return str;
       }).join('-') + '.svg';
-    
-    console.log(svgUrl);
 
     var domParser = new DOMParser();
 
@@ -242,8 +240,6 @@ ComparisonTest.prototype = {
         };
       })
       .then(function(svgText) {
-        
-        console.log(svgText);
         
         if (svgText.substr(0, 5) !== '<?xml') {
           return;
@@ -260,8 +256,6 @@ ComparisonTest.prototype = {
         return 'data:image/svg+xml,' + encodeURIComponent(svgText);
       }.bind(this))
       .then(function(svgDataUrl) {
-        
-        console.log(svgDataUrl);
         
         if (!svgDataUrl) {
           return;
@@ -283,7 +277,6 @@ ComparisonTest.prototype = {
 
   getSVGRenderingCanvas: function(size) {
     size = size || this.CANVAS_SIZE;
-    console.log(this.getSVGRawImg);
     return this.getSVGRawImg()
       .then(function(img) {
         var canvas = this.getEmptyCanvas(size);
