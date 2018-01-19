@@ -440,7 +440,6 @@ function processFile(fileName, data) {
                         if (isNaN(opacity)) {
                             opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
                         }
-                        console.log(opacity);
                     }
                 }
                 
