@@ -499,7 +499,7 @@ function processFile(fileName, data) {
                 stroke = expandColor(stroke);
 
                 fill = fill || defaultFill;
-                // stroke = stroke || defaultStroke;
+                stroke = stroke || defaultStroke;
 
                 if (e['#name'] == 'g') {
                     if (e['$$'] != undefined) {
