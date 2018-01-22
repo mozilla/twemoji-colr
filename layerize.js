@@ -437,7 +437,6 @@ function processFile(fileName, data) {
                 if (e['$']['style']) {
                     var fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
                     stroke = e['$']['style'].replace(/(stroke:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
-                    console.log(stroke);
                     /*if (isNaN(stroke)) {
                         stroke = null;
                     }*/
@@ -500,7 +499,7 @@ function processFile(fileName, data) {
                 stroke = expandColor(stroke);
 
                 fill = fill || defaultFill;
-                stroke = stroke || defaultStroke;
+                // stroke = stroke || defaultStroke;
 
                 if (e['#name'] == 'g') {
                     if (e['$$'] != undefined) {
