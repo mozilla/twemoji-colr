@@ -440,6 +440,12 @@ function processFile(fileName, data) {
                     /*if (isNaN(stroke)) {
                         stroke = null;
                     }*/
+                    if (fill == undefined) {
+                        fill = 'none';
+                    }
+                    if (stroke == undefined) {
+                        stroke = 'none';
+                    }
                     var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
                     if (opacityCheck.test(e['$']['style'])) {
                         opacity = (e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') || 1.0) * defaultOpacity;
@@ -447,14 +453,6 @@ function processFile(fileName, data) {
                             opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
                         }
                     }
-                }
-                
-                if (fill == undefined) {
-                    fill = 'none';
-                }
-                
-                if (stroke == undefined) {
-                    stroke = 'none';
                 }
                 
                 var clipPath = e['$']['clip-path'];
