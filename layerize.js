@@ -518,9 +518,9 @@ function processFile(fileName, data) {
                     }
                     if (fill != 'none') {
                         var f = JSON.parse(JSON.stringify(e));
-                        f['$']['stroke'] = 'none';
-                        f['$']['stroke-width'] = '0';
-                        f['$']['fill'] = '#000';
+                        // f['$']['stroke'] = 'none';
+                        // f['$']['stroke-width'] = '0';
+                        // f['$']['fill'] = '#000';
                         if (opacity != 1.0) {
                             fill = applyOpacity(fill, opacity);
                         }
