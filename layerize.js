@@ -497,8 +497,6 @@ function processFile(fileName, data) {
 
                 fill = expandColor(fill);
                 stroke = expandColor(stroke);
-                
-                console.log(stroke);
 
                 fill = fill || defaultFill;
                 stroke = stroke || defaultStroke;
