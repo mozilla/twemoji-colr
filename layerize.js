@@ -449,6 +449,14 @@ function processFile(fileName, data) {
                     }
                 }
                 
+                if (fill == undefined) {
+                    fill = 'none';
+                }
+                
+                if (stroke == undefined) {
+                    stroke = 'none';
+                }
+                
                 var clipPath = e['$']['clip-path'];
 
                 // any path with an 'id' might get re-used, so remember it
