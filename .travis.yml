@@ -9,7 +9,7 @@ before_install:
   - sudo add-apt-repository ppa:fontforge/fontforge -y
   - sudo add-apt-repository ppa:olivier-berten/fonts -y
   - sudo apt-get update -qq
-  - sudo apt-get install -qq fontforge python libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++ ttfautohint
+  - sudo apt-get install -qq fontforge python python-fontforge libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++ ttfautohint
 
 install:
   - sudo pip install fonttools
