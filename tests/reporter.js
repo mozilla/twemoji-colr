@@ -1,7 +1,7 @@
 'use strict';
 
 var EmojiInfoService = {
-  URL: '../emoji-table/dist/emoji.json',
+  URL: '../node_modules/emoji-table/dist/emoji.json',
   map: null,
 
   _initPromise: null,
