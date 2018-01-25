@@ -547,7 +547,7 @@ function processFile(fileName, data) {
                     // Also skip stroking the zodiac-sign glyphs to work around
                     // conversion problems with those outlines; we'll just have
                     // slightly thinner symbols (fill only, no stroke)
-                    /*function skipStrokeOnZodiacSign(u) {
+                    function skipStrokeOnZodiacSign(u) {
                         u = parseInt(u, 16);
                         return (u >= 0x2648 && u <= 0x2653);
                     }
@@ -566,7 +566,7 @@ function processFile(fileName, data) {
                             //console.log("Skipping stroke in " + baseName + ", color " + stroke + " width " + strokeWidth);
                             //console.log(e['$']);
                         }
-                    }*/
+                    }
                 }
             });
         };
