@@ -325,8 +325,6 @@ TestReport.prototype = {
     detailEl.className = 'detail';
 
     var result = this.result;
-    
-    console.log(result);
 
     var ref = document.createElement('span');
     ref.className = 'dom-ref';
