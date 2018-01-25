@@ -409,7 +409,6 @@ function processFile(fileName, data) {
                     if (e['$$'] != undefined) {
                         e['$$'].forEach(function (def) {
                             if (def['#name'] == 'linearGradient') {
-                                console.log("Gradient detected");
                                 recordGradient(def, urlColor);
                             } else {
                                 var id = '#' + def['$']['id'];
