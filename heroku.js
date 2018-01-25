@@ -10,5 +10,6 @@ app.get('/', function(request, response) {
     app.use('/', express.static(__dirname + '/tests'));
     app.use('/node_modules', express.static(__dirname + '/node_modules'));
     app.use('/build', express.static(__dirname + '/build'));
+    app.use('/emoji-table', express.static(__dirname + '/emoji-table'));
     
 });
