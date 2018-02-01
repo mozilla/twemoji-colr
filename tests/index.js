@@ -310,11 +310,24 @@ ComparisonTest.prototype = {
       ])
       .then(function(blobs) {
         return new Promise(function(resolve) {
-          resemble.outputSettings({ largeImageThreshold: 0 });
+          /*resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
-            .onComplete(resolve);
+            .onComplete(resolve);*/
+          var options = {
+            output: {
+              errorColor: {
+                red: 255,
+                green: 0,
+                blue: 255
+              },
+              largeImageThreshold: 0,
+              outputDiff: true
+            },
+            ignore: ['antialiasing']
+          };
+          resemble.compare(blobs[0], blobs[1], options, resolve);
         });
       });
   },
