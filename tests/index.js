@@ -315,7 +315,7 @@ ComparisonTest.prototype = {
             .compareTo(blobs[1])
             .ignoreAntialiasing()
             .onComplete(resolve);*/
-          var options = {
+          const options = {
             output: {
               errorColor: {
                 red: 255,
