@@ -322,12 +322,12 @@ ComparisonTest.prototype = {
             },
             ignore: 'antialiasing'
           };
-          resemble.outputSettings({ largeImageThreshold: 0 });
+          /*resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
-            .onComplete(resolve);
-          /*resemble.compare(blobs[0], blobs[1], options, resolve);*/
+            .onComplete(resolve);*/
+          resemble.compare(blobs[0], blobs[1], options, resolve);
         });
       });
   },
