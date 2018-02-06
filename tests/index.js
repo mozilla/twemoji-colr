@@ -310,7 +310,7 @@ ComparisonTest.prototype = {
       ])
       .then(function(blobs) {
         return new Promise(function(resolve) {
-          var options = {
+          const options = {
             output: {
               errorColor: {
                 red: 255,
