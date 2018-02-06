@@ -315,7 +315,7 @@ ComparisonTest.prototype = {
             .compareTo(blobs[1])
             .ignoreAntialiasing()
             .onComplete(resolve);
-          /*const options = {
+          const options = {
             output: {
               errorColor: {
                 red: 255,
@@ -327,7 +327,7 @@ ComparisonTest.prototype = {
             },
             ignore: 'antialiasing'
           };
-          resemble.compare(blobs[0], blobs[1], options, resolve);*/
+          /*resemble.compare(blobs[0], blobs[1], options, resolve);*/
         });
       });
   },
