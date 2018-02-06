@@ -317,10 +317,13 @@ ComparisonTest.prototype = {
                 green: 0,
                 blue: 255
               },
+              errorType: 'movement',
+              transparency: 1.0,
               largeImageThreshold: 0,
+              useCrossOrigin: false,
               outputDiff: true
             },
-            ignore: 'antialiasing'
+            ignore: ['antialiasing']
           };
           /*resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
