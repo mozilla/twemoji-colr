@@ -310,12 +310,12 @@ ComparisonTest.prototype = {
       ])
       .then(function(blobs) {
         return new Promise(function(resolve) {
-          /*resemble.outputSettings({ largeImageThreshold: 0 });
+          resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
-            .onComplete(resolve);*/
-          const options = {
+            .onComplete(resolve);
+          /*const options = {
             output: {
               errorColor: {
                 red: 255,
@@ -327,7 +327,7 @@ ComparisonTest.prototype = {
             },
             ignore: 'antialiasing'
           };
-          resemble.compare(blobs[0], blobs[1], options, resolve);
+          resemble.compare(blobs[0], blobs[1], options, resolve);*/
         });
       });
   },
