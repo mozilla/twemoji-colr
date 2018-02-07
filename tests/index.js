@@ -335,7 +335,8 @@ ComparisonTest.prototype = {
             if (err) {
               console.log('An error occurred.');
             } else {
-              resolve;
+              console.log(data);
+              // resolve
             }
           });
         });
