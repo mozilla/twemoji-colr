@@ -331,7 +331,13 @@ ComparisonTest.prototype = {
             .compareTo(blobs[1])
             .ignoreAntialiasing()
             .onComplete(resolve);*/
-          resemble.compare(blobs[0], blobs[1], options, resolve);
+          resemble.compare(blobs[0], blobs[1], options, function(err, data) {
+            if (err) {
+              console.log('An error occurred.');
+            } else {
+              resolve;
+            }
+          });
         });
       });
   },
