@@ -311,7 +311,7 @@ ComparisonTest.prototype = {
       ])
       .then(function(blobs) {
         return new Promise(function(resolve) {
-          const options = {
+          /*const options = {
             output: {
               errorColor: {
                 red: 255,
@@ -323,19 +323,12 @@ ComparisonTest.prototype = {
             },
             ignore: ['antialiasing']
           };
-          /*resemble.outputSettings({ largeImageThreshold: 0 });
+          resemble.compare(blobs[0], blobs[1], options, resolve);*/
+          resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
-            .onComplete(resolve);*/
-          resemble.compare(blobs[0], blobs[1], options, function(err, data) {
-            if (err) {
-              console.log('An error occurred.');
-            } else {
-              console.log(data);
-              // resolve
-            }
-          });
+            .onComplete(resolve);
         });
       });
   },
