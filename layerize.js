@@ -48,14 +48,14 @@ var addToXML = function(xml, p) {
         if (p['$$']) {
             p['$$'].forEach(curry(addToXML, g));
         }
-    } else if (p["#name"] == "path") {
+    } /*else if (p["#name"] == "path") {
         if (p['$']['transform'] != null) {
             if (p['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
                 p['$']['transform'] = 'scale(1)';
             }
         }
         xml.ele("path", p['$']);
-    } else {
+    }*/ else {
         xml.ele(p["#name"], p['$']);
     }
 };
