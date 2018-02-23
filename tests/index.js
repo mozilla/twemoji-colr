@@ -319,8 +319,7 @@ ComparisonTest.prototype = {
               },
               largeImageThreshold: 0,
               outputDiff: true
-            },
-            ignore: ['antialiasing']
+            }
           };
           //resemble.compare(blobs[0], blobs[1], options, resolve);
           //resemble.outputSettings({ largeImageThreshold: 0 });
