@@ -227,8 +227,6 @@ ComparisonTest.prototype = {
         }*/
         return str;
       }).join('-') + '.svg';
-    
-    console.log(svgUrl);
 
     var domParser = new DOMParser();
 
@@ -279,11 +277,9 @@ ComparisonTest.prototype = {
 
   getSVGRenderingCanvas: function(size) {
     size = size || this.CANVAS_SIZE;
-    // console.log(this.getSVGRawImg);
     return this.getSVGRawImg()
       .then(function(img) {
         var canvas = this.getEmptyCanvas(size);
-        console.log(img);
         if (img) {
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
