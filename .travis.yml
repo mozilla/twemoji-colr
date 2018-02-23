@@ -15,6 +15,9 @@ install:
 
 script:
   - make
+  
+after_script:
+  - cat build/Twemoji\ Mozilla.ttx
 
 deploy:
   provider: heroku
