@@ -128,7 +128,6 @@ ComparisonTest.prototype = {
   runSVGImageCompare: function() {
     return this.imageCompare(this.svgRenderingCanvas, this.emojiRenderingCanvas)
       .then(function(resambleDiffData) {
-        console.log(resambleDiffData);
         var mismatch = resambleDiffData.rawMisMatchPercentage;
         if (mismatch > this.RETEST_THRESHOLD &&
           mismatch < this.RETEST_UPPER_THRESHOLD) {
@@ -284,6 +283,7 @@ ComparisonTest.prototype = {
     return this.getSVGRawImg()
       .then(function(img) {
         var canvas = this.getEmptyCanvas(size);
+        console.log(img);
         if (img) {
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, this.SVG_SIZE, this.SVG_SIZE,
