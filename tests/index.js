@@ -278,7 +278,7 @@ ComparisonTest.prototype = {
 
   getSVGRenderingCanvas: function(size) {
     size = size || this.CANVAS_SIZE;
-    console.log(this.getSVGRawImg());
+    console.log(this.getSVGRawImg);
     return this.getSVGRawImg()
       .then(function(img) {
         var canvas = this.getEmptyCanvas(size);
