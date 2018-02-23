@@ -584,7 +584,7 @@ function processFile(fileName, data) {
 
             path.paths.forEach(curry(addToXML, svg));
             
-            svg.root().att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
+            // svg.root().att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
             
             var svgString = svg.toString();
             
