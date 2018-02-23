@@ -430,16 +430,12 @@ function processFile(fileName, data) {
                 }
 
                 var fill = e['$']['fill'];
-                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
                 
-                if (e['$']['style']) {
+                /*if (e['$']['style']) {
                     fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
                     stroke = e['$']['style'].replace(/(stroke:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
-                    /*if (isNaN(stroke)) {
-                        stroke = null;
-                    }*/
                     if (fill == undefined) {
                         fill = e['$']['fill'];
                     }
@@ -453,7 +449,7 @@ function processFile(fileName, data) {
                             opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
                         }
                     }
-                }
+                }*/
                 
                 var clipPath = e['$']['clip-path'];
 
@@ -506,6 +502,8 @@ function processFile(fileName, data) {
 
                 fill = fill || defaultFill;
                 stroke = stroke || defaultStroke;
+                
+                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
 
                 if (e['#name'] == 'g') {
                     if (e['$$'] != undefined) {
