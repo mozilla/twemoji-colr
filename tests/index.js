@@ -243,7 +243,7 @@ ComparisonTest.prototype = {
       })
       .then(function(svgText) {
         
-        if (svgText.substr(0, 5) !== '<?xml') {
+        if (svgText.substr(0, 5) !== '<svg ') {
           return;
         }
 
