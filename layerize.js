@@ -76,6 +76,8 @@ function expandColor(c) {
         c = '#0f0';
     } else if (c == 'blue') {
         c = '#00f';
+    } else if (c == 'navy') {
+        c = '#000080';
     }
     // c is a hex color that might be shorthand (3 instead of 6 digits)
     if (c.substr(0, 1) == '#' && c.length == 4) {
