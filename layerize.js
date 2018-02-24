@@ -73,7 +73,7 @@ function expandColor(c) {
     if (c == 'red') {
         c = '#f00';
     } else if (c == 'green') {
-        c = '#0f0';
+        c = '#008000';
     } else if (c == 'blue') {
         c = '#00f';
     } else if (c == 'navy') {
