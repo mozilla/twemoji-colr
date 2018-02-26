@@ -222,9 +222,9 @@ ComparisonTest.prototype = {
       })
       .map(function(cp) {
         var str = cp.toString(16);
-        while (str.length < 4) {
+        /*while (str.length < 4) {
           str = '0' + str;
-        }
+        }*/
         return str;
       }).join('-') + '.svg';
 
