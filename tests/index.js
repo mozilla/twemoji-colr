@@ -33,9 +33,9 @@ var LayerInfoService = {
             });
           var codePointsStr = codePoints.map(function(cp) {
             var str = cp.toString(16).toUpperCase();
-            /*while (str.length < 4) {
+            while (str.length < 4) {
               str = '0' + str;
-            }*/
+            }
             return 'U+' + str;
           }).join(' ');
 
