@@ -333,6 +333,7 @@ ComparisonTest.prototype = {
               onComplete: resolve
             }
           };
+          console.log(resolve);
           resemble.compare(blobs[0], blobs[1], options, resolve);
           //resemble.outputSettings({ largeImageThreshold: 0 });
           /*resemble(blobs[0])
