@@ -217,6 +217,7 @@ ComparisonTest.prototype = {
     
     var prevCp = undefined;
     var beforePrevCp = undefined;
+    console.log(this.codePoints);
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
