@@ -21,7 +21,7 @@ var EmojiInfoService = {
         if (!json) {
           console.warn('EmojiInfoService: Failed to load table.');
           return;
-        }
+        };
         for (var info of json) {
           this.map.set(info.code, info);
         }
