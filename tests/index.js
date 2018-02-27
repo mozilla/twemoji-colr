@@ -216,15 +216,19 @@ ComparisonTest.prototype = {
     }
     
     var prevCp = undefined;
+    var beforePrevCp = undefined;
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
         // Remove zero width joiner and VS16.
-        if (cp == prevCp && cp == 0x200d) {
-          return cp !== 0x200d;
+        if (cp == prevCp && prevCp == beforePrevCp && cp == 0x200d) {
+          beforePrevCp = prevCp;
+          prevCp = cp;
+          return cp;
         };
+        beforePrevCp = prevCp;
         prevCp = cp;
-        return cp;
+        return cp !== 0x200d;
         // !== 0xfe0f
       })
       .map(function(cp) {
