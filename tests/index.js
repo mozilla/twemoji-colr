@@ -329,17 +329,15 @@ ComparisonTest.prototype = {
                 blue: 255
               },
               largeImageThreshold: 0,
-              outputDiff: true,
-              onComplete: resolve
+              outputDiff: true
             }
           };
-          console.log(resolve.toString());
-          resemble.compare(blobs[0], blobs[1], options, resolve);
+          //resemble.compare(blobs[0], blobs[1], options, resolve);
           //resemble.outputSettings({ largeImageThreshold: 0 });
-          /*resemble(blobs[0])
+          resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
-            .onComplete(resolve);*/
+            .onComplete(resolve);
         });
       });
   },
