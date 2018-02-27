@@ -214,12 +214,18 @@ ComparisonTest.prototype = {
     if (this.svgRawImgPromise) {
       return this.svgRawImgPromise;
     }
+    
+    var prevCp = undefined;
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
         // Remove zero width joiner and VS16.
-        var prevCp = cp;
-        // return cp !== 0x200d && cp !== 0xfe0f;
+        if (cp == prevCp && cp == 0x200d) {
+          return cp !== 0x200d;
+        };
+        prevCp = cp;
+        return cp;
+        // !== 0xfe0f
       })
       .map(function(cp) {
         var str = cp.toString(16);
