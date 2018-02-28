@@ -217,20 +217,24 @@ ComparisonTest.prototype = {
     
     var prevCp = undefined;
     var beforePrevCp = undefined;
-    console.log(this.codePoints);
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
+        var cpEnd = codePoints.length - 1;
         // Remove zero width joiner and VS16.
         if (cp == prevCp && prevCp == beforePrevCp && cp == 0x200d) {
           beforePrevCp = prevCp;
           prevCp = cp;
           return cp;
         };
+        if (cp == 0xfe0f && cp == codePoints[cpEnd]) {
+          beforePrevCp = prevCp;
+          prevCp = cp;
+          return cp !== 0xfe0f;
+        }
         beforePrevCp = prevCp;
         prevCp = cp;
         return cp !== 0x200d;
-        // !== 0xfe0f
       })
       .map(function(cp) {
         var str = cp.toString(16);
