@@ -217,7 +217,8 @@ ComparisonTest.prototype = {
     
     var prevCp;
     var beforePrevCp;
-    var cpEnd = this.codePoints.length - 1;
+    var codePointsArray = this.codePoints;
+    var cpEnd = codePointsArray.length - 1;
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
@@ -227,7 +228,7 @@ ComparisonTest.prototype = {
           prevCp = cp;
           return cp;
         };
-        if (cp == 0xfe0f && cp == this.codePoints[cpEnd]) {
+        if (cp == 0xfe0f && cp == codePointsArray[cpEnd]) {
           beforePrevCp = prevCp;
           prevCp = cp;
           return cp !== 0xfe0f;
