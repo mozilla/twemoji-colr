@@ -228,7 +228,7 @@ ComparisonTest.prototype = {
           prevCp = cp;
           return cp;
         };
-        if (cp == 0xfe0f && cp == codePointsArray[cpEnd]) {
+        if (cp == 0xfe0f && cp !== codePointsArray[cpEnd]) {
           beforePrevCp = prevCp;
           prevCp = cp;
           return cp !== 0xfe0f;
