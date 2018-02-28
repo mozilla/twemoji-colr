@@ -215,12 +215,12 @@ ComparisonTest.prototype = {
       return this.svgRawImgPromise;
     }
     
-    var prevCp = undefined;
-    var beforePrevCp = undefined;
+    var prevCp;
+    var beforePrevCp;
+    var cpEnd = this.codePoints.length - 1;
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
       this.codePoints.filter(function(cp) {
-        var cpEnd = this.codePoints.length - 1;
         // Remove zero width joiner and VS16.
         if (cp == prevCp && prevCp == beforePrevCp && cp == 0x200d) {
           beforePrevCp = prevCp;
