@@ -239,9 +239,6 @@ ComparisonTest.prototype = {
       })
       .map(function(cp) {
         var str = cp.toString(16);
-        /*while (str.length < 4) {
-          str = '0' + str;
-        }*/
         return str;
       }).join('-') + '.svg';
 
@@ -338,8 +335,6 @@ ComparisonTest.prototype = {
               outputDiff: true
             }
           };
-          //resemble.compare(blobs[0], blobs[1], options, resolve);
-          //resemble.outputSettings({ largeImageThreshold: 0 });
           resemble(blobs[0])
             .compareTo(blobs[1])
             .ignoreAntialiasing()
