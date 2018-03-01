@@ -23,7 +23,7 @@ var EmojiInfoService = {
           return;
         };
         for (var info of json) {
-          this.map.set(info.code, info);
+          this.map.set(info.codePoints.toString(16), info);
         }
       }.bind(this));
 
@@ -248,7 +248,7 @@ TestReport.prototype = {
           return;
         }
         infoEl.textContent =
-          info.name + '. tags: ' + info.tags.join(', ') + '.';
+          info.name + '. keywords: ' + info.keywords.join(', ') + '.';
       })
       .catch(function(e) { console.error(e); });
     reportEl.appendChild(infoEl);
