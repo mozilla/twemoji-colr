@@ -1,1 +1,1 @@
-Zipped copy of the 2/svg directory from https://github.com/twitter/twemoji/archive/v2.5.0.zip
+Zipped copy of the 2/svg directory from https://github.com/twitter/twemoji/archive/v2.5.1.zip
