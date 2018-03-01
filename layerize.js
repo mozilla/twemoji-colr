@@ -48,14 +48,7 @@ var addToXML = function(xml, p) {
         if (p['$$']) {
             p['$$'].forEach(curry(addToXML, g));
         }
-    } /*else if (p["#name"] == "path") {
-        if (p['$']['transform'] != null) {
-            if (p['$']['transform'] == 'matrix(1.25,0,0,-1.25,0,45)') {
-                p['$']['transform'] = 'scale(1)';
-            }
-        }
-        xml.ele("path", p['$']);
-    }*/ else {
+    } else {
         xml.ele(p["#name"], p['$']);
     }
 };
@@ -383,9 +376,6 @@ function processFile(fileName, data) {
 
     // Save the original file also for visual comparison
     fs.writeFileSync(targetDir + "/colorGlyphs/u" + baseName + ".svg", data);
-    
-    // remove defs tag if it is empty to avoid erroring
-    // data = data.toString().replace(/<defs[\s\r\n\t]*(id="[^"]*"[\s\r\n\t]*)?((\/>)|(>[\s\r\n\t]*\/>))/g, '');
 
     // split name of glyph that corresponds to multi-char ligature
     var unicodes = baseName.split("-");
@@ -399,15 +389,12 @@ function processFile(fileName, data) {
                                   defaultStrokeWidth, xform, elems) {
             elems.forEach(function (e) {
                 
-                // console.log(e['#name']);
-                
                 if (e['#name'] == 'metadata') {
                     e = undefined;
                     return;
                 }
                 
                 if (e['#name'] == 'defs') {
-                    // throw new Error(fileName + '\'s defs tag is empty');
                     if (e['$$'] != undefined) {
                         e['$$'].forEach(function (def) {
                             if (def['#name'] == 'linearGradient') {
@@ -418,7 +405,6 @@ function processFile(fileName, data) {
                             }
                         })
                     }
-                    // console.log(defs);
                     return;
                 }
                 
@@ -434,26 +420,6 @@ function processFile(fileName, data) {
                 var fill = e['$']['fill'];
                 var stroke = e['$']['stroke'];
                 var strokeWidth = e['$']['stroke-width'] || defaultStrokeWidth;
-                
-                /*if (e['$']['style']) {
-                    fill = e['$']['style'].replace(/(fill:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
-                    stroke = e['$']['style'].replace(/(stroke:)[\s\r\n\t]*(#([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F])([0-9]|[a-f]|[A-F]));|[^]/g, '$2');
-                    if (fill == undefined) {
-                        fill = e['$']['fill'];
-                    }
-                    if (stroke == undefined) {
-                        stroke = e['$']['stroke'];
-                    }
-                    var opacityCheck = new RegExp(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/);
-                    if (opacityCheck.test(e['$']['style'])) {
-                        opacity = (e['$']['style'].replace(/(?!fill-)((opacity:)[\s\r\n\t]*(([0-9]*)\.*([0-9]*));*)/g, '$3') || 1.0) * defaultOpacity;
-                        if (isNaN(opacity)) {
-                            opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
-                        }
-                    }
-                }*/
-                
-                var clipPath = e['$']['clip-path'];
 
                 // any path with an 'id' might get re-used, so remember it
                 if (e['$']['id']) {
@@ -577,15 +543,11 @@ function processFile(fileName, data) {
         var layers = [];
         paths.forEach(function(path) {
             var svg = xmlbuilder.create("svg");
-            
             for (var i in result['svg']['$']) {
                 svg.att(i, result['svg']['$'][i]);
             }
 
             path.paths.forEach(curry(addToXML, svg));
-            
-            // svg.root().att('transform', 'matrix(1.25,0,0,-1.25,0,45)');
-            
             var svgString = svg.toString();
             
             // see if there's an already-defined component that matches this shape
