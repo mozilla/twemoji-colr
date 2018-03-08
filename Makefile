@@ -29,7 +29,7 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	        -e 'while(<>) {' \
 	        -e '  $$ps = 1 if m/nameID="6"/;' \
 	        -e '  $$ps = 0 if m|</namerecord>|;' \
-	        -e '  s/EmojiOne Mozilla/EmojiOneMozilla/ if $$ps;' \
+	        -e '  s/Twemoji Mozilla/TwemojiMozilla/ if $$ps;' \
 	        -e '  print;' \
 	        -e '}' $(RAW_FONT).names
 	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT).renamed.ttf $(RAW_FONT).names
@@ -39,5 +39,5 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 $(RAW_FONT) : $(CODEPOINTS) $(GRUNTFILE)
 	$(NPM) run grunt webfont
 
-$(CODEPOINTS) $(OT_SOURCE) : $(LAYERIZE) $(SVGS) $(OVERRIDE_DIR) $(EXTRA_DIR) $(EXTRA_DIR)/*.svg
+$(CODEPOINTS) $(OT_SOURCE) : $(LAYERIZE) $(SVGS) $(OVERRIDE_DIR) $(EXTRA_DIR)
 	$(NODE) $(LAYERIZE) $(SVGS) $(OVERRIDE_DIR) $(EXTRA_DIR) $(BUILD_DIR) $(FONT_NAME)
