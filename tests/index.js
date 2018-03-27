@@ -221,11 +221,7 @@ ComparisonTest.prototype = {
     var cpEnd = codePointsArray.length - 1;
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
-      this.codePoints.filter(function(cp) {
-        // Remove zero width joiner and VS16.
-        return cp !== 0x200d && cp !== 0xfe0f;
-      })
-      .map(function(cp) {
+      this.codePoints.map(function(cp) {
         var str = cp.toString(16);
         return str;
       }).join('-') + '.svg';
