@@ -576,16 +576,6 @@ function processFile(fileName, data) {
             // simple character (single codepoint)
             chars.push({unicode: unicodes[0], components: layers});
         } else {
-            // Ligatures: Keycap sequences only apply when there's U+FE0F in between.
-            // Otherwise, if not a Regional-Indicator pair or Fitzpatrick-modified char,
-            // insert ZWJ between components
-            if (unicodes.length == 2 && parseInt(unicodes[1], 16) == 0x20e3) {
-                unicodes = unicodes.join(",fe0f,").split(",");
-            } else if (unicodes.length > 2 ||
-                !((parseInt(unicodes[0], 16) >= 0x1f1e6 && parseInt(unicodes[0], 16) <= 0x1f1ff) ||
-                  (parseInt(unicodes[1], 16) >= 0x1f3fb && parseInt(unicodes[1], 16) <= 0x1f3ff))) {
-                unicodes = unicodes.join(",200d,").split(",");
-            }
             ligatures.push({unicodes: unicodes, components: layers});
             // create the placeholder glyph for the ligature (to be mapped to a set of color layers)
             fs.writeFileSync(targetDir + "/glyphs/u" + unicodes.join("_") + ".svg",

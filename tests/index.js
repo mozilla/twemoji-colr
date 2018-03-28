@@ -221,23 +221,7 @@ ComparisonTest.prototype = {
     var cpEnd = codePointsArray.length - 1;
 
     var svgUrl = this.svgUrl = '../build/colorGlyphs/u' +
-      this.codePoints.filter(function(cp) {
-        // Remove zero width joiner and VS16.
-        if (cp == prevCp && prevCp == beforePrevCp && cp == 0x200d) {
-          beforePrevCp = prevCp;
-          prevCp = cp;
-          return cp;
-        };
-        if (cp == 0xfe0f && cp !== codePointsArray[cpEnd]) {
-          beforePrevCp = prevCp;
-          prevCp = cp;
-          return cp !== 0xfe0f;
-        }
-        beforePrevCp = prevCp;
-        prevCp = cp;
-        return cp !== 0x200d;
-      })
-      .map(function(cp) {
+      this.codePoints.map(function(cp) {
         var str = cp.toString(16);
         return str;
       }).join('-') + '.svg';
