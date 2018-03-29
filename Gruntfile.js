@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                     types: 'ttf',
                     autoHint: false,
                     execMaxBuffer: 1024 * 1000,
-                    version: 'Version ' + packageJSON.version,
+                    version: packageJSON.version,
                     codepointsFile: 'build/codepoints.js'
                 }
             },
