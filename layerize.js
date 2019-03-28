@@ -648,8 +648,11 @@ function generateTTX() {
     defaultLangSys.ele("ReqFeatureIndex", {value: 65535});
     defaultLangSys.ele("FeatureIndex", {index: 0, value: 0});
 
+    // The ligature rules are assigned to the "ccmp" feature (*not* "liga"),
+    // as they should not be disabled in contexts such as letter-spacing or
+    // inter-character justification, where "normal" ligatures are turned off.
     var featureRecord = GSUB.ele("FeatureList").ele("FeatureRecord", {index: 0});
-    featureRecord.ele("FeatureTag", {value: "liga"});
+    featureRecord.ele("FeatureTag", {value: "ccmp"});
     featureRecord.ele("Feature").ele("LookupListIndex", {index: 0, value: 0});
 
     var lookup = GSUB.ele("LookupList").ele("Lookup", {index: 0});
