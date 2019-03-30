@@ -81,14 +81,16 @@ var LayerInfoService = {
   }
 };
 
-var ComparisonTest = function(codePoints) {
+var ComparisonTest = function(codePoints, timestamp) {
   this.codePoints = codePoints;
   this.string = this.codePointsToString(codePoints);
   this.retested = false;
+  // Used to prevent fetching SVGs from the browser cache
+  this.TIMESTAMP = timestamp;
 };
 
 ComparisonTest.prototype = {
-  FONT_NAME: 'Twemoji Mozilla',
+  FONT_NAME: 'Twemoji Mozilla Built',
   CANVAS_SIZE: 480,
   SVG_SIZE: 64,
 
@@ -224,7 +226,7 @@ ComparisonTest.prototype = {
       this.codePoints.map(function(cp) {
         var str = cp.toString(16);
         return str;
-      }).join('-') + '.svg';
+      }).join('-') + '.svg?' + this.TIMESTAMP;
 
     var domParser = new DOMParser();
 
@@ -346,7 +348,9 @@ ComparisonTest.prototype = {
   }
 };
 
-var TestLoader = function() {
+var TestLoader = function(timestamp) {
+  // Used to prevent fetching SVGs from the browser cache
+  this.TIMESTAMP = timestamp;
 }
 
 TestLoader.prototype = {
@@ -366,7 +370,7 @@ TestLoader.prototype = {
 
         codePointsArr.forEach(function(codePoints, i) {
           p = p.then(function() {
-            var comparisonTest = new ComparisonTest(codePoints);
+            var comparisonTest = new ComparisonTest(codePoints, this.TIMESTAMP);
             return comparisonTest.run()
               .then(this.testRunReport.appendResult.bind(this.testRunReport));
           }.bind(this));
@@ -385,30 +389,41 @@ TestLoader.prototype = {
 };
 
 function start(arr) {
-  if (typeof arr === 'string') {
-    arr = arr.split(',').map(function(str) {
-      return str.split(' ')
-        .map(function(numStr) {
-          return numStr = numStr.trim();
-        })
-        .filter(function(numStr) {
-          return (numStr !== '');
-        })
-        .map(function(numStr) {
-        if (numStr.substr(0, 2) === 'U+') {
-          numStr = numStr.substr(2);
-        }
-        return parseInt(numStr, 16);
+  // To make sure the browser doesn't serve cached copies.
+  var TIMESTAMP = Date.now();
+  var font = new FontFace(
+    "Twemoji Mozilla Built",
+    `url("../build/Twemoji Mozilla.ttf?${TIMESTAMP}") format("truetype")`,
+    { style: "normal", weight: "normal" }
+  );
+  font.load().then(() => {
+    document.fonts.add(font);
+    document.body.classList.add('font-loaded');
+    if (typeof arr === 'string') {
+      arr = arr.split(',').map(function(str) {
+        return str.split(' ')
+          .map(function(numStr) {
+            return numStr = numStr.trim();
+          })
+          .filter(function(numStr) {
+            return (numStr !== '');
+          })
+          .map(function(numStr) {
+          if (numStr.substr(0, 2) === 'U+') {
+            numStr = numStr.substr(2);
+          }
+          return parseInt(numStr, 16);
+        });
       });
-    });
-  }
+    }
 
-  (new TestLoader())
-    .run(arr)
-    .catch(function(e) {
-      alert(e.toString() + '\n\n' + e.stack);
-      console.error(e);
-    });
+    (new TestLoader(TIMESTAMP))
+      .run(arr)
+      .catch(function(e) {
+        alert(e.toString() + '\n\n' + e.stack);
+        console.error(e);
+      });
+  });
 }
 
 function changeHashAndStart(str) {

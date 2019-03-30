@@ -1,16 +1,12 @@
-@font-face {
-  font-family: "Twemoji Mozilla";
-  src: url('../build/Twemoji Mozilla.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   font-family: sans-serif;
 }
 
-.emoji {
-  font-family: "Twemoji Mozilla";
+body.font-loaded .emoji,
+body.font-loaded canvas,
+body.font-loaded img,
+body.font-loaded .dom-ref {
+  font-family: "Twemoji Mozilla Built";
 }
 
 h1 form {
@@ -68,7 +64,6 @@ p.failed {
 
 canvas, img, .dom-ref {
   display: inline-block;
-  font-family: "Twemoji Mozilla";
   font-size: 180px;
   line-height: 180px;
   vertical-align: middle;
