@@ -1,7 +1,7 @@
 'use strict';
 
 var EmojiInfoService = {
-  URL: '../node_modules/emoji-table/dist/emoji.json',
+  URL: '../node_modules/emojibase-data/en/compact.json',
   map: null,
 
   _initPromise: null,
@@ -19,11 +19,11 @@ var EmojiInfoService = {
         this.map = new Map();
 
         if (!json) {
-          console.warn('EmojiInfoService: Failed to load table.');
+          console.warn('EmojiInfoService: Failed to load data.');
           return;
         };
         for (var info of json) {
-          this.map.set(info.code, info);
+          this.map.set(info.hexcode, info);
         }
       }.bind(this));
 
@@ -42,12 +42,12 @@ var EmojiInfoService = {
         while (str.length < 4) {
           str = '0' + str;
         }
-        return 'U+' + str;
+        return str;
       });
 
       var i = codePoints.length;
       do {
-        var str = codePointsStrArr.slice(0, i).join(' ');
+        var str = codePointsStrArr.slice(0, i).join('-');
         var info = this.map.get(str);
         if (info) {
           return info;
@@ -250,7 +250,7 @@ TestReport.prototype = {
           return;
         }
         infoEl.textContent =
-          info.name + '. tags: ' + info.tags.join(', ') + '.';
+          info.annotation + '. tags: ' + info.tags.join(', ') + '.';
       })
       .catch(function(e) { console.error(e); });
     reportEl.appendChild(infoEl);
