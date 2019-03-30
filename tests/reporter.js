@@ -208,7 +208,7 @@ TestReport.prototype = {
   // cause out of memory error in Windows XP
   MINIMAL_REPORT: false,
   // Only keep failure canvases to reduce memory. Overridden by MINIMAL_REPORT.
-  FAILURE_ONLY: false,
+  FAILURE_ONLY: true,
 
   render: function(canExpend) {
     var result = this.result;
