@@ -28,6 +28,7 @@ var EmojiInfoService = {
           }
           this.map.set(info.hexcode, info);
         }
+        this._augmentInfo();
       }.bind(this));
 
     this._initPromise = p;
@@ -40,6 +41,34 @@ var EmojiInfoService = {
       this.map.set(skin.hexcode, skin);
     }
     emoji.skins = undefined;
+  },
+
+  _augmentInfo: function() {
+    // Regional Indicator Symbol Letters
+    for (var i = 127462; i <= 127487; ++i) {
+      // '1F1E6' <= && <= '1F1FF'
+      // RISLs are offset from their plain ascii cousins by 127397
+      var letter = String.fromCodePoint(i - 127397);
+      var hexcode = i.toString(16).toUpperCase();
+      this.map.set(hexcode, {
+        annotation: 'regional indicator symbol letter ' + letter,
+        tags: ['regional', 'letter', letter],
+        hexcode,
+      });
+    }
+    // Fitzpatrick skin tone modifiers
+    var toneMap = {
+      '1F3FB': ['Light', '1-2'], '1F3FC': ['Medium-Light', 3],
+      '1F3FD': ['Medium', 4], '1F3FE': ['Medium-Dark', 5],
+      '1F3FF': ['Dark', 6],
+    };
+    for (var [hexcode, [name, type]] of Object.entries(toneMap)) {
+      this.map.set(hexcode, {
+        annotation: `${name} skin tone modifier`,
+        tags: [name + ' skin tone', 'fitzpatrick', 'type ' + type],
+        hexcode,
+      });
+    }
   },
 
   getInfo: function(codePoints) {
