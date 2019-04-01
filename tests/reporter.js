@@ -23,12 +23,23 @@ var EmojiInfoService = {
           return;
         };
         for (var info of json) {
+          if (info.skins) {
+            this._flattenSkins(info);
+          }
           this.map.set(info.hexcode, info);
         }
       }.bind(this));
 
     this._initPromise = p;
     return p;
+  },
+
+  _flattenSkins: function(emoji) {
+    for (var skin of emoji.skins) {
+      skin.tags = emoji.tags;
+      this.map.set(skin.hexcode, skin);
+    }
+    emoji.skins = undefined;
   },
 
   getInfo: function(codePoints) {
