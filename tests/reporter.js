@@ -69,6 +69,12 @@ var EmojiInfoService = {
         hexcode,
       });
     }
+    // Non-standard
+    this.map.set('E50A', {
+      annotation: 'shibuya',
+      tags: ['private use area', 'non-standard'],
+      hexcode: 'E50A',
+    });
   },
 
   getInfo: function(codePoints) {
