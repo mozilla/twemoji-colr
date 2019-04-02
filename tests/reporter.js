@@ -207,6 +207,8 @@ TestReport.prototype = {
   // Set this to true to get rip of the canvases and other bits that would
   // cause out of memory error in Windows XP
   MINIMAL_REPORT: false,
+  // Only keep failure canvases to reduce memory. Overridden by MINIMAL_REPORT.
+  FAILURE_ONLY: true,
 
   render: function(canExpend) {
     var result = this.result;
@@ -259,7 +261,7 @@ TestReport.prototype = {
       reportEl.classList.add('failed');
     }
 
-    if (!this.MINIMAL_REPORT) {
+    if (!this.MINIMAL_REPORT && (!this.passed || !this.FAILURE_ONLY)) {
       reportTitleEl.addEventListener('click', this);
       reportTitleEl.classList.add('clickable');
       infoEl.addEventListener('click', this);
@@ -276,7 +278,7 @@ TestReport.prototype = {
   },
 
   minimizeMemoryUsage: function() {
-    if (this.MINIMAL_REPORT) {
+    if (this.MINIMAL_REPORT || (this.passed && this.FAILURE_ONLY)) {
       // Throw away the reference to the test result -- everything
       // we need is printed on the DOM already.
       this.result = null;
