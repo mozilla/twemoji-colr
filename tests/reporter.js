@@ -91,14 +91,12 @@ var EmojiInfoService = {
         return str;
       });
 
-      var i = codePoints.length;
-      do {
-        var str = codePointsStrArr.slice(0, i).join('-');
-        var info = this.map.get(str);
-        if (info) {
-          return info;
-        }
-      } while (--i);
+
+      var str = codePointsStrArr.join('-');
+      var info = this.map.get(str);
+      if (info) {
+        return info;
+      }
 
       return null;
     }.bind(this));
@@ -292,7 +290,7 @@ TestReport.prototype = {
     EmojiInfoService.getInfo(result.codePoints)
       .then(function(info) {
         if (!info) {
-          infoEl.parentNode.removeChild(infoEl);
+          infoEl.textContent = 'tags: non-standard';
           return;
         }
         infoEl.textContent =
