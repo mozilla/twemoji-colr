@@ -1,7 +1,7 @@
 'use strict';
 
 var EmojiInfoService = {
-  URL: '../node_modules/emoji-table/dist/emoji.json',
+  URL: '../node_modules/emojibase-data/en/compact.json',
   map: null,
 
   _initPromise: null,
@@ -19,16 +19,62 @@ var EmojiInfoService = {
         this.map = new Map();
 
         if (!json) {
-          console.warn('EmojiInfoService: Failed to load table.');
+          console.warn('EmojiInfoService: Failed to load data.');
           return;
         };
         for (var info of json) {
-          this.map.set(info.code, info);
+          if (info.skins) {
+            this._flattenSkins(info);
+          }
+          this.map.set(info.hexcode, info);
         }
+        this._augmentInfo();
       }.bind(this));
 
     this._initPromise = p;
     return p;
+  },
+
+  _flattenSkins: function(emoji) {
+    for (var skin of emoji.skins) {
+      skin.tags = emoji.tags;
+      this.map.set(skin.hexcode, skin);
+    }
+    emoji.skins = undefined;
+  },
+
+  _augmentInfo: function() {
+    // Regional Indicator Symbol Letters
+    for (var i = 127462; i <= 127487; ++i) {
+      // '1F1E6' <= && <= '1F1FF'
+      // RISLs are offset from their plain ascii cousins by 127397
+      var letter = String.fromCodePoint(i - 127397);
+      var hexcode = i.toString(16).toUpperCase();
+      this.map.set(hexcode, {
+        annotation: 'regional indicator symbol letter ' + letter,
+        tags: ['regional', 'letter', letter],
+        hexcode,
+      });
+    }
+    // Fitzpatrick skin tone modifiers
+    var toneMap = {
+      '1F3FB': ['Light', '1-2'], '1F3FC': ['Medium-Light', 3],
+      '1F3FD': ['Medium', 4], '1F3FE': ['Medium-Dark', 5],
+      '1F3FF': ['Dark', 6],
+    };
+    for (var [hexcode, [name, type]] of Object.entries(toneMap)) {
+      this.map.set(hexcode, {
+        annotation: `${name} skin tone modifier`,
+        tags: [name + ' skin tone', 'fitzpatrick', 'type ' + type],
+        hexcode,
+      });
+    }
+    // Non-standard
+    this.map.set('E50A', {
+      annotation: 'shibuya',
+      tags: ['private use area', 'non-standard'],
+      hexcode: 'E50A',
+    });
   },
 
   getInfo: function(codePoints) {
@@ -42,17 +88,15 @@ var EmojiInfoService = {
         while (str.length < 4) {
           str = '0' + str;
         }
-        return 'U+' + str;
+        return str;
       });
 
-      var i = codePoints.length;
-      do {
-        var str = codePointsStrArr.slice(0, i).join(' ');
-        var info = this.map.get(str);
-        if (info) {
-          return info;
-        }
-      } while (--i);
+
+      var str = codePointsStrArr.join('-');
+      var info = this.map.get(str);
+      if (info) {
+        return info;
+      }
 
       return null;
     }.bind(this));
@@ -246,11 +290,11 @@ TestReport.prototype = {
     EmojiInfoService.getInfo(result.codePoints)
       .then(function(info) {
         if (!info) {
-          infoEl.parentNode.removeChild(infoEl);
+          infoEl.textContent = 'tags: non-standard';
           return;
         }
         infoEl.textContent =
-          info.name + '. tags: ' + info.tags.join(', ') + '.';
+          info.annotation + '. tags: ' + info.tags.join(', ') + '.';
       })
       .catch(function(e) { console.error(e); });
     reportEl.appendChild(infoEl);
