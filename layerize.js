@@ -649,7 +649,7 @@ function generateTTX() {
 
     // GSUB table implements the ligature rules for Regional Indicator pairs and emoji-ZWJ sequences
     var GSUB = ttFont.ele("GSUB");
-    GSUB.ele("Version", {value: "1.0"});
+    GSUB.ele("Version", {value: "0x00010000"});
 
     var scriptRecord = GSUB.ele("ScriptList").ele("ScriptRecord", {index: 0});
     scriptRecord.ele("ScriptTag", {value: "DFLT"});
