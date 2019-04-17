@@ -369,6 +369,16 @@ function recordGradient(g, urlColor) {
 function processFile(fileName, data) {
     // strip .svg extension off the name
     var baseName = fileName.replace(".svg", "");
+    // Twitter doesn't include the VS16 in the keycap filenames
+    if (/^[23][0-9a]-20e3$/.test(baseName)) {
+        var orig = baseName;
+        baseName = baseName.replace('-20e3', '-fe0f-20e3');
+        console.log(`found mis-named keycap ${orig}, renamed to ${baseName}`);
+    } else if (baseName == '1f441-200d-1f5e8') {
+        // ...or in the "eye in speech bubble"'s
+        baseName = '1f441-fe0f-200d-1f5e8-fe0f';
+        console.log(`found mis-named 1f441-200d-1f5e8, renamed to ${baseName}`);
+    }
     
     var parser = new xml2js.Parser({preserveChildrenOrder: true,
                                     explicitChildren: true,
