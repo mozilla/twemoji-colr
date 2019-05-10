@@ -56,19 +56,6 @@ var EmojiInfoService = {
         hexcode,
       });
     }
-    // Fitzpatrick skin tone modifiers
-    var toneMap = {
-      '1F3FB': ['Light', '1-2'], '1F3FC': ['Medium-Light', 3],
-      '1F3FD': ['Medium', 4], '1F3FE': ['Medium-Dark', 5],
-      '1F3FF': ['Dark', 6],
-    };
-    for (var [hexcode, [name, type]] of Object.entries(toneMap)) {
-      this.map.set(hexcode, {
-        annotation: `${name} skin tone modifier`,
-        tags: [name + ' skin tone', 'fitzpatrick', 'type ' + type],
-        hexcode,
-      });
-    }
     // Non-standard
     this.map.set('E50A', {
       annotation: 'shibuya',
