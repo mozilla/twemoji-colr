@@ -16,7 +16,6 @@
     "url": "git+https://github.com/mozilla/twemoji-colr.git"
   },
   "dependencies": {
-    "emojibase-data": "^3.2.1",
     "grunt": "^1.0.2",
     "grunt-cli": "^1.2.0",
     "grunt-webfont": "^1.6.0",
@@ -34,6 +33,7 @@
   ],
   "homepage": "https://github.com/mozilla/twemoji-colr#readme",
   "devDependencies": {
+    "emojibase-data": "^4.0.0",
     "resemblejs": "^2.10.0"
   },
   "scripts": {
