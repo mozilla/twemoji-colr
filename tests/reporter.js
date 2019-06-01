@@ -1,7 +1,7 @@
 'use strict';
 
 var EmojiInfoService = {
-  URL: '../node_modules/emojibase-data/en/compact.json',
+  URL: '../node_modules/emojibase-data/en/data.json',
   map: null,
 
   _initPromise: null,
@@ -281,7 +281,7 @@ TestReport.prototype = {
           return;
         }
         infoEl.textContent =
-          info.annotation + '. tags: ' + info.tags.join(', ') + '.';
+          info.annotation + '. tags: ' + info.tags.join(', ') + '. version: ' + info.version;
       })
       .catch(function(e) { console.error(e); });
     reportEl.appendChild(infoEl);
