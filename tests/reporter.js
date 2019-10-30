@@ -1,7 +1,7 @@
 'use strict';
 
 var EmojiInfoService = {
-  URL: '../node_modules/emojibase-data/en/compact.json',
+  URL: '../node_modules/emojibase-data/en/data.json',
   map: null,
 
   _initPromise: null,
@@ -53,19 +53,6 @@ var EmojiInfoService = {
       this.map.set(hexcode, {
         annotation: 'regional indicator symbol letter ' + letter,
         tags: ['regional', 'letter', letter],
-        hexcode,
-      });
-    }
-    // Fitzpatrick skin tone modifiers
-    var toneMap = {
-      '1F3FB': ['Light', '1-2'], '1F3FC': ['Medium-Light', 3],
-      '1F3FD': ['Medium', 4], '1F3FE': ['Medium-Dark', 5],
-      '1F3FF': ['Dark', 6],
-    };
-    for (var [hexcode, [name, type]] of Object.entries(toneMap)) {
-      this.map.set(hexcode, {
-        annotation: `${name} skin tone modifier`,
-        tags: [name + ' skin tone', 'fitzpatrick', 'type ' + type],
         hexcode,
       });
     }
@@ -294,7 +281,7 @@ TestReport.prototype = {
           return;
         }
         infoEl.textContent =
-          info.annotation + '. tags: ' + info.tags.join(', ') + '.';
+          info.annotation + '. tags: ' + info.tags.join(', ') + '. version: ' + info.version;
       })
       .catch(function(e) { console.error(e); });
     reportEl.appendChild(infoEl);
