@@ -33,7 +33,7 @@
   ],
   "homepage": "https://github.com/mozilla/twemoji-colr#readme",
   "devDependencies": {
-    "emojibase-data": "^4.0.0",
+    "emojibase-data": "^4.2.1",
     "resemblejs": "^2.10.0"
   },
   "scripts": {
