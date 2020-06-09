@@ -1,7 +1,7 @@
 {
   "name": "twemoji-colr",
   "description": "Twemoji font in COLR/CPAL layered format.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "license": "Apache-2.0",
   "author": "Jonathan Kew <jfkthame@gmail.com>",
   "contributors": [
@@ -33,7 +33,7 @@
   ],
   "homepage": "https://github.com/mozilla/twemoji-colr#readme",
   "devDependencies": {
-    "emojibase-data": "^4.0.0",
+    "emojibase-data": "^4.2.1",
     "resemblejs": "^2.10.0"
   },
   "scripts": {
