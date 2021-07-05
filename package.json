@@ -34,7 +34,7 @@
   "homepage": "https://github.com/mozilla/twemoji-colr#readme",
   "devDependencies": {
     "emojibase-data": "^6.2.0",
-    "resemblejs": "^2.10.0"
+    "resemblejs": "^4.0.0"
   },
   "scripts": {
     "grunt": "grunt"
