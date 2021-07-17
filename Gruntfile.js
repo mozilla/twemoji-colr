@@ -1,13 +1,11 @@
 /*jshint node:true*/
 
-var path = require('path');
-
 module.exports = function(grunt) {
 	'use strict';
 
 	require('load-grunt-tasks')(grunt);
 
-    var packageJSON = grunt.file.readJSON('package.json');
+    const packageJSON = grunt.file.readJSON('package.json');
 
 	grunt.initConfig({
 		webfont: {
@@ -16,6 +14,7 @@ module.exports = function(grunt) {
                 dest: 'build/raw-font',
                 options: {
                     font: 'Twemoji Mozilla',
+                    engine: 'fontforge',
                     types: 'ttf',
                     autoHint: false,
                     execMaxBuffer: 1024 * 1000,
@@ -26,7 +25,7 @@ module.exports = function(grunt) {
 		},
 	});
 
-	grunt.loadNpmTasks('grunt-webfont');
+	grunt.loadNpmTasks('grunt-webfonts');
 
 	grunt.registerTask('default', ['webfont']);
 };
