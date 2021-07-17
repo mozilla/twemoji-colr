@@ -740,7 +740,7 @@ rmdir(targetDir, function () {
     fs.createReadStream(sourceZip).pipe(unzip.Parse()).on('entry', function (e) {
         var data = "";
         var fileName = e.path.replace(/^.*\//, ""); // strip any directory names
-        if (e.type === 'File') {
+        if (e.type === 'File' && e.path.substr(-4, 4) === '.svg') {
             // Check for an override; if present, read that instead
             var o = overrides.indexOf(fileName);
             if (o >= 0) {
