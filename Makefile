@@ -17,9 +17,10 @@ EXTRA_DIR    = extras
 GRUNTFILE  = Gruntfile.js
 LAYERIZE   = layerize.js
 
-CODEPOINTS = $(BUILD_DIR)/codepoints.js
-OT_SOURCE  = $(BUILD_DIR)/$(FONT_NAME).ttx
-RAW_FONT   = $(BUILD_DIR)/raw-font/$(FONT_NAME).ttf
+CODEPOINTS          = $(BUILD_DIR)/codepoints.js
+OT_SOURCE  	        = $(BUILD_DIR)/$(FONT_NAME).ttx
+RAW_FONT            = $(BUILD_DIR)/raw-font/$(FONT_NAME).ttf
+RAW_FONT_TEMPORARY	= $(BUILD_DIR)/raw-font/$(FONT_NAME).temporary.ttf
 
 $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	rm -f $(FINAL_TARGET)
@@ -32,9 +33,9 @@ $(FINAL_TARGET) : $(RAW_FONT) $(OT_SOURCE)
 	        -e '  s/Twemoji Mozilla/TwemojiMozilla/ if $$ps;' \
 	        -e '  print;' \
 	        -e '}' $(RAW_FONT).names
-	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT).renamed.ttf $(RAW_FONT).names
-	$(PYTHON) fixDirection.py $(RAW_FONT).renamed.ttf
-	$(TTX) -m $(RAW_FONT).renamed.ttf -o $(FINAL_TARGET) $(OT_SOURCE)
+	$(TTX) -m $(RAW_FONT) -o $(RAW_FONT_TEMPORARY) $(RAW_FONT).names
+	$(PYTHON) fixDirection.py $(RAW_FONT_TEMPORARY)
+	$(TTX) -m $(RAW_FONT_TEMPORARY) -o $(FINAL_TARGET) $(OT_SOURCE)
 
 $(RAW_FONT) : $(CODEPOINTS) $(GRUNTFILE)
 	$(NPM) run grunt webfont
