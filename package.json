@@ -16,14 +16,14 @@
     "url": "git+https://github.com/mozilla/twemoji-colr.git"
   },
   "dependencies": {
-    "grunt": "^1.0.2",
-    "grunt-cli": "^1.2.0",
-    "grunt-webfont": "^1.6.0",
-    "load-grunt-tasks": "^3.5.2",
+    "grunt": "^1.4.1",
+    "grunt-cli": "^1.4.3",
+    "grunt-webfonts": "^3.0.1",
+    "load-grunt-tasks": "^5.1.0",
     "rmdir": "^1.2.0",
     "unzip": "^0.1.11",
-    "xml2js": "^0.4.19",
-    "xmlbuilder": "^8.2.2"
+    "xml2js": "^0.4.23",
+    "xmlbuilder": "^15.1.1"
   },
   "keywords": [
     "emoji",
@@ -38,5 +38,8 @@
   },
   "scripts": {
     "grunt": "grunt"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   }
 }
