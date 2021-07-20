@@ -1,14 +1,13 @@
 /*jshint node:true*/
 
-module.exports = function(grunt) {
-	'use strict';
+module.exports = function (grunt) {
+    'use strict';
 
-	require('load-grunt-tasks')(grunt);
-
+    require('load-grunt-tasks')(grunt);
     const packageJSON = grunt.file.readJSON('package.json');
 
-	grunt.initConfig({
-		webfont: {
+    grunt.initConfig({
+        webfont: {
             Twemoji: {
                 src: 'build/glyphs/*.svg',
                 dest: 'build/raw-font',
@@ -22,10 +21,9 @@ module.exports = function(grunt) {
                     codepointsFile: 'build/codepoints.js'
                 }
             },
-		},
-	});
+        },
+    });
 
-	grunt.loadNpmTasks('grunt-webfonts');
-
-	grunt.registerTask('default', ['webfont']);
+    grunt.loadNpmTasks('grunt-webfonts');
+    grunt.registerTask('default', ['webfont']);
 };
