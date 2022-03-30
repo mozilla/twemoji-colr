@@ -13,14 +13,14 @@ if they try to use this font.
 
 ## Getting started
 
-This project makes use of [grunt-webfont](https://github.com/sapegin/grunt-webfont)
+This project makes use of [grunt-webfonts](https://github.com/L2jLiga/grunt-webfonts)
 and an additional [node.js](https://nodejs.org/en/) script.
 Therefore, installation of Node.js (and its package manager [npm](https://www.npmjs.com/)) is a prerequisite.
 Grunt will be installed as a package dependency — no need to install it globally.
 
 The necessary tools can be installed via npm:
 
-    # install dependencies from packages.json, including `grunt-webfont`.
+    # install dependencies from packages.json, including `grunt-webfonts`.
     npm install
 
 The build process also requires [fontforge](https://fontforge.github.io/)
