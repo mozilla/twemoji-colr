@@ -32,7 +32,7 @@ Both FontForge and font-tools can be installed via `homebrew` on OS X, or packag
     brew install fonttools fontforge
 
     # Ubuntu, for example
-    sudo apt-get install fonttools fontforge python3-fontforge
+    sudo apt install fonttools fontforge python3-fontforge
 
 ## Building the font
 
