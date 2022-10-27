@@ -12,7 +12,7 @@ The resulting font can be found at `build/Twemoji Mozilla.ttf`.
 
 You would need to ensure the glyph layers are converted correctly by running our test suite.
 
-1. Start a localhost server at the working directory. You can do that by running `python -m SimpleHTTPServer 28009`.
+1. Start a localhost server at the working directory. You can do that by running `python3 -m http.server 28009`.
 2. Navigate to `http://localhost:28009/tests/` with Firefox.
 3. Ensure you can see the Twemoji smiling face on the title (indicated the web font is loaded), hit "Test all".
 4. Give it a few minutes to compare all glyphs.
