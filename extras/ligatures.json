@@ -1,5 +1,4 @@
 [
     { "glyphName": "u1f48f", "unicodes": ["1f469", "200d", "2764", "200d", "1f48b", "200d", "1f468"] },
-    { "glyphName": "u1f491", "unicodes": ["1f469", "200d", "2764", "200d", "1f468"] },
-    { "glyphName": "u1f46a", "unicodes": ["1f468", "200d", "1f469", "200d", "1f466"] }
+    { "glyphName": "u1f491", "unicodes": ["1f469", "200d", "2764", "200d", "1f468"] }
 ]
