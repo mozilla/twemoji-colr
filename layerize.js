@@ -488,7 +488,7 @@ function processFile(fileName, data) {
                 fill = expandColor(fill) || defaultFill;
                 stroke = expandColor(stroke) || defaultStroke;
 
-                var opacity = (e['$']['opacity'] || 1.0) * defaultOpacity;
+                var opacity = (e['$']['opacity'] || e['$']['fill-opacity'] || 1.0) * defaultOpacity;
 
                 if (e['#name'] === 'g') {
                     if (e['$$'] !== undefined) {
