@@ -1,12 +1,15 @@
 {
   "name": "twemoji-colr",
   "description": "Twemoji font in COLR/CPAL layered format.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "Apache-2.0",
   "author": "Jonathan Kew <jfkthame@gmail.com>",
   "contributors": [
     "Tim Guan-tin Chien <timdream@gmail.com>",
-    "Essem <smswessem@gmail.com>"
+    "Essem <smswessem@gmail.com>",
+    "Gregory <https://github.com/GrSto>",
+    "Tilman Vatteroth <git@tilmanvatteroth.de>",
+    "Lim Chunwei <https://github.com/win98se>"
   ],
   "bugs": {
     "url": "https://github.com/mozilla/twemoji-colr/issues"
