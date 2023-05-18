@@ -1,6 +1,6 @@
 var fs = require('fs'),
     rmdir = require('rmdir'),
-    unzip = require('unzip'),
+    unzip = require('unzipper'),
     xmlbuilder = require('xmlbuilder'),
     xml2js = require('xml2js');
 

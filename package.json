@@ -24,7 +24,7 @@
     "grunt-webfonts": "^4.0.2",
     "load-grunt-tasks": "^5.1.0",
     "rmdir": "^1.2.0",
-    "unzip": "^0.1.11",
+    "unzipper": "^0.10.14",
     "xml2js": "^0.4.23",
     "xmlbuilder": "^15.1.1"
   },
