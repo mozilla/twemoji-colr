@@ -1,6 +1,5 @@
 var fs = require('fs'),
-    rmdir = require('rmdir'),
-    unzip = require('unzip'),
+    unzip = require('unzipper'),
     xmlbuilder = require('xmlbuilder'),
     xml2js = require('xml2js');
 
@@ -718,7 +717,7 @@ function generateTTX() {
 }
 
 // Delete and re-create target directory, to remove any pre-existing junk
-rmdir(targetDir, function () {
+fs.rm(targetDir, {recursive: true, force: true}, function () {
     fs.mkdirSync(targetDir);
     fs.mkdirSync(targetDir + "/glyphs");
     fs.mkdirSync(targetDir + "/colorGlyphs");
