@@ -1,1 +1,1 @@
-Zipped copy of the v/15.0.3/svg directory from https://github.com/jdecked/twemoji/archive/refs/heads/gh-pages.zip
+Zipped copy of the v/15.1.0/svg directory from https://github.com/jdecked/twemoji/archive/refs/heads/gh-pages.zip
